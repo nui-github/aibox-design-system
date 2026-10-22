@@ -242,3 +242,216 @@
   letter-spacing: var(--aibox-typography-button-xs-letter-spacing);
   border-radius: var(--aibox-radius-1);
 }
+
+/* ---------------------------------------------------------------------------
+   Checkbox and Radio. Source: Figma "i-BOX Design System" > Selection >
+   checkbox (node 1:5323) and radio (node 1:5408).
+
+   Figma -> ng-zorro mapping
+     checkbox type=unselected / selected   <label nz-checkbox>, checked or not
+     checkbox type=indeterminate           nzIndeterminate (white box, blue square)
+     checkbox type=multiple                class="aibox-multiple" on a checked checkbox (blue box, white dash)
+     radio    type=unselected / selected   <label nz-radio>, checked or not (selected = blue disc, white dot)
+     size=small / medium / large           class="aibox-sm" / (default) / class="aibox-lg" on the label
+     state=error                           class="aibox-error" on the label (unselected only in Figma)
+     state=disabled                        nzDisabled
+   Not covered: radio type=multiple (blue disc with a check), selection-list / selection-card, radio buttons
+   (nzButtonStyle) and checkbox groups' layout. Figma has no hover/focus state; hover and focus reuse
+   color.state.form.hover and the focus ring of the Input.
+
+   The Figma boxes are SVG icons, so these shapes were measured from a 1x render: box 14 / 17.5 / 21px
+   (radio 16 / 20 / 24px), border 1.5 / 1.875 / 2.25px, corner radius 2 / 2.5 / 3px (the three sizes scale
+   1 : 1.25 : 1.5). The ring is an inset box-shadow because browsers round border widths down to whole
+   pixels. The check mark is an approximation of the icon.
+   --------------------------------------------------------------------------- */
+
+/* Variables, default size = Figma medium */
+.ant-checkbox-wrapper,
+.ant-radio-wrapper {
+  --_box: 17.5px;
+  --_rdo: 20px;
+  --_bw: 1.875px;
+  --_rad: 2.5px;
+  --_sq: 8px;
+  --_dash: 7.5px;
+  --_dash-t: 1.875px;
+  --_dot: 7.5px;
+  --_line: var(--aibox-color-text-icon-default);
+  --_line-h: var(--aibox-color-state-form-hover);
+  --_fill: var(--aibox-color-bg-primary);
+  --_on: var(--aibox-color-state-form-active);
+  --_mark: var(--aibox-color-text-white-primary);
+}
+.ant-checkbox-wrapper.aibox-sm,
+.ant-radio-wrapper.aibox-sm {
+  --_box: 14px;
+  --_rdo: 16px;
+  --_bw: 1.5px;
+  --_rad: 2px;
+  --_sq: 6px;
+  --_dash: 6px;
+  --_dash-t: 1.5px;
+  --_dot: 6px;
+}
+.ant-checkbox-wrapper.aibox-lg,
+.ant-radio-wrapper.aibox-lg {
+  --_box: 21px;
+  --_rdo: 24px;
+  --_bw: 2.25px;
+  --_rad: 3px;
+  --_sq: 10px;
+  --_dash: 9px;
+  --_dash-t: 2.25px;
+  --_dot: 9px;
+}
+.ant-checkbox-wrapper.aibox-error,
+.ant-radio-wrapper.aibox-error {
+  --_line: var(--aibox-color-state-form-error);
+  --_line-h: var(--aibox-color-state-form-error);
+}
+/* Disabled colours differ in Figma: checkbox uses component/text/text-disable, radio uses text/disable */
+.ant-checkbox-disabled {
+  --_line: var(--aibox-color-component-text-text-disable);
+  --_fill: var(--aibox-color-bg-disable);
+  --_on: var(--aibox-color-component-text-text-disable);
+  --_mark: var(--aibox-color-bg-disable);
+}
+.ant-radio-disabled {
+  --_line: var(--aibox-color-text-disable);
+  --_fill: var(--aibox-color-bg-disable);
+  --_on: var(--aibox-color-text-disable);
+  --_mark: var(--aibox-color-bg-disable);
+}
+
+/* No ripple ring on hover/check */
+.ant-checkbox-wrapper .ant-checkbox-checked::after,
+.ant-radio-wrapper .ant-radio-checked::after {
+  display: none;
+}
+
+/* ---- Checkbox ---- */
+.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner {
+  --_ring: var(--_line);
+  box-sizing: border-box;
+  width: var(--_box);
+  height: var(--_box);
+  border: 0;
+  border-radius: var(--_rad);
+  background-color: var(--_fill);
+  box-shadow: inset 0 0 0 var(--_bw) var(--_ring);
+}
+.ant-checkbox-wrapper:hover .ant-checkbox .ant-checkbox-inner,
+.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-input:focus + .ant-checkbox-inner {
+  --_ring: var(--_line-h);
+}
+/* Checked = blue (gray when disabled) box, white mark */
+.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner,
+.ant-checkbox-wrapper:hover .ant-checkbox-checked .ant-checkbox-inner,
+.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-input:focus + .ant-checkbox-inner {
+  --_ring: var(--_on);
+  background-color: var(--_on);
+}
+/* Disabled */
+.ant-checkbox-wrapper .ant-checkbox.ant-checkbox-disabled .ant-checkbox-inner {
+  --_ring: var(--_line);
+}
+.ant-checkbox-wrapper .ant-checkbox.ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner {
+  --_ring: var(--_on);
+  background-color: var(--_on);
+}
+/* Mark: a mask so the colour comes from a token */
+.ant-checkbox-wrapper .ant-checkbox .ant-checkbox-inner::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--_box);
+  height: var(--_box);
+  border: 0;
+  background-color: var(--_mark);
+  transform: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M27.5 52 42 66 73.5 34.5' fill='none' stroke='black' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M27.5 52 42 66 73.5 34.5' fill='none' stroke='black' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.ant-checkbox-wrapper .ant-checkbox.ant-checkbox-checked .ant-checkbox-inner::after {
+  opacity: 1;
+  border: 0;
+  transform: none;
+  background-color: var(--_mark);
+}
+/* Indeterminate: unselected box with a blue square */
+.ant-checkbox-wrapper .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {
+  --_ring: var(--_line);
+  background-color: var(--_fill);
+}
+.ant-checkbox-wrapper:hover .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {
+  --_ring: var(--_line-h);
+}
+.ant-checkbox-wrapper .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner::after {
+  top: 50%;
+  left: 50%;
+  width: var(--_sq);
+  height: var(--_sq);
+  border: 0;
+  background-color: var(--_on);
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  -webkit-mask: none;
+  mask: none;
+}
+/* type=multiple: checked box with a white dash */
+.ant-checkbox-wrapper.aibox-multiple .ant-checkbox.ant-checkbox-checked .ant-checkbox-inner::after {
+  top: 50%;
+  left: 50%;
+  width: var(--_dash);
+  height: var(--_dash-t);
+  border-radius: var(--_dash-t);
+  transform: translate(-50%, -50%);
+  -webkit-mask: none;
+  mask: none;
+}
+
+/* ---- Radio ---- */
+.ant-radio-wrapper .ant-radio .ant-radio-inner {
+  --_ring: var(--_line);
+  box-sizing: border-box;
+  width: var(--_rdo);
+  height: var(--_rdo);
+  border: 0;
+  background-color: var(--_fill);
+  box-shadow: inset 0 0 0 var(--_bw) var(--_ring);
+}
+.ant-radio-wrapper:hover .ant-radio .ant-radio-inner,
+.ant-radio-wrapper .ant-radio .ant-radio-input:focus + .ant-radio-inner {
+  --_ring: var(--_line-h);
+}
+.ant-radio-wrapper .ant-radio .ant-radio-input:focus + .ant-radio-inner {
+  box-shadow: inset 0 0 0 var(--_bw) var(--_ring), 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-active-outer);
+}
+.ant-radio-wrapper .ant-radio.ant-radio-checked .ant-radio-inner,
+.ant-radio-wrapper:hover .ant-radio.ant-radio-checked .ant-radio-inner {
+  --_ring: var(--_on);
+  background-color: var(--_on);
+}
+.ant-radio-wrapper .ant-radio.ant-radio-disabled .ant-radio-inner {
+  --_ring: var(--_line);
+}
+.ant-radio-wrapper .ant-radio.ant-radio-disabled.ant-radio-checked .ant-radio-inner {
+  --_ring: var(--_on);
+  background-color: var(--_on);
+}
+.ant-radio-wrapper .ant-radio .ant-radio-inner::after {
+  top: 50%;
+  left: 50%;
+  width: var(--_dot);
+  height: var(--_dot);
+  margin: calc(var(--_dot) / -2) 0 0 calc(var(--_dot) / -2);
+  border-radius: 50%;
+  background-color: var(--_mark);
+}
+.ant-radio-wrapper .ant-radio.ant-radio-checked .ant-radio-inner::after {
+  transform: scale(1);
+  opacity: 1;
+}
