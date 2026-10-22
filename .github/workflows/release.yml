@@ -2,21 +2,40 @@ name: release
 on:
   push:
     tags: ['v*.*.*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to (re)publish release notes for, e.g. v0.2.0
+        required: true
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions: { contents: write }
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: npm test
       - name: dist matches tag
         run: git diff --exit-code -- dist
-      - name: Create GitHub release with CDN links
-        env: { GH_TOKEN: "${{ github.token }}" }
+      - name: Create or update GitHub release with CDN links
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
         run: |
-          V="${GITHUB_REF_NAME#v}"
+          V="${TAG#v}"
           BASE="https://cdn.jsdelivr.net/gh/${GITHUB_REPOSITORY}@${V}/dist"
-          gh release create "$GITHUB_REF_NAME" --generate-notes --notes "$(printf '```html\n<link rel="stylesheet" href="%s/tokens.css">\n<link rel="stylesheet" href="%s/ng-zorro-override.css">\n```' "$BASE" "$BASE")"
+          LINKS="$(printf '```html\n<link rel="stylesheet" href="%s/tokens.css">\n<link rel="stylesheet" href="%s/ng-zorro-override.css">\n```' "$BASE" "$BASE")"
+          if BODY="$(gh release view "$TAG" --json body --jq .body 2>/dev/null)"; then
+            # Release already exists (e.g. created from the GitHub UI): keep its notes, add links once.
+            if grep -q 'cdn.jsdelivr.net' <<<"$BODY"; then
+              echo "Release $TAG already lists CDN links; nothing to do."
+            else
+              gh release edit "$TAG" --notes "$(printf '%s\n\n%s' "$BODY" "$LINKS")"
+            fi
+          else
+            gh release create "$TAG" --verify-tag --generate-notes --notes "$LINKS"
+          fi
