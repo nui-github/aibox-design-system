@@ -1,6 +1,6 @@
 {
   "name": "aibox-design-system",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Ai-BOX design tokens and ng-zorro-antd CSS overrides, delivered via CDN",
   "private": false,
   "license": "UNLICENSED",

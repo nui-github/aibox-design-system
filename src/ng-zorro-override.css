@@ -67,3 +67,178 @@
   border-color: var(--aibox-color-state-form-default);
   box-shadow: none;
 }
+
+/* ---------------------------------------------------------------------------
+   Button. Source: Figma "i-BOX Design System" > Button (node 1:3414).
+
+   Figma -> ng-zorro mapping
+     type=outlined                  <button nz-button>                    (no nzType)
+     type=contained                 nzType="primary"
+     type=texted                    nzType="text" (or "link")
+     name=danger                    nzDanger
+     name=subsidiary                class="aibox-btn-subsidiary" (not in ng-zorro)
+     size=small / medium / large    nzSize="small" / (default) / "large"
+     size=xsmall                    class="aibox-btn-xs"        (not in ng-zorro)
+     state=hovered                  :hover and :active (Figma "hovered" uses the *-press tokens)
+     state=disabled                 [disabled]
+   Not covered: type=contained-white, type=without padding, dark mode, loading, round/circle.
+   Outline is drawn with an inset box-shadow so every type keeps the same box size (Figma strokes are inside).
+   --------------------------------------------------------------------------- */
+
+/* Variant variables: default = outlined / standard */
+.ant-btn {
+  --_bg: var(--aibox-color-button-outline-standard-bg-default);
+  --_fg: var(--aibox-color-button-outline-standard-text-default);
+  --_bd: var(--aibox-color-button-outline-standard-border-default);
+  --_bg-h: var(--aibox-color-button-outline-standard-bg-press);
+  --_fg-h: var(--aibox-color-button-outline-standard-text-press);
+  --_bd-h: var(--aibox-color-button-outline-standard-border-press);
+}
+/* outlined / danger */
+.ant-btn-dangerous {
+  --_bg: transparent;
+  --_fg: var(--aibox-color-button-outline-danger-text-default);
+  --_bd: var(--aibox-color-button-outline-danger-border-default);
+  --_bg-h: var(--aibox-color-button-outline-danger-bg-hover);
+  --_fg-h: var(--aibox-color-button-outline-danger-text-hover);
+  --_bd-h: var(--aibox-color-button-outline-danger-border-hover);
+}
+/* outlined / subsidiary */
+.ant-btn.aibox-btn-subsidiary {
+  --_bg: var(--aibox-color-button-outline-subsidiary-bg-default);
+  --_fg: var(--aibox-color-button-outline-subsidiary-text-default);
+  --_bd: var(--aibox-color-button-outline-subsidiary-border-default);
+  --_bg-h: var(--aibox-color-button-outline-subsidiary-bg-press);
+  --_fg-h: var(--aibox-color-button-outline-subsidiary-text-press);
+  --_bd-h: var(--aibox-color-button-outline-subsidiary-border-press);
+}
+/* contained / standard */
+.ant-btn-primary {
+  --_bg: var(--aibox-color-button-contained-standard-bg-default);
+  --_fg: var(--aibox-color-button-contained-standard-text-default);
+  --_bd: transparent;
+  --_bg-h: var(--aibox-color-button-contained-standard-bg-press);
+  --_fg-h: var(--aibox-color-button-contained-standard-text-default);
+  --_bd-h: transparent;
+}
+/* contained / danger */
+.ant-btn-primary.ant-btn-dangerous {
+  --_bg: var(--aibox-color-button-contained-danger-bg-default);
+  --_fg: var(--aibox-color-button-contained-danger-text-default);
+  --_bd: transparent;
+  --_bg-h: var(--aibox-color-button-contained-danger-bg-hover);
+  --_fg-h: var(--aibox-color-button-contained-danger-text-default);
+  --_bd-h: transparent;
+}
+/* contained / subsidiary */
+.ant-btn-primary.aibox-btn-subsidiary {
+  --_bg: var(--aibox-color-button-contained-subsidiary-bg-default);
+  --_fg: var(--aibox-color-button-contained-subsidiary-text-default);
+  --_bd: transparent;
+  --_bg-h: var(--aibox-color-button-contained-subsidiary-bg-press);
+  --_fg-h: var(--aibox-color-button-contained-subsidiary-text-default);
+  --_bd-h: transparent;
+}
+/* texted / standard */
+.ant-btn-text,
+.ant-btn-link {
+  --_bg: var(--aibox-color-button-texted-standard-bg-default);
+  --_fg: var(--aibox-color-button-texted-standard-text-default);
+  --_bd: transparent;
+  --_bg-h: var(--aibox-color-button-texted-standard-bg-press);
+  --_fg-h: var(--aibox-color-button-texted-standard-text-press);
+  --_bd-h: transparent;
+}
+/* texted / danger */
+.ant-btn-text.ant-btn-dangerous,
+.ant-btn-link.ant-btn-dangerous {
+  --_bg: var(--aibox-color-button-texted-danger-bg-default);
+  --_fg: var(--aibox-color-button-texted-danger-text-default);
+  --_bd: transparent;
+  --_bg-h: var(--aibox-color-button-texted-danger-bg-hover);
+  --_fg-h: var(--aibox-color-button-texted-danger-text-hover);
+  --_bd-h: transparent;
+}
+/* texted / subsidiary */
+.ant-btn-text.aibox-btn-subsidiary,
+.ant-btn-link.aibox-btn-subsidiary {
+  --_bg: var(--aibox-color-button-texted-subsidiary-bg-default);
+  --_fg: var(--aibox-color-button-texted-subsidiary-text-default);
+  --_bd: transparent;
+  --_bg-h: var(--aibox-color-button-texted-subsidiary-bg-press);
+  --_fg-h: var(--aibox-color-button-texted-subsidiary-text-press);
+  --_bd-h: transparent;
+}
+
+/* Apply: default and :focus keep the resting look (ant's :focus mimics :hover) */
+.ant-btn.ant-btn,
+.ant-btn.ant-btn:focus {
+  background: var(--_bg);
+  color: var(--_fg);
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--_bd);
+  text-shadow: none;
+}
+.ant-btn.ant-btn:hover,
+.ant-btn.ant-btn:active {
+  background: var(--_bg-h);
+  color: var(--_fg-h);
+  box-shadow: inset 0 0 0 1px var(--_bd-h);
+}
+/* Disabled: same for every type/name (Figma base/*-disable) */
+.ant-btn.ant-btn[disabled],
+.ant-btn.ant-btn[disabled]:hover,
+.ant-btn.ant-btn[disabled]:focus,
+.ant-btn.ant-btn[disabled]:active {
+  background: var(--aibox-color-button-base-bg-disable);
+  color: var(--aibox-color-button-base-text-disable);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Layout and text. Default size = Figma medium. Height comes from padding + line-height. */
+.ant-btn.ant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 0;
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-5);
+  gap: var(--aibox-spacing-2);
+  border-radius: var(--aibox-radius-2);
+  font-family: var(--aibox-typography-button-md-font-family);
+  font-size: var(--aibox-typography-button-md-font-size);
+  font-weight: var(--aibox-typography-button-md-font-weight);
+  line-height: var(--aibox-typography-button-md-line-height);
+  letter-spacing: var(--aibox-typography-button-md-letter-spacing);
+}
+.ant-btn > .anticon + span,
+.ant-btn > span + .anticon {
+  margin-left: 0;
+}
+/* Figma large */
+.ant-btn.ant-btn-lg {
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-8);
+  font-size: var(--aibox-typography-button-lg-font-size);
+  line-height: var(--aibox-typography-button-lg-line-height);
+  letter-spacing: var(--aibox-typography-button-lg-letter-spacing);
+  border-radius: var(--aibox-radius-2);
+}
+/* Figma small */
+.ant-btn.ant-btn-sm {
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-4);
+  gap: var(--aibox-spacing-1);
+  font-size: var(--aibox-typography-button-sm-font-size);
+  line-height: var(--aibox-typography-button-sm-line-height);
+  letter-spacing: var(--aibox-typography-button-sm-letter-spacing);
+  border-radius: var(--aibox-radius-2);
+}
+/* Figma xsmall (declared after small so it wins when both classes are present) */
+.ant-btn.aibox-btn-xs {
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+  gap: var(--aibox-spacing-1);
+  font-size: var(--aibox-typography-button-xs-font-size);
+  line-height: var(--aibox-typography-button-xs-line-height);
+  letter-spacing: var(--aibox-typography-button-xs-letter-spacing);
+  border-radius: var(--aibox-radius-1);
+}

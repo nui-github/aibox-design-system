@@ -6,11 +6,40 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.2.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.2.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.3.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.3.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Supports ng-zorro-antd 18.x.
+
+## Components
+
+### Button (Figma node `1:3414`)
+Use ng-zorro `nz-button` as usual; the override restyles it to match Figma.
+
+| Figma | ng-zorro |
+|---|---|
+| type = outlined | `<button nz-button>` (no `nzType`) |
+| type = contained | `nzType="primary"` |
+| type = texted | `nzType="text"` (or `"link"`) |
+| name = standard | (default) |
+| name = danger | `nzDanger` |
+| name = subsidiary | `class="aibox-btn-subsidiary"` (not in ng-zorro) |
+| size = small / medium / large | `nzSize="small"` / (default) / `nzSize="large"` |
+| size = xsmall | `class="aibox-btn-xs"` (not in ng-zorro) |
+| state = hovered | `:hover` and `:active` (Figma "hovered" uses the `*-press` tokens) |
+| state = disabled | `[disabled]` |
+
+```html
+<button nz-button nzType="primary">Save</button>
+<button nz-button nzType="primary" nzDanger>Delete</button>
+<button nz-button class="aibox-btn-subsidiary" nzSize="small">Cancel</button>
+<button nz-button nzType="text" class="aibox-btn-xs">More</button>
+```
+Not covered yet: `contained-white`, `without padding`, dark mode, loading, round/circle. Sizes follow the Figma names, so the default ng-zorro button is **40px (Figma medium)**, not ng-zorro's usual 32px.
+
+### Input / form label (Figma node `1:7052`)
+`<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.
 
 ## Develop
 ```
