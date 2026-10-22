@@ -1,13 +1,13 @@
-/* aibox-design-system v0.1.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.2.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
 /* Form label + assistive text */
 .ant-form-item-label > label {
-  font-family: var(--aibox-font-family);
-  font-size: var(--aibox-font-size-body);
-  line-height: var(--aibox-font-line-height-body);
-  letter-spacing: var(--aibox-font-letter-spacing-body);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
   color: var(--aibox-color-text-secondary);
 }
 .ant-form-item-required::before {
@@ -16,10 +16,10 @@
 
 /* Input - Figma Size=small (default ng-zorro size): 14/24, padding 4/8 */
 .ant-input {
-  font-family: var(--aibox-font-family);
-  font-size: var(--aibox-font-size-body);
-  line-height: var(--aibox-font-line-height-body);
-  letter-spacing: var(--aibox-font-letter-spacing-body);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
   color: var(--aibox-color-text-primary);
   background-color: var(--aibox-color-bg-primary);
   border: 1px solid var(--aibox-color-state-form-default);
@@ -29,9 +29,9 @@
 
 /* Input - Figma Size=large (nzSize="large"): 16/26, box height 48, padding 8/12 */
 .ant-input-lg {
-  font-size: var(--aibox-font-size-body-lg);
-  line-height: var(--aibox-font-line-height-body-lg);
-  letter-spacing: var(--aibox-font-letter-spacing-body-lg);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
   min-height: var(--aibox-size-control-height-lg);
   padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
 }
@@ -42,7 +42,7 @@
 
 /* Focused: 1px active border + 2px translucent outer ring */
 .ant-input:hover {
-  border-color: var(--aibox-color-state-form-active);
+  border-color: var(--aibox-color-state-form-hover);
 }
 .ant-input:focus,
 .ant-input-focused {

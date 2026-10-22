@@ -1,28 +1,2887 @@
 {
   "color": {
-    "$type": "color",
+    "main": {
+      "$type": "color",
+      "$value": "{color.global.blue.900}",
+      "$description": "Primary brand color, aliased to global/blue/900"
+    },
     "text": {
-      "primary":     { "$value": "#010819" },
-      "secondary":   { "$value": "#6b707b" },
-      "placeholder": { "$value": "#a0a3ac" },
-      "disable":     { "$value": "#adb0b8" },
+      "white": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.global.white}",
+          "$description": "Primary text color on dark backgrounds"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.global.gray.200}",
+          "$description": "Secondary text color on dark backgrounds"
+        }
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.global.black}",
+        "$description": "Primary text color for headings, body text, and general content"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.global.gray.1100}",
+        "$description": "Secondary text color for supporting text and captions"
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "{color.global.gray.700}",
+        "$description": "Tertiary text color for de-emphasized or supplementary content"
+      },
+      "icon-default": {
+        "$type": "color",
+        "$value": "{color.global.gray.500}",
+        "$description": "Default icon color"
+      },
+      "disable": {
+        "$type": "color",
+        "$value": "{color.global.gray.600}",
+        "$description": "Disabled text color for inactive or unavailable elements"
+      },
+      "main": {
+        "$type": "color",
+        "$value": "{color.global.blue.900}",
+        "$description": "Brand-colored text for emphasis and links"
+      },
       "status": {
-        "error-100": { "$value": "#f04542" },
-        "error-200": { "$value": "#f25c5a" }
+        "default": {
+          "$type": "color",
+          "$value": "{color.global.grayscale.500}",
+          "$description": "Default status text color for neutral or inactive states"
+        },
+        "success-100": {
+          "$type": "color",
+          "$value": "{color.global.green.1400}",
+          "$description": "Secondary success text color (darker)"
+        },
+        "success-200": {
+          "$type": "color",
+          "$value": "{color.global.green.1300}",
+          "$description": "Primary success text color"
+        },
+        "info-100": {
+          "$type": "color",
+          "$value": "{color.global.blue.1100}",
+          "$description": "Secondary info text color (darker)"
+        },
+        "info-200": {
+          "$type": "color",
+          "$value": "{color.global.blue.800}",
+          "$description": "Primary info text color"
+        },
+        "warning-100": {
+          "$type": "color",
+          "$value": "{color.global.yellow.1200}",
+          "$description": "Secondary warning text color (darker)"
+        },
+        "warning-200": {
+          "$type": "color",
+          "$value": "{color.global.yellow.1000}",
+          "$description": "Primary warning text color"
+        },
+        "error-100": {
+          "$type": "color",
+          "$value": "{color.global.red.800}",
+          "$description": "Secondary error text color (darker)"
+        },
+        "error-200": {
+          "$type": "color",
+          "$value": "{color.global.red.700}",
+          "$description": "Primary error text color"
+        },
+        "rework-100": {
+          "$type": "color",
+          "$value": "{color.global.lavender.800}",
+          "$description": "Secondary rework status text color (darker)"
+        },
+        "rework-200": {
+          "$type": "color",
+          "$value": "{color.global.lavender.700}",
+          "$description": "Primary rework status text color"
+        },
+        "reject-100": {
+          "$type": "color",
+          "$value": "{color.global.orange.800}",
+          "$description": "Secondary rejection status text color (darker)"
+        },
+        "reject-200": {
+          "$type": "color",
+          "$value": "{color.global.orange.700}",
+          "$description": "Primary rejection status text color"
+        }
+      },
+      "placeholder": {
+        "$type": "color",
+        "$value": "{color.global.gray.700}",
+        "$description": "Placeholder text color for input fields"
       }
     },
     "bg": {
-      "primary": { "$value": "#ffffff" },
-      "disable": { "$value": "#f1f2f3" }
+      "primary": {
+        "$type": "color",
+        "$value": "{color.global.white}",
+        "$description": "Primary background color for pages and main containers"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.global.gray.100}",
+        "$description": "Page body background color, used behind white containers to create depth"
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "{color.global.blue.100}",
+        "$description": "Tertiary background color for highlighted sections"
+      },
+      "quaternary": {
+        "$type": "color",
+        "$value": "{color.global.gray.300}",
+        "$description": "Quaternary background color for subtle separations"
+      },
+      "disable": {
+        "$type": "color",
+        "$value": "{color.global.gray.100}",
+        "$description": "Background color for disabled elements"
+      },
+      "main": {
+        "$type": "color",
+        "$value": "{color.global.blue.900}",
+        "$description": "Brand-colored background for primary actions and highlights"
+      },
+      "status": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.global.gray.500}",
+          "$description": "Default UI status background for neutral or inactive states"
+        },
+        "success-100": {
+          "$type": "color",
+          "$value": "{color.global.green.100}",
+          "$description": "Primary UI status background for success states"
+        },
+        "info-100": {
+          "$type": "color",
+          "$value": "{color.global.blue.100}",
+          "$description": "Primary UI status background for informational states"
+        },
+        "warning-100": {
+          "$type": "color",
+          "$value": "{color.global.yellow.100}",
+          "$description": "Primary UI status background for warning states"
+        },
+        "error-100": {
+          "$type": "color",
+          "$value": "{color.global.red.100}",
+          "$description": "Primary UI status background for error states"
+        },
+        "success-200": {
+          "$type": "color",
+          "$value": "{color.global.green.1300}",
+          "$description": "Secondary UI status background for success states (darker)"
+        },
+        "info-200": {
+          "$type": "color",
+          "$value": "{color.global.blue.800}",
+          "$description": "Secondary UI status background for informational states (darker)"
+        },
+        "warning-200": {
+          "$type": "color",
+          "$value": "{color.global.yellow.1000}",
+          "$description": "Secondary UI status background for warning states (darker)"
+        },
+        "error-200": {
+          "$type": "color",
+          "$value": "{color.global.red.700}",
+          "$description": "Secondary UI status background for error states (darker)"
+        },
+        "rework-100": {
+          "$type": "color",
+          "$value": "{color.global.lavender.100}",
+          "$description": "Primary UI status background for rework states"
+        },
+        "rework-200": {
+          "$type": "color",
+          "$value": "{color.global.lavender.700}",
+          "$description": "Secondary UI status background for rework states (darker)"
+        },
+        "reject-100": {
+          "$type": "color",
+          "$value": "{color.global.orange.100}",
+          "$description": "Primary UI status background for rejection states"
+        },
+        "reject-200": {
+          "$type": "color",
+          "$value": "{color.global.orange.800}",
+          "$description": "Secondary UI status background for rejection states (darker)"
+        }
+      },
+      "opacity": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.global.transparent.white.3}",
+          "$description": "Semi-transparent white overlay"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.global.transparent.light-gray.2}",
+          "$description": "Semi-transparent light gray overlay"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "{color.global.transparent.black.9}",
+          "$description": "Semi-transparent dark overlay"
+        }
+      },
+      "action-bar": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.global.blue.100}",
+          "$description": "Background color for action bars and toolbars"
+        }
+      }
+    },
+    "border": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.global.gray.100}",
+        "$description": "Primary border color for dividers and containers"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.global.gray.500}",
+        "$description": "Secondary border color for stronger separations"
+      },
+      "disable": {
+        "$type": "color",
+        "$value": "{color.global.gray.200}",
+        "$description": "Border color for disabled elements"
+      }
     },
     "state": {
+      "main": {
+        "ma-nf-1": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.blue.1000}",
+            "$description": "Primary interaction state (no-fill variant), default. Blue text/icon color with subtle press darkening."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.blue.1000}",
+            "$description": "Primary interaction state (no-fill variant), hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.blue.1100}",
+            "$description": "Primary interaction state (no-fill variant), pressed."
+          }
+        },
+        "ma-1": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.blue.900}",
+            "$description": "Primary interaction state level 1, default. Medium-dark blue with progressive darkening on hover/press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.blue.1000}",
+            "$description": "Primary interaction state level 1, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.blue.1100}",
+            "$description": "Primary interaction state level 1, pressed."
+          }
+        },
+        "ma-2": {
+          "default": {
+            "$type": "color",
+            "$value": "#ffffff00",
+            "$description": "Primary interaction state level 2 (ghost), default. Transparent default, light blue tint on hover/press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.blue.100}",
+            "$description": "Primary interaction state level 2 (ghost), hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.blue.200}",
+            "$description": "Primary interaction state level 2 (ghost), pressed."
+          }
+        },
+        "ma-3": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.blue.900}",
+            "$description": "Primary interaction state level 3, default. Blue with subtle press darkening only."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.blue.900}",
+            "$description": "Primary interaction state level 3, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.blue.1000}",
+            "$description": "Primary interaction state level 3, pressed."
+          }
+        },
+        "ma-4": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.blue.1000}",
+            "$description": "Primary interaction state level 4, default. Dark blue with press darkening."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.blue.1000}",
+            "$description": "Primary interaction state level 4, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.blue.1100}",
+            "$description": "Primary interaction state level 4, pressed."
+          }
+        },
+        "ma-5": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.blue.1000}",
+            "$description": "Primary interaction state level 5, default. Darkest blue interaction set."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.blue.1100}",
+            "$description": "Primary interaction state level 5, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.blue.1100}",
+            "$description": "Primary interaction state level 5, pressed."
+          }
+        }
+      },
+      "gray": {
+        "g-nf-1": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.gray.1200}",
+            "$description": "Gray interaction state (no-fill variant), default. Dark gray text/icon with lightening on hover/press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.gray.1000}",
+            "$description": "Gray interaction state (no-fill variant), hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.gray.1000}",
+            "$description": "Gray interaction state (no-fill variant), pressed."
+          }
+        },
+        "g-1": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.gray.1200}",
+            "$description": "Gray interaction state level 1, default. Dark gray with darkening on press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.gray.1200}",
+            "$description": "Gray interaction state level 1, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.gray.1300}",
+            "$description": "Gray interaction state level 1, pressed."
+          }
+        },
+        "g-2": {
+          "default": {
+            "$type": "color",
+            "$value": "#ffffff00",
+            "$description": "Gray interaction state level 2 (ghost), default. Transparent default, light gray tint on hover/press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.gray.100}",
+            "$description": "Gray interaction state level 2 (ghost), hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.gray.200}",
+            "$description": "Gray interaction state level 2 (ghost), pressed."
+          }
+        },
+        "g-3": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.gray.700}",
+            "$description": "Gray interaction state level 3, default. Mid-gray with subtle press darkening."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.gray.700}",
+            "$description": "Gray interaction state level 3, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.gray.800}",
+            "$description": "Gray interaction state level 3, pressed."
+          }
+        },
+        "g-4": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.gray.100}",
+            "$description": "Gray interaction state level 4, default. Light gray with progressive darkening on hover/press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.gray.200}",
+            "$description": "Gray interaction state level 4, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.gray.300}",
+            "$description": "Gray interaction state level 4, pressed."
+          }
+        },
+        "g-5": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.gray.700}",
+            "$description": "Gray interaction state level 5, default. Mid-gray with strong darkening on hover/press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.gray.1100}",
+            "$description": "Gray interaction state level 5, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.gray.1100}",
+            "$description": "Gray interaction state level 5, pressed."
+          }
+        },
+        "g-6": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.gray.1200}",
+            "$description": "Gray interaction state level 6, default. Dark gray with lightening on hover/press."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.gray.1000}",
+            "$description": "Gray interaction state level 6, hover."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.gray.1000}",
+            "$description": "Gray interaction state level 6, pressed."
+          }
+        }
+      },
+      "white": {
+        "w-nf-1": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.global.white}",
+            "$description": "White-variant interactive state token. Used for interactive elements on dark/colored backgrounds."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.global.white}",
+            "$description": "White-variant interactive state token. Used for interactive elements on dark/colored backgrounds."
+          },
+          "press": {
+            "$type": "color",
+            "$value": "{color.global.white}",
+            "$description": "White-variant interactive state token. Used for interactive elements on dark/colored backgrounds."
+          }
+        }
+      },
       "form": {
-        "default":     { "$value": "#e4e5e7" },
-        "active":      { "$value": "#1f5df9" },
-        "active-outer":{ "$value": "#1f5df933" },
-        "error":       { "$value": "#f25c5a" },
-        "error-outer": { "$value": "#bd120f33" }
+        "default": {
+          "$type": "color",
+          "$value": "{color.global.gray.200}",
+          "$description": "Default border/fill color for form inputs"
+        },
+        "active": {
+          "$type": "color",
+          "$value": "{color.global.blue.900}",
+          "$description": "Active/focused border/fill color for form inputs"
+        },
+        "active-outer": {
+          "$type": "color",
+          "$value": "{color.global.transparent.blue.2}",
+          "$description": "Focus ring color for active form inputs"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.global.blue.900}",
+          "$description": "Hover border/fill color for form inputs"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "{color.global.red.700}",
+          "$description": "Error border/fill color for form inputs"
+        },
+        "error-outer": {
+          "$type": "color",
+          "$value": "{color.global.transparent.red.2}",
+          "$description": "Focus ring color for error-state form inputs"
+        }
       }
+    },
+    "component": {
+      "bg": {
+        "bg-primary": {
+          "$type": "color",
+          "$value": "{color.global.gray.200}",
+          "$description": "Default component background. For input containers and neutral surface areas."
+        },
+        "bg-raise": {
+          "$type": "color",
+          "$value": "{color.global.transparent.black.8}",
+          "$description": "Translucent overlay background. For subtle raised or tinted surfaces."
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{color.global.gray.100}",
+          "$description": "Hover state background. For interactive elements on hover."
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{color.global.transparent.blue.1}",
+          "$description": "Active/selected state background. For highlighted menu items and active selections."
+        },
+        "bg-disable": {
+          "$type": "color",
+          "$value": "{color.global.gray.100}",
+          "$description": "Disabled state background. For inactive or non-interactive elements."
+        }
+      },
+      "text": {
+        "text-disable": {
+          "$type": "color",
+          "$value": "{color.global.gray.500}",
+          "$description": "Disabled state text/icon color. For labels and icons in inactive elements."
+        },
+        "text-on-gray": {
+          "$type": "color",
+          "$value": "{color.global.gray.1200}",
+          "$description": "Text color on gray backgrounds. For readable text over gray surfaces."
+        }
+      }
+    },
+    "button": {
+      "base": {
+        "bg": {
+          "disable": {
+            "$type": "color",
+            "$value": "{color.component.bg.bg-disable}",
+            "$description": "Disabled button background color, shared across all variants"
+          }
+        },
+        "text": {
+          "disable": {
+            "$type": "color",
+            "$value": "{color.component.text.text-disable}",
+            "$description": "Disabled button text color, shared across all variants"
+          }
+        }
+      },
+      "contained": {
+        "standard": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Default text color for standard contained buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-1.default}",
+              "$description": "Default background for standard contained buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-1.hover}",
+              "$description": "Hover background for standard contained buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-1.press}",
+              "$description": "Pressed background for standard contained buttons"
+            }
+          }
+        },
+        "subsidiary": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.component.text.text-on-gray}",
+              "$description": "Default text color for subsidiary contained buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-4.default}",
+              "$description": "Default background for subsidiary contained buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-4.hover}",
+              "$description": "Hover background for subsidiary contained buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-4.press}",
+              "$description": "Pressed background for subsidiary contained buttons"
+            }
+          }
+        },
+        "danger": {
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.red.700}",
+              "$description": "Default background for danger contained buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.red.900}",
+              "$description": "Hover background for danger contained buttons"
+            }
+          },
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Default text color for danger contained buttons"
+            }
+          }
+        }
+      },
+      "outline": {
+        "standard": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-4.default}",
+              "$description": "Default text color for standard outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-4.hover}",
+              "$description": "Hover text color for standard outline buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-4.press}",
+              "$description": "Pressed text color for standard outline buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-2.default}",
+              "$description": "Default background for standard outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-2.hover}",
+              "$description": "Hover background for standard outline buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-2.press}",
+              "$description": "Pressed background for standard outline buttons"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-3.default}",
+              "$description": "Default border for standard outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-3.hover}",
+              "$description": "Hover border for standard outline buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-3.press}",
+              "$description": "Pressed border for standard outline buttons"
+            }
+          }
+        },
+        "subsidiary": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-1.default}",
+              "$description": "Default text color for subsidiary outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-1.hover}",
+              "$description": "Hover text color for subsidiary outline buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-1.press}",
+              "$description": "Pressed text color for subsidiary outline buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-2.default}",
+              "$description": "Default background for subsidiary outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-2.hover}",
+              "$description": "Hover background for subsidiary outline buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-2.press}",
+              "$description": "Pressed background for subsidiary outline buttons"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-3.default}",
+              "$description": "Default border for subsidiary outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-3.hover}",
+              "$description": "Hover border for subsidiary outline buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-3.press}",
+              "$description": "Pressed border for subsidiary outline buttons"
+            }
+          }
+        },
+        "danger": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.red.800}",
+              "$description": "Default text color for danger outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.red.900}",
+              "$description": "Hover text color for danger outline buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-2.default}",
+              "$description": "Default background for danger outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.red.200}",
+              "$description": "Hover background for danger outline buttons"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.red.800}",
+              "$description": "Default border for danger outline buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.red.900}",
+              "$description": "Hover border for danger outline buttons"
+            }
+          }
+        }
+      },
+      "texted": {
+        "standard": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-5.default}",
+              "$description": "Default text color for standard text buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-5.hover}",
+              "$description": "Hover text color for standard text buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.main.ma-5.press}",
+              "$description": "Pressed text color for standard text buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Default background for standard text buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Hover background for standard text buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Pressed background for standard text buttons"
+            }
+          }
+        },
+        "subsidiary": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-6.default}",
+              "$description": "Default text color for subsidiary text buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-6.hover}",
+              "$description": "Hover text color for subsidiary text buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "{color.state.gray.g-6.press}",
+              "$description": "Pressed text color for subsidiary text buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Default background for subsidiary text buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Hover background for subsidiary text buttons"
+            },
+            "press": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Pressed background for subsidiary text buttons"
+            }
+          }
+        },
+        "danger": {
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.red.800}",
+              "$description": "Default text color for danger text buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.red.600}",
+              "$description": "Hover text color for danger text buttons"
+            }
+          },
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Default background for danger text buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "#ffffff00",
+              "$description": "Hover background for danger text buttons"
+            }
+          }
+        }
+      },
+      "component-icon": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.state.gray.g-5.default}",
+          "$description": "Default color for button icons"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.state.gray.g-5.hover}",
+          "$description": "Hover color for button icons"
+        },
+        "press": {
+          "$type": "color",
+          "$value": "{color.state.gray.g-5.press}",
+          "$description": "Pressed color for button icons"
+        }
+      },
+      "contained-white": {
+        "standard": {
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Default background for standard contained-white buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Hover background for standard contained-white buttons"
+            }
+          },
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.blue.900}",
+              "$description": "Default text color for standard contained-white buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.blue.1100}",
+              "$description": "Hover text color for standard contained-white buttons"
+            }
+          }
+        },
+        "danger": {
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Default background for danger contained-white buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Hover background for danger contained-white buttons"
+            }
+          },
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.red.800}",
+              "$description": "Default text color for danger contained-white buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.red.900}",
+              "$description": "Hover text color for danger contained-white buttons"
+            }
+          }
+        },
+        "subsidiary": {
+          "bg": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Default background for subsidiary contained-white buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.white}",
+              "$description": "Hover background for subsidiary contained-white buttons"
+            }
+          },
+          "text": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.global.gray.1200}",
+              "$description": "Default text color for subsidiary contained-white buttons"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.global.gray.1000}",
+              "$description": "Hover text color for subsidiary contained-white buttons"
+            }
+          }
+        }
+      }
+    },
+    "global": {
+      "border": {
+        "shadow": {
+          "1": {
+            "$type": "color",
+            "$value": "#ffffff",
+            "$description": "Border color primitive."
+          }
+        }
+      },
+      "black": {
+        "$type": "color",
+        "$value": "#010819",
+        "$description": "Base black primitive."
+      },
+      "white": {
+        "$type": "color",
+        "$value": "#ffffff",
+        "$description": "Base white primitive."
+      },
+      "blue": {
+        "100": {
+          "$type": "color",
+          "$value": "#e6edfe",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#cddbfe",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#b4c9fd",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#9cb7fc",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#83a5fc",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#6a93fb",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#5181fb",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#386ffa",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#1f5df9",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#064bf9",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#0644e0",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#053cc7",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#0434ae",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#042d95",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#03257d",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#031e63",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#02174b",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#010f32",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#010819",
+          "$description": "Blue color ramp. Primary brand color primitive."
+        }
+      },
+      "gray": {
+        "80": {
+          "$type": "color",
+          "$value": "#fbfbfd",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#f1f2f3",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#e4e5e7",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#d6d7db",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#c8cad0",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#bbbec4",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#adb0b8",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#a0a3ac",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#9296a0",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#848994",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#777c88",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#6b707b",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#5f636d",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#53565f",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#474a52",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#3b3e44",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#2f3137",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#242529",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#18191b",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#0c0d0e",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        }
+      },
+      "red": {
+        "100": {
+          "$type": "color",
+          "$value": "#fde8e7",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#fbd1d0",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#f9b9b8",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#f7a2a1",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#f58b89",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#f47471",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#f25c5a",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#f04542",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#ee2e2b",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#ec1713",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#d51411",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#bd120f",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#a5100d",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#8d0e0b",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#750b0a",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#5e0908",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#470706",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#2f0504",
+          "$description": "Red color ramp. Error and danger state primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#170202",
+          "$description": "Red color ramp. Error and danger state primitive."
+        }
+      },
+      "yellow": {
+        "100": {
+          "$type": "color",
+          "$value": "#fef8e6",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#fef1cd",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#fdeab4",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#fce39c",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#fcdc83",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#fbd46a",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#fbcd51",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#fac638",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#f9bf1f",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#f9b806",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#e0a606",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#c79305",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#ae8104",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#956e04",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#7c5c03",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#634a03",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#4b3702",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#322501",
+          "$description": "Yellow color ramp. Warning state primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#191201",
+          "$description": "Yellow color ramp. Warning state primitive."
+        }
+      },
+      "green": {
+        "100": {
+          "$type": "color",
+          "$value": "#e5fff2",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#ccffe5",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#b3ffd9",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#99ffcc",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#80ffbf",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#66ffb2",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#4dffa6",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#33ff99",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#1aff8c",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#00ff80",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#00e673",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#00cc66",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#00b359",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#00994d",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#008040",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#006633",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#004d26",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#00331a",
+          "$description": "Green color ramp. Success state primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#001a0d",
+          "$description": "Green color ramp. Success state primitive."
+        }
+      },
+      "transparent": {
+        "blue": {
+          "1": {
+            "$type": "color",
+            "$value": "#1f5df91a",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "2": {
+            "$type": "color",
+            "$value": "#1f5df933",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "3": {
+            "$type": "color",
+            "$value": "#1f5df94d",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "4": {
+            "$type": "color",
+            "$value": "#1f5df966",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "5": {
+            "$type": "color",
+            "$value": "#1f5df980",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "6": {
+            "$type": "color",
+            "$value": "#1f5df999",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "7": {
+            "$type": "color",
+            "$value": "#1f5df9b3",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "8": {
+            "$type": "color",
+            "$value": "#1f5df9cc",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "9": {
+            "$type": "color",
+            "$value": "#1f5df9e6",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          }
+        },
+        "gray": {
+          "1": {
+            "$type": "color",
+            "$value": "#5f636d1a",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "2": {
+            "$type": "color",
+            "$value": "#5f636d33",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "3": {
+            "$type": "color",
+            "$value": "#5f636d4d",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "4": {
+            "$type": "color",
+            "$value": "#5f636d66",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "5": {
+            "$type": "color",
+            "$value": "#5f636d80",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "6": {
+            "$type": "color",
+            "$value": "#5f636d99",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "7": {
+            "$type": "color",
+            "$value": "#5f636db3",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "8": {
+            "$type": "color",
+            "$value": "#5f636dcc",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "9": {
+            "$type": "color",
+            "$value": "#5f636de6",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          }
+        },
+        "light-gray": {
+          "1": {
+            "$type": "color",
+            "$value": "#e4e6e71a",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "2": {
+            "$type": "color",
+            "$value": "#e4e6e733",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "3": {
+            "$type": "color",
+            "$value": "#e4e6e74d",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "4": {
+            "$type": "color",
+            "$value": "#e4e6e766",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "5": {
+            "$type": "color",
+            "$value": "#e4e6e780",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "6": {
+            "$type": "color",
+            "$value": "#e4e6e799",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "7": {
+            "$type": "color",
+            "$value": "#e4e6e7b3",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "8": {
+            "$type": "color",
+            "$value": "#e4e6e7cc",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "9": {
+            "$type": "color",
+            "$value": "#e4e6e7e6",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          }
+        },
+        "red": {
+          "1": {
+            "$type": "color",
+            "$value": "#bd120f1a",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "2": {
+            "$type": "color",
+            "$value": "#bd120f33",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "3": {
+            "$type": "color",
+            "$value": "#bd120f4d",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "4": {
+            "$type": "color",
+            "$value": "#bd120f66",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "5": {
+            "$type": "color",
+            "$value": "#bd120f80",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "6": {
+            "$type": "color",
+            "$value": "#bd120f99",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "7": {
+            "$type": "color",
+            "$value": "#bd120fb3",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "8": {
+            "$type": "color",
+            "$value": "#bd120fcc",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "9": {
+            "$type": "color",
+            "$value": "#bd120fe6",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          }
+        },
+        "white": {
+          "1": {
+            "$type": "color",
+            "$value": "#ffffff1a",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "2": {
+            "$type": "color",
+            "$value": "#ffffff33",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "3": {
+            "$type": "color",
+            "$value": "#ffffff4d",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "4": {
+            "$type": "color",
+            "$value": "#ffffff66",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "5": {
+            "$type": "color",
+            "$value": "#ffffff80",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "6": {
+            "$type": "color",
+            "$value": "#ffffff99",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "7": {
+            "$type": "color",
+            "$value": "#ffffffb3",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "8": {
+            "$type": "color",
+            "$value": "#ffffffcc",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "9": {
+            "$type": "color",
+            "$value": "#ffffffe6",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          }
+        },
+        "black": {
+          "1": {
+            "$type": "color",
+            "$value": "#0108191a",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "2": {
+            "$type": "color",
+            "$value": "#01081933",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "3": {
+            "$type": "color",
+            "$value": "#0108194d",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "4": {
+            "$type": "color",
+            "$value": "#01081966",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "5": {
+            "$type": "color",
+            "$value": "#01081980",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "6": {
+            "$type": "color",
+            "$value": "#01081999",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "7": {
+            "$type": "color",
+            "$value": "#010819b3",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "8": {
+            "$type": "color",
+            "$value": "#010819cc",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          },
+          "9": {
+            "$type": "color",
+            "$value": "#010819e6",
+            "$description": "Transparent color ramp. For overlays and alpha-based fills."
+          }
+        }
+      },
+      "pink": {
+        "100": {
+          "$type": "color",
+          "$value": "#fce9f3",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#f8d3e8",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#f5bddc",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#f1a7d1",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#ee91c5",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#ea7bba",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#e765ae",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#e34fa3",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#e03997",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#dc238b",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#c61f7d",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#b01c70",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#9a1862",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#841554",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#6e1146",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#580e38",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#420a2a",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#2c071c",
+          "$description": "Pink color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#16030e",
+          "$description": "Pink color ramp. Accent primitive."
+        }
+      },
+      "sky": {
+        "100": {
+          "$type": "color",
+          "$value": "#e8f7fc",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#d2eff9",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#bbe7f6",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#a4dff4",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#8ed7f1",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#77cfee",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#60c7eb",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#4abfe8",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#33b7e5",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#1cafe3",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#199ecc",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#178cb5",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#147b9f",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#116988",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#0e5871",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#0b465b",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#083544",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#06232d",
+          "$description": "Sky blue color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#031217",
+          "$description": "Sky blue color ramp. Accent primitive."
+        }
+      },
+      "mango": {
+        "100": {
+          "$type": "color",
+          "$value": "#fff8e5",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#fff0cc",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#ffe9b2",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#ffe299",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#ffda80",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#ffd366",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#ffcc4d",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#ffc533",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#ffbd1a",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#ffb600",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#e5a400",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#cc9200",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#b27f00",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#996d00",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#805b00",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#664900",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#4d3700",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#332400",
+          "$description": "Mango color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#1a1200",
+          "$description": "Mango color ramp. Accent primitive."
+        }
+      },
+      "avocado": {
+        "80": {
+          "$type": "color",
+          "$value": "#cde8b0",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#f3f9eb",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#e6f4d7",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#daeec3",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#c1e39c",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#b4dd88",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#a8d774",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#9bd260",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#8fcc4c",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#82c639",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#75b333",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#689f2d",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#5b8b28",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#4e7722",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#41631c",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#344f17",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#273c11",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#1a280b",
+          "$description": "Avocado color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#0d1406",
+          "$description": "Avocado color ramp. Accent primitive."
+        }
+      },
+      "lavender": {
+        "100": {
+          "$type": "color",
+          "$value": "#eee9fb",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#ded4f7",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#cdbef4",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#bda8f0",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#ac92ec",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#9c7de8",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#8b67e5",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#7b51e1",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#6a3cdd",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#5a26d9",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#5122c3",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#481eae",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#3f1a98",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#361782",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#2d136d",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#240f57",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#1b0b41",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#12082b",
+          "$description": "Lavender color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#090416",
+          "$description": "Lavender color ramp. Accent primitive."
+        }
+      },
+      "mint": {
+        "100": {
+          "$type": "color",
+          "$value": "#ebfaf6",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#d7f4ed",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#c2efe4",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#aeeadb",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#9ae5d2",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#86dfc9",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#72dac0",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#5dd5b7",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#48cfad",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#35caa4",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#30b694",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#2aa284",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#258d73",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#207963",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#1a6552",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#155142",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#103d31",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#0b2821",
+          "$description": "Mint color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#051410",
+          "$description": "Mint color ramp. Accent primitive."
+        }
+      },
+      "sea": {
+        "100": {
+          "$type": "color",
+          "$value": "#eef6f6",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#ddeeed",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#cde5e3",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#bcdcda",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#abd4d1",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#9acbc8",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#89c2bf",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#78bab5",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#68b1ac",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#57a8a3",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#4e9793",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#458782",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#3d7672",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#346562",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#2b5451",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#234341",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#1a3231",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#112221",
+          "$description": "Sea color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#091110",
+          "$description": "Sea color ramp. Accent primitive."
+        }
+      },
+      "orange": {
+        "100": {
+          "$type": "color",
+          "$value": "#ffeae6",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#fed5cd",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#fec0b4",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#fdab9b",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#fd9782",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#fc8269",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#fc6e51",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#fc5836",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#fb431d",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#fb2e04",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#e22904",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#c92503",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#af2003",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#961c03",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#7d1702",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#641202",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#4b0e01",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#320901",
+          "$description": "Orange color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#190500",
+          "$description": "Orange color ramp. Accent primitive."
+        }
+      },
+      "cherry": {
+        "100": {
+          "$type": "color",
+          "$value": "#fbeaec",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#f7d4d9",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#f3bfc6",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#efa9b3",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#eb94a0",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#e67f8d",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#e2697a",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#de5467",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#da3e54",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#d62941",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#c1253b",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#ab2134",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#961d2e",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#801927",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#6b1421",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#56101a",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#400c14",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#2b080d",
+          "$description": "Cherry color ramp. Accent primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#150407",
+          "$description": "Cherry color ramp. Accent primitive."
+        }
+      },
+      "grayscale": {
+        "100": {
+          "$type": "color",
+          "$value": "#f2f2f2",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#e5e5e5",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#d9d9d9",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#cbcbcb",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#bfbfbf",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#b2b2b2",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#a6a6a6",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#989898",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#8c8c8c",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#7f7f7f",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#737373",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#666666",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#595959",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#4c4c4c",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#404040",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#333333",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#262626",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#191919",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#0d0d0d",
+          "$description": "Grayscale color ramp. Extended neutral primitive."
+        }
+      },
+      "light-blue": {
+        "100": {
+          "$type": "color",
+          "$value": "#e6f5fe",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#cdecfe",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#b4e2fd",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#9cd9fc",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#83cffc",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#6ac6fb",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#51bcfb",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#38b3fa",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#1fa9f9",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "#06a0f9",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1100": {
+          "$type": "color",
+          "$value": "#0690e0",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1200": {
+          "$type": "color",
+          "$value": "#0580c7",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1300": {
+          "$type": "color",
+          "$value": "#0470ae",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1400": {
+          "$type": "color",
+          "$value": "#046095",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1500": {
+          "$type": "color",
+          "$value": "#03507d",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1600": {
+          "$type": "color",
+          "$value": "#034063",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1700": {
+          "$type": "color",
+          "$value": "#02304b",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1800": {
+          "$type": "color",
+          "$value": "#012032",
+          "$description": "Light blue color ramp. Info state primitive."
+        },
+        "1900": {
+          "$type": "color",
+          "$value": "#011019",
+          "$description": "Light blue color ramp. Info state primitive."
+        }
+      }
+    },
+    "backdrop": {
+      "$type": "color",
+      "$value": "{color.global.transparent.black.6}",
+      "$description": "Overlay backdrop color — used for modal/dialog background dimming."
     }
   }
 }
