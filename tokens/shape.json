@@ -1,0 +1,13 @@
+{
+  "radius": {
+    "$type": "dimension",
+    "control": { "$value": "4px", "$description": "buttons, inputs, selects" },
+    "card": { "$value": "8px" },
+    "section": { "$value": "16px" }
+  },
+  "size": {
+    "$type": "dimension",
+    "control-height": { "$value": "32px" },
+    "control-padding-x": { "$value": "12px" }
+  }
+}

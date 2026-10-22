@@ -1,0 +1,27 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --aibox-color-primary: #1677ff; /** PLACEHOLDER - replace with Figma value */
+  --aibox-color-primary-hover: #4096ff;
+  --aibox-color-primary-active: #0958d9;
+  --aibox-color-primary-bg: #e6f4ff;
+  --aibox-color-success: #52c41a;
+  --aibox-color-warning: #faad14;
+  --aibox-color-error: #ff4d4f;
+  --aibox-color-text: #1f1f1f;
+  --aibox-color-text-secondary: #595959;
+  --aibox-color-text-on-primary: #ffffff;
+  --aibox-color-border: #d9d9d9;
+  --aibox-color-bg: #ffffff;
+  --aibox-color-bg-disabled: #f5f5f5;
+  --aibox-radius-control: 4px; /** buttons, inputs, selects */
+  --aibox-radius-card: 8px;
+  --aibox-radius-section: 16px;
+  --aibox-size-control-height: 32px;
+  --aibox-size-control-padding-x: 12px;
+  --aibox-font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --aibox-font-size-base: 14px;
+  --aibox-font-weight-medium: 500;
+}

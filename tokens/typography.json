@@ -1,0 +1,7 @@
+{
+  "font": {
+    "family": { "$type": "fontFamily", "$value": ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"] },
+    "size-base": { "$type": "dimension", "$value": "14px" },
+    "weight-medium": { "$type": "fontWeight", "$value": 500 }
+  }
+}
