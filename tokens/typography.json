@@ -1,0 +1,24 @@
+{
+  "font": {
+    "family": { "$type": "fontFamily", "$value": ["IBM Plex Sans Thai", "sans-serif"] },
+    "weight": { "regular": { "$type": "fontWeight", "$value": 400 } },
+    "size": {
+      "$type": "dimension",
+      "body":    { "$value": "14px" },
+      "body-lg": { "$value": "16px" },
+      "caption": { "$value": "12px" }
+    },
+    "line-height": {
+      "$type": "dimension",
+      "body":    { "$value": "24px" },
+      "body-lg": { "$value": "26px" },
+      "caption": { "$value": "22px" }
+    },
+    "letter-spacing": {
+      "$type": "dimension",
+      "body":    { "$value": "0.18px", "$description": "unit assumed px from Figma raw value 0.18" },
+      "body-lg": { "$value": "0px" },
+      "caption": { "$value": "0.2px" }
+    }
+  }
+}

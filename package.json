@@ -1,0 +1,16 @@
+{
+  "name": "aibox-design-system",
+  "version": "0.1.0",
+  "description": "Ai-BOX design tokens and ng-zorro-antd CSS overrides, delivered via CDN",
+  "private": false,
+  "license": "UNLICENSED",
+  "files": ["dist"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "npm run build && npm run check"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.2.0"
+  }
+}

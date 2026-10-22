@@ -1,0 +1,37 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --aibox-color-text-primary: #010819;
+  --aibox-color-text-secondary: #6b707b;
+  --aibox-color-text-placeholder: #a0a3ac;
+  --aibox-color-text-disable: #adb0b8;
+  --aibox-color-text-status-error-100: #f04542;
+  --aibox-color-text-status-error-200: #f25c5a;
+  --aibox-color-bg-primary: #ffffff;
+  --aibox-color-bg-disable: #f1f2f3;
+  --aibox-color-state-form-default: #e4e5e7;
+  --aibox-color-state-form-active: #1f5df9;
+  --aibox-color-state-form-active-outer: rgba(31, 93, 249, 0.2);
+  --aibox-color-state-form-error: #f25c5a;
+  --aibox-color-state-form-error-outer: rgba(189, 18, 15, 0.2);
+  --aibox-spacing-0: 0px;
+  --aibox-spacing-1: 4px;
+  --aibox-spacing-2: 8px;
+  --aibox-spacing-3: 12px;
+  --aibox-radius-2: 4px;
+  --aibox-size-control-height-lg: 48px; /** Figma textfield Size=large box height */
+  --aibox-size-focus-ring: 2px; /** Figma focused state outer ring width */
+  --aibox-font-family: 'IBM Plex Sans Thai', sans-serif;
+  --aibox-font-weight-regular: 400;
+  --aibox-font-size-body: 14px;
+  --aibox-font-size-body-lg: 16px;
+  --aibox-font-size-caption: 12px;
+  --aibox-font-line-height-body: 24px;
+  --aibox-font-line-height-body-lg: 26px;
+  --aibox-font-line-height-caption: 22px;
+  --aibox-font-letter-spacing-body: 0.18px; /** unit assumed px from Figma raw value 0.18 */
+  --aibox-font-letter-spacing-body-lg: 0px;
+  --aibox-font-letter-spacing-caption: 0.2px;
+}
