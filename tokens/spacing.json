@@ -1,0 +1,107 @@
+{
+  "spacing": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px",
+      "$description": "Zero spacing — removes gap between elements. Part of linear spacing scale (+4 per step). spacing/N = N × 4."
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "28px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "9": {
+      "$type": "dimension",
+      "$value": "36px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "40px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "11": {
+      "$type": "dimension",
+      "$value": "44px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "13": {
+      "$type": "dimension",
+      "$value": "52px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Note: scoped to ALL_SCOPES (unlike other spacing tokens which are GAP only)."
+    },
+    "14": {
+      "$type": "dimension",
+      "$value": "56px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "15": {
+      "$type": "dimension",
+      "$value": "60px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "17": {
+      "$type": "dimension",
+      "$value": "68px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "18": {
+      "$type": "dimension",
+      "$value": "72px",
+      "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
+    },
+    "value-2": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "value-15": {
+      "$type": "dimension",
+      "$value": "15px"
+    }
+  }
+}

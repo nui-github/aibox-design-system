@@ -1,24 +1,418 @@
 {
-  "font": {
-    "family": { "$type": "fontFamily", "$value": ["IBM Plex Sans Thai", "sans-serif"] },
-    "weight": { "regular": { "$type": "fontWeight", "$value": 400 } },
-    "size": {
-      "$type": "dimension",
-      "body":    { "$value": "14px" },
-      "body-lg": { "$value": "16px" },
-      "caption": { "$value": "12px" }
+  "typography": {
+    "header": {
+      "h-over": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "32px",
+          "fontWeight": 600,
+          "letterSpacing": "0px",
+          "lineHeight": "48px"
+        },
+        "$description": "Oversized heading. For special cases requiring text larger and more prominent than standard h1."
+      },
+      "h1": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "28px",
+          "fontWeight": 600,
+          "letterSpacing": "0px",
+          "lineHeight": "44px"
+        },
+        "$description": "Primary page heading. For top-level page titles and main section headers."
+      },
+      "h2": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "24px",
+          "fontWeight": 600,
+          "letterSpacing": "0px",
+          "lineHeight": "38px"
+        },
+        "$description": "Secondary heading. For section titles and document headers within a page."
+      },
+      "subheader": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "20px",
+          "fontWeight": 500,
+          "letterSpacing": "0px",
+          "lineHeight": "32px"
+        },
+        "$description": "Subheading. For dialog titles, drawer headers, and form section labels."
+      }
     },
-    "line-height": {
-      "$type": "dimension",
-      "body":    { "$value": "24px" },
-      "body-lg": { "$value": "26px" },
-      "caption": { "$value": "22px" }
+    "title": {
+      "title-lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "18px",
+          "fontWeight": 500,
+          "letterSpacing": "0.12px",
+          "lineHeight": "26px"
+        },
+        "$description": "Large title. For content section headers, bottom sheet titles, and filter labels."
+      },
+      "title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "16px",
+          "fontWeight": 500,
+          "letterSpacing": "0.18px",
+          "lineHeight": "24px"
+        },
+        "$description": "Standard title. For card titles, input field labels, modal content headers, and file names."
+      }
     },
-    "letter-spacing": {
-      "$type": "dimension",
-      "body":    { "$value": "0.18px", "$description": "unit assumed px from Figma raw value 0.18" },
-      "body-lg": { "$value": "0px" },
-      "caption": { "$value": "0.2px" }
+    "body": {
+      "body-lg": {
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "16px",
+            "fontWeight": 500,
+            "letterSpacing": "0.12px",
+            "lineHeight": "26px"
+          },
+          "$description": "Large body text, bold weight. For emphasizing key content in forms, cards, and lists."
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "16px",
+            "fontWeight": 400,
+            "letterSpacing": "0px",
+            "lineHeight": "26px"
+          },
+          "$description": "Large body text. Primary content style for forms, inputs, and detailed sections."
+        },
+        "underline": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "16px",
+            "fontWeight": 400,
+            "letterSpacing": "0.12px",
+            "lineHeight": "26px",
+            "textDecoration": "underline"
+          },
+          "$description": "Large body text with underline. For inline links or emphasized references."
+        }
+      },
+      "body": {
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "14px",
+            "fontWeight": 500,
+            "letterSpacing": "0.18px",
+            "lineHeight": "24px"
+          },
+          "$description": "Standard body text, bold weight. For emphasizing labels, values, and inline content."
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "14px",
+            "fontWeight": 400,
+            "letterSpacing": "0.18px",
+            "lineHeight": "24px"
+          },
+          "$description": "Standard body text. Default style for general content, descriptions, and data display."
+        },
+        "underline": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "14px",
+            "fontWeight": 400,
+            "letterSpacing": "0.18px",
+            "lineHeight": "24px",
+            "textDecoration": "underline"
+          },
+          "$description": "Standard body text with underline. For inline links or emphasized references."
+        }
+      }
+    },
+    "caption": {
+      "caption": {
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "12px",
+            "fontWeight": 500,
+            "letterSpacing": "0.2px",
+            "lineHeight": "22px"
+          },
+          "$description": "Caption text, bold weight. For emphasized labels, tags, and metadata."
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "12px",
+            "fontWeight": 400,
+            "letterSpacing": "0.2px",
+            "lineHeight": "22px"
+          },
+          "$description": "Caption text. For secondary metadata, helper text, and card details."
+        },
+        "underline": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "12px",
+            "fontWeight": 400,
+            "letterSpacing": "0.2px",
+            "lineHeight": "22px",
+            "textDecoration": "underline"
+          },
+          "$description": "Caption text with underline. For small inline links."
+        }
+      },
+      "remark": {
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "10px",
+            "fontWeight": 500,
+            "letterSpacing": "0.24px",
+            "lineHeight": "20px"
+          },
+          "$description": "Remark text under caption group, bold weight. For compact emphasized labels."
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "10px",
+            "fontWeight": 400,
+            "letterSpacing": "0.24px",
+            "lineHeight": "20px"
+          },
+          "$description": "Remark text under caption group. For compact auxiliary content."
+        },
+        "underline": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "10px",
+            "fontWeight": 400,
+            "letterSpacing": "0.24px",
+            "lineHeight": "20px",
+            "textDecoration": "underline"
+          },
+          "$description": "Remark text under caption group with underline. For small inline links."
+        }
+      }
+    },
+    "remark": {
+      "remark": {
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "10px",
+            "fontWeight": 500,
+            "letterSpacing": "0.24px",
+            "lineHeight": "20px"
+          },
+          "$description": "Smallest text, bold weight. For compact data labels and navigation items."
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "10px",
+            "fontWeight": 400,
+            "letterSpacing": "0.24px",
+            "lineHeight": "20px"
+          },
+          "$description": "Smallest text. For fine print, timestamps, and auxiliary information."
+        },
+        "underline": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "IBM Plex Sans Thai",
+            "fontSize": "10px",
+            "fontWeight": 400,
+            "letterSpacing": "0.24px",
+            "lineHeight": "20px",
+            "textDecoration": "underline"
+          },
+          "$description": "Smallest text with underline. For small inline links."
+        }
+      }
+    },
+    "component": {
+      "2xs": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "10px",
+          "fontWeight": 500,
+          "letterSpacing": "0.24px",
+          "lineHeight": "16px"
+        },
+        "$description": "Extra extra small component text. For compact UI elements like badges and mini tags."
+      },
+      "2xs-regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "10px",
+          "fontWeight": 400,
+          "letterSpacing": "0.24px",
+          "lineHeight": "16px"
+        },
+        "$description": "Extra extra small component text, regular weight. For compact secondary labels."
+      },
+      "xs": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "12px",
+          "fontWeight": 500,
+          "letterSpacing": "0.2px",
+          "lineHeight": "16px"
+        },
+        "$description": "Extra small component text. For small buttons, chips, and compact controls."
+      },
+      "xs-regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "12px",
+          "fontWeight": 400,
+          "letterSpacing": "0.2px",
+          "lineHeight": "16px"
+        },
+        "$description": "Extra small component text, regular weight. For small secondary labels."
+      },
+      "sm-regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "14px",
+          "fontWeight": 400,
+          "letterSpacing": "0.12px",
+          "lineHeight": "16px"
+        },
+        "$description": "Small component text, regular weight. For standard secondary labels."
+      },
+      "sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "14px",
+          "fontWeight": 500,
+          "letterSpacing": "0.12px",
+          "lineHeight": "16px"
+        },
+        "$description": "Small component text. For standard component labels and controls."
+      },
+      "md-regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "16px",
+          "fontWeight": 400,
+          "letterSpacing": "0.06px",
+          "lineHeight": "18px"
+        },
+        "$description": "Medium component text, regular weight. For prominent secondary labels."
+      },
+      "md": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "16px",
+          "fontWeight": 500,
+          "letterSpacing": "0.06px",
+          "lineHeight": "18px"
+        },
+        "$description": "Medium component text. For prominent component labels and controls."
+      },
+      "xl": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "24px",
+          "fontWeight": 500,
+          "letterSpacing": "0px",
+          "lineHeight": "38px"
+        },
+        "$description": "Extra large component text. For large component headers and prominent controls."
+      },
+      "xl-regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "24px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "38px"
+        },
+        "$description": "Extra large component text, regular weight. For large secondary labels."
+      }
+    },
+    "button": {
+      "xs": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "12px",
+          "fontWeight": 500,
+          "letterSpacing": "0.2px",
+          "lineHeight": "16px"
+        },
+        "$description": "Extra small button text. For compact action buttons."
+      },
+      "sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "14px",
+          "fontWeight": 500,
+          "letterSpacing": "0.12px",
+          "lineHeight": "16px"
+        },
+        "$description": "Small button text. Default size for most action buttons."
+      },
+      "md": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "16px",
+          "fontWeight": 500,
+          "letterSpacing": "0.06px",
+          "lineHeight": "24px"
+        },
+        "$description": "Medium button text. For standard-sized buttons."
+      },
+      "lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "IBM Plex Sans Thai",
+          "fontSize": "16px",
+          "fontWeight": 500,
+          "letterSpacing": "0.06px",
+          "lineHeight": "24px"
+        },
+        "$description": "Large button text. For primary call-to-action buttons."
+      }
     }
   }
 }

@@ -3,35 +3,836 @@
  */
 
 :root {
-  --aibox-color-text-primary: #010819;
-  --aibox-color-text-secondary: #6b707b;
-  --aibox-color-text-placeholder: #a0a3ac;
-  --aibox-color-text-disable: #adb0b8;
-  --aibox-color-text-status-error-100: #f04542;
-  --aibox-color-text-status-error-200: #f25c5a;
-  --aibox-color-bg-primary: #ffffff;
-  --aibox-color-bg-disable: #f1f2f3;
-  --aibox-color-state-form-default: #e4e5e7;
-  --aibox-color-state-form-active: #1f5df9;
-  --aibox-color-state-form-active-outer: rgba(31, 93, 249, 0.2);
-  --aibox-color-state-form-error: #f25c5a;
-  --aibox-color-state-form-error-outer: rgba(189, 18, 15, 0.2);
-  --aibox-spacing-0: 0px;
-  --aibox-spacing-1: 4px;
-  --aibox-spacing-2: 8px;
-  --aibox-spacing-3: 12px;
-  --aibox-radius-2: 4px;
-  --aibox-size-control-height-lg: 48px; /** Figma textfield Size=large box height */
-  --aibox-size-focus-ring: 2px; /** Figma focused state outer ring width */
-  --aibox-font-family: 'IBM Plex Sans Thai', sans-serif;
-  --aibox-font-weight-regular: 400;
-  --aibox-font-size-body: 14px;
-  --aibox-font-size-body-lg: 16px;
-  --aibox-font-size-caption: 12px;
-  --aibox-font-line-height-body: 24px;
-  --aibox-font-line-height-body-lg: 26px;
-  --aibox-font-line-height-caption: 22px;
-  --aibox-font-letter-spacing-body: 0.18px; /** unit assumed px from Figma raw value 0.18 */
-  --aibox-font-letter-spacing-body-lg: 0px;
-  --aibox-font-letter-spacing-caption: 0.2px;
+  --aibox-border-0: 0px; /** Zero border — no stroke. Part of border width scale. Scoped to stroke weight. */
+  --aibox-border-1: 2px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-2: 4px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-3: 8px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-4: 16px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-5: 20px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-6: 28px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-7: 32px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-8: 64px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-9: 100px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-color-state-main-ma-2-default: rgba(255, 255, 255, 0); /** Primary interaction state level 2 (ghost), default. Transparent default, light blue tint on hover/press. */
+  --aibox-color-state-gray-g-2-default: rgba(255, 255, 255, 0); /** Gray interaction state level 2 (ghost), default. Transparent default, light gray tint on hover/press. */
+  --aibox-color-button-texted-standard-bg-default: rgba(255, 255, 255, 0); /** Default background for standard text buttons */
+  --aibox-color-button-texted-standard-bg-hover: rgba(255, 255, 255, 0); /** Hover background for standard text buttons */
+  --aibox-color-button-texted-standard-bg-press: rgba(255, 255, 255, 0); /** Pressed background for standard text buttons */
+  --aibox-color-button-texted-subsidiary-bg-default: rgba(255, 255, 255, 0); /** Default background for subsidiary text buttons */
+  --aibox-color-button-texted-subsidiary-bg-hover: rgba(255, 255, 255, 0); /** Hover background for subsidiary text buttons */
+  --aibox-color-button-texted-subsidiary-bg-press: rgba(255, 255, 255, 0); /** Pressed background for subsidiary text buttons */
+  --aibox-color-button-texted-danger-bg-default: rgba(255, 255, 255, 0); /** Default background for danger text buttons */
+  --aibox-color-button-texted-danger-bg-hover: rgba(255, 255, 255, 0); /** Hover background for danger text buttons */
+  --aibox-color-global-border-shadow-1: #ffffff; /** Border color primitive. */
+  --aibox-color-global-black: #010819; /** Base black primitive. */
+  --aibox-color-global-white: #ffffff; /** Base white primitive. */
+  --aibox-color-global-blue-100: #e6edfe; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-200: #cddbfe; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-300: #b4c9fd; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-400: #9cb7fc; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-500: #83a5fc; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-600: #6a93fb; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-700: #5181fb; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-800: #386ffa; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-900: #1f5df9; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1000: #064bf9; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1100: #0644e0; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1200: #053cc7; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1300: #0434ae; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1400: #042d95; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1500: #03257d; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1600: #031e63; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1700: #02174b; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1800: #010f32; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-blue-1900: #010819; /** Blue color ramp. Primary brand color primitive. */
+  --aibox-color-global-gray-80: #fbfbfd; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-100: #f1f2f3; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-200: #e4e5e7; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-300: #d6d7db; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-400: #c8cad0; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-500: #bbbec4; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-600: #adb0b8; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-700: #a0a3ac; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-800: #9296a0; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-900: #848994; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1000: #777c88; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1100: #6b707b; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1200: #5f636d; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1300: #53565f; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1400: #474a52; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1500: #3b3e44; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1600: #2f3137; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1700: #242529; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1800: #18191b; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-gray-1900: #0c0d0e; /** Gray color ramp. Neutral primitive for text, borders, and backgrounds. */
+  --aibox-color-global-red-100: #fde8e7; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-200: #fbd1d0; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-300: #f9b9b8; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-400: #f7a2a1; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-500: #f58b89; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-600: #f47471; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-700: #f25c5a; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-800: #f04542; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-900: #ee2e2b; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1000: #ec1713; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1100: #d51411; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1200: #bd120f; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1300: #a5100d; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1400: #8d0e0b; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1500: #750b0a; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1600: #5e0908; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1700: #470706; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1800: #2f0504; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-red-1900: #170202; /** Red color ramp. Error and danger state primitive. */
+  --aibox-color-global-yellow-100: #fef8e6; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-200: #fef1cd; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-300: #fdeab4; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-400: #fce39c; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-500: #fcdc83; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-600: #fbd46a; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-700: #fbcd51; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-800: #fac638; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-900: #f9bf1f; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1000: #f9b806; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1100: #e0a606; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1200: #c79305; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1300: #ae8104; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1400: #956e04; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1500: #7c5c03; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1600: #634a03; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1700: #4b3702; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1800: #322501; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-yellow-1900: #191201; /** Yellow color ramp. Warning state primitive. */
+  --aibox-color-global-green-100: #e5fff2; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-200: #ccffe5; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-300: #b3ffd9; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-400: #99ffcc; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-500: #80ffbf; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-600: #66ffb2; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-700: #4dffa6; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-800: #33ff99; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-900: #1aff8c; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1000: #00ff80; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1100: #00e673; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1200: #00cc66; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1300: #00b359; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1400: #00994d; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1500: #008040; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1600: #006633; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1700: #004d26; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1800: #00331a; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-green-1900: #001a0d; /** Green color ramp. Success state primitive. */
+  --aibox-color-global-transparent-blue-1: rgba(31, 93, 249, 0.1); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-2: rgba(31, 93, 249, 0.2); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-3: rgba(31, 93, 249, 0.3); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-4: rgba(31, 93, 249, 0.4); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-5: rgba(31, 93, 249, 0.5); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-6: rgba(31, 93, 249, 0.6); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-7: rgba(31, 93, 249, 0.7); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-8: rgba(31, 93, 249, 0.8); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-blue-9: rgba(31, 93, 249, 0.9); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-1: rgba(95, 99, 109, 0.1); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-2: rgba(95, 99, 109, 0.2); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-3: rgba(95, 99, 109, 0.3); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-4: rgba(95, 99, 109, 0.4); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-5: rgba(95, 99, 109, 0.5); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-6: rgba(95, 99, 109, 0.6); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-7: rgba(95, 99, 109, 0.7); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-8: rgba(95, 99, 109, 0.8); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-gray-9: rgba(95, 99, 109, 0.9); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-1: rgba(228, 230, 231, 0.1); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-2: rgba(228, 230, 231, 0.2); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-3: rgba(228, 230, 231, 0.3); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-4: rgba(228, 230, 231, 0.4); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-5: rgba(228, 230, 231, 0.5); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-6: rgba(228, 230, 231, 0.6); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-7: rgba(228, 230, 231, 0.7); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-8: rgba(228, 230, 231, 0.8); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-light-gray-9: rgba(228, 230, 231, 0.9); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-1: rgba(189, 18, 15, 0.1); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-2: rgba(189, 18, 15, 0.2); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-3: rgba(189, 18, 15, 0.3); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-4: rgba(189, 18, 15, 0.4); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-5: rgba(189, 18, 15, 0.5); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-6: rgba(189, 18, 15, 0.6); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-7: rgba(189, 18, 15, 0.7); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-8: rgba(189, 18, 15, 0.8); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-red-9: rgba(189, 18, 15, 0.9); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-1: rgba(255, 255, 255, 0.1); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-2: rgba(255, 255, 255, 0.2); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-3: rgba(255, 255, 255, 0.3); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-4: rgba(255, 255, 255, 0.4); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-5: rgba(255, 255, 255, 0.5); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-6: rgba(255, 255, 255, 0.6); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-7: rgba(255, 255, 255, 0.7); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-8: rgba(255, 255, 255, 0.8); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-white-9: rgba(255, 255, 255, 0.9); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-1: rgba(1, 8, 25, 0.1); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-2: rgba(1, 8, 25, 0.2); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-3: rgba(1, 8, 25, 0.3); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-4: rgba(1, 8, 25, 0.4); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-5: rgba(1, 8, 25, 0.5); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-6: rgba(1, 8, 25, 0.6); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-7: rgba(1, 8, 25, 0.7); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-8: rgba(1, 8, 25, 0.8); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-transparent-black-9: rgba(1, 8, 25, 0.9); /** Transparent color ramp. For overlays and alpha-based fills. */
+  --aibox-color-global-pink-100: #fce9f3; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-200: #f8d3e8; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-300: #f5bddc; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-400: #f1a7d1; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-500: #ee91c5; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-600: #ea7bba; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-700: #e765ae; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-800: #e34fa3; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-900: #e03997; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1000: #dc238b; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1100: #c61f7d; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1200: #b01c70; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1300: #9a1862; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1400: #841554; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1500: #6e1146; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1600: #580e38; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1700: #420a2a; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1800: #2c071c; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-pink-1900: #16030e; /** Pink color ramp. Accent primitive. */
+  --aibox-color-global-sky-100: #e8f7fc; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-200: #d2eff9; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-300: #bbe7f6; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-400: #a4dff4; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-500: #8ed7f1; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-600: #77cfee; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-700: #60c7eb; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-800: #4abfe8; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-900: #33b7e5; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1000: #1cafe3; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1100: #199ecc; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1200: #178cb5; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1300: #147b9f; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1400: #116988; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1500: #0e5871; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1600: #0b465b; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1700: #083544; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1800: #06232d; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-sky-1900: #031217; /** Sky blue color ramp. Accent primitive. */
+  --aibox-color-global-mango-100: #fff8e5; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-200: #fff0cc; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-300: #ffe9b2; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-400: #ffe299; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-500: #ffda80; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-600: #ffd366; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-700: #ffcc4d; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-800: #ffc533; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-900: #ffbd1a; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1000: #ffb600; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1100: #e5a400; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1200: #cc9200; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1300: #b27f00; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1400: #996d00; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1500: #805b00; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1600: #664900; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1700: #4d3700; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1800: #332400; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-mango-1900: #1a1200; /** Mango color ramp. Accent primitive. */
+  --aibox-color-global-avocado-80: #cde8b0; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-100: #f3f9eb; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-200: #e6f4d7; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-300: #daeec3; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-500: #c1e39c; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-600: #b4dd88; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-700: #a8d774; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-800: #9bd260; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-900: #8fcc4c; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1000: #82c639; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1100: #75b333; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1200: #689f2d; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1300: #5b8b28; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1400: #4e7722; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1500: #41631c; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1600: #344f17; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1700: #273c11; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1800: #1a280b; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-avocado-1900: #0d1406; /** Avocado color ramp. Accent primitive. */
+  --aibox-color-global-lavender-100: #eee9fb; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-200: #ded4f7; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-300: #cdbef4; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-400: #bda8f0; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-500: #ac92ec; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-600: #9c7de8; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-700: #8b67e5; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-800: #7b51e1; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-900: #6a3cdd; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1000: #5a26d9; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1100: #5122c3; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1200: #481eae; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1300: #3f1a98; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1400: #361782; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1500: #2d136d; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1600: #240f57; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1700: #1b0b41; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1800: #12082b; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-lavender-1900: #090416; /** Lavender color ramp. Accent primitive. */
+  --aibox-color-global-mint-100: #ebfaf6; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-200: #d7f4ed; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-300: #c2efe4; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-400: #aeeadb; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-500: #9ae5d2; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-600: #86dfc9; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-700: #72dac0; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-800: #5dd5b7; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-900: #48cfad; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1000: #35caa4; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1100: #30b694; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1200: #2aa284; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1300: #258d73; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1400: #207963; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1500: #1a6552; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1600: #155142; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1700: #103d31; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1800: #0b2821; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-mint-1900: #051410; /** Mint color ramp. Accent primitive. */
+  --aibox-color-global-sea-100: #eef6f6; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-200: #ddeeed; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-300: #cde5e3; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-400: #bcdcda; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-500: #abd4d1; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-600: #9acbc8; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-700: #89c2bf; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-800: #78bab5; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-900: #68b1ac; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1000: #57a8a3; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1100: #4e9793; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1200: #458782; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1300: #3d7672; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1400: #346562; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1500: #2b5451; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1600: #234341; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1700: #1a3231; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1800: #112221; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-sea-1900: #091110; /** Sea color ramp. Accent primitive. */
+  --aibox-color-global-orange-100: #ffeae6; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-200: #fed5cd; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-300: #fec0b4; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-400: #fdab9b; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-500: #fd9782; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-600: #fc8269; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-700: #fc6e51; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-800: #fc5836; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-900: #fb431d; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1000: #fb2e04; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1100: #e22904; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1200: #c92503; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1300: #af2003; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1400: #961c03; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1500: #7d1702; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1600: #641202; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1700: #4b0e01; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1800: #320901; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-orange-1900: #190500; /** Orange color ramp. Accent primitive. */
+  --aibox-color-global-cherry-100: #fbeaec; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-200: #f7d4d9; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-300: #f3bfc6; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-400: #efa9b3; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-500: #eb94a0; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-600: #e67f8d; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-700: #e2697a; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-800: #de5467; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-900: #da3e54; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1000: #d62941; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1100: #c1253b; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1200: #ab2134; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1300: #961d2e; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1400: #801927; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1500: #6b1421; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1600: #56101a; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1700: #400c14; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1800: #2b080d; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-cherry-1900: #150407; /** Cherry color ramp. Accent primitive. */
+  --aibox-color-global-grayscale-100: #f2f2f2; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-200: #e5e5e5; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-300: #d9d9d9; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-400: #cbcbcb; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-500: #bfbfbf; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-600: #b2b2b2; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-700: #a6a6a6; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-800: #989898; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-900: #8c8c8c; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1000: #7f7f7f; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1100: #737373; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1200: #666666; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1300: #595959; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1400: #4c4c4c; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1500: #404040; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1600: #333333; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1700: #262626; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1800: #191919; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-grayscale-1900: #0d0d0d; /** Grayscale color ramp. Extended neutral primitive. */
+  --aibox-color-global-light-blue-100: #e6f5fe; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-200: #cdecfe; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-300: #b4e2fd; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-400: #9cd9fc; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-500: #83cffc; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-600: #6ac6fb; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-700: #51bcfb; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-800: #38b3fa; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-900: #1fa9f9; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1000: #06a0f9; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1100: #0690e0; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1200: #0580c7; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1300: #0470ae; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1400: #046095; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1500: #03507d; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1600: #034063; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1700: #02304b; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1800: #012032; /** Light blue color ramp. Info state primitive. */
+  --aibox-color-global-light-blue-1900: #011019; /** Light blue color ramp. Info state primitive. */
+  --aibox-size-control-height-lg: 48px; /** Not a Figma variable. Measured from textfield Size=large box height (node 1:7053). */
+  --aibox-size-focus-ring: 2px; /** Not a Figma variable. Measured from textfield focused state outer ring (node 1:7069). */
+  --aibox-font-family-heading-and-body: 'IBM Plex Sans Thai'; /** Primary typeface for all headings and body text throughout the system. */
+  --aibox-font-size-header-h-over: 32px; /** Oversized heading — for special cases requiring text larger than H1. */
+  --aibox-font-size-header-h1: 28px; /** Primary page heading — top-level page titles. */
+  --aibox-font-size-header-h2: 24px; /** Secondary heading — section titles within a page. */
+  --aibox-font-size-header-subheader: 20px; /** Sub-heading — used below H1/H2 for supporting context. */
+  --aibox-font-size-title-title-lg: 18px; /** Large title — prominent labels, card headers. */
+  --aibox-font-size-title-title: 16px; /** Standard title — section labels, table headers, dialog titles. */
+  --aibox-font-size-body-body-lg: 16px; /** Large body text — introductory paragraphs, featured content. */
+  --aibox-font-size-body-body: 14px; /** Standard body text — primary reading size for paragraphs and descriptions. */
+  --aibox-font-size-caption-caption: 12px; /** Caption text — supporting labels, metadata, timestamps. */
+  --aibox-font-size-remark-remark: 10px; /** Smallest text — footnotes, disclaimers, fine print. */
+  --aibox-font-size-additional-2xs: 10px; /** Additional size 2xs — matches Remark size, for component-specific use. */
+  --aibox-font-size-additional-xs: 12px; /** Additional size xs — matches Caption size, for component-specific use. */
+  --aibox-font-size-additional-sm: 14px; /** Additional size sm — matches Body size, for component-specific use. */
+  --aibox-font-size-additional-md: 16px; /** Additional size md — matches Body-lg/Title size, for component-specific use. */
+  --aibox-font-size-additional-xl: 24px; /** Additional size xl — matches H2 size, for component-specific use. */
+  --aibox-font-weight-semibold: SemiBold; /** Default bold weight used for emphasized text, headings, and labels. */
+  --aibox-radius-0: 0px; /** Zero radius — sharp corners. Part of corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-1: 2px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-2: 4px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-3: 8px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-4: 12px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-5: 16px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-6: 20px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-7: 24px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-8: 28px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-9: 32px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-10: 36px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-11: 40px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-12: 44px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-13: 48px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-14: 52px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-15: 56px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-16: 60px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-17: 64px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
+  --aibox-radius-18: 68px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-19: 72px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
+  --aibox-radius-20: 100px; /** Maximum radius — fully rounded / pill shape. Part of corner radius scale. Scoped to corner radius. */
+  --aibox-radius-value-6: 6px;
+  --aibox-shadow-base-popover: 0px -1px 8px 0px #00000033, 0px 1px 8px 0px #00000040;
+  --aibox-shadow-base-raise-modal: 0px -1px 8px 0px #0000001a, 0px 4px 8px 2px #0000001a;
+  --aibox-shadow-base-raise-bg-none-lg: 0px -1px 4px 0px #0000001a, 0px 8px 16px 4px #0000001a;
+  --aibox-shadow-base-raise-bg-none-sm: 0px -1px 8px 0px #00000005, 0px 4px 8px 2px #0000000a;
+  --aibox-shadow-base-section-lg: 0px -1px 12px 0px #0000001a, 0px 16px 32px 8px #0000001a;
+  --aibox-shadow-base-section-sm: 0px -1px 8px 0px #00000005, 0px 4px 8px 2px #0000000a;
+  --aibox-spacing-0: 0px; /** Zero spacing — removes gap between elements. Part of linear spacing scale (+4 per step). spacing/N = N × 4. */
+  --aibox-spacing-1: 4px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-2: 8px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-3: 12px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-4: 16px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-5: 20px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-6: 24px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-7: 28px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-8: 32px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-9: 36px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-10: 40px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-11: 44px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-12: 48px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-13: 52px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Note: scoped to ALL_SCOPES (unlike other spacing tokens which are GAP only). */
+  --aibox-spacing-14: 56px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-15: 60px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-16: 64px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-17: 68px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-18: 72px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
+  --aibox-spacing-value-2: 2px;
+  --aibox-spacing-value-15: 15px;
+  --aibox-typography-header-h-over: 600 32px/48px 'IBM Plex Sans Thai'; /** Oversized heading. For special cases requiring text larger and more prominent than standard h1. */
+  --aibox-typography-header-h1: 600 28px/44px 'IBM Plex Sans Thai'; /** Primary page heading. For top-level page titles and main section headers. */
+  --aibox-typography-header-h2: 600 24px/38px 'IBM Plex Sans Thai'; /** Secondary heading. For section titles and document headers within a page. */
+  --aibox-typography-header-subheader: 500 20px/32px 'IBM Plex Sans Thai'; /** Subheading. For dialog titles, drawer headers, and form section labels. */
+  --aibox-typography-title-title-lg: 500 18px/26px 'IBM Plex Sans Thai'; /** Large title. For content section headers, bottom sheet titles, and filter labels. */
+  --aibox-typography-title-title: 500 16px/24px 'IBM Plex Sans Thai'; /** Standard title. For card titles, input field labels, modal content headers, and file names. */
+  --aibox-typography-body-body-lg-bold: 500 16px/26px 'IBM Plex Sans Thai'; /** Large body text, bold weight. For emphasizing key content in forms, cards, and lists. */
+  --aibox-typography-body-body-lg-regular: 400 16px/26px 'IBM Plex Sans Thai'; /** Large body text. Primary content style for forms, inputs, and detailed sections. */
+  --aibox-typography-body-body-lg-underline: 400 16px/26px 'IBM Plex Sans Thai'; /** Large body text with underline. For inline links or emphasized references. */
+  --aibox-typography-body-body-bold: 500 14px/24px 'IBM Plex Sans Thai'; /** Standard body text, bold weight. For emphasizing labels, values, and inline content. */
+  --aibox-typography-body-body-regular: 400 14px/24px 'IBM Plex Sans Thai'; /** Standard body text. Default style for general content, descriptions, and data display. */
+  --aibox-typography-body-body-underline: 400 14px/24px 'IBM Plex Sans Thai'; /** Standard body text with underline. For inline links or emphasized references. */
+  --aibox-typography-caption-caption-bold: 500 12px/22px 'IBM Plex Sans Thai'; /** Caption text, bold weight. For emphasized labels, tags, and metadata. */
+  --aibox-typography-caption-caption-regular: 400 12px/22px 'IBM Plex Sans Thai'; /** Caption text. For secondary metadata, helper text, and card details. */
+  --aibox-typography-caption-caption-underline: 400 12px/22px 'IBM Plex Sans Thai'; /** Caption text with underline. For small inline links. */
+  --aibox-typography-caption-remark-bold: 500 10px/20px 'IBM Plex Sans Thai'; /** Remark text under caption group, bold weight. For compact emphasized labels. */
+  --aibox-typography-caption-remark-regular: 400 10px/20px 'IBM Plex Sans Thai'; /** Remark text under caption group. For compact auxiliary content. */
+  --aibox-typography-caption-remark-underline: 400 10px/20px 'IBM Plex Sans Thai'; /** Remark text under caption group with underline. For small inline links. */
+  --aibox-typography-remark-remark-bold: 500 10px/20px 'IBM Plex Sans Thai'; /** Smallest text, bold weight. For compact data labels and navigation items. */
+  --aibox-typography-remark-remark-regular: 400 10px/20px 'IBM Plex Sans Thai'; /** Smallest text. For fine print, timestamps, and auxiliary information. */
+  --aibox-typography-remark-remark-underline: 400 10px/20px 'IBM Plex Sans Thai'; /** Smallest text with underline. For small inline links. */
+  --aibox-typography-component-2xs: 500 10px/16px 'IBM Plex Sans Thai'; /** Extra extra small component text. For compact UI elements like badges and mini tags. */
+  --aibox-typography-component-2xs-regular: 400 10px/16px 'IBM Plex Sans Thai'; /** Extra extra small component text, regular weight. For compact secondary labels. */
+  --aibox-typography-component-xs: 500 12px/16px 'IBM Plex Sans Thai'; /** Extra small component text. For small buttons, chips, and compact controls. */
+  --aibox-typography-component-xs-regular: 400 12px/16px 'IBM Plex Sans Thai'; /** Extra small component text, regular weight. For small secondary labels. */
+  --aibox-typography-component-sm-regular: 400 14px/16px 'IBM Plex Sans Thai'; /** Small component text, regular weight. For standard secondary labels. */
+  --aibox-typography-component-sm: 500 14px/16px 'IBM Plex Sans Thai'; /** Small component text. For standard component labels and controls. */
+  --aibox-typography-component-md-regular: 400 16px/18px 'IBM Plex Sans Thai'; /** Medium component text, regular weight. For prominent secondary labels. */
+  --aibox-typography-component-md: 500 16px/18px 'IBM Plex Sans Thai'; /** Medium component text. For prominent component labels and controls. */
+  --aibox-typography-component-xl: 500 24px/38px 'IBM Plex Sans Thai'; /** Extra large component text. For large component headers and prominent controls. */
+  --aibox-typography-component-xl-regular: 400 24px/38px 'IBM Plex Sans Thai'; /** Extra large component text, regular weight. For large secondary labels. */
+  --aibox-typography-button-xs: 500 12px/16px 'IBM Plex Sans Thai'; /** Extra small button text. For compact action buttons. */
+  --aibox-typography-button-sm: 500 14px/16px 'IBM Plex Sans Thai'; /** Small button text. Default size for most action buttons. */
+  --aibox-typography-button-md: 500 16px/24px 'IBM Plex Sans Thai'; /** Medium button text. For standard-sized buttons. */
+  --aibox-typography-button-lg: 500 16px/24px 'IBM Plex Sans Thai'; /** Large button text. For primary call-to-action buttons. */
+  --aibox-color-main: var(--aibox-color-global-blue-900); /** Primary brand color, aliased to global/blue/900 */
+  --aibox-color-text-white-primary: var(--aibox-color-global-white); /** Primary text color on dark backgrounds */
+  --aibox-color-text-white-secondary: var(--aibox-color-global-gray-200); /** Secondary text color on dark backgrounds */
+  --aibox-color-text-primary: var(--aibox-color-global-black); /** Primary text color for headings, body text, and general content */
+  --aibox-color-text-secondary: var(--aibox-color-global-gray-1100); /** Secondary text color for supporting text and captions */
+  --aibox-color-text-tertiary: var(--aibox-color-global-gray-700); /** Tertiary text color for de-emphasized or supplementary content */
+  --aibox-color-text-icon-default: var(--aibox-color-global-gray-500); /** Default icon color */
+  --aibox-color-text-disable: var(--aibox-color-global-gray-600); /** Disabled text color for inactive or unavailable elements */
+  --aibox-color-text-main: var(--aibox-color-global-blue-900); /** Brand-colored text for emphasis and links */
+  --aibox-color-text-status-default: var(--aibox-color-global-grayscale-500); /** Default status text color for neutral or inactive states */
+  --aibox-color-text-status-success-100: var(--aibox-color-global-green-1400); /** Secondary success text color (darker) */
+  --aibox-color-text-status-success-200: var(--aibox-color-global-green-1300); /** Primary success text color */
+  --aibox-color-text-status-info-100: var(--aibox-color-global-blue-1100); /** Secondary info text color (darker) */
+  --aibox-color-text-status-info-200: var(--aibox-color-global-blue-800); /** Primary info text color */
+  --aibox-color-text-status-warning-100: var(--aibox-color-global-yellow-1200); /** Secondary warning text color (darker) */
+  --aibox-color-text-status-warning-200: var(--aibox-color-global-yellow-1000); /** Primary warning text color */
+  --aibox-color-text-status-error-100: var(--aibox-color-global-red-800); /** Secondary error text color (darker) */
+  --aibox-color-text-status-error-200: var(--aibox-color-global-red-700); /** Primary error text color */
+  --aibox-color-text-status-rework-100: var(--aibox-color-global-lavender-800); /** Secondary rework status text color (darker) */
+  --aibox-color-text-status-rework-200: var(--aibox-color-global-lavender-700); /** Primary rework status text color */
+  --aibox-color-text-status-reject-100: var(--aibox-color-global-orange-800); /** Secondary rejection status text color (darker) */
+  --aibox-color-text-status-reject-200: var(--aibox-color-global-orange-700); /** Primary rejection status text color */
+  --aibox-color-text-placeholder: var(--aibox-color-global-gray-700); /** Placeholder text color for input fields */
+  --aibox-color-bg-primary: var(--aibox-color-global-white); /** Primary background color for pages and main containers */
+  --aibox-color-bg-secondary: var(--aibox-color-global-gray-100); /** Page body background color, used behind white containers to create depth */
+  --aibox-color-bg-tertiary: var(--aibox-color-global-blue-100); /** Tertiary background color for highlighted sections */
+  --aibox-color-bg-quaternary: var(--aibox-color-global-gray-300); /** Quaternary background color for subtle separations */
+  --aibox-color-bg-disable: var(--aibox-color-global-gray-100); /** Background color for disabled elements */
+  --aibox-color-bg-main: var(--aibox-color-global-blue-900); /** Brand-colored background for primary actions and highlights */
+  --aibox-color-bg-status-default: var(--aibox-color-global-gray-500); /** Default UI status background for neutral or inactive states */
+  --aibox-color-bg-status-success-100: var(--aibox-color-global-green-100); /** Primary UI status background for success states */
+  --aibox-color-bg-status-info-100: var(--aibox-color-global-blue-100); /** Primary UI status background for informational states */
+  --aibox-color-bg-status-warning-100: var(--aibox-color-global-yellow-100); /** Primary UI status background for warning states */
+  --aibox-color-bg-status-error-100: var(--aibox-color-global-red-100); /** Primary UI status background for error states */
+  --aibox-color-bg-status-success-200: var(--aibox-color-global-green-1300); /** Secondary UI status background for success states (darker) */
+  --aibox-color-bg-status-info-200: var(--aibox-color-global-blue-800); /** Secondary UI status background for informational states (darker) */
+  --aibox-color-bg-status-warning-200: var(--aibox-color-global-yellow-1000); /** Secondary UI status background for warning states (darker) */
+  --aibox-color-bg-status-error-200: var(--aibox-color-global-red-700); /** Secondary UI status background for error states (darker) */
+  --aibox-color-bg-status-rework-100: var(--aibox-color-global-lavender-100); /** Primary UI status background for rework states */
+  --aibox-color-bg-status-rework-200: var(--aibox-color-global-lavender-700); /** Secondary UI status background for rework states (darker) */
+  --aibox-color-bg-status-reject-100: var(--aibox-color-global-orange-100); /** Primary UI status background for rejection states */
+  --aibox-color-bg-status-reject-200: var(--aibox-color-global-orange-800); /** Secondary UI status background for rejection states (darker) */
+  --aibox-color-bg-opacity-primary: var(--aibox-color-global-transparent-white-3); /** Semi-transparent white overlay */
+  --aibox-color-bg-opacity-secondary: var(--aibox-color-global-transparent-light-gray-2); /** Semi-transparent light gray overlay */
+  --aibox-color-bg-opacity-tertiary: var(--aibox-color-global-transparent-black-9); /** Semi-transparent dark overlay */
+  --aibox-color-bg-action-bar-primary: var(--aibox-color-global-blue-100); /** Background color for action bars and toolbars */
+  --aibox-color-border-primary: var(--aibox-color-global-gray-100); /** Primary border color for dividers and containers */
+  --aibox-color-border-secondary: var(--aibox-color-global-gray-500); /** Secondary border color for stronger separations */
+  --aibox-color-border-disable: var(--aibox-color-global-gray-200); /** Border color for disabled elements */
+  --aibox-color-state-main-ma-nf-1-default: var(--aibox-color-global-blue-1000); /** Primary interaction state (no-fill variant), default. Blue text/icon color with subtle press darkening. */
+  --aibox-color-state-main-ma-nf-1-hover: var(--aibox-color-global-blue-1000); /** Primary interaction state (no-fill variant), hover. */
+  --aibox-color-state-main-ma-nf-1-press: var(--aibox-color-global-blue-1100); /** Primary interaction state (no-fill variant), pressed. */
+  --aibox-color-state-main-ma-1-default: var(--aibox-color-global-blue-900); /** Primary interaction state level 1, default. Medium-dark blue with progressive darkening on hover/press. */
+  --aibox-color-state-main-ma-1-hover: var(--aibox-color-global-blue-1000); /** Primary interaction state level 1, hover. */
+  --aibox-color-state-main-ma-1-press: var(--aibox-color-global-blue-1100); /** Primary interaction state level 1, pressed. */
+  --aibox-color-state-main-ma-2-hover: var(--aibox-color-global-blue-100); /** Primary interaction state level 2 (ghost), hover. */
+  --aibox-color-state-main-ma-2-press: var(--aibox-color-global-blue-200); /** Primary interaction state level 2 (ghost), pressed. */
+  --aibox-color-state-main-ma-3-default: var(--aibox-color-global-blue-900); /** Primary interaction state level 3, default. Blue with subtle press darkening only. */
+  --aibox-color-state-main-ma-3-hover: var(--aibox-color-global-blue-900); /** Primary interaction state level 3, hover. */
+  --aibox-color-state-main-ma-3-press: var(--aibox-color-global-blue-1000); /** Primary interaction state level 3, pressed. */
+  --aibox-color-state-main-ma-4-default: var(--aibox-color-global-blue-1000); /** Primary interaction state level 4, default. Dark blue with press darkening. */
+  --aibox-color-state-main-ma-4-hover: var(--aibox-color-global-blue-1000); /** Primary interaction state level 4, hover. */
+  --aibox-color-state-main-ma-4-press: var(--aibox-color-global-blue-1100); /** Primary interaction state level 4, pressed. */
+  --aibox-color-state-main-ma-5-default: var(--aibox-color-global-blue-1000); /** Primary interaction state level 5, default. Darkest blue interaction set. */
+  --aibox-color-state-main-ma-5-hover: var(--aibox-color-global-blue-1100); /** Primary interaction state level 5, hover. */
+  --aibox-color-state-main-ma-5-press: var(--aibox-color-global-blue-1100); /** Primary interaction state level 5, pressed. */
+  --aibox-color-state-gray-g-nf-1-default: var(--aibox-color-global-gray-1200); /** Gray interaction state (no-fill variant), default. Dark gray text/icon with lightening on hover/press. */
+  --aibox-color-state-gray-g-nf-1-hover: var(--aibox-color-global-gray-1000); /** Gray interaction state (no-fill variant), hover. */
+  --aibox-color-state-gray-g-nf-1-press: var(--aibox-color-global-gray-1000); /** Gray interaction state (no-fill variant), pressed. */
+  --aibox-color-state-gray-g-1-default: var(--aibox-color-global-gray-1200); /** Gray interaction state level 1, default. Dark gray with darkening on press. */
+  --aibox-color-state-gray-g-1-hover: var(--aibox-color-global-gray-1200); /** Gray interaction state level 1, hover. */
+  --aibox-color-state-gray-g-1-press: var(--aibox-color-global-gray-1300); /** Gray interaction state level 1, pressed. */
+  --aibox-color-state-gray-g-2-hover: var(--aibox-color-global-gray-100); /** Gray interaction state level 2 (ghost), hover. */
+  --aibox-color-state-gray-g-2-press: var(--aibox-color-global-gray-200); /** Gray interaction state level 2 (ghost), pressed. */
+  --aibox-color-state-gray-g-3-default: var(--aibox-color-global-gray-700); /** Gray interaction state level 3, default. Mid-gray with subtle press darkening. */
+  --aibox-color-state-gray-g-3-hover: var(--aibox-color-global-gray-700); /** Gray interaction state level 3, hover. */
+  --aibox-color-state-gray-g-3-press: var(--aibox-color-global-gray-800); /** Gray interaction state level 3, pressed. */
+  --aibox-color-state-gray-g-4-default: var(--aibox-color-global-gray-100); /** Gray interaction state level 4, default. Light gray with progressive darkening on hover/press. */
+  --aibox-color-state-gray-g-4-hover: var(--aibox-color-global-gray-200); /** Gray interaction state level 4, hover. */
+  --aibox-color-state-gray-g-4-press: var(--aibox-color-global-gray-300); /** Gray interaction state level 4, pressed. */
+  --aibox-color-state-gray-g-5-default: var(--aibox-color-global-gray-700); /** Gray interaction state level 5, default. Mid-gray with strong darkening on hover/press. */
+  --aibox-color-state-gray-g-5-hover: var(--aibox-color-global-gray-1100); /** Gray interaction state level 5, hover. */
+  --aibox-color-state-gray-g-5-press: var(--aibox-color-global-gray-1100); /** Gray interaction state level 5, pressed. */
+  --aibox-color-state-gray-g-6-default: var(--aibox-color-global-gray-1200); /** Gray interaction state level 6, default. Dark gray with lightening on hover/press. */
+  --aibox-color-state-gray-g-6-hover: var(--aibox-color-global-gray-1000); /** Gray interaction state level 6, hover. */
+  --aibox-color-state-gray-g-6-press: var(--aibox-color-global-gray-1000); /** Gray interaction state level 6, pressed. */
+  --aibox-color-state-white-w-nf-1-default: var(--aibox-color-global-white); /** White-variant interactive state token. Used for interactive elements on dark/colored backgrounds. */
+  --aibox-color-state-white-w-nf-1-hover: var(--aibox-color-global-white); /** White-variant interactive state token. Used for interactive elements on dark/colored backgrounds. */
+  --aibox-color-state-white-w-nf-1-press: var(--aibox-color-global-white); /** White-variant interactive state token. Used for interactive elements on dark/colored backgrounds. */
+  --aibox-color-state-form-default: var(--aibox-color-global-gray-200); /** Default border/fill color for form inputs */
+  --aibox-color-state-form-active: var(--aibox-color-global-blue-900); /** Active/focused border/fill color for form inputs */
+  --aibox-color-state-form-active-outer: var(--aibox-color-global-transparent-blue-2); /** Focus ring color for active form inputs */
+  --aibox-color-state-form-hover: var(--aibox-color-global-blue-900); /** Hover border/fill color for form inputs */
+  --aibox-color-state-form-error: var(--aibox-color-global-red-700); /** Error border/fill color for form inputs */
+  --aibox-color-state-form-error-outer: var(--aibox-color-global-transparent-red-2); /** Focus ring color for error-state form inputs */
+  --aibox-color-component-bg-bg-primary: var(--aibox-color-global-gray-200); /** Default component background. For input containers and neutral surface areas. */
+  --aibox-color-component-bg-bg-raise: var(--aibox-color-global-transparent-black-8); /** Translucent overlay background. For subtle raised or tinted surfaces. */
+  --aibox-color-component-bg-bg-hover: var(--aibox-color-global-gray-100); /** Hover state background. For interactive elements on hover. */
+  --aibox-color-component-bg-bg-active: var(--aibox-color-global-transparent-blue-1); /** Active/selected state background. For highlighted menu items and active selections. */
+  --aibox-color-component-bg-bg-disable: var(--aibox-color-global-gray-100); /** Disabled state background. For inactive or non-interactive elements. */
+  --aibox-color-component-text-text-disable: var(--aibox-color-global-gray-500); /** Disabled state text/icon color. For labels and icons in inactive elements. */
+  --aibox-color-component-text-text-on-gray: var(--aibox-color-global-gray-1200); /** Text color on gray backgrounds. For readable text over gray surfaces. */
+  --aibox-color-button-contained-standard-text-default: var(--aibox-color-global-white); /** Default text color for standard contained buttons */
+  --aibox-color-button-contained-danger-bg-default: var(--aibox-color-global-red-700); /** Default background for danger contained buttons */
+  --aibox-color-button-contained-danger-bg-hover: var(--aibox-color-global-red-900); /** Hover background for danger contained buttons */
+  --aibox-color-button-contained-danger-text-default: var(--aibox-color-global-white); /** Default text color for danger contained buttons */
+  --aibox-color-button-outline-standard-bg-default: var(--aibox-color-state-main-ma-2-default); /** Default background for standard outline buttons */
+  --aibox-color-button-outline-subsidiary-bg-default: var(--aibox-color-state-gray-g-2-default); /** Default background for subsidiary outline buttons */
+  --aibox-color-button-outline-danger-text-default: var(--aibox-color-global-red-800); /** Default text color for danger outline buttons */
+  --aibox-color-button-outline-danger-text-hover: var(--aibox-color-global-red-900); /** Hover text color for danger outline buttons */
+  --aibox-color-button-outline-danger-bg-default: var(--aibox-color-state-main-ma-2-default); /** Default background for danger outline buttons */
+  --aibox-color-button-outline-danger-bg-hover: var(--aibox-color-global-red-200); /** Hover background for danger outline buttons */
+  --aibox-color-button-outline-danger-border-default: var(--aibox-color-global-red-800); /** Default border for danger outline buttons */
+  --aibox-color-button-outline-danger-border-hover: var(--aibox-color-global-red-900); /** Hover border for danger outline buttons */
+  --aibox-color-button-texted-danger-text-default: var(--aibox-color-global-red-800); /** Default text color for danger text buttons */
+  --aibox-color-button-texted-danger-text-hover: var(--aibox-color-global-red-600); /** Hover text color for danger text buttons */
+  --aibox-color-button-contained-white-standard-bg-default: var(--aibox-color-global-white); /** Default background for standard contained-white buttons */
+  --aibox-color-button-contained-white-standard-bg-hover: var(--aibox-color-global-white); /** Hover background for standard contained-white buttons */
+  --aibox-color-button-contained-white-standard-text-default: var(--aibox-color-global-blue-900); /** Default text color for standard contained-white buttons */
+  --aibox-color-button-contained-white-standard-text-hover: var(--aibox-color-global-blue-1100); /** Hover text color for standard contained-white buttons */
+  --aibox-color-button-contained-white-danger-bg-default: var(--aibox-color-global-white); /** Default background for danger contained-white buttons */
+  --aibox-color-button-contained-white-danger-bg-hover: var(--aibox-color-global-white); /** Hover background for danger contained-white buttons */
+  --aibox-color-button-contained-white-danger-text-default: var(--aibox-color-global-red-800); /** Default text color for danger contained-white buttons */
+  --aibox-color-button-contained-white-danger-text-hover: var(--aibox-color-global-red-900); /** Hover text color for danger contained-white buttons */
+  --aibox-color-button-contained-white-subsidiary-bg-default: var(--aibox-color-global-white); /** Default background for subsidiary contained-white buttons */
+  --aibox-color-button-contained-white-subsidiary-bg-hover: var(--aibox-color-global-white); /** Hover background for subsidiary contained-white buttons */
+  --aibox-color-button-contained-white-subsidiary-text-default: var(--aibox-color-global-gray-1200); /** Default text color for subsidiary contained-white buttons */
+  --aibox-color-button-contained-white-subsidiary-text-hover: var(--aibox-color-global-gray-1000); /** Hover text color for subsidiary contained-white buttons */
+  --aibox-color-backdrop: var(--aibox-color-global-transparent-black-6); /** Overlay backdrop color — used for modal/dialog background dimming. */
+  --aibox-color-button-base-bg-disable: var(--aibox-color-component-bg-bg-disable); /** Disabled button background color, shared across all variants */
+  --aibox-color-button-base-text-disable: var(--aibox-color-component-text-text-disable); /** Disabled button text color, shared across all variants */
+  --aibox-color-button-contained-standard-bg-default: var(--aibox-color-state-main-ma-1-default); /** Default background for standard contained buttons */
+  --aibox-color-button-contained-standard-bg-hover: var(--aibox-color-state-main-ma-1-hover); /** Hover background for standard contained buttons */
+  --aibox-color-button-contained-standard-bg-press: var(--aibox-color-state-main-ma-1-press); /** Pressed background for standard contained buttons */
+  --aibox-color-button-contained-subsidiary-text-default: var(--aibox-color-component-text-text-on-gray); /** Default text color for subsidiary contained buttons */
+  --aibox-color-button-contained-subsidiary-bg-default: var(--aibox-color-state-gray-g-4-default); /** Default background for subsidiary contained buttons */
+  --aibox-color-button-contained-subsidiary-bg-hover: var(--aibox-color-state-gray-g-4-hover); /** Hover background for subsidiary contained buttons */
+  --aibox-color-button-contained-subsidiary-bg-press: var(--aibox-color-state-gray-g-4-press); /** Pressed background for subsidiary contained buttons */
+  --aibox-color-button-outline-standard-text-default: var(--aibox-color-state-main-ma-4-default); /** Default text color for standard outline buttons */
+  --aibox-color-button-outline-standard-text-hover: var(--aibox-color-state-main-ma-4-hover); /** Hover text color for standard outline buttons */
+  --aibox-color-button-outline-standard-text-press: var(--aibox-color-state-main-ma-4-press); /** Pressed text color for standard outline buttons */
+  --aibox-color-button-outline-standard-bg-hover: var(--aibox-color-state-main-ma-2-hover); /** Hover background for standard outline buttons */
+  --aibox-color-button-outline-standard-bg-press: var(--aibox-color-state-main-ma-2-press); /** Pressed background for standard outline buttons */
+  --aibox-color-button-outline-standard-border-default: var(--aibox-color-state-main-ma-3-default); /** Default border for standard outline buttons */
+  --aibox-color-button-outline-standard-border-hover: var(--aibox-color-state-main-ma-3-hover); /** Hover border for standard outline buttons */
+  --aibox-color-button-outline-standard-border-press: var(--aibox-color-state-main-ma-3-press); /** Pressed border for standard outline buttons */
+  --aibox-color-button-outline-subsidiary-text-default: var(--aibox-color-state-gray-g-1-default); /** Default text color for subsidiary outline buttons */
+  --aibox-color-button-outline-subsidiary-text-hover: var(--aibox-color-state-gray-g-1-hover); /** Hover text color for subsidiary outline buttons */
+  --aibox-color-button-outline-subsidiary-text-press: var(--aibox-color-state-gray-g-1-press); /** Pressed text color for subsidiary outline buttons */
+  --aibox-color-button-outline-subsidiary-bg-hover: var(--aibox-color-state-gray-g-2-hover); /** Hover background for subsidiary outline buttons */
+  --aibox-color-button-outline-subsidiary-bg-press: var(--aibox-color-state-gray-g-2-press); /** Pressed background for subsidiary outline buttons */
+  --aibox-color-button-outline-subsidiary-border-default: var(--aibox-color-state-gray-g-3-default); /** Default border for subsidiary outline buttons */
+  --aibox-color-button-outline-subsidiary-border-hover: var(--aibox-color-state-gray-g-3-hover); /** Hover border for subsidiary outline buttons */
+  --aibox-color-button-outline-subsidiary-border-press: var(--aibox-color-state-gray-g-3-press); /** Pressed border for subsidiary outline buttons */
+  --aibox-color-button-texted-standard-text-default: var(--aibox-color-state-main-ma-5-default); /** Default text color for standard text buttons */
+  --aibox-color-button-texted-standard-text-hover: var(--aibox-color-state-main-ma-5-hover); /** Hover text color for standard text buttons */
+  --aibox-color-button-texted-standard-text-press: var(--aibox-color-state-main-ma-5-press); /** Pressed text color for standard text buttons */
+  --aibox-color-button-texted-subsidiary-text-default: var(--aibox-color-state-gray-g-6-default); /** Default text color for subsidiary text buttons */
+  --aibox-color-button-texted-subsidiary-text-hover: var(--aibox-color-state-gray-g-6-hover); /** Hover text color for subsidiary text buttons */
+  --aibox-color-button-texted-subsidiary-text-press: var(--aibox-color-state-gray-g-6-press); /** Pressed text color for subsidiary text buttons */
+  --aibox-color-button-component-icon-default: var(--aibox-color-state-gray-g-5-default); /** Default color for button icons */
+  --aibox-color-button-component-icon-hover: var(--aibox-color-state-gray-g-5-hover); /** Hover color for button icons */
+  --aibox-color-button-component-icon-press: var(--aibox-color-state-gray-g-5-press); /** Pressed color for button icons */
+}
+
+/* typography properties */
+:root {
+  --aibox-typography-header-h-over-font-family: IBM Plex Sans Thai;
+  --aibox-typography-header-h-over-font-size: 32px;
+  --aibox-typography-header-h-over-font-weight: 600;
+  --aibox-typography-header-h-over-letter-spacing: 0px;
+  --aibox-typography-header-h-over-line-height: 48px;
+  --aibox-typography-header-h1-font-family: IBM Plex Sans Thai;
+  --aibox-typography-header-h1-font-size: 28px;
+  --aibox-typography-header-h1-font-weight: 600;
+  --aibox-typography-header-h1-letter-spacing: 0px;
+  --aibox-typography-header-h1-line-height: 44px;
+  --aibox-typography-header-h2-font-family: IBM Plex Sans Thai;
+  --aibox-typography-header-h2-font-size: 24px;
+  --aibox-typography-header-h2-font-weight: 600;
+  --aibox-typography-header-h2-letter-spacing: 0px;
+  --aibox-typography-header-h2-line-height: 38px;
+  --aibox-typography-header-subheader-font-family: IBM Plex Sans Thai;
+  --aibox-typography-header-subheader-font-size: 20px;
+  --aibox-typography-header-subheader-font-weight: 500;
+  --aibox-typography-header-subheader-letter-spacing: 0px;
+  --aibox-typography-header-subheader-line-height: 32px;
+  --aibox-typography-title-title-lg-font-family: IBM Plex Sans Thai;
+  --aibox-typography-title-title-lg-font-size: 18px;
+  --aibox-typography-title-title-lg-font-weight: 500;
+  --aibox-typography-title-title-lg-letter-spacing: 0.12px;
+  --aibox-typography-title-title-lg-line-height: 26px;
+  --aibox-typography-title-title-font-family: IBM Plex Sans Thai;
+  --aibox-typography-title-title-font-size: 16px;
+  --aibox-typography-title-title-font-weight: 500;
+  --aibox-typography-title-title-letter-spacing: 0.18px;
+  --aibox-typography-title-title-line-height: 24px;
+  --aibox-typography-body-body-lg-bold-font-family: IBM Plex Sans Thai;
+  --aibox-typography-body-body-lg-bold-font-size: 16px;
+  --aibox-typography-body-body-lg-bold-font-weight: 500;
+  --aibox-typography-body-body-lg-bold-letter-spacing: 0.12px;
+  --aibox-typography-body-body-lg-bold-line-height: 26px;
+  --aibox-typography-body-body-lg-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-body-body-lg-regular-font-size: 16px;
+  --aibox-typography-body-body-lg-regular-font-weight: 400;
+  --aibox-typography-body-body-lg-regular-letter-spacing: 0px;
+  --aibox-typography-body-body-lg-regular-line-height: 26px;
+  --aibox-typography-body-body-lg-underline-font-family: IBM Plex Sans Thai;
+  --aibox-typography-body-body-lg-underline-font-size: 16px;
+  --aibox-typography-body-body-lg-underline-font-weight: 400;
+  --aibox-typography-body-body-lg-underline-letter-spacing: 0.12px;
+  --aibox-typography-body-body-lg-underline-line-height: 26px;
+  --aibox-typography-body-body-lg-underline-text-decoration: underline;
+  --aibox-typography-body-body-bold-font-family: IBM Plex Sans Thai;
+  --aibox-typography-body-body-bold-font-size: 14px;
+  --aibox-typography-body-body-bold-font-weight: 500;
+  --aibox-typography-body-body-bold-letter-spacing: 0.18px;
+  --aibox-typography-body-body-bold-line-height: 24px;
+  --aibox-typography-body-body-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-body-body-regular-font-size: 14px;
+  --aibox-typography-body-body-regular-font-weight: 400;
+  --aibox-typography-body-body-regular-letter-spacing: 0.18px;
+  --aibox-typography-body-body-regular-line-height: 24px;
+  --aibox-typography-body-body-underline-font-family: IBM Plex Sans Thai;
+  --aibox-typography-body-body-underline-font-size: 14px;
+  --aibox-typography-body-body-underline-font-weight: 400;
+  --aibox-typography-body-body-underline-letter-spacing: 0.18px;
+  --aibox-typography-body-body-underline-line-height: 24px;
+  --aibox-typography-body-body-underline-text-decoration: underline;
+  --aibox-typography-caption-caption-bold-font-family: IBM Plex Sans Thai;
+  --aibox-typography-caption-caption-bold-font-size: 12px;
+  --aibox-typography-caption-caption-bold-font-weight: 500;
+  --aibox-typography-caption-caption-bold-letter-spacing: 0.2px;
+  --aibox-typography-caption-caption-bold-line-height: 22px;
+  --aibox-typography-caption-caption-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-caption-caption-regular-font-size: 12px;
+  --aibox-typography-caption-caption-regular-font-weight: 400;
+  --aibox-typography-caption-caption-regular-letter-spacing: 0.2px;
+  --aibox-typography-caption-caption-regular-line-height: 22px;
+  --aibox-typography-caption-caption-underline-font-family: IBM Plex Sans Thai;
+  --aibox-typography-caption-caption-underline-font-size: 12px;
+  --aibox-typography-caption-caption-underline-font-weight: 400;
+  --aibox-typography-caption-caption-underline-letter-spacing: 0.2px;
+  --aibox-typography-caption-caption-underline-line-height: 22px;
+  --aibox-typography-caption-caption-underline-text-decoration: underline;
+  --aibox-typography-caption-remark-bold-font-family: IBM Plex Sans Thai;
+  --aibox-typography-caption-remark-bold-font-size: 10px;
+  --aibox-typography-caption-remark-bold-font-weight: 500;
+  --aibox-typography-caption-remark-bold-letter-spacing: 0.24px;
+  --aibox-typography-caption-remark-bold-line-height: 20px;
+  --aibox-typography-caption-remark-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-caption-remark-regular-font-size: 10px;
+  --aibox-typography-caption-remark-regular-font-weight: 400;
+  --aibox-typography-caption-remark-regular-letter-spacing: 0.24px;
+  --aibox-typography-caption-remark-regular-line-height: 20px;
+  --aibox-typography-caption-remark-underline-font-family: IBM Plex Sans Thai;
+  --aibox-typography-caption-remark-underline-font-size: 10px;
+  --aibox-typography-caption-remark-underline-font-weight: 400;
+  --aibox-typography-caption-remark-underline-letter-spacing: 0.24px;
+  --aibox-typography-caption-remark-underline-line-height: 20px;
+  --aibox-typography-caption-remark-underline-text-decoration: underline;
+  --aibox-typography-remark-remark-bold-font-family: IBM Plex Sans Thai;
+  --aibox-typography-remark-remark-bold-font-size: 10px;
+  --aibox-typography-remark-remark-bold-font-weight: 500;
+  --aibox-typography-remark-remark-bold-letter-spacing: 0.24px;
+  --aibox-typography-remark-remark-bold-line-height: 20px;
+  --aibox-typography-remark-remark-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-remark-remark-regular-font-size: 10px;
+  --aibox-typography-remark-remark-regular-font-weight: 400;
+  --aibox-typography-remark-remark-regular-letter-spacing: 0.24px;
+  --aibox-typography-remark-remark-regular-line-height: 20px;
+  --aibox-typography-remark-remark-underline-font-family: IBM Plex Sans Thai;
+  --aibox-typography-remark-remark-underline-font-size: 10px;
+  --aibox-typography-remark-remark-underline-font-weight: 400;
+  --aibox-typography-remark-remark-underline-letter-spacing: 0.24px;
+  --aibox-typography-remark-remark-underline-line-height: 20px;
+  --aibox-typography-remark-remark-underline-text-decoration: underline;
+  --aibox-typography-component-2xs-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-2xs-font-size: 10px;
+  --aibox-typography-component-2xs-font-weight: 500;
+  --aibox-typography-component-2xs-letter-spacing: 0.24px;
+  --aibox-typography-component-2xs-line-height: 16px;
+  --aibox-typography-component-2xs-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-2xs-regular-font-size: 10px;
+  --aibox-typography-component-2xs-regular-font-weight: 400;
+  --aibox-typography-component-2xs-regular-letter-spacing: 0.24px;
+  --aibox-typography-component-2xs-regular-line-height: 16px;
+  --aibox-typography-component-xs-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-xs-font-size: 12px;
+  --aibox-typography-component-xs-font-weight: 500;
+  --aibox-typography-component-xs-letter-spacing: 0.2px;
+  --aibox-typography-component-xs-line-height: 16px;
+  --aibox-typography-component-xs-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-xs-regular-font-size: 12px;
+  --aibox-typography-component-xs-regular-font-weight: 400;
+  --aibox-typography-component-xs-regular-letter-spacing: 0.2px;
+  --aibox-typography-component-xs-regular-line-height: 16px;
+  --aibox-typography-component-sm-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-sm-regular-font-size: 14px;
+  --aibox-typography-component-sm-regular-font-weight: 400;
+  --aibox-typography-component-sm-regular-letter-spacing: 0.12px;
+  --aibox-typography-component-sm-regular-line-height: 16px;
+  --aibox-typography-component-sm-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-sm-font-size: 14px;
+  --aibox-typography-component-sm-font-weight: 500;
+  --aibox-typography-component-sm-letter-spacing: 0.12px;
+  --aibox-typography-component-sm-line-height: 16px;
+  --aibox-typography-component-md-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-md-regular-font-size: 16px;
+  --aibox-typography-component-md-regular-font-weight: 400;
+  --aibox-typography-component-md-regular-letter-spacing: 0.06px;
+  --aibox-typography-component-md-regular-line-height: 18px;
+  --aibox-typography-component-md-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-md-font-size: 16px;
+  --aibox-typography-component-md-font-weight: 500;
+  --aibox-typography-component-md-letter-spacing: 0.06px;
+  --aibox-typography-component-md-line-height: 18px;
+  --aibox-typography-component-xl-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-xl-font-size: 24px;
+  --aibox-typography-component-xl-font-weight: 500;
+  --aibox-typography-component-xl-letter-spacing: 0px;
+  --aibox-typography-component-xl-line-height: 38px;
+  --aibox-typography-component-xl-regular-font-family: IBM Plex Sans Thai;
+  --aibox-typography-component-xl-regular-font-size: 24px;
+  --aibox-typography-component-xl-regular-font-weight: 400;
+  --aibox-typography-component-xl-regular-letter-spacing: 0px;
+  --aibox-typography-component-xl-regular-line-height: 38px;
+  --aibox-typography-button-xs-font-family: IBM Plex Sans Thai;
+  --aibox-typography-button-xs-font-size: 12px;
+  --aibox-typography-button-xs-font-weight: 500;
+  --aibox-typography-button-xs-letter-spacing: 0.2px;
+  --aibox-typography-button-xs-line-height: 16px;
+  --aibox-typography-button-sm-font-family: IBM Plex Sans Thai;
+  --aibox-typography-button-sm-font-size: 14px;
+  --aibox-typography-button-sm-font-weight: 500;
+  --aibox-typography-button-sm-letter-spacing: 0.12px;
+  --aibox-typography-button-sm-line-height: 16px;
+  --aibox-typography-button-md-font-family: IBM Plex Sans Thai;
+  --aibox-typography-button-md-font-size: 16px;
+  --aibox-typography-button-md-font-weight: 500;
+  --aibox-typography-button-md-letter-spacing: 0.06px;
+  --aibox-typography-button-md-line-height: 24px;
+  --aibox-typography-button-lg-font-family: IBM Plex Sans Thai;
+  --aibox-typography-button-lg-font-size: 16px;
+  --aibox-typography-button-lg-font-weight: 500;
+  --aibox-typography-button-lg-letter-spacing: 0.06px;
+  --aibox-typography-button-lg-line-height: 24px;
 }

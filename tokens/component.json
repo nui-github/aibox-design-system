@@ -1,0 +1,7 @@
+{
+  "size": {
+    "$type": "dimension",
+    "control-height-lg": { "$value": "48px", "$description": "Not a Figma variable. Measured from textfield Size=large box height (node 1:7053)." },
+    "focus-ring": { "$value": "2px", "$description": "Not a Figma variable. Measured from textfield focused state outer ring (node 1:7069)." }
+  }
+}

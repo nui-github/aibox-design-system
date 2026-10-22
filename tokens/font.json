@@ -1,0 +1,107 @@
+{
+  "font": {
+    "family": {
+      "heading-and-body": {
+        "$type": "fontFamily",
+        "$value": "IBM Plex Sans Thai",
+        "$description": "Primary typeface for all headings and body text throughout the system."
+      }
+    },
+    "size": {
+      "header": {
+        "h-over": {
+          "$type": "dimension",
+          "$value": "32px",
+          "$description": "Oversized heading — for special cases requiring text larger than H1."
+        },
+        "h1": {
+          "$type": "dimension",
+          "$value": "28px",
+          "$description": "Primary page heading — top-level page titles."
+        },
+        "h2": {
+          "$type": "dimension",
+          "$value": "24px",
+          "$description": "Secondary heading — section titles within a page."
+        },
+        "subheader": {
+          "$type": "dimension",
+          "$value": "20px",
+          "$description": "Sub-heading — used below H1/H2 for supporting context."
+        }
+      },
+      "title": {
+        "title-lg": {
+          "$type": "dimension",
+          "$value": "18px",
+          "$description": "Large title — prominent labels, card headers."
+        },
+        "title": {
+          "$type": "dimension",
+          "$value": "16px",
+          "$description": "Standard title — section labels, table headers, dialog titles."
+        }
+      },
+      "body": {
+        "body-lg": {
+          "$type": "dimension",
+          "$value": "16px",
+          "$description": "Large body text — introductory paragraphs, featured content."
+        },
+        "body": {
+          "$type": "dimension",
+          "$value": "14px",
+          "$description": "Standard body text — primary reading size for paragraphs and descriptions."
+        }
+      },
+      "caption": {
+        "caption": {
+          "$type": "dimension",
+          "$value": "12px",
+          "$description": "Caption text — supporting labels, metadata, timestamps."
+        }
+      },
+      "remark": {
+        "remark": {
+          "$type": "dimension",
+          "$value": "10px",
+          "$description": "Smallest text — footnotes, disclaimers, fine print."
+        }
+      },
+      "additional": {
+        "2xs": {
+          "$type": "dimension",
+          "$value": "10px",
+          "$description": "Additional size 2xs — matches Remark size, for component-specific use."
+        },
+        "xs": {
+          "$type": "dimension",
+          "$value": "12px",
+          "$description": "Additional size xs — matches Caption size, for component-specific use."
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "14px",
+          "$description": "Additional size sm — matches Body size, for component-specific use."
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "16px",
+          "$description": "Additional size md — matches Body-lg/Title size, for component-specific use."
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "24px",
+          "$description": "Additional size xl — matches H2 size, for component-specific use."
+        }
+      }
+    },
+    "weight": {
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": "SemiBold",
+        "$description": "Default bold weight used for emphasized text, headings, and labels."
+      }
+    }
+  }
+}
