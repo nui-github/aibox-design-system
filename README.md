@@ -25,4 +25,4 @@ npm test        # build dist/ + check tokens used by override exist, no hard-cod
 Bump `version` in package.json, `npm test`, commit (with dist), tag `vX.Y.Z`, push the tag.
 Token value change = minor/patch; rename or remove a token = major.
 
-Current token values are PLACEHOLDERS until synced from Figma.
+Token values are synced from Figma file `ChGoJaECyMvpm61vRILhJE` (textfield node 1:7052). Only tokens used by textfield exist so far; add more as components are read.

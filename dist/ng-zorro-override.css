@@ -1,42 +1,70 @@
 /* aibox-design-system v0.1.0 - requires tokens.css; load after ng-zorro-antd styles */
-/* Selectors target ng-zorro-antd 18.x. Same specificity as ant, wins by load order. */
+/* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
+   Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
-/* Button */
-.ant-btn {
-  border-radius: var(--aibox-radius-control);
-  height: var(--aibox-size-control-height);
-  padding-inline: var(--aibox-size-control-padding-x);
-  font-weight: var(--aibox-font-weight-medium);
+/* Form label + assistive text */
+.ant-form-item-label > label {
+  font-family: var(--aibox-font-family);
+  font-size: var(--aibox-font-size-body);
+  line-height: var(--aibox-font-line-height-body);
+  letter-spacing: var(--aibox-font-letter-spacing-body);
+  color: var(--aibox-color-text-secondary);
 }
-.ant-btn-primary {
-  background-color: var(--aibox-color-primary);
-  border-color: var(--aibox-color-primary);
-  color: var(--aibox-color-text-on-primary);
-}
-.ant-btn-primary:not(:disabled):hover {
-  background-color: var(--aibox-color-primary-hover);
-  border-color: var(--aibox-color-primary-hover);
-}
-.ant-btn-primary:not(:disabled):active {
-  background-color: var(--aibox-color-primary-active);
-  border-color: var(--aibox-color-primary-active);
+.ant-form-item-required::before {
+  color: var(--aibox-color-text-status-error-100);
 }
 
-/* Input / Select */
-.ant-input,
-.ant-input-affix-wrapper,
-.ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  border-radius: var(--aibox-radius-control);
-  border-color: var(--aibox-color-border);
-  color: var(--aibox-color-text);
+/* Input - Figma Size=small (default ng-zorro size): 14/24, padding 4/8 */
+.ant-input {
+  font-family: var(--aibox-font-family);
+  font-size: var(--aibox-font-size-body);
+  line-height: var(--aibox-font-line-height-body);
+  letter-spacing: var(--aibox-font-letter-spacing-body);
+  color: var(--aibox-color-text-primary);
+  background-color: var(--aibox-color-bg-primary);
+  border: 1px solid var(--aibox-color-state-form-default);
+  border-radius: var(--aibox-radius-2);
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
 }
-.ant-input:hover,
-.ant-input-affix-wrapper:hover,
-.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
-  border-color: var(--aibox-color-primary-hover);
+
+/* Input - Figma Size=large (nzSize="large"): 16/26, box height 48, padding 8/12 */
+.ant-input-lg {
+  font-size: var(--aibox-font-size-body-lg);
+  line-height: var(--aibox-font-line-height-body-lg);
+  letter-spacing: var(--aibox-font-letter-spacing-body-lg);
+  min-height: var(--aibox-size-control-height-lg);
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+}
+
+.ant-input::placeholder {
+  color: var(--aibox-color-text-placeholder);
+}
+
+/* Focused: 1px active border + 2px translucent outer ring */
+.ant-input:hover {
+  border-color: var(--aibox-color-state-form-active);
 }
 .ant-input:focus,
-.ant-input-affix-wrapper-focused,
-.ant-select-focused:not(.ant-select-disabled) .ant-select-selector {
-  border-color: var(--aibox-color-primary);
+.ant-input-focused {
+  border-color: var(--aibox-color-state-form-active);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-active-outer);
+  outline: 0;
+}
+
+/* Error (ant status class). Error ring uses form/error-outer. */
+.ant-input-status-error:not(.ant-input-disabled) {
+  border-color: var(--aibox-color-state-form-error);
+}
+.ant-input-status-error:not(.ant-input-disabled):focus {
+  border-color: var(--aibox-color-state-form-error);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-error-outer);
+}
+
+/* Disabled */
+.ant-input[disabled],
+.ant-input-disabled {
+  color: var(--aibox-color-text-disable);
+  background-color: var(--aibox-color-bg-disable);
+  border-color: var(--aibox-color-state-form-default);
+  box-shadow: none;
 }
