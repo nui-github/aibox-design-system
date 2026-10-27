@@ -807,3 +807,66 @@
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5 6.2 12 13.5 4.2' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5 6.2 12 13.5 4.2' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
+
+/* Tag / status badge. Source: Figma "i-BOX Design System" > Chip & Tag page (3579:12023), badge node 1:10717.
+   Mapping (nz-tag):
+     default (no nzColor)            -> badge "draft"   (bg/secondary, text/secondary)
+     nzColor="success|processing|warning|error" -> badge success / inprogress(info) / warning / error
+     nzColor="purple"                -> badge "rework"
+     nzColor="orange"                -> badge "reject"
+     class aibox-tag-solid           -> solid variant (status -200 background, white text)
+     class aibox-tag-square          -> square variant (radius 4; default is round / pill)
+     class aibox-tag-xs              -> Figma 2xsmall (12px text)
+   Not covered: pink/"signer in progress" and "form" types, disabled badge, chip (assist/input/filter), checkable tags. */
+.ant-tag {
+  --_bg: var(--aibox-color-bg-secondary);
+  --_fg: var(--aibox-color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aibox-spacing-1);
+  margin-right: var(--aibox-spacing-2);
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-component-sm-font-size);
+  line-height: 16px;
+  letter-spacing: var(--aibox-typography-component-sm-letter-spacing);
+  font-weight: 500;
+  color: var(--_fg);
+  background: var(--_bg);
+  border: 0;
+  border-radius: var(--aibox-radius-20);
+}
+.ant-tag,
+.ant-tag a,
+.ant-tag a:hover {
+  color: var(--_fg);
+}
+.ant-tag.aibox-tag-square {
+  border-radius: var(--aibox-radius-2);
+}
+.ant-tag.aibox-tag-xs {
+  padding: 1px var(--aibox-spacing-2);
+  font-size: var(--aibox-typography-component-xs-font-size);
+  letter-spacing: var(--aibox-typography-component-xs-letter-spacing);
+}
+.ant-tag-success { --_bg: var(--aibox-color-bg-status-success-100); --_fg: var(--aibox-color-text-status-success-200); }
+.ant-tag-processing { --_bg: var(--aibox-color-bg-status-info-100); --_fg: var(--aibox-color-text-status-info-200); }
+.ant-tag-warning { --_bg: var(--aibox-color-bg-status-warning-100); --_fg: var(--aibox-color-text-status-warning-200); }
+.ant-tag-error { --_bg: var(--aibox-color-bg-status-error-100); --_fg: var(--aibox-color-text-status-error-200); }
+.ant-tag-purple { --_bg: var(--aibox-color-bg-status-rework-100); --_fg: var(--aibox-color-text-status-rework-200); }
+.ant-tag-orange { --_bg: var(--aibox-color-bg-status-reject-100); --_fg: var(--aibox-color-text-status-reject-200); }
+.ant-tag.aibox-tag-solid {
+  --_fg: var(--aibox-color-text-white-primary);
+  --_bg: var(--aibox-color-bg-status-default);
+}
+.ant-tag-success.aibox-tag-solid { --_bg: var(--aibox-color-bg-status-success-200); }
+.ant-tag-processing.aibox-tag-solid { --_bg: var(--aibox-color-bg-status-info-200); }
+.ant-tag-warning.aibox-tag-solid { --_bg: var(--aibox-color-bg-status-warning-200); }
+.ant-tag-error.aibox-tag-solid { --_bg: var(--aibox-color-bg-status-error-200); }
+.ant-tag-purple.aibox-tag-solid { --_bg: var(--aibox-color-bg-status-rework-200); }
+.ant-tag-orange.aibox-tag-solid { --_bg: var(--aibox-color-bg-status-reject-200); }
+.ant-tag.aibox-tag-solid,
+.ant-tag.aibox-tag-solid a,
+.ant-tag.aibox-tag-solid a:hover {
+  color: var(--_fg);
+}
