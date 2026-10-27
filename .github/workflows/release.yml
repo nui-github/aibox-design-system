@@ -1,41 +1,32 @@
 name: release
+# Creates the tag and the GitHub release when a new version lands on main. See scripts/release.sh.
 on:
   push:
+    branches: [main]
     tags: ['v*.*.*']
   workflow_dispatch:
     inputs:
       tag:
-        description: Existing tag to (re)publish release notes for, e.g. v0.2.0
+        description: Tag to (re)publish, e.g. v0.6.0
         required: true
+      commit:
+        description: Commit to tag when the tag does not exist yet (default - the latest commit of the selected branch)
+        required: false
+concurrency:
+  group: release
+  cancel-in-progress: false
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions: { contents: write }
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.tag || github.ref }}
+        with: { fetch-depth: 0 }
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
-      - run: npm ci
-      - run: npm test
-      - name: dist matches tag
-        run: git diff --exit-code -- dist
-      - name: Create or update GitHub release with CDN links
+      - name: Create or update the release
+        run: bash scripts/release.sh
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ inputs.tag || github.ref_name }}
-        run: |
-          V="${TAG#v}"
-          BASE="https://cdn.jsdelivr.net/gh/${GITHUB_REPOSITORY}@${V}/dist"
-          LINKS="$(printf '```html\n<link rel="stylesheet" href="%s/tokens.css">\n<link rel="stylesheet" href="%s/ng-zorro-override.css">\n```' "$BASE" "$BASE")"
-          if BODY="$(gh release view "$TAG" --json body --jq .body 2>/dev/null)"; then
-            # Release already exists (e.g. created from the GitHub UI): keep its notes, add links once.
-            if grep -q 'cdn.jsdelivr.net' <<<"$BODY"; then
-              echo "Release $TAG already lists CDN links; nothing to do."
-            else
-              gh release edit "$TAG" --notes "$(printf '%s\n\n%s' "$BODY" "$LINKS")"
-            fi
-          else
-            gh release create "$TAG" --verify-tag --generate-notes --notes "$LINKS"
-          fi
+          INPUT_TAG: ${{ inputs.tag }}
+          INPUT_COMMIT: ${{ inputs.commit }}

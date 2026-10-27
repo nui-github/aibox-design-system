@@ -114,18 +114,12 @@ npm test        # build dist/ + check tokens used by override exist, no hard-cod
 **Commit `dist/`** - jsDelivr serves it straight from git.
 
 ## Release
-Bump `version` in package.json, `npm test`, commit (with dist), tag `vX.Y.Z`, push the tag.
+Releases are automatic. In the PR that changes `dist/`:
+1. bump `version` in `package.json` and run `npm test` (commit `dist/`);
+2. add `release-notes/vX.Y.Z.md`: line 1 is the release title, the rest is the release notes (the jsDelivr links are appended for you).
+
+When the PR is merged into `main`, the `release` workflow creates the tag `vX.Y.Z` **at the merged commit** and the GitHub release (title and notes from that file). It refuses to publish when `package.json` does not match the tag, the notes file is missing, tests fail or `dist/` is stale, so a wrong tag cannot be created. If the version already has a release, nothing happens.
+
+Fix or backfill a release from Actions -> release -> Run workflow: give `tag` (e.g. `v0.6.0`) and, for a tag that does not exist yet, the `commit` to tag; for an existing tag it only republishes the title and notes. Pushing a `vX.Y.Z` tag by hand works too.
+
 Token value change = minor/patch; rename or remove a token = major.
-
-Token values come from the Figma file `ChGoJaECyMvpm61vRILhJE` ("i-BOX Design System").
-
-## Updating tokens from Figma (Professional plan, no Variables REST API)
-1. In Figma, export tokens with the "Design Tokens" plugin (Lukas Oppermann) -> `design-tokens.tokens.json`.
-2. Convert and split into `tokens/`:
-   ```
-   python3 -I scripts/figma-export-to-dtcg.py design-tokens.tokens.json /tmp/aibox-design-tokens.json
-   ```
-   then split the top-level keys into `tokens/<key>.json` (see the existing files). `tokens/component.json` is hand-written (values not stored as Figma variables).
-3. `npm test`, commit with `dist/`, open a PR.
-
-The converter drops the per-property `typography.*` duplicates and remaps aliases that point at the missing `i-box paltform` collection onto `color.global.*` (fix the collection name in Figma).
