@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.4.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.4.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.5.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.5.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Supports ng-zorro-antd 18.x.
@@ -59,6 +59,28 @@ Use `nz-checkbox` / `nz-radio` as usual.
 ```
 Figma has no hover/focus state for these; hover and focus use `color.state.form.hover`, and a radio's focus ring matches the Input's. Not covered: radio type=multiple (disc with a check), selection list / selection card, radio buttons (`nzButtonStyle`).
 The Figma boxes are SVG icons, so the shapes were measured from a 1x render (box 14 / 17.5 / 21px, radio 16 / 20 / 24px, border 1.5 / 1.875 / 2.25px); the check mark is an approximation. Confirm with design before relying on pixel-exact output.
+
+### Select (Figma nodes `1592:6210` select-search, `1:7137` select, `1:7626` content-list)
+Use `nz-select` as usual.
+
+| Figma | ng-zorro |
+|---|---|
+| Size = Large (box 48px) | `nzSize="large"` |
+| Size = small (box 40px) | default size (`nzSize="small"` is styled the same) |
+| state = default / selected (focus ring) | closed / open or focused; hover also shows the ring, as Figma's "Filled Hover" |
+| state = error / error selected | `nzStatus="error"` (or a form control in error) |
+| state = disabled | `nzDisabled` |
+| select-search | `nzShowSearch` (the search icon replaces the arrow while open) |
+| dropdown / content-list (hover, active, disabled) | the dropdown panel and its `nz-option` items |
+
+```html
+<nz-select nzSize="large" nzShowSearch nzAllowClear nzPlaceHolder="Placeholder"
+           [nzOptionHeightPx]="50" [(ngModel)]="value">
+  <nz-option nzValue="a" nzLabel="Option A"></nz-option>
+</nz-select>
+```
+**Set `[nzOptionHeightPx]="50"`**: Figma option rows are 50px high and ng-zorro's virtual scroll otherwise still assumes 32px rows.
+Not covered: multiple / tags mode, option groups, label size, hover on the arrow. The arrow and clear icons keep ng-zorro's glyphs (only size and colour change; Figma uses Font Awesome). The check on the selected option and the smile in the "not found" row are masks; the "not found" text is centred in the space beside the icon. An opened select highlights its selected option right away (ng-zorro marks it active).
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.

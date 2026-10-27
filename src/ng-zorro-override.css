@@ -455,3 +455,247 @@
   transform: scale(1);
   opacity: 1;
 }
+
+/* ---------------------------------------------------------------------------
+   Select. Source: Figma "i-BOX Design System" > Selection > select-search
+   (node 1592:6210), select (node 1:7137) and content-list (node 1:7626).
+
+   Figma -> ng-zorro mapping
+     select Size=Large                     nzSize="large"   (box 48px, 16/26 text)
+     select Size=small                     default size     (box 40px, 14/24 text); nzSize="small" is styled the same
+     state=default / selected              closed / open or focused (hover also shows the focus ring)
+     state=error / error selected          nzStatus="error" (or a form control in error)
+     state=disabled                        nzDisabled
+     select-search                         nzShowSearch (the search icon replaces the arrow while open)
+     dropdown-list / content-list          the dropdown panel and its nz-option items
+   IMPORTANT: Figma option rows are 50px high. Set [nzOptionHeightPx]="50" on nz-select, otherwise the
+   virtual scroll still assumes 32px rows.
+   Not covered: multiple / tags mode, option groups, label size (a Select's label is a form label),
+   hover on the arrow icon. The arrow and clear icons keep ng-zorro's glyphs (only size and colour change);
+   Figma uses Font Awesome. The check on a selected option is drawn with a mask.
+   --------------------------------------------------------------------------- */
+
+/* State variables live on the host (low specificity); one rule below applies them. */
+.ant-select {
+  --_ring: var(--aibox-color-state-form-default);
+  --_outer: transparent;
+  --_bg: var(--aibox-color-bg-primary);
+  --_fg: var(--aibox-color-text-primary);
+  --_ph: var(--aibox-color-text-placeholder);
+  --_icon: var(--aibox-color-state-gray-g-6-default);
+  --_h: 40px;
+  --_px: 8px;
+  --_fs: var(--aibox-typography-body-body-regular-font-size);
+  --_lh: var(--aibox-typography-body-body-regular-line-height);
+  --_ls: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-select.ant-select-lg {
+  --_h: 48px;
+  --_px: 12px;
+  --_fs: var(--aibox-typography-body-body-lg-regular-font-size);
+  --_lh: var(--aibox-typography-body-body-lg-regular-line-height);
+  --_ls: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-select:hover,
+.ant-select.ant-select-focused,
+.ant-select.ant-select-open {
+  --_ring: var(--aibox-color-state-form-active);
+  --_outer: var(--aibox-color-state-form-active-outer);
+}
+.ant-select.ant-select-status-error {
+  --_ring: var(--aibox-color-state-form-error);
+  --_outer: transparent;
+}
+.ant-select.ant-select-status-error:hover,
+.ant-select.ant-select-status-error.ant-select-focused,
+.ant-select.ant-select-status-error.ant-select-open {
+  --_ring: var(--aibox-color-state-form-error);
+  --_outer: var(--aibox-color-state-form-error-outer);
+}
+.ant-select.ant-select-disabled,
+.ant-select.ant-select-disabled:hover {
+  --_ring: var(--aibox-color-state-form-default);
+  --_outer: transparent;
+  --_bg: var(--aibox-color-bg-disable);
+  --_fg: var(--aibox-color-text-secondary);
+  --_ph: var(--aibox-color-text-secondary);
+  --_icon: var(--aibox-color-button-base-text-disable);
+}
+
+/* The selector. The repeated class raises specificity above ant's state rules (up to 0,7,0, one with
+   !important on border-color); the frame is an inset box-shadow, so ant's border is switched off. */
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select .ant-select-selector {
+  box-sizing: border-box;
+  height: var(--_h);
+  padding: 0 var(--_px);
+  border-width: 0;
+  border-radius: var(--aibox-radius-2);
+  background: var(--_bg);
+  color: var(--_fg);
+  box-shadow: inset 0 0 0 1px var(--_ring), 0 0 0 var(--aibox-size-focus-ring) var(--_outer);
+  align-items: center;
+}
+.ant-select {
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--_fs);
+  line-height: var(--_lh);
+  letter-spacing: var(--_ls);
+}
+/* ant sets line-height per size at specificity 0,5,0, hence the repeated class */
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select .ant-select-selection-item,
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select .ant-select-selection-placeholder {
+  padding-right: calc(var(--_px) + 20px);
+  line-height: var(--_lh);
+  color: var(--_val, var(--_fg));
+}
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select .ant-select-selection-placeholder {
+  color: var(--_ph);
+}
+/* while open, the current value fades like a placeholder (ant does the same) */
+.ant-select.ant-select-single.ant-select-open {
+  --_val: var(--aibox-color-text-placeholder);
+}
+.ant-select.ant-select.ant-select-single .ant-select-selector .ant-select-selection-search {
+  left: var(--_px);
+  right: calc(var(--_px) + 28px);
+}
+.ant-select.ant-select.ant-select-single .ant-select-selector .ant-select-selection-search-input {
+  height: 100%;
+  color: var(--_fg);
+  font: inherit;
+  letter-spacing: inherit;
+}
+.ant-select.ant-select-single .ant-select-selector::after {
+  line-height: var(--_lh);
+}
+.ant-select-selection-search-input::placeholder {
+  color: var(--aibox-color-text-placeholder);
+}
+
+/* Arrow (search icon while open) and clear icon: size 16, glyph centred in a 20px box */
+.ant-select .ant-select-arrow,
+.ant-select .ant-select-clear {
+  right: calc(var(--_px) + 2px);
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  font-size: 16px;
+  color: var(--_icon);
+}
+.ant-select .ant-select-arrow .anticon,
+.ant-select .ant-select-arrow svg {
+  font-size: 16px;
+}
+/* The clear icon sits on top of the arrow, so it needs the box colour as its background */
+.ant-select .ant-select-clear {
+  background: var(--_bg);
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-select .ant-select-clear:hover {
+  color: var(--aibox-color-text-icon-default);
+}
+
+/* Dropdown panel */
+.ant-select-dropdown {
+  padding: var(--aibox-spacing-4) 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-radius: var(--aibox-radius-2);
+  background-color: var(--aibox-color-bg-primary);
+  box-shadow: var(--aibox-shadow-base-raise-modal);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+}
+.ant-select-dropdown .ant-select-item {
+  min-height: 0;
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-4);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+  color: var(--aibox-color-text-primary);
+}
+.ant-select-dropdown .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: var(--aibox-color-bg-tertiary);
+}
+.ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: transparent;
+  color: var(--aibox-color-text-main);
+  font-weight: normal;
+}
+.ant-select-dropdown .ant-select-item-option-selected.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: var(--aibox-color-bg-tertiary);
+}
+.ant-select-dropdown .ant-select-item-option-disabled,
+.ant-select-dropdown .ant-select-item-option-disabled.ant-select-item-option-selected {
+  background-color: var(--aibox-color-button-contained-subsidiary-bg-default);
+  color: var(--aibox-color-text-disable);
+}
+/* Check on the selected option (single mode renders no state icon) */
+.ant-select-dropdown .ant-select-item-option-selected:not(:has(.ant-select-item-option-state))::after {
+  content: ' ';
+  flex: none;
+  align-self: center;
+  width: 12px;
+  height: 12px;
+  margin-left: var(--aibox-spacing-2);
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5 6.2 12 13.5 4.2' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5 6.2 12 13.5 4.2' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.ant-select-dropdown .ant-select-item-option-selected .ant-select-item-option-state {
+  color: var(--aibox-color-text-main);
+}
+/* Not found: a highlighted row, smile icon pinned left, text centred in the rest */
+.ant-select-dropdown .ant-select-item-empty {
+  position: relative;
+  min-height: 0;
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-4) var(--aibox-spacing-3) calc(var(--aibox-spacing-4) + 28px);
+  background-color: var(--aibox-color-bg-tertiary);
+  color: var(--aibox-color-text-secondary);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  text-align: center;
+}
+.ant-select-dropdown .ant-select-item-empty::before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: var(--aibox-spacing-4);
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  background-color: var(--aibox-color-text-icon-default);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM5.4 4.8a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zm5.2 0a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zM8 13.3a5.3 5.3 0 01-4.4-2.4.6.6 0 011-.7A4.1 4.1 0 008 12.1a4.1 4.1 0 003.4-1.9.6.6 0 011 .7A5.3 5.3 0 018 13.3z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM5.4 4.8a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zm5.2 0a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zM8 13.3a5.3 5.3 0 01-4.4-2.4.6.6 0 011-.7A4.1 4.1 0 008 12.1a4.1 4.1 0 003.4-1.9.6.6 0 011 .7A5.3 5.3 0 018 13.3z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.ant-select-dropdown .ant-select-item-empty .ant-empty {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.ant-select-dropdown .ant-select-item-empty .ant-empty-image {
+  display: none;
+}
+.ant-select-dropdown .ant-select-item-empty .ant-empty-description {
+  margin: 0;
+  color: inherit;
+}
+/* Scrollbar: 4px, gray thumb on a lighter track */
+.ant-select-dropdown .cdk-virtual-scroll-viewport::-webkit-scrollbar {
+  width: 4px;
+}
+.ant-select-dropdown .cdk-virtual-scroll-viewport::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: var(--aibox-color-bg-secondary);
+}
+.ant-select-dropdown .cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--aibox-color-text-tertiary);
+}
+@supports (-moz-appearance: none) {
+  .ant-select-dropdown .cdk-virtual-scroll-viewport {
+    scrollbar-width: thin;
+    scrollbar-color: var(--aibox-color-text-tertiary) var(--aibox-color-bg-secondary);
+  }
+}
