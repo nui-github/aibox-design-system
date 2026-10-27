@@ -1,4 +1,4 @@
-/* aibox-design-system v0.5.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.6.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -699,4 +699,112 @@
     scrollbar-width: thin;
     scrollbar-color: var(--aibox-color-text-tertiary) var(--aibox-color-bg-secondary);
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Switch. Source: Figma "i-BOX Design System" > Switch: switch-text-and-icon (node 1286:2284)
+   and switch (node 1:5516).
+
+   Figma -> ng-zorro mapping
+     switch-text-and-icon, Size=Desktop (44x22)   <nz-switch> (ng-zorro's default size is the same)
+     switch-text-and-icon, Size=Mobile (50x25)    class="aibox-switch-mobile" on nz-switch (x1.136)
+     switch (51x31, iOS style, off = bg/quaternary) class="aibox-switch-ios" on nz-switch
+     the check / cross icons inside the track     class="aibox-switch-icons" on nz-switch (only when no
+                                                  nzCheckedChildren / nzUnCheckedChildren are given)
+     Disable=yes                                  nzDisabled
+   Colours: on = text/main (the iOS switch: state/form/active), off = text/disable, disabled = bg/disable.
+   Not covered: nzSize="small" (28x16, colours only), nzLoading, switch-with-text (a segmented control).
+   --------------------------------------------------------------------------- */
+
+/* Size variables sit on nz-switch (host) so the inner button inherits them; defaults = Figma Desktop */
+.aibox-switch-mobile {
+  --_w: 50px;
+  --_h: 25px;
+  --_hs: 20.455px;
+  --_pad: 2.273px;
+  --_ifs: 13.636px;
+  --_k: 1.1364;
+}
+.aibox-switch-ios {
+  --_w: 51px;
+  --_h: 31px;
+  --_hs: 27px;
+  --_pad: 2px;
+  --_off: var(--aibox-color-bg-quaternary);
+  --_on: var(--aibox-color-state-form-active);
+  --_shadow: var(--aibox-switch-ios-knob-shadow);
+}
+
+/* Figma clips the iOS knob shadow to the track */
+.aibox-switch-ios .ant-switch {
+  overflow: hidden;
+}
+.ant-switch {
+  --_track: var(--_off, var(--aibox-color-text-disable));
+  --_icon: var(--aibox-color-text-white-primary);
+}
+.ant-switch.ant-switch-checked {
+  --_track: var(--_on, var(--aibox-color-text-main));
+}
+.ant-switch.ant-switch-disabled {
+  --_track: var(--aibox-color-bg-disable);
+  --_icon: var(--aibox-color-text-disable);
+}
+
+.ant-switch.ant-switch:not(.ant-switch-small) {
+  min-width: var(--_w, 44px);
+  height: var(--_h, 22px);
+  line-height: var(--_h, 22px);
+  border-radius: 100px;
+}
+.ant-switch.ant-switch {
+  background-color: var(--_track);
+}
+.ant-switch.ant-switch-disabled {
+  opacity: 1;
+}
+.ant-switch.ant-switch:not(.ant-switch-small) .ant-switch-handle {
+  top: var(--_pad, 2px);
+  left: var(--_pad, 2px);
+  width: var(--_hs, 18px);
+  height: var(--_hs, 18px);
+}
+.ant-switch.ant-switch-checked:not(.ant-switch-small) .ant-switch-handle {
+  left: calc(100% - var(--_hs, 18px) - var(--_pad, 2px));
+}
+.ant-switch.ant-switch .ant-switch-handle::before {
+  border-radius: 100px;
+  background-color: var(--aibox-color-bg-primary);
+  box-shadow: var(--_shadow, 0 calc(2px * var(--_k, 1)) calc(4px * var(--_k, 1)) 0 var(--aibox-switch-handle-shadow-color));
+}
+/* Text children (nzCheckedChildren / nzUnCheckedChildren) use the icon colour and sit beside the handle */
+.ant-switch.ant-switch:not(.ant-switch-small) .ant-switch-inner {
+  margin: 0 calc(var(--_pad, 2px) + 5px) 0 calc(var(--_hs, 18px) + var(--_pad, 2px) + 5px);
+  color: var(--_icon);
+  font-size: var(--_ifs, 12px);
+}
+.ant-switch.ant-switch-checked:not(.ant-switch-small) .ant-switch-inner {
+  margin: 0 calc(var(--_hs, 18px) + var(--_pad, 2px) + 5px) 0 calc(var(--_pad, 2px) + 5px);
+}
+.ant-switch.ant-switch-small .ant-switch-inner {
+  color: var(--_icon);
+}
+.ant-switch.ant-switch:focus,
+.ant-switch.ant-switch-checked:focus,
+.ant-switch.ant-switch:focus:hover {
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-active-outer);
+}
+/* Opt-in check / cross icons (Figma shows them inside the track). The button centres its content vertically. */
+.aibox-switch-icons .ant-switch:not(.ant-switch-small) .ant-switch-inner:empty::before {
+  content: ' ';
+  display: block;
+  width: var(--_ifs, 12px);
+  height: var(--_ifs, 12px);
+  background-color: var(--_icon);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 3.5 12.5 12.5M12.5 3.5 3.5 12.5' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 3.5 12.5 12.5M12.5 3.5 3.5 12.5' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.aibox-switch-icons .ant-switch-checked:not(.ant-switch-small) .ant-switch-inner:empty::before {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5 6.2 12 13.5 4.2' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5 6.2 12 13.5 4.2' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }

@@ -387,6 +387,8 @@
   --aibox-color-global-light-blue-1900: #011019; /** Light blue color ramp. Info state primitive. */
   --aibox-size-control-height-lg: 48px; /** Not a Figma variable. Measured from textfield Size=large box height (node 1:7053). */
   --aibox-size-focus-ring: 2px; /** Not a Figma variable. Measured from textfield focused state outer ring (node 1:7069). */
+  --aibox-switch-handle-shadow-color: rgba(0, 35, 11, 0.2); /** Figma variable Component/Switch/handleShadow (0 2px 4px). Not in the variable export; copied from the design context. */
+  --aibox-switch-ios-knob-shadow: 0px 0px 0px 0px #0000000a, 0px 3px 8px 0px #00000026, 0px 3px 1px 0px #0000000f; /** Figma switch (node 1:5516) Knob: 0 0 0 0 .04, 0 3px 8px .15, 0 3px 1px .06 (alpha rounded to 8-bit). */
   --aibox-font-family-heading-and-body: 'IBM Plex Sans Thai'; /** Primary typeface for all headings and body text throughout the system. */
   --aibox-font-size-header-h-over: 32px; /** Oversized heading — for special cases requiring text larger than H1. */
   --aibox-font-size-header-h1: 28px; /** Primary page heading — top-level page titles. */
