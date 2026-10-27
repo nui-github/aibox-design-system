@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.5.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.5.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.6.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.6.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Supports ng-zorro-antd 18.x.
@@ -81,6 +81,25 @@ Use `nz-select` as usual.
 ```
 **Set `[nzOptionHeightPx]="50"`**: Figma option rows are 50px high and ng-zorro's virtual scroll otherwise still assumes 32px rows.
 Not covered: multiple / tags mode, option groups, label size, hover on the arrow. The arrow and clear icons keep ng-zorro's glyphs (only size and colour change; Figma uses Font Awesome). The check on the selected option and the smile in the "not found" row are masks; the "not found" text is centred in the space beside the icon. An opened select highlights its selected option right away (ng-zorro marks it active).
+
+### Switch (Figma nodes `1286:2284` switch-text-and-icon, `1:5516` switch)
+Use `nz-switch` as usual; the colours and sizes are restyled.
+
+| Figma | ng-zorro |
+|---|---|
+| switch-text-and-icon, Size = Desktop (44x22) | `<nz-switch>` (ng-zorro's default size is the same) |
+| switch-text-and-icon, Size = Mobile (50x25) | `class="aibox-switch-mobile"` on `nz-switch` |
+| switch (51x31, iOS style) | `class="aibox-switch-ios"` on `nz-switch` |
+| check / cross icon inside the track | `class="aibox-switch-icons"` on `nz-switch` |
+| Disable = yes | `nzDisabled` |
+
+```html
+<nz-switch [(ngModel)]="on"></nz-switch>
+<nz-switch class="aibox-switch-icons" [(ngModel)]="on"></nz-switch>
+<nz-switch class="aibox-switch-icons aibox-switch-mobile" nzDisabled></nz-switch>
+<nz-switch class="aibox-switch-ios" [(ngModel)]="on"></nz-switch>
+```
+Colours: on = `text/main` (iOS: `state/form/active`), off = `text/disable` (iOS: `bg/quaternary`), disabled = `bg/disable` with `text/disable` icons. The icons only appear when no `nzCheckedChildren` / `nzUnCheckedChildren` are given. Not covered: `nzSize="small"` (colours only), `nzLoading`, `switch-with-text` (a segmented control, not a switch).
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.

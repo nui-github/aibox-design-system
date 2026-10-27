@@ -1,7 +1,47 @@
 {
   "size": {
     "$type": "dimension",
-    "control-height-lg": { "$value": "48px", "$description": "Not a Figma variable. Measured from textfield Size=large box height (node 1:7053)." },
-    "focus-ring": { "$value": "2px", "$description": "Not a Figma variable. Measured from textfield focused state outer ring (node 1:7069)." }
+    "control-height-lg": {
+      "$value": "48px",
+      "$description": "Not a Figma variable. Measured from textfield Size=large box height (node 1:7053)."
+    },
+    "focus-ring": {
+      "$value": "2px",
+      "$description": "Not a Figma variable. Measured from textfield focused state outer ring (node 1:7069)."
+    }
+  },
+  "switch": {
+    "handle-shadow-color": {
+      "$type": "color",
+      "$value": "#00230b33",
+      "$description": "Figma variable Component/Switch/handleShadow (0 2px 4px). Not in the variable export; copied from the design context."
+    },
+    "ios-knob-shadow": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#0000000a",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px"
+        },
+        {
+          "color": "#00000026",
+          "offsetX": "0px",
+          "offsetY": "3px",
+          "blur": "8px",
+          "spread": "0px"
+        },
+        {
+          "color": "#0000000f",
+          "offsetX": "0px",
+          "offsetY": "3px",
+          "blur": "1px",
+          "spread": "0px"
+        }
+      ],
+      "$description": "Figma switch (node 1:5516) Knob: 0 0 0 0 .04, 0 3px 8px .15, 0 3px 1px .06 (alpha rounded to 8-bit)."
+    }
   }
 }
