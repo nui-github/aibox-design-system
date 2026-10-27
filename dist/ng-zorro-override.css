@@ -1,4 +1,4 @@
-/* aibox-design-system v0.7.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.8.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -870,4 +870,59 @@
 .ant-tag.aibox-tag-solid a,
 .ant-tag.aibox-tag-solid a:hover {
   color: var(--_fg);
+}
+
+/* Chip / filter. Source: Figma "i-BOX Design System" > Chip & Tag page (3579:12023), chip/filter node 1:10199.
+   Mapping: <nz-tag nzMode="checkable" [nzChecked]> (selected = nzChecked).
+     default size (Figma small, 32px, 14px text); classes aibox-tag-xs (2xsmall 24px), aibox-tag-md (medium 42px, 16px), aibox-tag-lg (large 42px, 18px)
+     class aibox-tag-disabled -> Figma disabled (ng-zorro has no disabled tag; block clicks in your own handler)
+   Not covered: leading icon colour/layout (Figma shows a 12px heart on selected chips), colours other than blue (Figma has a red selected chip). */
+.ant-tag.ant-tag-checkable {
+  --_bg: var(--aibox-color-bg-tertiary);
+  --_fg: var(--aibox-color-text-main);
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+  border-radius: var(--aibox-radius-2);
+  user-select: none;
+}
+.ant-tag.ant-tag-checkable.ant-tag-checkable-checked {
+  --_bg: var(--aibox-color-state-main-ma-1-default);
+  --_fg: var(--aibox-color-text-white-primary);
+}
+.ant-tag.ant-tag-checkable:not(.ant-tag-checkable-checked):hover {
+  --_bg: var(--aibox-color-state-main-ma-1-default);
+  --_fg: var(--aibox-color-text-white-primary);
+}
+.ant-tag.ant-tag-checkable.ant-tag-checkable:active:not(.aibox-tag-disabled) {
+  --_bg: var(--aibox-color-state-main-ma-1-press);
+  --_fg: var(--aibox-color-text-white-primary);
+}
+.ant-tag.ant-tag-checkable.aibox-tag-disabled,
+.ant-tag.ant-tag-checkable.aibox-tag-disabled:hover,
+.ant-tag.ant-tag-checkable.aibox-tag-disabled:active {
+  --_bg: var(--aibox-color-bg-disable);
+  --_fg: var(--aibox-color-text-disable);
+  cursor: not-allowed;
+}
+.ant-tag.ant-tag-checkable.aibox-tag-xs {
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+}
+.ant-tag.ant-tag-checkable.aibox-tag-md {
+  font-size: var(--aibox-typography-body-body-lg-bold-font-size);
+  line-height: var(--aibox-typography-body-body-lg-bold-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-bold-letter-spacing);
+}
+.ant-tag.ant-tag-checkable.aibox-tag-lg {
+  font-size: var(--aibox-typography-title-title-lg-font-size);
+  line-height: var(--aibox-typography-title-title-lg-line-height);
+  letter-spacing: var(--aibox-typography-title-title-lg-letter-spacing);
+}
+/* ant sets colour / background directly on checkable hover, active and checked; re-apply our state variables with equal or higher specificity. */
+.ant-tag.ant-tag-checkable,
+.ant-tag.ant-tag-checkable:not(.ant-tag-checkable-checked):hover,
+.ant-tag.ant-tag-checkable.ant-tag-checkable:active,
+.ant-tag.ant-tag-checkable.ant-tag-checkable-checked,
+.ant-tag.ant-tag-checkable.aibox-tag-disabled:hover,
+.ant-tag.ant-tag-checkable.aibox-tag-disabled:active {
+  color: var(--_fg);
+  background-color: var(--_bg);
 }
