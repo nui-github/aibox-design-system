@@ -37,7 +37,7 @@ const IMPORTS = `import { NzButtonModule } from 'ng-zorro-antd/button';
       <button nz-button nzType="text" class="aibox-btn-subsidiary">Texted</button>
     </app-demo>
 
-    <app-demo title="Sizes" description="xsmall 28 · small 32 · medium 40 (default) · large 48" [code]="sizes" [ts]="imports">
+    <app-demo title="Sizes" description="xsmall 24 · small 32 · medium 40 (default) · large 48" [code]="sizes" [ts]="imports">
       <button nz-button nzType="primary" class="aibox-btn-xs">X-small</button>
       <button nz-button nzType="primary" nzSize="small">Small</button>
       <button nz-button nzType="primary">Medium</button>
@@ -48,6 +48,14 @@ const IMPORTS = `import { NzButtonModule } from 'ng-zorro-antd/button';
       <button nz-button disabled>Outlined</button>
       <button nz-button nzType="primary" disabled>Contained</button>
       <button nz-button nzType="text" disabled>Texted</button>
+    </app-demo>
+
+    <app-demo title="As a link" description="&lt;a nz-button&gt; ได้ความสูงและตำแหน่งตัวอักษรเท่าปุ่ม (ng-zorro ตั้ง padding-top ของ a.ant-btn เป็น .01px ซึ่ง override คืนค่าให้)" [code]="anchor" [ts]="imports">
+      <a nz-button nzType="primary" href="#">Contained</a>
+      <a nz-button href="#">Outlined</a>
+      <a nz-button nzType="primary" nzSize="small" href="#">Small</a>
+      <a nz-button nzType="primary" nzSize="large" href="#">Large</a>
+      <a nz-button nzType="primary" class="aibox-btn-xs" href="#">X-small</a>
     </app-demo>
 
     <app-demo title="With icon" [code]="icon" [ts]="imports">
@@ -77,6 +85,11 @@ export class ButtonPage {
   protected readonly disabled = `<button nz-button disabled>Outlined</button>
 <button nz-button nzType="primary" disabled>Contained</button>
 <button nz-button nzType="text" disabled>Texted</button>`;
+  protected readonly anchor = `<a nz-button nzType="primary" href="#">Contained</a>
+<a nz-button href="#">Outlined</a>
+<a nz-button nzType="primary" nzSize="small" href="#">Small</a>
+<a nz-button nzType="primary" nzSize="large" href="#">Large</a>
+<a nz-button nzType="primary" class="aibox-btn-xs" href="#">X-small</a>`;
   protected readonly icon = `<button nz-button nzType="primary"><span nz-icon nzType="check"></span>Confirm</button>
 <button nz-button><span nz-icon nzType="copy"></span>Copy</button>`;
 }

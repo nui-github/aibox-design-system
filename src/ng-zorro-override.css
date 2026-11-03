@@ -242,6 +242,20 @@
   letter-spacing: var(--aibox-typography-button-xs-letter-spacing);
   border-radius: var(--aibox-radius-1);
 }
+/* ng-zorro sets "a.ant-btn { padding-top: .01px !important }" (for <a nz-button>), which drops the top padding and
+   lifts the label. Restore it per size; same specificity-plus-!important trick, declared small -> xs so xs wins. */
+a.ant-btn.ant-btn {
+  padding-top: var(--aibox-spacing-2) !important;
+}
+a.ant-btn.ant-btn-lg {
+  padding-top: var(--aibox-spacing-3) !important;
+}
+a.ant-btn.ant-btn-sm {
+  padding-top: var(--aibox-spacing-2) !important;
+}
+a.ant-btn.aibox-btn-xs {
+  padding-top: var(--aibox-spacing-1) !important;
+}
 
 /* ---------------------------------------------------------------------------
    Checkbox and Radio. Source: Figma "i-BOX Design System" > Selection >
