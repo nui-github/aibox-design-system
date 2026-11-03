@@ -1,0 +1,64 @@
+/* Docs site chrome. Colours, spacing and type come from the design-system tokens. */
+:root {
+  --doc-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--aibox-color-bg-secondary);
+  color: var(--aibox-color-text-primary);
+  font-family: var(--aibox-font-family-heading-and-body), sans-serif;
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+}
+* {
+  box-sizing: border-box;
+}
+a {
+  color: var(--aibox-color-text-main);
+}
+code,
+.doc-code-inline {
+  font-family: var(--doc-mono);
+  font-size: 0.9em;
+  background: var(--aibox-color-bg-tertiary);
+  color: var(--aibox-color-text-main);
+  padding: 1px 6px;
+  border-radius: var(--aibox-radius-2);
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--aibox-font-family-heading-and-body), sans-serif;
+  color: var(--aibox-color-text-primary);
+}
+h1 {
+  font-size: var(--aibox-typography-header-h1-font-size);
+  line-height: var(--aibox-typography-header-h1-line-height);
+  font-weight: 600;
+}
+h2 {
+  font-size: var(--aibox-typography-header-h2-font-size);
+  line-height: var(--aibox-typography-header-h2-line-height);
+  font-weight: 600;
+}
+h3 {
+  font-size: var(--aibox-typography-title-title-lg-font-size);
+  line-height: var(--aibox-typography-title-title-lg-line-height);
+  font-weight: 600;
+}
+p {
+  margin: 0;
+}
+
+/* Menu: selected item in design-system blue */
+.side .ant-menu-item { color: var(--aibox-color-text-primary); }
+.side .ant-menu-inline .ant-menu-item-selected { background: var(--aibox-color-bg-tertiary); color: var(--aibox-color-text-main); font-weight: 500; }
+.side .ant-menu-inline .ant-menu-item-selected::after { border-right-color: var(--aibox-color-bg-main); }

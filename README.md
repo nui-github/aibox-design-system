@@ -10,7 +10,10 @@ Load **after** ng-zorro-antd's own styles, and pin an exact version:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.8.0/dist/ng-zorro-override.css">
 ```
 
-Never use `@main` (cached ~12h, can change under you). Supports ng-zorro-antd 18.x.
+Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
+
+## Docs site
+Live previews, install guide and per-component code/CSS (copyable) live in [`site/`](site) (Angular + ng-zorro-antd, deployed on Vercel). See [site/README.md](site/README.md).
 
 ## Components
 

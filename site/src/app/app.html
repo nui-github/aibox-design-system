@@ -1,0 +1,37 @@
+<nz-layout class="shell">
+  <nz-header class="top">
+    <button class="burger" nz-button nzType="text" type="button" aria-label="Toggle navigation" (click)="collapsed.set(!collapsed())">
+      <span nz-icon nzType="menu"></span>
+    </button>
+    <a routerLink="/getting-started" class="brand">Ai-BOX <span>Design System</span></a>
+    <div class="versions">
+      <nz-tag nzColor="processing" class="aibox-tag-square">Design system v{{ meta.dsVersion }}</nz-tag>
+      <nz-tag class="aibox-tag-square">ng-zorro-antd {{ meta.nzVersion }}</nz-tag>
+      <nz-tag class="aibox-tag-square">Angular {{ meta.angularVersion }}</nz-tag>
+    </div>
+    <div class="links">
+      <a nz-button nzType="text" [href]="releaseUrl" target="_blank" rel="noopener">Release notes</a>
+      <a nz-button [href]="repoUrl" target="_blank" rel="noopener"><span nz-icon nzType="github"></span> GitHub</a>
+    </div>
+  </nz-header>
+  <nz-layout>
+    <nz-sider class="side" [class.open]="!collapsed()" nzWidth="248px" [nzTrigger]="null">
+      <ul nz-menu nzMode="inline" (click)="collapsed.set(true)">
+        <li nz-menu-group nzTitle="Overview">
+          <ul>
+            <li nz-menu-item nzMatchRouter routerLink="/getting-started">Getting started</li>
+            <li nz-menu-item nzMatchRouter routerLink="/tokens">Tokens</li>
+          </ul>
+        </li>
+        <li nz-menu-group nzTitle="Components">
+          <ul>
+            @for (c of components; track c.path) {
+              <li nz-menu-item nzMatchRouter [routerLink]="'/' + c.path">{{ c.title }}</li>
+            }
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-content class="content"><div class="page"><router-outlet /></div></nz-content>
+  </nz-layout>
+</nz-layout>
