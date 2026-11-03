@@ -127,7 +127,7 @@ export class GettingStarted {
 <nz-tag nzColor="success">Approved</nz-tag>`;
   protected readonly classes: string[][] = [
     ['aibox-btn-subsidiary', 'nz-button', 'ปุ่ม subsidiary (ทุก type)'],
-    ['aibox-btn-xs', 'nz-button', 'ขนาด xsmall (28px)'],
+    ['aibox-btn-xs', 'nz-button', 'ขนาด xsmall (24px)'],
     ['aibox-sm / aibox-lg', 'nz-checkbox, nz-radio (label)', 'ขนาด small / large'],
     ['aibox-error', 'nz-checkbox, nz-radio (label)', 'สถานะ error'],
     ['aibox-multiple', 'nz-checkbox ที่ checked', 'กล่องน้ำเงินมีขีดกลาง'],
