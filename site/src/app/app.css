@@ -1,4 +1,4 @@
-.shell { min-height: 100vh; background: var(--aibox-color-bg-secondary); }
+.shell { min-height: 100vh; background: var(--aibox-color-bg-primary); }
 .top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: var(--aibox-spacing-4); height: 56px; line-height: normal; padding: 0 var(--aibox-spacing-4); background: var(--aibox-color-bg-primary); border-bottom: 1px solid var(--aibox-color-border-primary); }
 .brand { font-weight: 600; font-size: var(--aibox-typography-title-title-lg-font-size); text-decoration: none; color: var(--aibox-color-text-main); white-space: nowrap; }
 .brand span { color: var(--aibox-color-text-primary); font-weight: 400; }
@@ -6,9 +6,9 @@
 .versions nz-tag { margin-right: var(--aibox-spacing-2); }
 .links { margin-left: auto; display: flex; align-items: center; gap: var(--aibox-spacing-2); }
 .burger { display: none; }
-.side { background: var(--aibox-color-bg-primary); border-right: 1px solid var(--aibox-color-border-primary); position: sticky; top: 56px; height: calc(100vh - 56px); overflow: auto; }
+.side { background: var(--aibox-color-bg-primary); border-right: 1px solid var(--aibox-color-global-gray-300); position: sticky; top: 56px; height: calc(100vh - 56px); overflow: auto; }
 .side ul[nz-menu] { border-inline-end: 0; padding: var(--aibox-spacing-2); }
-.content { padding: var(--aibox-spacing-6) var(--aibox-spacing-6) var(--aibox-spacing-10); min-width: 0; }
+.content { background: var(--aibox-color-bg-primary); padding: var(--aibox-spacing-6) var(--aibox-spacing-6) var(--aibox-spacing-10); min-width: 0; }
 .page { max-width: 960px; margin: 0 auto; }
 @media (max-width: 900px) {
   .versions { display: none; }
