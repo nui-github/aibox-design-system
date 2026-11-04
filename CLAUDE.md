@@ -18,6 +18,14 @@ One PR does all of this:
 - The user's own computer (Claude Code in `~/Desktop/aibox-design-system`): look and feel of `site/` (layout, styles, copy).
 Everything moves through GitHub PRs. Run `git fetch` / `git pull` on `main` before starting, never edit the same files in both places at once, and push before stopping (a cloud container can expire).
 
+## Hand-off message for the site session (every time)
+The user keeps a separate session on their own computer for the look and feel of `site/`; it cannot see this conversation. Whenever a PR is opened or merged here, end the reply with a ready-to-paste message for that session, in Thai, in a code block, containing:
+- first line: run `git fetch origin main` and merge `main` into the current branch (or `git checkout main && git pull`) before editing anything; commit or stash local changes first;
+- what changed in `main`: PR link and number, design system version, and the `site/` files touched (new or edited pages, `app.routes.ts`, `nav.ts`, `getting-started.ts`, `gen-data.mjs`);
+- any rule or behaviour the site session must keep (for example a demo or a corrected fact that must not be reverted);
+- reminder: it only edits look and feel of `site/`, never `src/`, `dist/`, `tokens/`, `release-notes/` or `package.json`; push through a PR.
+Also give the message when the user asks for it. Keep it short and self-contained.
+
 ## Verification notes
 - Override was developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the site renders with the latest version and the same checks pass there. Say which version a claim was checked on.
 - jsDelivr, Figma's asset host and Google Fonts are not reachable from the cloud sandbox; real fonts and CDN links must be checked by the user.
