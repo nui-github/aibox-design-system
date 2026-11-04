@@ -15,6 +15,12 @@
   .burger { display: inline-flex; }
   .side { position: fixed; z-index: 30; top: 56px; left: 0; transform: translateX(-100%); transition: transform 0.2s; box-shadow: var(--aibox-shadow-base-raise-modal); }
   .side.open { transform: none; }
+  /* The off-canvas drawer's shadow would otherwise bleed in along the left edge while it is closed. */
+  .side:not(.open) { box-shadow: none; }
   .content { padding: var(--aibox-spacing-4); }
   .links a:first-child { display: none; }
+}
+/* At phone width the brand, burger and GitHub button together are wider than the viewport; keep only "Ai-BOX". */
+@media (max-width: 480px) {
+  .brand span { display: none; }
 }
