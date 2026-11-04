@@ -26,6 +26,14 @@ The user keeps a separate session on their own computer for the look and feel of
 - reminder: it only edits look and feel of `site/`, never `src/`, `dist/`, `tokens/`, `release-notes/` or `package.json`; push through a PR.
 Also give the message when the user asks for it. Keep it short and self-contained.
 
+## Hand-off message for the override session (every time)
+The session on the user's own computer (look and feel of `site/`) cannot be seen by the cloud/override session. Whenever it commits, pushes or opens a PR, it ends the reply with a ready-to-paste message for the override session, in Thai, in a code block, containing:
+- first line: run `git fetch origin main` and merge `main` into the current branch (or `git checkout main && git pull`) before editing anything; read `CLAUDE.md` again;
+- what the site session did: PR link and number (and whether it is merged), branch, and the `site/` files touched;
+- anything the override session must do or keep because of it (for example a rule in `src/ng-zorro-override.css` that a site change depends on, or a bug found in the override while working on `site/`, with the measured cause and the ng-zorro-antd version it was checked on);
+- reminder: the site session only edits look and feel of `site/`, never `src/`, `dist/`, `tokens/`, `release-notes/` or `package.json`; override work goes through its own PR.
+Also give the message when the user asks for it. Keep it short and self-contained.
+
 ## Verification notes
 - Override was developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the site renders with the latest version and the same checks pass there. Say which version a claim was checked on.
 - jsDelivr, Figma's asset host and Google Fonts are not reachable from the cloud sandbox; real fonts and CDN links must be checked by the user.
