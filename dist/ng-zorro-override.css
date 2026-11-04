@@ -1,4 +1,4 @@
-/* aibox-design-system v0.10.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.10.1 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1117,6 +1117,34 @@ a.ant-btn.aibox-btn-xs {
   padding: 0;
   font-size: 12px;
   color: var(--aibox-color-text-icon-default);
+}
+/* The "..." jump buttons: ng-zorro lays the dots out absolutely inside a container that shrinks to the 12px hover icon, which pushed
+   them off centre. Give the container the whole button and centre both the dots and the hover arrow. */
+.ant-pagination .ant-pagination-jump-prev .ant-pagination-item-container,
+.ant-pagination .ant-pagination-jump-next .ant-pagination-item-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.ant-pagination .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis,
+.ant-pagination .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: var(--aibox-color-text-icon-default);
+  letter-spacing: 2px;
+  text-indent: 2px;
+}
+/* Hover arrows (prev / next and the jump buttons) use the primary colour */
+.ant-pagination .ant-pagination-prev:not(.ant-pagination-disabled):hover .ant-pagination-item-link,
+.ant-pagination .ant-pagination-next:not(.ant-pagination-disabled):hover .ant-pagination-item-link,
+.ant-pagination .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon,
+.ant-pagination .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
+  color: var(--aibox-color-text-main);
 }
 .ant-pagination .ant-pagination-item:hover:not(.ant-pagination-item-active),
 .ant-pagination .ant-pagination-prev:not(.ant-pagination-disabled):hover,
