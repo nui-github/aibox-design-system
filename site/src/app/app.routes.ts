@@ -12,5 +12,6 @@ export const routes: Routes = [
   { path: 'tag', title: 'Tag · Ai-BOX Design System', loadComponent: () => import('./pages/tag').then((m) => m.TagPage) },
   { path: 'chip-filter', title: 'Chip (filter) · Ai-BOX Design System', loadComponent: () => import('./pages/chip-filter').then((m) => m.ChipFilterPage) },
   { path: 'badge', title: 'Badge · Ai-BOX Design System', loadComponent: () => import('./pages/badge').then((m) => m.BadgePage) },
+  { path: 'pagination', title: 'Pagination · Ai-BOX Design System', loadComponent: () => import('./pages/pagination').then((m) => m.PaginationPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];

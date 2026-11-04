@@ -1,4 +1,4 @@
-/* aibox-design-system v0.9.1 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.10.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -615,7 +615,11 @@ a.ant-btn.aibox-btn-xs {
   color: var(--aibox-color-text-icon-default);
 }
 
-/* Dropdown panel */
+/* Dropdown panel. ng-zorro sizes the overlay pane to the trigger; with 16px side padding and the check icon a narrow trigger (the
+   pagination size changer, ~60px) truncated every option, so a select dropdown is never narrower than 112px. */
+.cdk-overlay-pane:has(> .ant-select-dropdown) {
+  min-width: 112px;
+}
 .ant-select-dropdown {
   padding: var(--aibox-spacing-4) 0;
   border-radius: var(--aibox-radius-2);
@@ -1033,4 +1037,150 @@ a.ant-btn.aibox-btn-xs {
 }
 .aibox-badge-icon.aibox-badge-lg .ant-scroll-number-custom-component {
   --_s: 26px;
+}
+
+/* Pagination. Source: Figma "i-BOX Design System" > Pagination page (1764:1639), pagination node 3451:10970.
+   Mapping (nz-pagination):
+     total text on the left            [nzShowTotal] template (<li class="ant-pagination-total-text">)
+     page buttons 32x32, gap 4         default; active page = blue, prev / next at the ends = grey (disabled)
+     "show 10 per page" text button    nzShowSizeChanger (the size changer select becomes a borderless text button)
+     nzSize="small" (mini)             styled like the default size (Figma has one size)
+   Hover on page buttons is not in Figma: it reuses the white-subsidiary / standard button hover tokens.
+   Not covered: the page-jump dropdown (pagination-dropdown-selection / -list), quick jumper, simple mode, the "แสดง:" prefix.
+   The size changer is a nz-select, so this section builds on the Select section. Its dropdown is at least 112px wide (see Select);
+   keep the locale's items_per_page short ("/ หน้า"), a long label such as "รายการ/หน้า" is still truncated.
+   Layout: total text left, buttons and size changer right (nzAlign="start" is ng-zorro's default; use nzAlign="end" without a total). */
+.ant-pagination {
+  display: flex;
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+  color: var(--aibox-color-text-secondary);
+}
+.ant-pagination > ul {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--aibox-spacing-1);
+  margin: 0;
+  padding: 0;
+}
+.ant-pagination .ant-pagination-total-text {
+  height: auto;
+  margin: 0 auto 0 0;
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+}
+.ant-pagination .ant-pagination-item,
+.ant-pagination .ant-pagination-prev,
+.ant-pagination .ant-pagination-next,
+.ant-pagination .ant-pagination-jump-prev,
+.ant-pagination .ant-pagination-jump-next {
+  --_bg: var(--aibox-color-button-contained-white-subsidiary-bg-default);
+  --_fg: var(--aibox-color-button-contained-subsidiary-text-default);
+  box-sizing: border-box;
+  display: inline-flex;
+  min-width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  line-height: 16px;
+  border: 0;
+  border-radius: var(--aibox-radius-2);
+  background: var(--_bg);
+  color: var(--_fg);
+  box-shadow: var(--aibox-pagination-item-shadow);
+  font-size: var(--aibox-typography-button-sm-font-size);
+  font-weight: var(--aibox-typography-button-sm-font-weight);
+  letter-spacing: var(--aibox-typography-button-sm-letter-spacing);
+}
+.ant-pagination .ant-pagination-item > a,
+.ant-pagination .ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination .ant-pagination-next .ant-pagination-item-link,
+.ant-pagination .ant-pagination-jump-prev .ant-pagination-item-link,
+.ant-pagination .ant-pagination-jump-next .ant-pagination-item-link {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 0 var(--aibox-spacing-2);
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  line-height: inherit;
+}
+.ant-pagination .ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination .ant-pagination-next .ant-pagination-item-link {
+  padding: 0;
+  font-size: 12px;
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-pagination .ant-pagination-item:hover:not(.ant-pagination-item-active),
+.ant-pagination .ant-pagination-prev:not(.ant-pagination-disabled):hover,
+.ant-pagination .ant-pagination-next:not(.ant-pagination-disabled):hover {
+  --_bg: var(--aibox-color-button-contained-white-subsidiary-bg-hover);
+  --_fg: var(--aibox-color-button-contained-white-subsidiary-text-hover);
+}
+.ant-pagination .ant-pagination-item.ant-pagination-item-active {
+  --_bg: var(--aibox-color-button-contained-standard-bg-default);
+  --_fg: var(--aibox-color-button-contained-standard-text-default);
+}
+.ant-pagination .ant-pagination-item.ant-pagination-item-active:hover {
+  --_bg: var(--aibox-color-button-contained-standard-bg-hover);
+}
+.ant-pagination .ant-pagination-prev.ant-pagination-disabled,
+.ant-pagination .ant-pagination-next.ant-pagination-disabled,
+.ant-pagination.ant-pagination-disabled .ant-pagination-item,
+.ant-pagination.ant-pagination-disabled .ant-pagination-prev,
+.ant-pagination.ant-pagination-disabled .ant-pagination-next {
+  --_bg: var(--aibox-color-button-base-bg-disable);
+  --_fg: var(--aibox-color-button-base-text-disable);
+  background: var(--_bg);
+  color: var(--_fg);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.ant-pagination.ant-pagination-disabled .ant-pagination-item > a,
+.ant-pagination.ant-pagination-disabled .ant-pagination-item-link {
+  cursor: not-allowed;
+}
+.ant-pagination .ant-pagination-options {
+  margin: 0 0 0 var(--aibox-spacing-3);
+  vertical-align: baseline;
+}
+/* Size changer: Figma shows a borderless text button ("10" 12/16 medium + a 10px chevron) */
+.ant-pagination .ant-pagination-options-size-changer.ant-select {
+  --_ring: transparent;
+  --_outer: transparent;
+  --_bg: transparent;
+  --_fg: var(--aibox-color-button-texted-subsidiary-text-default);
+  --_icon: var(--aibox-color-text-icon-default);
+  --_h: 24px;
+  --_px: 0px;
+  --_fs: var(--aibox-typography-button-xs-font-size);
+  --_lh: var(--aibox-typography-button-xs-line-height);
+  --_ls: var(--aibox-typography-button-xs-letter-spacing);
+  width: auto;
+  font-size: var(--_fs);
+  font-weight: var(--aibox-typography-button-xs-font-weight);
+}
+/* repeated class: ant and the Select block above size the item at higher specificity */
+.ant-pagination .ant-pagination-options-size-changer.ant-select.ant-select.ant-select.ant-select .ant-select-selection-item {
+  padding-inline-end: 14px;
+  font-size: var(--_fs);
+  font-weight: var(--aibox-typography-button-xs-font-weight);
+}
+.ant-pagination .ant-pagination-options-size-changer.ant-select .ant-select-arrow {
+  right: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  font-size: 10px;
+}
+.ant-pagination .ant-pagination-options-size-changer.ant-select .ant-select-arrow .anticon,
+.ant-pagination .ant-pagination-options-size-changer.ant-select .ant-select-arrow svg {
+  font-size: 10px;
 }
