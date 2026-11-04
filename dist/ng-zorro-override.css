@@ -1,4 +1,4 @@
-/* aibox-design-system v0.8.1 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.9.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -939,4 +939,95 @@ a.ant-btn.aibox-btn-xs {
 .ant-tag.ant-tag-checkable.aibox-tag-disabled:active {
   color: var(--_fg);
   background-color: var(--_bg);
+}
+
+/* Badge. Source: Figma "i-BOX Design System" > Badge page (1175:550), Badge / Basic node 1175:641.
+   Mapping (nz-badge):
+     Number Small / Medium / Large   nzSize="small" / (default) / class "aibox-badge-lg" on nz-badge  (18 / 22 / 26px)
+     Dot Small / Medium / Large      [nzDot] with the same three sizes                                (6 / 10 / 12px)
+     dot colour                      red (error-100) by default, nzColor="green" = green (success-200)
+     Icon Small / Medium / Large     class "aibox-badge-icon" (+ "aibox-badge-sm" / "aibox-badge-lg") on nz-badge, [nzCount] = a template whose
+                                     element has class "ant-scroll-number-custom-component" (ng-zorro's own pattern) and holds an icon (blue circle)
+   Not covered: status badges (nzStatus / nzText), ribbons, other preset colours, the count animation is kept as is.
+   The 1px white ring is a border inside the box (Figma), not ng-zorro's outer box-shadow. */
+.ant-badge-count {
+  --_s: 22px;
+  --_fs: var(--aibox-font-size-additional-xs);
+  box-sizing: border-box;
+  min-width: var(--_s);
+  height: var(--_s);
+  padding: 0;
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--_fs);
+  font-weight: 400;
+  line-height: calc(var(--_s) - 2px);
+  color: var(--aibox-color-text-white-primary);
+  background: var(--aibox-color-text-status-error-100);
+  border: 1px solid var(--aibox-color-global-white);
+  border-radius: var(--aibox-radius-20);
+  box-shadow: none;
+}
+.ant-badge-count.ant-badge-count-sm {
+  --_s: 18px;
+  --_fs: var(--aibox-font-size-additional-2xs);
+}
+.aibox-badge-lg .ant-badge-count {
+  --_s: 26px;
+  --_fs: var(--aibox-font-size-additional-sm);
+}
+/* three or more characters ("99+") need room; one or two fit the circle like Figma's "21" */
+.ant-badge-count:has(> :nth-child(3)) {
+  padding: 0 var(--aibox-spacing-1);
+}
+.ant-badge-count .ant-scroll-number-only,
+.ant-badge-count .ant-scroll-number-only > p.ant-scroll-number-only-unit {
+  height: calc(var(--_s) - 2px);
+}
+.ant-badge-dot {
+  --_d: 10px;
+  width: var(--_d);
+  min-width: var(--_d);
+  height: var(--_d);
+  background: var(--aibox-color-text-status-error-100);
+  border-radius: var(--aibox-radius-20);
+  box-shadow: 0 0 0 1px var(--aibox-color-global-white);
+}
+.ant-badge-dot.ant-badge-count-sm {
+  --_d: 6px;
+}
+.aibox-badge-lg .ant-badge-dot {
+  --_d: 12px;
+}
+.ant-badge-count.ant-badge-status-green,
+.ant-badge-dot.ant-badge-status-green {
+  background: var(--aibox-color-bg-status-success-200);
+}
+/* ng-zorro renders a template count as is, so the size classes also work as host classes (aibox-badge-sm = nzSize="small") */
+.aibox-badge-sm .ant-badge-count {
+  --_s: 18px;
+  --_fs: var(--aibox-font-size-additional-2xs);
+}
+.aibox-badge-sm .ant-badge-dot {
+  --_d: 6px;
+}
+.aibox-badge-icon .ant-scroll-number-custom-component {
+  --_s: 22px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_s);
+  height: var(--_s);
+  font-size: var(--aibox-font-size-additional-xs);
+  line-height: 1;
+  color: var(--aibox-color-text-white-primary);
+  background: var(--aibox-color-global-blue-600);
+  border: 1px solid var(--aibox-color-global-white);
+  border-radius: var(--aibox-radius-20);
+}
+.aibox-badge-icon.aibox-badge-sm .ant-scroll-number-custom-component {
+  --_s: 18px;
+}
+.aibox-badge-icon.aibox-badge-lg .ant-scroll-number-custom-component {
+  --_s: 26px;
 }
