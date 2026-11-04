@@ -549,6 +549,11 @@ a.ant-btn.aibox-btn-xs {
   box-shadow: inset 0 0 0 1px var(--_ring), 0 0 0 var(--aibox-size-focus-ring) var(--_outer);
   align-items: center;
 }
+/* The host must be as tall as the selector: ant sizes the host (32 / 40 / 24) and positions the arrow and clear icon
+   at top:50% of it, so a taller selector left the icons 4px below the middle. */
+.ant-select.ant-select {
+  height: var(--_h);
+}
 .ant-select {
   font-family: var(--aibox-font-family-heading-and-body);
   font-size: var(--_fs);
@@ -612,8 +617,6 @@ a.ant-btn.aibox-btn-xs {
 /* Dropdown panel */
 .ant-select-dropdown {
   padding: var(--aibox-spacing-4) 0;
-  margin-top: 2px;
-  margin-bottom: 2px;
   border-radius: var(--aibox-radius-2);
   background-color: var(--aibox-color-bg-primary);
   box-shadow: var(--aibox-shadow-base-raise-modal);
