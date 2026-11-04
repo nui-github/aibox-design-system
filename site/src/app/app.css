@@ -1,7 +1,7 @@
 .shell { min-height: 100vh; background: var(--aibox-color-bg-primary); }
 .top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: var(--aibox-spacing-4); height: 56px; line-height: normal; padding: 0 var(--aibox-spacing-4); background: var(--aibox-color-bg-primary); border-bottom: 1px solid var(--aibox-color-border-primary); }
-.brand { font-weight: 600; font-size: var(--aibox-typography-title-title-lg-font-size); text-decoration: none; color: var(--aibox-color-text-main); white-space: nowrap; }
-.brand span { color: var(--aibox-color-text-primary); font-weight: 400; }
+.brand { display: inline-flex; align-items: center; }
+.brand img { display: block; height: 24px; width: auto; }
 .versions { display: flex; align-items: center; margin-left: var(--aibox-spacing-2); }
 .versions nz-tag { margin-right: var(--aibox-spacing-2); }
 .links { margin-left: auto; display: flex; align-items: center; gap: var(--aibox-spacing-2); }
