@@ -20,7 +20,3 @@
   .content { padding: var(--aibox-spacing-4); }
   .links a:first-child { display: none; }
 }
-/* At phone width the brand, burger and GitHub button together are wider than the viewport; keep only "Ai-BOX". */
-@media (max-width: 480px) {
-  .brand span { display: none; }
-}
