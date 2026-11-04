@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'getting-started' },
   { path: 'getting-started', title: 'Getting started · Ai-BOX Design System', loadComponent: () => import('./pages/getting-started').then((m) => m.GettingStarted) },
+  { path: 'changelog', title: 'Changelog · Ai-BOX Design System', loadComponent: () => import('./pages/changelog').then((m) => m.ChangelogPage) },
   { path: 'tokens', title: 'Tokens · Ai-BOX Design System', loadComponent: () => import('./pages/tokens').then((m) => m.Tokens) },
   { path: 'button', title: 'Button · Ai-BOX Design System', loadComponent: () => import('./pages/button').then((m) => m.ButtonPage) },
   { path: 'input', title: 'Input · Ai-BOX Design System', loadComponent: () => import('./pages/input').then((m) => m.InputPage) },
