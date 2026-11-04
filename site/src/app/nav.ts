@@ -15,5 +15,6 @@ export const COMPONENTS: NavItem[] = [
   { path: 'switch', title: 'Switch', figma: '1286:2284, 1:5516' },
   { path: 'tag', title: 'Tag (status badge)', figma: '1:10717' },
   { path: 'chip-filter', title: 'Chip (filter)', figma: '1:10199' },
+  { path: 'pagination', title: 'Pagination', figma: '3451:10970' },
   { path: 'badge', title: 'Badge (notification)', figma: '1175:641' },
 ];
