@@ -11,6 +11,8 @@ One PR does all of this:
 3. Bump `package.json` version, add `release-notes/vX.Y.Z.md`, run `npm test` (rebuilds and commits `dist/`), and build the site (`cd site && npm ci && npm run build`, Node >= 22.22.3).
 4. Open the PR. Merge only when the user says so and CI (`build` + `site`) is green; merging creates the tag and release automatically.
 
+`release-notes/vX.Y.Z.md` also feeds the docs site's `/changelog` page (`site/scripts/changelog.mjs`): keep the first line `# vX.Y.Z – Title` and `##` section headings; the page reads nothing else.
+
 `npm test` fails if an override section ("Source: Figma" header) has no registered site page, route or menu entry.
 
 ## Two places work on this repo
