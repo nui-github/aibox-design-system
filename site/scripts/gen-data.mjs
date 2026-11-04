@@ -23,6 +23,7 @@ const starts = [
   ['switch', /^\/\* -{20,}\n\s+Switch/m],
   ['tag', /^\/\* Tag \/ status badge/m],
   ['chip-filter', /^\/\* Chip \/ filter/m],
+  ['badge', /^\/\* Badge\./m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);
