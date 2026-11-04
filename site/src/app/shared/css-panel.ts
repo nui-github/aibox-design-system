@@ -9,7 +9,7 @@ import { CodeBlock } from './code-block';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NzTabsModule, CodeBlock],
   template: `
-    <section class="panel">
+    <section class="panel" id="override-css">
       <h2>CSS</h2>
       <p class="lead">
         ส่วนของ <code>ng-zorro-override.css</code> ที่ใช้กับ component นี้ ใช้ร่วมกับ <code>tokens.css</code> (หรือคัดลอกเฉพาะ token ที่ใช้จากแท็บ Tokens)
@@ -33,7 +33,7 @@ import { CodeBlock } from './code-block';
     </section>
   `,
   styles: `
-    .panel { margin-top: var(--aibox-spacing-6); }
+    .panel { margin-top: var(--aibox-spacing-6); scroll-margin-top: 72px; }
     .lead { color: var(--aibox-color-text-secondary); margin: var(--aibox-spacing-1) 0 var(--aibox-spacing-3); }
   `,
 })
