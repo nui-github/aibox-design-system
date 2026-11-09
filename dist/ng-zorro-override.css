@@ -1,4 +1,4 @@
-/* aibox-design-system v0.14.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.15.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1514,4 +1514,105 @@ a.ant-btn.aibox-btn-xs {
   height: 10px;
   margin: 18px 0;
   background: var(--aibox-color-bg-disable);
+}
+
+/* Alert. Source: Figma "i-BOX Design System" > Message & Snack Bar page (39:12064), alert-bar node 1:10675.
+   Mapping (nz-alert, banner style):
+     status success / info / warning / error   nzType="success" / "info" / "warning" / "error" (fill bg/status/*-100)
+     icon (20px outlined circle)               nzShowIcon (the filled ng-zorro glyph is replaced by an outlined one drawn with CSS)
+     Close button yes / no                     nzCloseable / default
+     shadow=yes (raised, floats over content)  class "aibox-alert-shadow" (shadow raise-modal); no = flat (the default)
+     type=padding (16px inset on both sides)   class "aibox-alert-inset"; full-width = the default
+   Text is 16/26 text/primary, padding 8 12, radius 4, no border. Not covered: the description layout (nzDescription), banner
+   mode, the snackbar and message-bar frames of the same page (nz-message). */
+.ant-alert {
+  --_bg: var(--aibox-color-bg-status-info-100);
+  --_ic: var(--aibox-color-text-status-info-200);
+  box-sizing: border-box;
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+  border: 0;
+  border-radius: var(--aibox-radius-2);
+  background: var(--_bg);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+  color: var(--aibox-color-text-primary);
+}
+.ant-alert.ant-alert-success {
+  --_bg: var(--aibox-color-bg-status-success-100);
+  --_ic: var(--aibox-color-text-status-success-200);
+}
+.ant-alert.ant-alert-warning {
+  --_bg: var(--aibox-color-bg-status-warning-100);
+  --_ic: var(--aibox-color-text-status-warning-200);
+}
+.ant-alert.ant-alert-error {
+  --_bg: var(--aibox-color-bg-status-error-100);
+  --_ic: var(--aibox-color-text-status-error-200);
+}
+.ant-alert .ant-alert-message {
+  color: var(--aibox-color-text-primary);
+  font-size: inherit;
+  line-height: inherit;
+}
+.ant-alert .ant-alert-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 26px;
+  margin-inline-end: var(--aibox-spacing-2);
+  font-size: 0;
+}
+.ant-alert .ant-alert-icon > * {
+  display: none;
+}
+.ant-alert .ant-alert-icon::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: var(--_ic);
+  -webkit-mask: var(--_glyph) center / 100% 100% no-repeat;
+  mask: var(--_glyph) center / 100% 100% no-repeat;
+}
+.ant-alert.ant-alert-success .ant-alert-icon {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M5 8.2l2.1 2.1L11.1 6.2'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ant-alert.ant-alert-info .ant-alert-icon {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M8 7.2v4M8 4.9v.1'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ant-alert.ant-alert-warning .ant-alert-icon {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M8 4.6v3.8M8 11v.1'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ant-alert.ant-alert-error .ant-alert-icon {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M5.9 5.9l4.2 4.2M10.1 5.9L5.9 10.1'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ant-alert .ant-alert-close-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  width: 16px;
+  height: 16px;
+  margin-block-start: var(--aibox-spacing-1);
+  margin-inline-start: var(--aibox-spacing-2);
+  font-size: 12px;
+}
+.ant-alert .ant-alert-close-icon .anticon-close,
+.ant-alert .ant-alert-close-icon .anticon-close:hover {
+  color: var(--aibox-color-state-gray-g-6-default);
+}
+/* nz-alert renders its .ant-alert inside the host element, so the classes can sit on either */
+.aibox-alert-shadow.ant-alert,
+.aibox-alert-shadow .ant-alert {
+  box-shadow: var(--aibox-shadow-base-raise-modal);
+}
+nz-alert.aibox-alert-inset {
+  display: block;
+  margin-inline: var(--aibox-spacing-4);
+}
+.ant-alert.aibox-alert-inset {
+  margin-inline: var(--aibox-spacing-4);
 }

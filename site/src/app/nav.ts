@@ -20,5 +20,6 @@ export const COMPONENTS: NavItem[] = [
   { path: 'tooltip', title: 'Tooltip', figma: '1145:1157, 1145:1219' },
   { path: 'breadcrumb', title: 'Breadcrumb', figma: '1:11308, 7762:53685' },
   { path: 'divider', title: 'Divider', figma: '1174:444' },
+  { path: 'alert', title: 'Alert', figma: '1:10675' },
   { path: 'badge', title: 'Badge (notification)', figma: '1175:641' },
 ];
