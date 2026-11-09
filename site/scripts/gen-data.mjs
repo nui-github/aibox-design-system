@@ -31,6 +31,7 @@ const starts = [
   ['breadcrumb', /^\/\* Breadcrumb\./m],
   ['divider', /^\/\* Divider\./m],
   ['alert', /^\/\* Alert\./m],
+  ['message', /^\/\* Message \/ Snackbar\./m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);
@@ -59,7 +60,7 @@ const deps = (name, seen) => {
   for (const d of t.value.matchAll(/var\((--aibox-[\w-]+)\)/g)) deps(d[1], seen);
 };
 // Sections that build on another section's rules (chip/filter reuses the tag base) ship that section's CSS first.
-const requires = { 'chip-filter': ['tag'], pagination: ['select'] };
+const requires = { 'chip-filter': ['tag'], pagination: ['select'], message: ['alert'] };
 for (const [id, deps_] of Object.entries(requires)) {
   sections[id].requires = deps_;
   sections[id].css = deps_.map((d) => sections[d].css).join('\n') + '\n' + sections[id].css;
