@@ -1,4 +1,4 @@
-/* aibox-design-system v0.10.1 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.11.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1211,4 +1211,132 @@ a.ant-btn.aibox-btn-xs {
 .ant-pagination .ant-pagination-options-size-changer.ant-select .ant-select-arrow .anticon,
 .ant-pagination .ant-pagination-options-size-changer.ant-select .ant-select-arrow svg {
   font-size: 10px;
+}
+
+/* Tab. Source: Figma "i-BOX Design System" > Tab page (4033:17725): tab / Tab Button (card style, 4034:247, 5034:931),
+   Outline Tab (line style, 5342:5164) and Tab content (5264:730).
+   Mapping (nz-tabs):
+     tab / Tab Button (raised tab)    nzType="card"
+     Outline Tab (4px rail + bar)     nzType="line" (default)
+     Size Large / Medium / Small      nzSize="large" / (default) / "small"  (card 48 / 40 / 32px, line 56 / 40 / 40px)
+     state Active / Default           the active tab / the others; Disabled = [nzDisabled] on nz-tab
+     icon (dot, 12px)                 <span class="aibox-tab-icon"></span> in the tab title; error / success icons:
+                                      class "aibox-tab-icon aibox-tab-icon-error" / "aibox-tab-icon-success"
+     tabs that share the width        class "aibox-tabs-fill" on nz-tabs (Figma Outline Tab rows)
+   Hover is not in Figma: the default tab turns primary on hover. Line-style Small (40px, 14/16 text, 12px padding) is inferred from
+   the Outline Tab frame heights, not read from a node. Not covered: vertical / bottom placement, closable / editable tabs, tab bar extra content. */
+.ant-tabs {
+  --_px: var(--aibox-spacing-5);
+  --_py: var(--aibox-spacing-2);
+  --_fs: var(--aibox-typography-button-md-font-size);
+  --_lh: var(--aibox-typography-button-md-line-height);
+  --_ls: var(--aibox-typography-button-md-letter-spacing);
+  --_fg: var(--aibox-color-button-contained-subsidiary-text-default);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-tabs.ant-tabs-large {
+  --_px: var(--aibox-spacing-8);
+  --_py: var(--aibox-spacing-4);
+  --_fs: var(--aibox-typography-button-lg-font-size);
+  --_lh: var(--aibox-typography-button-lg-line-height);
+  --_ls: var(--aibox-typography-button-lg-letter-spacing);
+}
+.ant-tabs.ant-tabs-small {
+  --_px: var(--aibox-spacing-4);
+  --_py: var(--aibox-spacing-3);
+  --_fs: var(--aibox-typography-button-sm-font-size);
+  --_lh: var(--aibox-typography-button-sm-line-height);
+  --_ls: var(--aibox-typography-button-sm-letter-spacing);
+}
+.ant-tabs.ant-tabs-card.ant-tabs-large {
+  --_py: var(--aibox-spacing-3);
+}
+.ant-tabs.ant-tabs-card.ant-tabs-small {
+  --_py: var(--aibox-spacing-2);
+}
+.ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab {
+  --_bg: transparent;
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--_py) var(--_px);
+  font-size: var(--_fs);
+  font-weight: var(--aibox-typography-button-md-font-weight);
+  line-height: var(--_lh);
+  letter-spacing: var(--_ls);
+  color: var(--_fg);
+}
+.ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab .ant-tabs-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-shadow: none;
+}
+.ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab:hover:not(.ant-tabs-tab-disabled):not(.ant-tabs-tab-active) {
+  color: var(--aibox-color-main);
+}
+.ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
+  color: var(--aibox-color-main);
+}
+.ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-disabled {
+  color: var(--aibox-color-text-disable);
+}
+/* Line style: 4px rail and 4px bar */
+.ant-tabs.ant-tabs > .ant-tabs-nav::before {
+  border-bottom: 4px solid var(--aibox-color-border-disable);
+}
+.ant-tabs.ant-tabs > .ant-tabs-nav .ant-tabs-ink-bar {
+  height: 4px;
+  background: var(--aibox-color-main);
+}
+/* Card style: raised tabs, 4px top corners, white active tab joined to the content */
+.ant-tabs.ant-tabs-card > .ant-tabs-nav::before {
+  border-bottom: 1px solid var(--aibox-color-border-disable);
+}
+.ant-tabs.ant-tabs-card.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab {
+  --_bg: var(--aibox-color-global-gray-80);
+  /* Figma draws the 1px border inside the box: 48 / 40 / 32px in total */
+  padding: calc(var(--_py) - 1px) calc(var(--_px) - 1px);
+  border: 1px solid var(--aibox-color-border-disable);
+  border-radius: var(--aibox-radius-2) var(--aibox-radius-2) 0 0;
+  background: var(--_bg);
+}
+.ant-tabs.ant-tabs-card.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
+  --_bg: var(--aibox-color-button-contained-standard-text-default);
+  border-bottom-color: var(--_bg);
+}
+.ant-tabs.ant-tabs-card.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-disabled {
+  --_bg: var(--aibox-color-button-base-bg-disable);
+}
+/* Tabs that share the width */
+.aibox-tabs-fill.ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
+  flex: 1;
+}
+.aibox-tabs-fill.ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab {
+  flex: 1;
+  justify-content: center;
+}
+/* Dot icon (Figma "circle", 12px, 8px gap) and the status icons; the colour follows the tab text */
+.aibox-tab-icon {
+  display: inline-block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin: 2px 10px 2px 2px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background-color: currentcolor;
+}
+.aibox-tab-icon.aibox-tab-icon-error,
+.aibox-tab-icon.aibox-tab-icon-success {
+  border-radius: 0;
+  -webkit-mask: var(--_glyph) center / 100% 100% no-repeat;
+  mask: var(--_glyph) center / 100% 100% no-repeat;
+}
+.aibox-tab-icon.aibox-tab-icon-error {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM7.2 3.4h1.6v5.4H7.2V3.4zM8 12.8a1 1 0 110-2 1 1 0 010 2z'/%3E%3C/svg%3E");
+  background-color: var(--aibox-color-text-status-error-100);
+}
+.aibox-tab-icon.aibox-tab-icon-success {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM11.9 5.2L7 10.6 4 7.7l1.1-1.1L7 8.4l3.8-4.3 1.1 1.1z'/%3E%3C/svg%3E");
+  background-color: var(--aibox-color-text-status-success-200);
 }

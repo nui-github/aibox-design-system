@@ -139,6 +139,8 @@ export class GettingStarted {
     ['aibox-tag-xs / -md / -lg', 'nz-tag', 'ขนาด 2xsmall / medium / large'],
     ['aibox-badge-sm / aibox-badge-lg', 'nz-badge', 'ขนาด small / large (Medium เป็นค่าเริ่มต้น)'],
     ['aibox-badge-icon', 'nz-badge', 'badge ไอคอนวงกลมสีน้ำเงิน (ใช้กับ [nzCount] เป็น template)'],
+    ['aibox-tabs-fill', 'nz-tabs', 'แท็บแบ่งความกว้างเท่ากัน'],
+    ['aibox-tab-icon (+ -error / -success)', 'element ในหัวข้อแท็บ', 'ไอคอนจุด 12px / ไอคอนสถานะ error, success'],
     ['aibox-tag-disabled', 'nz-tag nzMode="checkable"', 'หน้าตา disabled (ต้องกันคลิกเอง)'],
   ];
   protected readonly compat: string[][] = [
