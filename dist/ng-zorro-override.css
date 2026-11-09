@@ -1,4 +1,4 @@
-/* aibox-design-system v0.12.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.13.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1399,4 +1399,70 @@ a.ant-btn.aibox-btn-xs {
 .ant-tooltip .ant-tooltip-arrow,
 .ant-tooltip .ant-tooltip-arrow-content {
   --antd-arrow-background-color: var(--_bg);
+}
+
+/* Breadcrumb. Source: Figma "i-BOX Design System" > Breadcrumb page (1115:14146): breadcrumbs (1:11308) and breadcrumbs_lists (7762:53685).
+   Mapping (nz-breadcrumb):
+     state=default   a breadcrumb item that is not the last: 12/22 text, gray/g-5 (#a0a3ac), a 12px chevron after it
+     state=hover / pressed   the link under the pointer (Figma uses one colour for both: gray/g-5-hover)
+     state=active    the last item: medium weight, text/primary, no separator
+     level 2..5      2 to 5 nz-breadcrumb-item (4px between items, 4px between text and chevron)
+   The separator "/" ng-zorro renders is replaced by a CSS chevron, so leave nzSeparator at its default (a custom separator template is
+   hidden too). Not covered: dropdown items (nzOverlay), params / routeLabel generation (works, it only restyles). */
+.ant-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--aibox-spacing-1);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-caption-caption-regular-font-size);
+  line-height: var(--aibox-typography-caption-caption-regular-line-height);
+  letter-spacing: var(--aibox-typography-caption-caption-regular-letter-spacing);
+  color: var(--aibox-color-state-gray-g-5-default);
+}
+.ant-breadcrumb nz-breadcrumb-item,
+.ant-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aibox-spacing-1);
+}
+.ant-breadcrumb a,
+.ant-breadcrumb .ant-breadcrumb-link {
+  color: var(--aibox-color-state-gray-g-5-default);
+}
+.ant-breadcrumb a:hover,
+.ant-breadcrumb a:active {
+  color: var(--aibox-color-state-gray-g-5-hover);
+}
+.ant-breadcrumb nz-breadcrumb-item:last-child,
+.ant-breadcrumb li:last-child,
+.ant-breadcrumb nz-breadcrumb-item:last-child .ant-breadcrumb-link,
+.ant-breadcrumb li:last-child .ant-breadcrumb-link,
+.ant-breadcrumb nz-breadcrumb-item:last-child a,
+.ant-breadcrumb li:last-child a {
+  color: var(--aibox-color-text-primary);
+  font-weight: var(--aibox-typography-caption-caption-bold-font-weight);
+}
+.ant-breadcrumb .ant-breadcrumb-separator {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  font-size: 0;
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-breadcrumb .ant-breadcrumb-separator::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: currentcolor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.5 2.5 11 8l-5.5 5.5' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.5 2.5 11 8l-5.5 5.5' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.ant-breadcrumb nz-breadcrumb-item:last-child .ant-breadcrumb-separator,
+.ant-breadcrumb li:last-child .ant-breadcrumb-separator {
+  display: none;
 }
