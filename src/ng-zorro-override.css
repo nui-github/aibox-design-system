@@ -1465,3 +1465,52 @@ a.ant-btn.aibox-btn-xs {
 .ant-breadcrumb li:last-child .ant-breadcrumb-separator {
   display: none;
 }
+
+/* Divider. Source: Figma "i-BOX Design System" > Divider page (1174:439), divider node 1174:444.
+   Mapping (nz-divider):
+     theme=inline            the default nz-divider: 1px line, border/primary
+     theme=Dash Secondary    [nzDashed]: 1px dashed line, text/white-secondary
+     theme=S 10              class "aibox-divider-s": 5px band, 10px above and below
+     theme=M 18 / M 24       class "aibox-divider-m" (18px) / "aibox-divider-m24" (24px): 5px band
+     theme=L space18         class "aibox-divider-l": 10px band in bg/disable, 18px above and below
+   The band colour is a literal #f8f8f8 in Figma (component token divider.band-color). ng-zorro's own margins stay for the line
+   (24px, Figma's "inline" has none); the vertical divider and the divider with text only get the line colour. Bands are horizontal only. */
+.ant-divider {
+  border-top-color: var(--aibox-color-border-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-divider-vertical {
+  border-top-color: transparent;
+  border-inline-start-color: var(--aibox-color-border-primary);
+}
+.ant-divider-dashed,
+.ant-divider-dotted {
+  border-color: var(--aibox-color-text-white-secondary);
+}
+.ant-divider-horizontal.ant-divider-with-text,
+.ant-divider-horizontal.ant-divider-with-text.ant-divider-dashed {
+  border-top-color: var(--aibox-color-border-primary);
+  color: var(--aibox-color-text-primary);
+}
+.ant-divider-horizontal.aibox-divider-s,
+.ant-divider-horizontal.aibox-divider-m,
+.ant-divider-horizontal.aibox-divider-m24,
+.ant-divider-horizontal.aibox-divider-l {
+  height: 5px;
+  border: 0;
+  background: var(--aibox-divider-band-color);
+}
+.ant-divider-horizontal.aibox-divider-s {
+  margin: 10px 0;
+}
+.ant-divider-horizontal.aibox-divider-m {
+  margin: 18px 0;
+}
+.ant-divider-horizontal.aibox-divider-m24 {
+  margin: 24px 0;
+}
+.ant-divider-horizontal.aibox-divider-l {
+  height: 10px;
+  margin: 18px 0;
+  background: var(--aibox-color-bg-disable);
+}

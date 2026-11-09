@@ -65,5 +65,12 @@
       ],
       "$description": "Figma pagination page buttons drop shadow (0 4px 4px rgba(0,0,0,.04), 0 -1px 4px rgba(0,0,0,.02)). Not in the variable export; copied from the design context (node 3451:11080)."
     }
+  },
+  "divider": {
+    "band-color": {
+      "$type": "color",
+      "$value": "#f8f8f8",
+      "$description": "Figma divider themes S 10 / M 18 / M 24 band fill. A literal hex in the design context (nodes 1174:450, 4348:19, 1597:1556), not a variable."
+    }
   }
 }
