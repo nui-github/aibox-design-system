@@ -18,5 +18,6 @@ export const routes: Routes = [
   { path: 'tooltip', title: 'Tooltip · Ai-BOX Design System', loadComponent: () => import('./pages/tooltip').then((m) => m.TooltipPage) },
   { path: 'breadcrumb', title: 'Breadcrumb · Ai-BOX Design System', loadComponent: () => import('./pages/breadcrumb').then((m) => m.BreadcrumbPage) },
   { path: 'divider', title: 'Divider · Ai-BOX Design System', loadComponent: () => import('./pages/divider').then((m) => m.DividerPage) },
+  { path: 'alert', title: 'Alert · Ai-BOX Design System', loadComponent: () => import('./pages/alert').then((m) => m.AlertPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];

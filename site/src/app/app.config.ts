@@ -12,6 +12,7 @@ import {
   CodeOutline,
   CopyOutline,
   DownOutline,
+  ExclamationCircleFill,
   GithubOutline,
   HeartFill,
   InfoCircleFill,
@@ -30,7 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideNzI18n(th_TH),
     provideNzIcons([
       BookOutline, CheckCircleFill, CheckOutline, ClockCircleOutline, CloseCircleFill, CloseOutline, CodeOutline, CopyOutline,
-      DownOutline, GithubOutline, HeartFill, InfoCircleFill, LoadingOutline, MenuOutline, SearchOutline, SmileOutline,
+      DownOutline, ExclamationCircleFill, GithubOutline, HeartFill, InfoCircleFill, LoadingOutline, MenuOutline, SearchOutline, SmileOutline,
     ]),
   ],
 };

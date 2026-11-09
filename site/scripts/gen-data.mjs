@@ -30,6 +30,7 @@ const starts = [
   ['tooltip', /^\/\* Tooltip\./m],
   ['breadcrumb', /^\/\* Breadcrumb\./m],
   ['divider', /^\/\* Divider\./m],
+  ['alert', /^\/\* Alert\./m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);
