@@ -27,6 +27,7 @@ const starts = [
   ['badge', /^\/\* Badge\./m],
   ['pagination', /^\/\* Pagination\./m],
   ['tab', /^\/\* Tab\./m],
+  ['tooltip', /^\/\* Tooltip\./m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);

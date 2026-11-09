@@ -1,4 +1,4 @@
-/* aibox-design-system v0.11.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.12.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1339,4 +1339,64 @@ a.ant-btn.aibox-btn-xs {
 .aibox-tab-icon.aibox-tab-icon-success {
   --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM11.9 5.2L7 10.6 4 7.7l1.1-1.1L7 8.4l3.8-4.3 1.1 1.1z'/%3E%3C/svg%3E");
   background-color: var(--aibox-color-text-status-success-200);
+}
+
+/* Tooltip. Source: Figma "i-BOX Design System" > Tooltip page (1145:1134): tooltip (1145:1157, all placements) and tooltip-themed (1145:1219).
+   Mapping (nz-tooltip):
+     tooltip, dark, 14/24, padding 6 8, radius 4     the default look
+     tooltip-themed light / blue                      nzTooltipOverlayClassName="aibox-tooltip-light" / "aibox-tooltip-blue" (radius 8)
+     size small (padding 6 14)                        class "aibox-tooltip-sm" (add to nzTooltipOverlayClassName)
+     size xsmall (12/22, padding 4 8)                 class "aibox-tooltip-xs"
+     Placement (13 variants)                          nzTooltipPlacement; ng-zorro already puts the arrow 16px from the corner like Figma
+   ng-zorro's preset colours (nzTooltipColor="red" ...) and custom colours keep working. The arrow shape is ng-zorro's: a 16x8 triangle on
+   22.x (Figma 16x8, 9x5 in the themed frame), a rotated rounded square on 18.x; only its colour is set here. The light tooltip gets the popover
+   shadow (Figma shows none, which would hide it on a white page). Not covered: "tooltip-bulletpoint" and "Tooltips Modal" (rich content). */
+.ant-tooltip {
+  --_bg: var(--aibox-color-global-grayscale-1500);
+  --_fg: var(--aibox-color-text-white-primary);
+  --_r: var(--aibox-radius-2);
+  --_px: var(--aibox-spacing-2);
+  --_py: 6px;
+  --_fs: var(--aibox-typography-body-body-regular-font-size);
+  --_lh: var(--aibox-typography-body-body-regular-line-height);
+  --_ls: var(--aibox-typography-body-body-regular-letter-spacing);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-tooltip.aibox-tooltip-light {
+  --_bg: var(--aibox-color-bg-primary);
+  --_fg: var(--aibox-color-text-primary);
+  --_r: var(--aibox-radius-3);
+}
+.ant-tooltip.aibox-tooltip-blue {
+  --_bg: var(--aibox-color-bg-tertiary);
+  --_fg: var(--aibox-color-text-primary);
+  --_r: var(--aibox-radius-3);
+}
+.ant-tooltip.aibox-tooltip-sm {
+  --_px: 14px;
+}
+.ant-tooltip.aibox-tooltip-xs {
+  --_py: var(--aibox-spacing-1);
+  --_fs: var(--aibox-typography-caption-caption-regular-font-size);
+  --_lh: var(--aibox-typography-caption-caption-regular-line-height);
+  --_ls: var(--aibox-typography-caption-caption-regular-letter-spacing);
+}
+.ant-tooltip-inner {
+  min-width: 0;
+  min-height: 0;
+  padding: var(--_py) var(--_px);
+  border-radius: var(--_r);
+  background-color: var(--_bg);
+  color: var(--_fg);
+  box-shadow: none;
+  font-size: var(--_fs);
+  line-height: var(--_lh);
+  letter-spacing: var(--_ls);
+}
+.ant-tooltip.aibox-tooltip-light .ant-tooltip-inner {
+  box-shadow: var(--aibox-shadow-base-popover);
+}
+.ant-tooltip .ant-tooltip-arrow,
+.ant-tooltip .ant-tooltip-arrow-content {
+  --antd-arrow-background-color: var(--_bg);
 }
