@@ -11,7 +11,7 @@ One PR does all of this:
 3. Bump `package.json` version, add `release-notes/vX.Y.Z.md`, run `npm test` (rebuilds and commits `dist/`), and build the site (`cd site && npm ci && npm run build`, Node >= 22.22.3).
 4. Open the PR. Merge only when the user says so and CI (`build` + `site`) is green; merging creates the tag and release automatically.
 
-`release-notes/vX.Y.Z.md` also feeds the docs site's `/changelog` page (`site/scripts/changelog.mjs`): keep the first line `# vX.Y.Z – Title` and `##` section headings; the page reads nothing else.
+`release-notes/vX.Y.Z.md` also feeds the docs site's `/changelog` page (`site/scripts/changelog.mjs`): keep the first line `# vX.Y.Z – Title` and `##` section headings. Line 2 is `วันที่: YYYY-MM-DD`, the day the release PR is opened (Thai time); the page shows it as the release date (a shallow git clone, as on Vercel, has no history to take dates from). The line also appears in the GitHub release body, which is fine; `scripts/release.sh` only uses line 1 as the title.
 
 `npm test` fails if an override section ("Source: Figma" header) has no registered site page, route or menu entry.
 
