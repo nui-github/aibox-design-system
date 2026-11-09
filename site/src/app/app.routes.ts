@@ -15,5 +15,6 @@ export const routes: Routes = [
   { path: 'badge', title: 'Badge · Ai-BOX Design System', loadComponent: () => import('./pages/badge').then((m) => m.BadgePage) },
   { path: 'pagination', title: 'Pagination · Ai-BOX Design System', loadComponent: () => import('./pages/pagination').then((m) => m.PaginationPage) },
   { path: 'tab', title: 'Tab · Ai-BOX Design System', loadComponent: () => import('./pages/tab').then((m) => m.TabPage) },
+  { path: 'tooltip', title: 'Tooltip · Ai-BOX Design System', loadComponent: () => import('./pages/tooltip').then((m) => m.TooltipPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];
