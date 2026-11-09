@@ -143,6 +143,7 @@ export class GettingStarted {
     ['aibox-tab-icon (+ -error / -success)', 'element ในหัวข้อแท็บ', 'ไอคอนจุด 12px / ไอคอนสถานะ error, success'],
     ['aibox-tooltip-light / -blue', 'nzTooltipOverlayClassName', 'tooltip สีขาว / ฟ้าอ่อน (มุม 8px)'],
     ['aibox-tooltip-sm / -xs', 'nzTooltipOverlayClassName', 'ขนาด small (padding 14) / xsmall (ตัวอักษร 12px)'],
+    ['aibox-divider-s / -m / -m24 / -l', 'nz-divider', 'แถบหนา 5px (margin 10 / 18 / 24) และแถบ 10px สีเทา (margin 18)'],
     ['aibox-tag-disabled', 'nz-tag nzMode="checkable"', 'หน้าตา disabled (ต้องกันคลิกเอง)'],
   ];
   protected readonly compat: string[][] = [

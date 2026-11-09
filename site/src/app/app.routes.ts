@@ -17,5 +17,6 @@ export const routes: Routes = [
   { path: 'tab', title: 'Tab · Ai-BOX Design System', loadComponent: () => import('./pages/tab').then((m) => m.TabPage) },
   { path: 'tooltip', title: 'Tooltip · Ai-BOX Design System', loadComponent: () => import('./pages/tooltip').then((m) => m.TooltipPage) },
   { path: 'breadcrumb', title: 'Breadcrumb · Ai-BOX Design System', loadComponent: () => import('./pages/breadcrumb').then((m) => m.BreadcrumbPage) },
+  { path: 'divider', title: 'Divider · Ai-BOX Design System', loadComponent: () => import('./pages/divider').then((m) => m.DividerPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];
