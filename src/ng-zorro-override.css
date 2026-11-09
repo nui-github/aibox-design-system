@@ -1615,3 +1615,171 @@ nz-alert.aibox-alert-inset {
 .ant-alert.aibox-alert-inset {
   margin-inline: var(--aibox-spacing-4);
 }
+
+/* Message / Snackbar. Source: Figma "i-BOX Design System" > Message & Snack Bar page (39:12064),
+   snackbar node 1:10863 and message-bar node 6608:120690.
+   Mapping:
+     snackbar status success / info / warning / error   NzMessageService.success / info / warning / error (fill bg/status/*-100)
+     prefix icon (20px outlined)                         the ng-zorro icon, replaced by an outlined one drawn with CSS
+     suffix text button                                  class "aibox-snackbar-action" on a <button> inside a template passed as the content
+     suffix close (xmark 12px)                           class "aibox-snackbar-close" on a <button> inside the same template
+     message bar (grey strip, info icon, centred)        <nz-alert class="aibox-alert-bar" nzType="info" nzShowIcon nzCloseable>
+     message bar "Align left"                            add class "aibox-alert-bar-left"
+   Snackbar: padding 12 16, radius 4, gap 8, text 16/26 text/primary, shadow 0 4px 4px / 0 -1px 4px (Figma raise-bg-none-sm).
+   Message bar: bg bg/secondary, radius 4, padding 8 12, text 14/24, 12px filled info icon in color/main, close at the right edge.
+   Not covered: the toast position/animation (ng-zorro's), nzDuration, loading type. */
+.ant-message .ant-message-notice-content {
+  padding: 0;
+  background: transparent;
+  border-radius: var(--aibox-radius-2);
+  box-shadow: none;
+}
+.ant-message .ant-message-custom-content {
+  --_bg: var(--aibox-color-bg-status-info-100);
+  --_ic: var(--aibox-color-text-status-info-200);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aibox-spacing-2);
+  box-sizing: border-box;
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-4);
+  border-radius: var(--aibox-radius-2);
+  background: var(--_bg);
+  box-shadow: var(--aibox-pagination-item-shadow);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+  color: var(--aibox-color-text-primary);
+  text-align: start;
+}
+.ant-message .ant-message-custom-content.ant-message-success {
+  --_bg: var(--aibox-color-bg-status-success-100);
+  --_ic: var(--aibox-color-text-status-success-200);
+}
+.ant-message .ant-message-custom-content.ant-message-warning {
+  --_bg: var(--aibox-color-bg-status-warning-100);
+  --_ic: var(--aibox-color-text-status-warning-200);
+}
+.ant-message .ant-message-custom-content.ant-message-error {
+  --_bg: var(--aibox-color-bg-status-error-100);
+  --_ic: var(--aibox-color-text-status-error-200);
+}
+.ant-message .ant-message-custom-content > .anticon:first-child {
+  position: static;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  font-size: 0;
+}
+.ant-message .ant-message-custom-content > .anticon:first-child > * {
+  display: none;
+}
+.ant-message .ant-message-custom-content > .anticon:first-child::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--_ic);
+  -webkit-mask: var(--_glyph) center / 100% 100% no-repeat;
+  mask: var(--_glyph) center / 100% 100% no-repeat;
+}
+.ant-message .ant-message-success > .anticon:first-child {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M5 8.2l2.1 2.1L11.1 6.2'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ant-message .ant-message-info > .anticon:first-child {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M8 7.2v4M8 4.9v.1'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ant-message .ant-message-warning > .anticon:first-child {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M8 4.6v3.8M8 11v.1'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ant-message .ant-message-error > .anticon:first-child {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6.6'/%3E%3Cpath d='M5.9 5.9l4.2 4.2M10.1 5.9L5.9 10.1'/%3E%3C/g%3E%3C/svg%3E");
+}
+.aibox-snackbar-action {
+  margin: 0;
+  padding: var(--aibox-spacing-1) 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-button-xs-font-size);
+  font-weight: var(--aibox-typography-button-xs-font-weight);
+  line-height: var(--aibox-typography-button-xs-line-height);
+  letter-spacing: var(--aibox-typography-button-xs-letter-spacing);
+  color: var(--aibox-color-button-texted-subsidiary-text-default);
+}
+.aibox-snackbar-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: var(--aibox-spacing-1) 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--aibox-color-state-gray-g-6-default);
+}
+
+/* message bar (nz-alert with class aibox-alert-bar) */
+.aibox-alert-bar .ant-alert,
+.ant-alert.aibox-alert-bar {
+  --_bg: var(--aibox-color-bg-secondary);
+  --_ic: var(--aibox-color-main);
+  position: relative;
+  justify-content: center;
+  padding: var(--aibox-spacing-2) 40px;
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.aibox-alert-bar .ant-alert .ant-alert-icon.ant-alert-icon,
+.ant-alert.aibox-alert-bar .ant-alert-icon.ant-alert-icon {
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 14.6A6.6 6.6 0 1 0 8 1.4a6.6 6.6 0 0 0 0 13.2zM7.2 4.9a.8.8 0 1 1 1.6 0 .8.8 0 0 1-1.6 0zM7.2 7.2h1.6v4.2H7.2z'/%3E%3C/svg%3E");
+  width: 12px;
+  height: 24px;
+  margin-inline-end: var(--aibox-spacing-1);
+}
+.aibox-alert-bar .ant-alert .ant-alert-icon.ant-alert-icon::before,
+.ant-alert.aibox-alert-bar .ant-alert-icon.ant-alert-icon::before {
+  width: 12px;
+  height: 12px;
+}
+.aibox-alert-bar .ant-alert .ant-alert-message,
+.ant-alert.aibox-alert-bar .ant-alert-message {
+  line-height: inherit;
+}
+.aibox-alert-bar .ant-alert .ant-alert-close-icon,
+.ant-alert.aibox-alert-bar .ant-alert-close-icon {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: var(--aibox-spacing-3);
+  width: 12px;
+  height: auto;
+  margin: 0;
+  align-self: center;
+}
+.aibox-alert-bar-left .ant-alert,
+.ant-alert.aibox-alert-bar-left {
+  justify-content: flex-start;
+  padding-inline-start: var(--aibox-spacing-3);
+}
+nz-alert.aibox-alert-bar {
+  display: block;
+}
+.ant-message .aibox-snackbar-close .anticon {
+  position: static;
+  margin: 0;
+  font-size: 12px;
+  color: inherit;
+}
+.aibox-alert-bar .ant-alert .ant-alert-content,
+.ant-alert.aibox-alert-bar .ant-alert-content {
+  flex: none;
+  min-width: 0;
+}

@@ -145,6 +145,8 @@ export class GettingStarted {
     ['aibox-tooltip-sm / -xs', 'nzTooltipOverlayClassName', 'ขนาด small (padding 14) / xsmall (ตัวอักษร 12px)'],
     ['aibox-divider-s / -m / -m24 / -l', 'nz-divider', 'แถบหนา 5px (margin 10 / 18 / 24) และแถบ 10px สีเทา (margin 18)'],
     ['aibox-alert-shadow / -inset', 'nz-alert', 'เงายกลอย / ระยะห่างขอบ 16px (ใช้ร่วมกันได้)'],
+    ['aibox-snackbar-action / -close', 'ปุ่มใน template ของ NzMessageService', 'ปุ่มข้อความ / ปุ่มปิด (xmark 12px) ท้าย snackbar'],
+    ['aibox-alert-bar / -bar-left', 'nz-alert', 'message bar แถบเทา ข้อความกลาง / ชิดซ้าย'],
     ['aibox-tag-disabled', 'nz-tag nzMode="checkable"', 'หน้าตา disabled (ต้องกันคลิกเอง)'],
   ];
   protected readonly compat: string[][] = [
