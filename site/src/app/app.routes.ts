@@ -16,5 +16,6 @@ export const routes: Routes = [
   { path: 'pagination', title: 'Pagination · Ai-BOX Design System', loadComponent: () => import('./pages/pagination').then((m) => m.PaginationPage) },
   { path: 'tab', title: 'Tab · Ai-BOX Design System', loadComponent: () => import('./pages/tab').then((m) => m.TabPage) },
   { path: 'tooltip', title: 'Tooltip · Ai-BOX Design System', loadComponent: () => import('./pages/tooltip').then((m) => m.TooltipPage) },
+  { path: 'breadcrumb', title: 'Breadcrumb · Ai-BOX Design System', loadComponent: () => import('./pages/breadcrumb').then((m) => m.BreadcrumbPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];
