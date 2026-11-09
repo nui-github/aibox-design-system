@@ -1,5 +1,5 @@
 // Turns release-notes/vX.Y.Z.md into the data behind the Changelog page.
-// Format: first line "# vX.Y.Z – Title", then "## Section" headings with bullets, tables, code fences and paragraphs.
+// Format: first line "# vX.Y.Z – Title", optional "วันที่: YYYY-MM-DD" line, then "## Section" headings with bullets, tables, code fences and paragraphs.
 import { readdirSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -125,10 +125,19 @@ export function buildChangelog(root) {
         sections.push(cur);
       } else (cur ? cur.lines : intro).push(line);
     }
+    // "วันที่: YYYY-MM-DD" in the note wins; git is the fallback for notes without it.
+    let date = '';
+    const dateAt = intro.findIndex((l) => l.startsWith('วันที่:'));
+    if (dateAt >= 0) {
+      const m = /^วันที่:\s*(\d{4}-\d{2}-\d{2})\s*$/.exec(intro[dateAt]);
+      if (!m || Number.isNaN(Date.parse(m[1]))) throw new Error(`changelog: ${file} date line must be "วันที่: YYYY-MM-DD"`);
+      date = m[1];
+      intro.splice(dateAt, 1);
+    }
     releases.push({
       version: head[1],
       title: head[2].trim(),
-      date: dateOf(root, file),
+      date: date || dateOf(root, file),
       intro: blocks(intro),
       sections: sections.map((s) => ({ title: s.title, kind: kindOf(s.title), html: blocks(s.lines) })),
     });
