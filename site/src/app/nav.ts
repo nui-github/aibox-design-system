@@ -28,5 +28,6 @@ export const COMPONENTS: NavItem[] = [
   { path: 'scrollbar', title: 'Scrollbar', figma: '6903:54, 7024:6514' },
   { path: 'drawer', title: 'Drawer', figma: '3927:8405, 3745:12936' },
   { path: 'table', title: 'Table', figma: '3631:1869, 8794:180479' },
+  { path: 'upload', title: 'Upload', figma: '1516:11121, 1516:11080' },
   { path: 'badge', title: 'Badge (notification)', figma: '1175:641' },
 ];
