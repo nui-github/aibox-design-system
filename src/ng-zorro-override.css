@@ -2567,3 +2567,85 @@ nz-alert.aibox-alert-bar {
 .ant-picker-dropdown .ant-picker-cell-disabled {
   color: var(--aibox-color-text-disable);
 }
+
+/* Time picker. Source: Figma "i-BOX Design System" > TimePicker page (1612:3564): time-picker-desktop 1612:3566 (sizes Large / small; states default,
+   expand, edit, selected, filled error, empty error) and the menu cell 1613:9223 (default / hover / selected).
+   Mapping (nz-time-picker):
+     the field (sizes, error, disabled)   the Date picker override (the field is the same .ant-picker box); the icon is ng-zorro's clock
+     state=expand / edit                  the popup with hour and minute columns (nzFormat="HH:mm")
+     menu cell default / hover / selected   the cells of the columns
+     footer button "เลือก"                nzNeedConfirm (drawn as outlined standard, small)
+   Popup: 125 wide, bg/primary, radius 6, shadow raise-modal, 10px top padding; columns 224 tall with a 1px divider after each; cells 28x28
+   radius 4, 14/24 (selected: fill color/main, white medium text; hover: bg/tertiary). Footer padding 12.
+   The "now" link is hidden (not in Figma). Not covered: seconds / 12-hour columns, the mobile variants (time-picker-mobile 1630:2916), nzUse12Hours. */
+.ant-picker-dropdown .ant-picker-time-panel {
+  padding-top: 10px;
+}
+.ant-picker-dropdown:has(.ant-picker-time-panel) .ant-picker-panel-container {
+  border-radius: var(--aibox-timepicker-menu-radius);
+  overflow: hidden;
+}
+.ant-picker-dropdown .ant-picker-time-panel-column {
+  width: 61.5px;
+  margin: 0;
+  padding: 0 var(--aibox-spacing-1);
+  border-inline-start: 0;
+  border-inline-end: 1px solid var(--aibox-color-border-primary);
+}
+.ant-picker-dropdown .ant-picker-time-panel-column:not(:first-child) {
+  border-inline-start: 0;
+}
+.ant-picker-dropdown .ant-picker-time-panel-cell {
+  margin: 0;
+  padding: 0;
+}
+.ant-picker-dropdown .ant-picker-time-panel-cell.ant-picker-time-panel-cell .ant-picker-time-panel-cell-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: var(--aibox-radius-2);
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-picker-dropdown .ant-picker-time-panel-cell:not(.ant-picker-time-panel-cell-selected):not(.ant-picker-time-panel-cell-disabled) .ant-picker-time-panel-cell-inner:hover {
+  background: var(--aibox-color-bg-tertiary);
+}
+.ant-picker-dropdown .ant-picker-time-panel-cell.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+  background: var(--aibox-color-bg-main);
+  color: var(--aibox-color-text-white-primary);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+}
+.ant-picker-dropdown .ant-picker-time-panel-cell-disabled .ant-picker-time-panel-cell-inner {
+  color: var(--aibox-color-text-disable);
+}
+.ant-picker-dropdown .ant-picker-footer {
+  padding: 12px var(--aibox-spacing-3);
+  border-top: 0;
+}
+.ant-picker-dropdown .ant-picker-footer .ant-picker-ranges {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.ant-picker-dropdown .ant-picker-footer .ant-picker-now {
+  display: none;
+}
+.ant-picker-dropdown .ant-picker-ok {
+  flex: 1;
+  margin: 0;
+}
+.ant-picker-dropdown .ant-picker-ok .ant-btn.ant-btn-primary {
+  --_bg: transparent;
+  --_fg: var(--aibox-color-button-outline-standard-text-default);
+  --_bd: var(--aibox-color-button-outline-standard-border-default);
+  --_bg-h: var(--aibox-color-button-outline-standard-bg-press);
+  --_fg-h: var(--aibox-color-button-outline-standard-text-press);
+  --_bd-h: var(--aibox-color-button-outline-standard-border-press);
+  width: 100%;
+}

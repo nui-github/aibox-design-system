@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.24.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.24.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.25.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.25.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -182,6 +182,10 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 ### Date picker (Figma page DatePicker `1347:2036`, date-picker `1347:23603`, range `4558:7666`)
 
 `nz-date-picker` / `nz-range-picker`: the field uses the Input box (1px `state/form/default`, radius 4, small padding 4 8 with 14/24, `nzSize="large"` 48px with 16/26, 2px ring when focused, `nzStatus="error"` red, disabled grey). The calendar popup is 280 wide (`bg/primary`, radius 4, raise-modal shadow) with a 1px header line, 14/22 semibold title, 24x24 radius-4 day cells (other-month days `text/icon-default`, today bold `color/main`, selected filled `color/main`, range cells `bg/tertiary`). Use `[nzShowToday]="false"`. ng-zorro 22 needs a date adapter provider (`provideNzNativeDateAdapter()`), ng-zorro 18 does not. Not covered: Buddhist-year title, month/year panels, week/quarter pickers, time, presets. Selected and hover cell fills are inferred.
+
+### Time picker (Figma page TimePicker `1612:3564`, desktop `1612:3566`, menu cell `1613:9223`)
+
+`nz-time-picker`: the field is the Date picker field (sizes, error, disabled). The popup is about 125px wide (`bg/primary`, radius 6 from `--aibox-timepicker-menu-radius`, raise-modal shadow, 10px top padding) with 224px tall columns divided by 1px lines, 28x28 radius-4 cells (hover `bg/tertiary`, selected `color/main` with white medium text) and, with `nzNeedConfirm`, a full-width outlined small button (padding 12). The "now" link is hidden. Use `nzFormat="HH:mm"`. ng-zorro 22 needs a date adapter provider. Not covered: seconds / 12-hour columns, the mobile frames.
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.
