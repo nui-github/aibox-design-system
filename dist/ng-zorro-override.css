@@ -1,4 +1,4 @@
-/* aibox-design-system v0.20.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.21.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -2087,4 +2087,55 @@ nz-alert.aibox-alert-bar {
     scrollbar-width: thin;
     scrollbar-color: var(--aibox-color-text-tertiary) var(--aibox-color-bg-secondary);
   }
+}
+
+/* Drawer. Source: Figma "i-BOX Design System" > Drawer / Bottom Sheet page (3744:11632): Drawer Header 3927:8405 (title + close),
+   Bottom Sheet outer shape 3745:12936. The menu lists inside the bottom sheet (Drawer-list) are product content and not covered.
+   Mapping (nz-drawer):
+     Drawer Header (title yes, right button = close)   nzTitle + the default close button, moved to the right
+     Bottom Sheet (16px top corners, big shadow)       nzPlacement="bottom"
+   Header: height 72 (padding 12 24), 1px bottom border text/white/secondary, title 20/32 medium centred (offset by 52px so it stays centred
+   against the 40px close button and 12px gap), close icon 28px in button/texted/subsidiary/text.
+   Not covered: left button, share button, drawer-list rows, tooltip and left icon in the title, shadow of left/right/top drawers (ng-zorro's). */
+.ant-drawer .ant-drawer-header {
+  box-sizing: border-box;
+  height: 72px;
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-6);
+  border-bottom: 1px solid var(--aibox-color-text-white-secondary);
+}
+.ant-drawer .ant-drawer-header-title {
+  flex-direction: row-reverse;
+  gap: var(--aibox-spacing-3);
+}
+.ant-drawer .ant-drawer-title {
+  padding-inline-start: 52px;
+  color: var(--aibox-color-text-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-header-subheader-font-size);
+  font-weight: var(--aibox-typography-header-subheader-font-weight);
+  line-height: var(--aibox-typography-header-subheader-line-height);
+  letter-spacing: var(--aibox-typography-header-subheader-letter-spacing);
+  text-align: center;
+}
+.ant-drawer .ant-drawer-header-close-only .ant-drawer-header-title {
+  justify-content: flex-end;
+}
+.ant-drawer .ant-drawer-close,
+.ant-drawer .ant-drawer-close:hover,
+.ant-drawer .ant-drawer-close:focus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 48px;
+  margin: 0;
+  font-size: 28px;
+  color: var(--aibox-color-button-texted-subsidiary-text-default);
+}
+.ant-drawer-bottom > .ant-drawer-content-wrapper {
+  box-shadow: var(--aibox-shadow-base-section-lg);
+}
+.ant-drawer-bottom .ant-drawer-content {
+  border-radius: var(--aibox-radius-5) var(--aibox-radius-5) 0 0;
 }

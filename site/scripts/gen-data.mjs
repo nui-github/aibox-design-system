@@ -36,6 +36,7 @@ const starts = [
   ['empty', /^\/\* Empty\. Source/m],
   ['dropdown', /^\/\* Dropdown menu \(popover submenu\)\./m],
   ['scrollbar', /^\/\* Scrollbar\. Source/m],
+  ['drawer', /^\/\* Drawer\. Source/m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);
