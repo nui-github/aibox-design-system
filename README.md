@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.25.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.25.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.26.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.26.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -186,6 +186,10 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 ### Time picker (Figma page TimePicker `1612:3564`, desktop `1612:3566`, menu cell `1613:9223`)
 
 `nz-time-picker`: the field is the Date picker field (sizes, error, disabled). The popup is about 125px wide (`bg/primary`, radius 6 from `--aibox-timepicker-menu-radius`, raise-modal shadow, 10px top padding) with 224px tall columns divided by 1px lines, 28x28 radius-4 cells (hover `bg/tertiary`, selected `color/main` with white medium text) and, with `nzNeedConfirm`, a full-width outlined small button (padding 12). The "now" link is hidden. Use `nzFormat="HH:mm"`. ng-zorro 22 needs a date adapter provider. Not covered: seconds / 12-hour columns, the mobile frames.
+
+### Tree (Figma page Tree Select `4230:2618`, tree-selection-list `9718:69790`, base `4267:9343`)
+
+`nz-tree` (also the list in `nz-tree-select`): 42px rows (padding 8 16 8 8), 20px caret box + 8px gap + checkbox (17.5px, drawn like the Checkbox override) + 8px gap + 16/26 title, 24px indent per level (32px for the first, so level 2 starts at 40px). Row hover fills the whole row with `bg/tertiary`; the selected node is `color/main` medium (both taken from the Folder-list frames). Register `CaretDownFill` and `CaretRightFill`. Not covered: the Folder-list pattern, search highlight, draggable / line / block-node trees.
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.

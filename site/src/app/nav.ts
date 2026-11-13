@@ -31,5 +31,6 @@ export const COMPONENTS: NavItem[] = [
   { path: 'upload', title: 'Upload', figma: '1516:11121, 1516:11080' },
   { path: 'date-picker', title: 'Date picker', figma: '1347:23603, 4558:7666' },
   { path: 'time-picker', title: 'Time picker', figma: '1612:3566, 1613:9223' },
+  { path: 'tree', title: 'Tree', figma: '9718:69790, 4267:9343' },
   { path: 'badge', title: 'Badge (notification)', figma: '1175:641' },
 ];

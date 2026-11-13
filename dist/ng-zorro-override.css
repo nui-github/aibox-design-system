@@ -1,4 +1,4 @@
-/* aibox-design-system v0.25.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.26.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -2649,4 +2649,126 @@ nz-alert.aibox-alert-bar {
   --_fg-h: var(--aibox-color-button-outline-standard-text-press);
   --_bd-h: var(--aibox-color-button-outline-standard-border-press);
   width: 100%;
+}
+
+/* Tree. Source: Figma "i-BOX Design System" > Tree Select page (4230:2618): tree-selection-list 9718:69790 (levels 1-5; state default / no sub /
+   expanded) and _base_tree-content-list 4267:9343 (state hovered / selected). The "Folder-list" rows of the same page (caret, folder icon, name and
+   a chevron) are a product pattern and are not covered.
+   Mapping (nz-tree, also the list inside nz-tree-select):
+     tree-selection-list level 1..5      nested nodes (each level indents 24px; the first is 32px so level 2 starts 40px from the edge)
+     state default / expanded / no sub   collapsed / expanded (caret down) / leaf (isLeaf: no caret)
+     checkbox                            nzCheckable (the checkbox box is drawn like the Checkbox override)
+     state hovered                       row hover: bg/tertiary over the whole row
+     state selected                      the selected node: text in color/main, medium weight
+   Row: padding 8 16 8 8 (height 42), caret 16px box then 8px gap, checkbox 17.5px then 8px gap, title 16/26 text/primary.
+   The hover and selected looks come from the Folder-list frames (50px rows); they are applied to the checkbox tree as well.
+   Not covered: the search state (highlighted match), draggable / line / block-node trees, the Folder-list pattern. */
+.ant-tree {
+  background: transparent;
+  color: var(--aibox-color-text-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+}
+.ant-tree .ant-tree-treenode {
+  align-items: center;
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-4) var(--aibox-spacing-2) var(--aibox-spacing-2);
+  background: var(--aibox-color-bg-primary);
+}
+.ant-tree .ant-tree-treenode:hover {
+  background: var(--aibox-color-bg-tertiary);
+}
+.ant-tree .ant-tree-indent {
+  align-self: stretch;
+}
+.ant-tree .ant-tree-indent-unit {
+  width: 24px;
+}
+.ant-tree .ant-tree-indent-unit:first-child {
+  width: 32px;
+}
+.ant-tree .ant-tree-switcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 20px;
+  height: 26px;
+  margin: 0 var(--aibox-spacing-2) 0 0;
+  line-height: 26px;
+}
+.ant-tree .ant-tree-switcher .ant-tree-switcher-icon {
+  color: var(--aibox-color-text-primary);
+  font-size: 12px;
+}
+.ant-tree .ant-tree-node-content-wrapper {
+  min-height: 26px;
+  padding: 0;
+  background: transparent;
+  color: var(--aibox-color-text-primary);
+  line-height: 26px;
+}
+.ant-tree .ant-tree-node-content-wrapper:hover,
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+  background: transparent;
+}
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+  color: var(--aibox-color-text-main);
+  font-weight: var(--aibox-typography-body-body-lg-bold-font-weight);
+  letter-spacing: var(--aibox-typography-body-body-lg-bold-letter-spacing);
+}
+/* checkbox: same shape as the Checkbox override (box 17.5, ring 1.875, radius 2.5) */
+.ant-tree .ant-tree-checkbox {
+  top: 0;
+  margin: 0 var(--aibox-spacing-2) 0 0;
+}
+.ant-tree .ant-tree-checkbox .ant-tree-checkbox-inner {
+  --_ring: var(--aibox-color-text-icon-default);
+  box-sizing: border-box;
+  width: 17.5px;
+  height: 17.5px;
+  border: 0;
+  border-radius: 2.5px;
+  background-color: var(--aibox-color-bg-primary);
+  box-shadow: inset 0 0 0 1.875px var(--_ring);
+}
+.ant-tree .ant-tree-checkbox:hover .ant-tree-checkbox-inner,
+.ant-tree .ant-tree-checkbox-input:focus + .ant-tree-checkbox-inner {
+  --_ring: var(--aibox-color-state-form-hover);
+}
+.ant-tree .ant-tree-checkbox.ant-tree-checkbox-checked .ant-tree-checkbox-inner {
+  --_ring: var(--aibox-color-state-form-active);
+  background-color: var(--aibox-color-state-form-active);
+}
+.ant-tree .ant-tree-checkbox .ant-tree-checkbox-inner::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 17.5px;
+  height: 17.5px;
+  border: 0;
+  background-color: var(--aibox-color-text-white-primary);
+  transform: none;
+  opacity: 0;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M27.5 52 42 66 73.5 34.5' fill='none' stroke='black' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M27.5 52 42 66 73.5 34.5' fill='none' stroke='black' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.ant-tree .ant-tree-checkbox.ant-tree-checkbox-checked .ant-tree-checkbox-inner::after {
+  opacity: 1;
+  border: 0;
+  transform: none;
+}
+.ant-tree .ant-tree-checkbox.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner::after {
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 1px;
+  background-color: var(--aibox-color-state-form-active);
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  -webkit-mask: none;
+  mask: none;
 }
