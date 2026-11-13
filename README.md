@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.27.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.27.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.28.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.28.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -194,6 +194,10 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 ### Cascader (Figma page Cascader `4268:9357`, dropdown `4268:12892`)
 
 `nz-cascader`: the field is the Select field (`nzSize="large"`, `[nzShowSearch]="true"` for the search icon). The dropdown is `bg/primary`, radius 4, shadow `--aibox-cascader-menu-shadow`, no padding; one column per level divided by a 1px `border/primary` line; rows have padding 12 16, 16/26 text and a 1px line under them. Hover and the open path use `bg/tertiary` with `color/main` text (inferred). The two-line rows of the Figma frames (icon, title, description, 74px) need `nzOptionRender`. Not covered: the notfound text, multiple / checkbox mode.
+
+### Card (Figma Empty State page Card / Advanced `4065:7590`, Card page Card Menu `1295:3294`)
+
+`nz-card`: 1px `border/primary`, radius 8, shadow `section-sm`, body padding 24 16. `aibox-card-menu` on `nz-card` (with an icon and a `.title` inside) is the Card Menu shortcut tile: no border, white, shadow `--aibox-card-menu-shadow`, 164x154, 20px icon in `text/icon-default`, 16/26 medium `text/secondary` title. Head, actions, grid and meta stay ng-zorro's (the Figma Card page has no spec for them). Not covered: the file / E-Form selection cards (product components).
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.

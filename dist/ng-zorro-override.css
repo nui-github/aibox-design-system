@@ -1,4 +1,4 @@
-/* aibox-design-system v0.27.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.28.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -2825,4 +2825,52 @@ nz-alert.aibox-alert-bar {
 }
 .ant-cascader-dropdown .ant-cascader-menu-item-expand .ant-cascader-menu-item-expand-icon {
   color: var(--aibox-color-text-icon-default);
+}
+
+/* Card. Source: Figma "i-BOX Design System" > Empty State page (4064:1219), Card / Advanced 4065:7590, and Card page (1295:3160), Card Menu 1295:3294.
+   Mapping (nz-card):
+     Card / Advanced                    <nz-card> (border 1px border/primary, radius 8, shadow section-sm, body padding 24 16)
+     Card Menu (icon + text shortcut)   class "aibox-card-menu" on nz-card, with an icon and a .title inside
+   Card Menu: bg white, radius 8, shadow --aibox-card-menu-shadow (no border), padding 48 14 (24 + a 24 inner), icon 20px in a 32px box in text/icon-default, title 16/26 medium
+   text/secondary, centred (164x154). The head (title, extra), actions, grid and meta are ng-zorro's: the Figma Card page only has the two shapes above.
+   Not covered: the file-card-selection (5315:90) and E-Form card selection (8268:73590) cards, which are product components (a radio card with
+   status lines), and dark theme. */
+.ant-card {
+  border: 1px solid var(--aibox-color-border-primary);
+  border-radius: var(--aibox-radius-3);
+  background: var(--aibox-color-bg-primary);
+  box-shadow: var(--aibox-shadow-base-section-sm);
+  color: var(--aibox-color-text-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-card .ant-card-body {
+  padding: var(--aibox-spacing-6) var(--aibox-spacing-4);
+}
+.ant-card.aibox-card-menu {
+  border: 0;
+  background: var(--aibox-color-text-white-primary);
+  box-shadow: var(--aibox-card-menu-shadow);
+}
+.ant-card.aibox-card-menu .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 14px;
+}
+.ant-card.aibox-card-menu .ant-card-body .anticon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--aibox-color-text-icon-default);
+  font-size: 20px;
+}
+.ant-card.aibox-card-menu .ant-card-body .title {
+  color: var(--aibox-color-text-secondary);
+  font-size: var(--aibox-typography-body-body-lg-bold-font-size);
+  font-weight: var(--aibox-typography-body-body-lg-bold-font-weight);
+  line-height: var(--aibox-typography-body-body-lg-bold-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-bold-letter-spacing);
 }
