@@ -25,6 +25,7 @@ export const routes: Routes = [
   { path: 'scrollbar', title: 'Scrollbar · Ai-BOX Design System', loadComponent: () => import('./pages/scrollbar').then((m) => m.ScrollbarPage) },
   { path: 'drawer', title: 'Drawer · Ai-BOX Design System', loadComponent: () => import('./pages/drawer').then((m) => m.DrawerPage) },
   { path: 'table', title: 'Table · Ai-BOX Design System', loadComponent: () => import('./pages/table').then((m) => m.TablePage) },
+  { path: 'upload', title: 'Upload · Ai-BOX Design System', loadComponent: () => import('./pages/upload').then((m) => m.UploadPage) },
   { path: 'alert', title: 'Alert · Ai-BOX Design System', loadComponent: () => import('./pages/alert').then((m) => m.AlertPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];

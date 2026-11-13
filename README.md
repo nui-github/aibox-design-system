@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.22.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.22.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.23.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.23.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -174,6 +174,10 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 ### Table (Figma page Table `1144:1086`, head cell `3631:1869`, row cell `8794:180479`)
 
 `nz-table`: header cell fill `bg/secondary`, padding 12 8, 14/24 medium, 48px tall, no column dividers; the sort icon (16px, 8px after the label) is drawn with CSS: grey up-down when unsorted, a single `text/main` arrow when `nzSortOrder` is ascend (up) or descend (down). Row cells: `bg/primary`, padding 8, min height 58, 16/26 regular, no hover fill. `aibox-btn-nopad` = texted button without side padding (use with `aibox-btn-xs` for the action cell, 20px apart). The 1px row separator is an addition (not in Figma). Not covered: the required asterisk and info tooltip in the head cell, selection/expand columns, fixed headers, bordered/small sizes.
+
+### Upload (Figma page Upload `1516:11060`, drop zone `1516:11121`, upload-block `1516:11080`)
+
+`nz-upload`: `nzType="drag"` is the drop zone (`bg/secondary`, 1px dashed `text/secondary`, radius 8, 148px tall, 28px file-arrow-up icon in `bg/main`, 16/26 medium text, 14/24 hint). File rows (`nzListType="text"` / `"picture"`) are 64px tall boxes (padding 14, radius 8, `border/secondary`) with a blue name, 16px file icon and a 32px delete button; `uploading` = dashed border and a spinner (progress bar hidden), `error` = red border/icon/name, picture = 36px thumbnail. Register `DeleteOutline`, `InboxOutline`, `PaperClipOutline`, `FileOutline`, `PictureOutline`, `LoadingOutline` and set `nzShowUploadList` to hide preview/download. Not covered: disabled / reduce-height / compact / reupload / validation-error states, inline error reason, progress bar, picture-card.
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.

@@ -2225,3 +2225,208 @@ nz-alert.aibox-alert-bar {
 .ant-table-wrapper .ant-table-tbody > tr > td .ant-btn + .ant-btn {
   margin-inline-start: var(--aibox-spacing-5);
 }
+
+/* Upload. Source: Figma "i-BOX Design System" > Upload page (1516:11060): drop zone 1516:11121 (state default) and upload-block 1516:11080
+   (state loading / error / uploaded / thumbnail uploaded).
+   Mapping (nz-upload):
+     drop zone default                    <nz-upload nzType="drag"> with .ant-upload-drag-icon, .ant-upload-text and .ant-upload-hint
+     upload-block uploaded                nzListType="text", file status "done" (file icon in color/text/main, name in the same blue)
+     upload-block loading                 status "uploading" (dashed border, spinner; the progress bar is hidden)
+     upload-block error                   status "error" (red border, icon and name)
+     upload-block thumbnail uploaded      nzListType="picture" (36px image, radius 4)
+   Drop zone: fill bg/secondary, 1px dashed text/secondary, radius 8, padding 20 10, 28px file-arrow-up icon in bg/main, text 16/26 medium
+   and hint 14/24 regular text/secondary. Rows: height 64, padding 14, radius 8, 1px border border/secondary, name 16/26 medium,
+   delete button in a 32px box (icon 16px). Hover colour of the zone is an addition (not in Figma).
+   Not covered: disabled / reduce-height / compact / reupload / validation-error / download zone states, the inline error reason under the
+   file name (ng-zorro only shows it as a tooltip), the progress bar. */
+.ant-upload.ant-upload-drag {
+  border: 1px dashed var(--aibox-color-text-secondary);
+  border-radius: var(--aibox-radius-3);
+  background: var(--aibox-color-bg-secondary);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-upload.ant-upload-drag:not(.ant-upload-disabled):hover,
+.ant-upload.ant-upload-drag.ant-upload-drag-hover:not(.ant-upload-disabled) {
+  border-color: var(--aibox-color-main);
+}
+.ant-upload.ant-upload-drag .ant-upload-btn {
+  padding: 19px 9px;
+}
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 10px;
+  padding-top: var(--aibox-spacing-2);
+}
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon.anticon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  color: var(--aibox-color-bg-main);
+}
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon > * {
+  display: none;
+}
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M3 2a2 2 0 0 1 2-2h5l4 4v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8 5.3L5.6 7.7l.8.8 1-1V11.5h1.2V7.5l1 1 .8-.8z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M3 2a2 2 0 0 1 2-2h5l4 4v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8 5.3L5.6 7.7l.8.8 1-1V11.5h1.2V7.5l1 1 .8-.8z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.ant-upload.ant-upload-drag p.ant-upload-text {
+  margin: 0;
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-typography-body-body-lg-bold-font-size);
+  font-weight: var(--aibox-typography-body-body-lg-bold-font-weight);
+  line-height: var(--aibox-typography-body-body-lg-bold-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-bold-letter-spacing);
+}
+.ant-upload.ant-upload-drag p.ant-upload-hint {
+  margin: 0;
+  color: var(--aibox-color-text-secondary);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+/* file rows (upload-block) */
+.ant-upload-list .ant-upload-list-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--aibox-color-border-secondary);
+  border-radius: var(--aibox-radius-3);
+  background: var(--aibox-color-bg-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-upload-list .ant-upload-list-text-container,
+.ant-upload-list .ant-upload-list-picture-container {
+  margin-top: 0;
+}
+.ant-upload-list .ant-upload-list-text-container + .ant-upload-list-text-container,
+.ant-upload-list .ant-upload-list-picture-container + .ant-upload-list-picture-container {
+  margin-top: var(--aibox-spacing-2);
+}
+.ant-upload-list .ant-upload-list-item-info {
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+.ant-upload-list .ant-upload-list-item-info .ant-upload-span {
+  display: flex;
+  align-items: center;
+  gap: var(--aibox-spacing-2);
+}
+.ant-upload-list .ant-upload-list-item-name {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  color: var(--aibox-color-text-main);
+  font-size: var(--aibox-typography-body-body-lg-bold-font-size);
+  font-weight: var(--aibox-typography-body-body-lg-bold-font-weight);
+  line-height: var(--aibox-typography-body-body-lg-bold-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-bold-letter-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ant-upload-list .ant-upload-text-icon {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  color: var(--aibox-color-text-main);
+}
+.ant-upload-list .ant-upload-text-icon .anticon {
+  position: static;
+  display: block;
+  width: 16px;
+  height: 16px;
+  font-size: 0;
+  color: inherit;
+}
+.ant-upload-list .ant-upload-text-icon .anticon > * {
+  display: none;
+}
+.ant-upload-list .ant-upload-text-icon .anticon::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.2 1.6h5l3.6 3.6v8.2a1 1 0 0 1-1 1H4.2a1 1 0 0 1-1-1V2.6a1 1 0 0 1 1-1zM9.2 1.6v3.6h3.6' fill='none' stroke='black' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.2 1.6h5l3.6 3.6v8.2a1 1 0 0 1-1 1H4.2a1 1 0 0 1-1-1V2.6a1 1 0 0 1 1-1zM9.2 1.6v3.6h3.6' fill='none' stroke='black' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.ant-upload-list .ant-upload-list-item-uploading .ant-upload-text-icon .anticon::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.6A6.4 6.4 0 1 1 1.6 8' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.6A6.4 6.4 0 1 1 1.6 8' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  animation: aibox-upload-spin 1s linear infinite;
+}
+@keyframes aibox-upload-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ant-upload-list .ant-upload-list-item-uploading {
+  border-style: dashed;
+  border-color: var(--aibox-color-text-icon-default);
+}
+.ant-upload-list .ant-upload-list-item-uploading .ant-upload-list-item-progress {
+  display: none;
+}
+.ant-upload-list .ant-upload-list-item-card-actions {
+  position: static;
+  display: flex;
+  flex: none;
+}
+.ant-upload-list .ant-upload-list-item-card-actions-btn.ant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  opacity: 1;
+  font-size: 16px;
+  color: var(--aibox-color-border-secondary);
+}
+.ant-upload-list .ant-upload-list-item-card-actions-btn.ant-btn .anticon {
+  font-size: 16px;
+  color: inherit;
+}
+.ant-upload-list .ant-upload-list-item-error {
+  border-color: var(--aibox-color-text-status-error-100);
+}
+.ant-upload-list .ant-upload-list-item-error .ant-upload-text-icon,
+.ant-upload-list .ant-upload-list-item-error .ant-upload-list-item-name,
+.ant-upload-list .ant-upload-list-item-error .ant-upload-list-item-card-actions-btn.ant-btn {
+  color: var(--aibox-color-text-status-error-100);
+}
+.ant-upload-list-picture .ant-upload-list-item-thumbnail {
+  position: static;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+}
+.ant-upload-list-picture .ant-upload-list-item-thumbnail img.ant-upload-list-item-image {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--aibox-radius-2);
+  object-fit: cover;
+}
+.ant-upload-list-picture .ant-upload-list-item-card-actions-btn.ant-btn {
+  color: var(--aibox-color-text-icon-default);
+}
