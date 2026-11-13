@@ -2873,3 +2873,99 @@ nz-alert.aibox-alert-bar {
   line-height: var(--aibox-typography-body-body-lg-bold-line-height);
   letter-spacing: var(--aibox-typography-body-body-lg-bold-letter-spacing);
 }
+
+/* Menu. Source: Figma "i-BOX Design System" > Navigation page (154:2044): vertical menu 154:3272 (Frame 137: Default row, Menu Expand row
+   with a Submenu of Default / Hover State / FTP Log items). The Sidebar, Header, Menu Product, Mobile header and Inbox list frames of the
+   same page are app-shell components and are not covered.
+   Mapping (nz-menu nzMode="inline"):
+     group row (Default / Menu Expand)   nz-submenu (title) or a top-level nz-menu-item, 240px wide
+     row open                            nzOpen: title in color/main medium, chevron down (closed = chevron right)
+     submenu item default                nz-menu-item: 208x32, padding 4 16, radius 4, 14/24 text/tertiary, 8px apart
+     submenu item hover                  fill component/bg/bg-active, color/main medium
+     submenu item active                 nzSelected: fill color/bg/main, white medium text
+   Rows: padding 16, 1px bottom line and the menu's 1px right line in text/white/secondary, 14/24 text/tertiary. Group bottom padding 24.
+   Not covered: collapsed (icon-only) menu, icons in rows, horizontal / vertical popup menus, the dark theme, danger and disabled items. */
+.ant-menu.ant-menu-inline {
+  border-inline-end: 1px solid var(--aibox-color-text-white-secondary);
+  background: var(--aibox-color-bg-primary);
+  color: var(--aibox-color-text-tertiary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-menu-inline > .ant-menu-submenu,
+.ant-menu-inline > .ant-menu-item {
+  border-bottom: 1px solid var(--aibox-color-text-white-secondary);
+}
+.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu-inline > .ant-menu-item {
+  height: auto;
+  margin: 0;
+  padding: var(--aibox-spacing-4);
+  border-radius: 0;
+  color: var(--aibox-color-text-tertiary);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+}
+/* ng-zorro sets padding-inline-start inline per level (24 / 48 px); the override needs !important to win over a style attribute */
+.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu-inline > .ant-menu-item {
+  padding-inline-start: var(--aibox-spacing-4) !important;
+}
+.ant-menu-inline .ant-menu-sub .ant-menu-item {
+  padding-inline-start: var(--aibox-spacing-4) !important;
+}
+.ant-menu-inline > .ant-menu-submenu-open > .ant-menu-submenu-title,
+.ant-menu-inline > .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: var(--aibox-color-text-main);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+}
+.ant-menu-inline .ant-menu-submenu-title:hover {
+  color: var(--aibox-color-text-main);
+}
+.ant-menu-inline .ant-menu-submenu-arrow {
+  inset-inline-end: var(--aibox-spacing-4);
+  color: var(--aibox-color-text-tertiary);
+  transform: translateY(-50%) rotate(-90deg);
+}
+.ant-menu-inline .ant-menu-submenu-open > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
+  color: var(--aibox-color-text-main);
+  transform: translateY(-50%);
+}
+.ant-menu-inline .ant-menu-submenu-open > .ant-menu-submenu-title > .ant-menu-submenu-arrow::before {
+  transform: rotate(-45deg) translateX(2.5px);
+}
+.ant-menu-inline .ant-menu-submenu-open > .ant-menu-submenu-title > .ant-menu-submenu-arrow::after {
+  transform: rotate(45deg) translateX(-2.5px);
+}
+.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+  padding: 0 var(--aibox-spacing-4) var(--aibox-spacing-6);
+  border: 0;
+  background: transparent;
+}
+.ant-menu-inline .ant-menu-sub .ant-menu-item {
+  height: 32px;
+  margin: 0 0 var(--aibox-spacing-2);
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-4);
+  border-radius: var(--aibox-radius-2);
+  background: transparent;
+  color: var(--aibox-color-text-tertiary);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+}
+.ant-menu-inline .ant-menu-sub .ant-menu-item:last-child {
+  margin-bottom: 0;
+}
+.ant-menu-inline .ant-menu-sub .ant-menu-item:hover {
+  background: var(--aibox-color-component-bg-bg-active);
+  color: var(--aibox-color-main);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+}
+.ant-menu-inline .ant-menu-sub .ant-menu-item.ant-menu-item-selected,
+.ant-menu-inline .ant-menu-sub .ant-menu-item.ant-menu-item-selected:hover {
+  background: var(--aibox-color-bg-main);
+  color: var(--aibox-color-text-white-primary);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+}
+.ant-menu-inline .ant-menu-item::after {
+  display: none;
+}
