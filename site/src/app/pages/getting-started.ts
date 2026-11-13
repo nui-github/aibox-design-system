@@ -151,6 +151,7 @@ export class GettingStarted {
     ['aibox-empty-lg', 'nz-empty', 'ถาดใหญ่ 128×80 (image big)'],
     ['aibox-scrollbar', 'element ที่เลื่อนได้ (overflow: auto)', 'scrollbar 4px สี i-BOX (Chromium / Safari; Firefox ได้แบบ thin สีเดียวกัน)'],
     ['aibox-btn-nopad', 'nz-button', 'ไม่มี padding ซ้าย-ขวา (texted "without padding" ที่ใช้ในแถวของตาราง)'],
+    ['aibox-card-menu', 'nz-card', 'การ์ดทางลัดเมนู: ไอคอน + ข้อความ จัดกลางการ์ด'],
     ['aibox-tag-disabled', 'nz-tag nzMode="checkable"', 'หน้าตา disabled (ต้องกันคลิกเอง)'],
   ];
   protected readonly compat: string[][] = [

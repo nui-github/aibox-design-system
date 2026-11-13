@@ -108,5 +108,20 @@
       ],
       "$description": "Figma Cascader Dropdown drop shadow (0 4px 4px rgba(0,0,0,.1), 0 -1px 4px rgba(0,0,0,.1)), node 4268:12946. Not in the variable export."
     }
+  },
+  "card": {
+    "menu-shadow": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#0000000a",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "2px"
+        }
+      ],
+      "$description": "Figma Card Menu shadow (wb/shadow/base/header-mobile: 0 4px 8px 2px rgba(0,0,0,.04), node 1295:3294). The style is not in the variable export."
+    }
   }
 }

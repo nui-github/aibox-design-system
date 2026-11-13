@@ -30,6 +30,7 @@ export const routes: Routes = [
   { path: 'time-picker', title: 'Time picker · Ai-BOX Design System', loadComponent: () => import('./pages/time-picker').then((m) => m.TimePickerPage) },
   { path: 'tree', title: 'Tree · Ai-BOX Design System', loadComponent: () => import('./pages/tree').then((m) => m.TreePage) },
   { path: 'cascader', title: 'Cascader · Ai-BOX Design System', loadComponent: () => import('./pages/cascader').then((m) => m.CascaderPage) },
+  { path: 'card', title: 'Card · Ai-BOX Design System', loadComponent: () => import('./pages/card').then((m) => m.CardPage) },
   { path: 'alert', title: 'Alert · Ai-BOX Design System', loadComponent: () => import('./pages/alert').then((m) => m.AlertPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];

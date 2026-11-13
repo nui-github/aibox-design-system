@@ -43,6 +43,7 @@ const starts = [
   ['time-picker', /^\/\* Time picker\. Source/m],
   ['tree', /^\/\* Tree\. Source/m],
   ['cascader', /^\/\* Cascader\. Source/m],
+  ['card', /^\/\* Card\. Source/m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);

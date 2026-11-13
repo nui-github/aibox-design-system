@@ -394,6 +394,7 @@
   --aibox-dropdown-section-bg: #f7f7f7; /** Figma popover-submenu section header fill (nodes 1346:846, 1346:869). The design context falls back to #f7f7f7 for a bg-subtle variable that is not in the variable export. */
   --aibox-timepicker-menu-radius: 6px; /** Figma time-picker menu corner radius (variable i-box/radius/value-6, node 1613:9329), not in the variable export. */
   --aibox-cascader-menu-shadow: 0px 4px 4px 0px #0000001a, 0px -1px 4px 0px #0000001a; /** Figma Cascader Dropdown drop shadow (0 4px 4px rgba(0,0,0,.1), 0 -1px 4px rgba(0,0,0,.1)), node 4268:12946. Not in the variable export. */
+  --aibox-card-menu-shadow: 0px 4px 8px 2px #0000000a; /** Figma Card Menu shadow (wb/shadow/base/header-mobile: 0 4px 8px 2px rgba(0,0,0,.04), node 1295:3294). The style is not in the variable export. */
   --aibox-font-family-heading-and-body: 'IBM Plex Sans Thai'; /** Primary typeface for all headings and body text throughout the system. */
   --aibox-font-size-header-h-over: 32px; /** Oversized heading — for special cases requiring text larger than H1. */
   --aibox-font-size-header-h1: 28px; /** Primary page heading — top-level page titles. */
