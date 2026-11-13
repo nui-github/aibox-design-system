@@ -2059,3 +2059,31 @@ nz-alert.aibox-alert-bar {
 .ant-dropdown .ant-dropdown-arrow {
   --antd-arrow-background-color: var(--aibox-color-bg-primary);
 }
+
+/* Scrollbar. Source: Figma "i-BOX Design System" > Scrollbar page (3745:12812): scrollbar-Vertical 6903:54 (scroll start / mid / end)
+   and scrollbar-Horizontal 7024:6514. Not an ng-zorro component: an opt-in class for any scrollable element.
+   Mapping:
+     scrollbar (vertical and horizontal)   class "aibox-scrollbar" on the scrolling element (overflow: auto)
+   4px wide track (bg/secondary) and thumb (text/tertiary), both with radius 4. The thumb position and length (start / mid / end)
+   are the browser's. Chromium and Safari draw it with ::-webkit-scrollbar; Firefox cannot set a width, so it gets scrollbar-width: thin
+   with the same colours. Not covered: overlay scrollbars on touch devices (the OS draws those), hover/active states. */
+@supports selector(::-webkit-scrollbar) {
+  .aibox-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .aibox-scrollbar::-webkit-scrollbar-track {
+    border-radius: var(--aibox-radius-2);
+    background: var(--aibox-color-bg-secondary);
+  }
+  .aibox-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: var(--aibox-radius-2);
+    background: var(--aibox-color-text-tertiary);
+  }
+}
+@supports not selector(::-webkit-scrollbar) {
+  .aibox-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--aibox-color-text-tertiary) var(--aibox-color-bg-secondary);
+  }
+}
