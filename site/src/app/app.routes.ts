@@ -31,6 +31,7 @@ export const routes: Routes = [
   { path: 'tree', title: 'Tree · Ai-BOX Design System', loadComponent: () => import('./pages/tree').then((m) => m.TreePage) },
   { path: 'cascader', title: 'Cascader · Ai-BOX Design System', loadComponent: () => import('./pages/cascader').then((m) => m.CascaderPage) },
   { path: 'card', title: 'Card · Ai-BOX Design System', loadComponent: () => import('./pages/card').then((m) => m.CardPage) },
+  { path: 'menu', title: 'Menu · Ai-BOX Design System', loadComponent: () => import('./pages/menu').then((m) => m.MenuPage) },
   { path: 'alert', title: 'Alert · Ai-BOX Design System', loadComponent: () => import('./pages/alert').then((m) => m.AlertPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];
