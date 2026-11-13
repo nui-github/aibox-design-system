@@ -86,5 +86,27 @@
       "$value": "6px",
       "$description": "Figma time-picker menu corner radius (variable i-box/radius/value-6, node 1613:9329), not in the variable export."
     }
+  },
+  "cascader": {
+    "menu-shadow": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#0000001a",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "4px",
+          "spread": "0px"
+        },
+        {
+          "color": "#0000001a",
+          "offsetX": "0px",
+          "offsetY": "-1px",
+          "blur": "4px",
+          "spread": "0px"
+        }
+      ],
+      "$description": "Figma Cascader Dropdown drop shadow (0 4px 4px rgba(0,0,0,.1), 0 -1px 4px rgba(0,0,0,.1)), node 4268:12946. Not in the variable export."
+    }
   }
 }
