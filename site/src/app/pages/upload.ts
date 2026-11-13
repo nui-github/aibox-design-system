@@ -30,6 +30,21 @@ const THUMB = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' w
       </div>
     </app-demo>
 
+    <app-demo title="Compact and disabled" description="aibox-upload-compact = ไอคอนกับหัวข้ออยู่แถวเดียวกัน สูง 100px · nzDisabled = ไอคอนและข้อความสีจาง" [code]="states" [ts]="imports">
+      <div class="w480 stack">
+        <nz-upload class="aibox-upload-compact" nzType="drag" [nzBeforeUpload]="never">
+          <p class="ant-upload-drag-icon"><nz-icon nzType="inbox" /></p>
+          <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
+          <p class="ant-upload-hint">รองรับ .pdf, .jpg ,.png จำนวนสูงสุด 20 ไฟล์ และแต่ละไฟล์ต้องไม่เกิน 10MB</p>
+        </nz-upload>
+        <nz-upload nzType="drag" nzDisabled [nzBeforeUpload]="never">
+          <p class="ant-upload-drag-icon"><nz-icon nzType="inbox" /></p>
+          <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
+          <p class="ant-upload-hint">รองรับ .pdf, .jpg ,.png จำนวนสูงสุด 20 ไฟล์ และแต่ละไฟล์ต้องไม่เกิน 10MB</p>
+        </nz-upload>
+      </div>
+    </app-demo>
+
     <app-demo title="File list" description="สถานะ uploading / error / done · nzListType=&quot;picture&quot; แสดง thumbnail" [code]="list" [ts]="imports">
       <div class="w380">
         <nz-upload nzListType="text" [nzFileList]="textList" [nzBeforeUpload]="never" [nzShowUploadList]="listOptions" />
@@ -39,7 +54,7 @@ const THUMB = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' w
 
     <app-css-panel id="upload" />
   `,
-  styles: `.w480 { width: 480px; max-width: 100%; } .w380 { width: 380px; max-width: 100%; display: grid; gap: var(--aibox-spacing-4); }`,
+  styles: `.w480 { width: 480px; max-width: 100%; } .stack { display: grid; gap: var(--aibox-spacing-4); } .w380 { width: 380px; max-width: 100%; display: grid; gap: var(--aibox-spacing-4); }`,
 })
 export class UploadPage {
   protected readonly imports = IMPORTS;
@@ -58,6 +73,8 @@ export class UploadPage {
   <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
   <p class="ant-upload-hint">รองรับ .pdf, .jpg ,.png จำนวนสูงสุด 20 ไฟล์ และแต่ละไฟล์ต้องไม่เกิน 10MB</p>
 </nz-upload>`;
+  protected readonly states = `<nz-upload class="aibox-upload-compact" nzType="drag" [nzBeforeUpload]="beforeUpload">...</nz-upload>
+<nz-upload nzType="drag" nzDisabled [nzBeforeUpload]="beforeUpload">...</nz-upload>`;
   protected readonly list = `<nz-upload nzListType="text" [nzFileList]="files" [nzBeforeUpload]="beforeUpload" [nzShowUploadList]="{ showPreviewIcon: false, showDownloadIcon: false }" />
 <nz-upload nzListType="picture" [nzFileList]="pictures" [nzBeforeUpload]="beforeUpload" [nzShowUploadList]="{ showPreviewIcon: false, showDownloadIcon: false }" />`;
 }

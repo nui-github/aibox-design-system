@@ -80,6 +80,13 @@
       "$description": "Figma popover-submenu section header fill (nodes 1346:846, 1346:869). The design context falls back to #f7f7f7 for a bg-subtle variable that is not in the variable export."
     }
   },
+  "table": {
+    "row-hover-bg": {
+      "$type": "color",
+      "$value": "#fafafa",
+      "$description": "ng-zorro's stock table row hover fill (.ant-table-tbody > tr.ant-table-row:hover > td, ng-zorro-antd 22.1.2). Not a Figma value: Figma has no row hover."
+    }
+  },
   "timepicker": {
     "menu-radius": {
       "$type": "dimension",
