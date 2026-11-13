@@ -7,6 +7,15 @@
 .links { margin-left: auto; display: flex; align-items: center; gap: var(--aibox-spacing-2); }
 .burger { display: none; }
 .side { background: var(--aibox-color-bg-primary); border-right: 1px solid var(--aibox-color-global-gray-300); position: sticky; top: 56px; height: calc(100vh - 56px); overflow: auto; }
+/* Menu scrollbar: thin thumb with no track, shown only while the pointer is over the menu. */
+.side { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+.side:hover { scrollbar-color: var(--aibox-color-global-gray-400) transparent; }
+@supports not (scrollbar-color: auto) {
+  .side::-webkit-scrollbar { width: 8px; }
+  .side::-webkit-scrollbar-track { background: transparent; }
+  .side::-webkit-scrollbar-thumb { background: transparent; border-radius: 4px; }
+  .side:hover::-webkit-scrollbar-thumb { background: var(--aibox-color-global-gray-400); }
+}
 .side ul[nz-menu] { border-inline-end: 0; padding: var(--aibox-spacing-2); }
 .content { background: var(--aibox-color-bg-primary); padding: var(--aibox-spacing-6) var(--aibox-spacing-6) var(--aibox-spacing-10); min-width: 0; }
 .page { max-width: 960px; margin: 0 auto; }
