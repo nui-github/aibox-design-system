@@ -1,4 +1,4 @@
-/* aibox-design-system v0.16.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.17.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1783,4 +1783,172 @@ nz-alert.aibox-alert-bar {
 .ant-alert.aibox-alert-bar .ant-alert-content {
   flex: none;
   min-width: 0;
+}
+
+/* Modal / dialog. Source: Figma "i-BOX Design System" > Modal page (3704:8903): dialog 1:9994 (base 800px / small 400px,
+   desktop and mobile padding), dialog-alert 1:9973, status-icon 1:10235, dialog-cta 1:10244.
+   Mapping (nz-modal / NzModalService):
+     dialog (title, content, buttons)         nz-modal with nzTitle, content and the footer buttons; set nzWidth 800 or 400, nzClosable=false
+     padding-size desktop (base) / mobile     default (32) / class "aibox-modal-compact" in nzClassName (24 16 20)
+     dialog-cta horizontal (grey + blue)      the footer: Cancel (default button, drawn as contained subsidiary) + OK (primary); both stretch
+     800px dialog button inset (120px)        class "aibox-modal-cta-inset" in nzClassName
+     dialog-alert + status-icon               NzModalService.success / info / warning / error / confirm (400px, icon 32px, title, supporting text)
+   Dialog: bg/primary, radius 8, shadow raise-modal, padding 32, gap 16, title 16/24 medium centred. Dialog-alert: padding 32 48,
+   gap 24, icon 32px filled circle (status/*-200), title 16/24 medium, supporting text 16/26 text/secondary, buttons 16px apart.
+   Footer and confirm buttons use the large button size (padding 12 32, 16/24).
+   Not covered: the close button of the dialog (use nzClosable=false; hidden on the alert dialogs), the 4px scrollbar, status=loading, the other dialog-cta layouts
+   (vertical, single button, with checkbox, horizontal combine), the Password Protection overlay, dark theme. */
+.ant-modal .ant-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aibox-spacing-4);
+  padding: var(--aibox-spacing-8);
+  border-radius: var(--aibox-radius-3);
+  background: var(--aibox-color-bg-primary);
+  box-shadow: var(--aibox-shadow-base-raise-modal);
+  font-family: var(--aibox-font-family-heading-and-body);
+  color: var(--aibox-color-text-primary);
+}
+.ant-modal.aibox-modal-compact .ant-modal-content {
+  padding: var(--aibox-spacing-6) var(--aibox-spacing-4) var(--aibox-spacing-5);
+}
+.ant-modal .ant-modal-header {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+.ant-modal .ant-modal-title {
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-typography-title-title-font-size);
+  font-weight: var(--aibox-typography-title-title-font-weight);
+  line-height: var(--aibox-typography-title-title-line-height);
+  letter-spacing: var(--aibox-typography-title-title-letter-spacing);
+  text-align: center;
+}
+.ant-modal .ant-modal-body {
+  padding: 0;
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-modal .ant-modal-footer {
+  display: flex;
+  gap: var(--aibox-spacing-4);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+.ant-modal.aibox-modal-cta-inset .ant-modal-footer {
+  padding-inline: 120px;
+}
+/* footer buttons (also the confirm dialog's): large size, stretch; the non-primary one is contained / subsidiary */
+.ant-modal .ant-modal-footer .ant-btn,
+.ant-modal .ant-modal-confirm-btns .ant-btn {
+  flex: 1;
+  margin: 0;
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-8);
+  font-size: var(--aibox-typography-button-lg-font-size);
+  line-height: var(--aibox-typography-button-lg-line-height);
+  letter-spacing: var(--aibox-typography-button-lg-letter-spacing);
+}
+.ant-modal .ant-modal-footer .ant-btn:not(.ant-btn-primary):not(.ant-btn-dangerous),
+.ant-modal .ant-modal-confirm-btns .ant-btn:not(.ant-btn-primary):not(.ant-btn-dangerous) {
+  --_bg: var(--aibox-color-button-contained-subsidiary-bg-default);
+  --_fg: var(--aibox-color-button-contained-subsidiary-text-default);
+  --_bd: transparent;
+  --_bg-h: var(--aibox-color-button-contained-subsidiary-bg-press);
+  --_fg-h: var(--aibox-color-button-contained-subsidiary-text-default);
+  --_bd-h: transparent;
+}
+/* dialog-alert (confirm / success / info / warning / error) */
+.ant-modal-confirm .ant-modal-content {
+  gap: 0;
+  padding: var(--aibox-spacing-8) var(--aibox-spacing-12);
+}
+.ant-modal-confirm .ant-modal-body {
+  padding: 0;
+}
+.ant-modal-confirm .ant-modal-confirm-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aibox-spacing-6);
+}
+.ant-modal-confirm .ant-modal-confirm-body-wrapper::before,
+.ant-modal-confirm .ant-modal-confirm-body-wrapper::after {
+  display: none;
+}
+.ant-modal-confirm .ant-modal-confirm-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--aibox-spacing-1);
+  text-align: center;
+}
+.ant-modal-confirm .ant-modal-confirm-body .ant-modal-confirm-title {
+  width: 100%;
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-typography-title-title-font-size);
+  font-weight: var(--aibox-typography-title-title-font-weight);
+  line-height: var(--aibox-typography-title-title-line-height);
+  letter-spacing: var(--aibox-typography-title-title-letter-spacing);
+}
+.ant-modal-confirm .ant-modal-confirm-body .ant-modal-confirm-content,
+.ant-modal-confirm .ant-modal-confirm-body > .anticon + .ant-modal-confirm-title + .ant-modal-confirm-content {
+  width: 100%;
+  margin: 0;
+  color: var(--aibox-color-text-secondary);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-modal-confirm .ant-modal-confirm-btns {
+  display: flex;
+  gap: var(--aibox-spacing-4);
+  margin: 0;
+}
+.ant-modal-confirm .ant-modal-confirm-body > .anticon {
+  --_ic: var(--aibox-color-text-status-warning-200);
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 14.6A6.6 6.6 0 1 0 8 1.4a6.6 6.6 0 0 0 0 13.2zM7.2 4.4h1.6v4.4H7.2zM7.2 9.8h1.6v1.6H7.2z'/%3E%3C/svg%3E");
+  float: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 0 var(--aibox-spacing-1);
+  font-size: 0;
+}
+.ant-modal-confirm .ant-modal-confirm-body > .anticon > * {
+  display: none;
+}
+.ant-modal-confirm .ant-modal-confirm-body > .anticon::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--_ic);
+  -webkit-mask: var(--_glyph) center / 100% 100% no-repeat;
+  mask: var(--_glyph) center / 100% 100% no-repeat;
+}
+.ant-modal-confirm.ant-modal-confirm-success .ant-modal-confirm-body > .anticon {
+  --_ic: var(--aibox-color-text-status-success-200);
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 14.6A6.6 6.6 0 1 0 8 1.4a6.6 6.6 0 0 0 0 13.2zM4.6 8.1l1.1-1.1 1.7 1.7 3-3 1.1 1.1-4.1 4.1z'/%3E%3C/svg%3E");
+}
+.ant-modal-confirm.ant-modal-confirm-info .ant-modal-confirm-body > .anticon {
+  --_ic: var(--aibox-color-text-status-info-200);
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 14.6A6.6 6.6 0 1 0 8 1.4a6.6 6.6 0 0 0 0 13.2zM7.2 4.2h1.6v1.6H7.2zM7.2 6.8h1.6v5H7.2z'/%3E%3C/svg%3E");
+}
+.ant-modal-confirm.ant-modal-confirm-error .ant-modal-confirm-body > .anticon {
+  --_ic: var(--aibox-color-text-status-error-200);
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 14.6A6.6 6.6 0 1 0 8 1.4a6.6 6.6 0 0 0 0 13.2zM5.3 6.4l1.1-1.1L8 6.9l1.6-1.6 1.1 1.1L9.1 8l1.6 1.6-1.1 1.1L8 9.1l-1.6 1.6-1.1-1.1L6.9 8z'/%3E%3C/svg%3E");
+}
+/* ng-zorro adds margin-inline-start: 8px between footer buttons; the gap above replaces it */
+.ant-modal .ant-modal-footer .ant-btn.ant-btn.ant-btn,
+.ant-modal .ant-modal-confirm-btns .ant-btn.ant-btn.ant-btn {
+  margin: 0;
+}
+.ant-modal-confirm .ant-modal-close {
+  display: none;
 }
