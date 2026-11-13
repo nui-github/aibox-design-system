@@ -1,4 +1,4 @@
-/* aibox-design-system v0.23.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.24.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -2430,4 +2430,141 @@ nz-alert.aibox-alert-bar {
 }
 .ant-upload-list-picture .ant-upload-list-item-card-actions-btn.ant-btn {
   color: var(--aibox-color-text-icon-default);
+}
+
+/* Date picker. Source: Figma "i-BOX Design System" > DatePicker page (1347:2036): date-picker 1347:23603 (sizes large / small; states default,
+   expanded, edit, selected, disabled, filled error, empty error) and date-picker-range 4558:7666 (period).
+   Mapping (nz-date-picker / nz-range-picker):
+     size=large / small      nzSize="large" / default
+     state=default/selected  the field (value text in text/primary, placeholder in text/placeholder)
+     state=expanded / edit   the calendar popup (nzShowToday=false: the footer is not in Figma)
+     state=filled/empty error  nzStatus="error" (red border and ring; the assistive text under the field is the form item's)
+     state=disabled          nzDisabled
+     range, period           nz-range-picker: cells between the dates get bg/tertiary
+   Field: same box as the Input override (1px border state/form, radius 4, padding 4 8 / large 8 12, 14/24 / 16/26, 2px ring when focused).
+   Calendar: 280 wide, bg/primary, radius 4, shadow raise-modal; header 1px bottom line, title 14/22 semibold, arrows text/secondary;
+   cells 24x24 radius 4, 14/22; days of other months in text/icon-default; today bold in color/main; selected day filled color/main.
+   The selected-day fill and the hover fill are not in the single-date frames (inferred from the range frames), the range cells use bg/tertiary.
+   Not covered: the Buddhist-year title (2537, depends on the date adapter and locale), month / year / decade panels, week and quarter pickers,
+   time inside the popup, the today footer, presets. */
+.ant-picker {
+  box-sizing: border-box;
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+  border: 1px solid var(--aibox-color-state-form-default);
+  border-radius: var(--aibox-radius-2);
+  background: var(--aibox-color-bg-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-picker.ant-picker-large {
+  min-height: var(--aibox-size-control-height-lg);
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-picker .ant-picker-input > input {
+  color: var(--aibox-color-text-primary);
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.ant-picker .ant-picker-input > input::placeholder {
+  color: var(--aibox-color-text-placeholder);
+}
+.ant-picker:hover:not(.ant-picker-disabled) {
+  border-color: var(--aibox-color-state-form-hover);
+}
+.ant-picker.ant-picker-focused {
+  border-color: var(--aibox-color-state-form-active);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-active-outer);
+}
+.ant-picker .ant-picker-suffix {
+  color: var(--aibox-color-text-icon-default);
+  font-size: 16px;
+}
+.ant-picker.ant-picker-status-error:not(.ant-picker-disabled),
+.ant-picker.ant-picker-status-error:not(.ant-picker-disabled):hover {
+  border-color: var(--aibox-color-state-form-error);
+}
+.ant-picker.ant-picker-status-error.ant-picker-focused:not(.ant-picker-disabled) {
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-error-outer);
+}
+.ant-picker.ant-picker-disabled {
+  border-color: var(--aibox-color-state-form-default);
+  background: var(--aibox-color-bg-disable);
+}
+.ant-picker.ant-picker-disabled .ant-picker-input > input,
+.ant-picker.ant-picker-disabled .ant-picker-suffix {
+  color: var(--aibox-color-text-disable);
+}
+/* calendar popup */
+.ant-picker-dropdown .ant-picker-body {
+  padding: var(--aibox-spacing-2) 18px;
+}
+.ant-picker-dropdown .ant-picker-panel-container {
+  border-radius: var(--aibox-radius-2);
+  background: var(--aibox-color-bg-primary);
+  box-shadow: var(--aibox-shadow-base-raise-modal);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-picker-dropdown .ant-picker-header {
+  border-bottom: 1px solid var(--aibox-color-border-primary);
+  color: var(--aibox-color-text-primary);
+}
+.ant-picker-dropdown .ant-picker-header > button {
+  color: var(--aibox-color-text-secondary);
+}
+.ant-picker-dropdown .ant-picker-header > button:hover {
+  color: var(--aibox-color-text-primary);
+}
+.ant-picker-dropdown .ant-picker-header-view {
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  font-weight: 600;
+  line-height: 22px;
+}
+.ant-picker-dropdown .ant-picker-content th {
+  color: var(--aibox-color-text-primary);
+  font-weight: 400;
+  line-height: 22px;
+}
+.ant-picker-dropdown .ant-picker-cell {
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-picker-dropdown .ant-picker-cell.ant-picker-cell-in-view {
+  color: var(--aibox-color-text-primary);
+}
+.ant-picker-dropdown .ant-picker-cell .ant-picker-cell-inner {
+  min-width: 24px;
+  height: 24px;
+  border-radius: var(--aibox-radius-2);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: 24px;
+}
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner {
+  color: var(--aibox-color-text-main);
+  font-weight: 700;
+}
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+  border: 0;
+}
+.ant-picker-dropdown .ant-picker-cell:hover:not(.ant-picker-cell-in-view) .ant-picker-cell-inner,
+.ant-picker-dropdown .ant-picker-cell-in-view:hover:not(.ant-picker-cell-selected):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end):not(.ant-picker-cell-disabled):not(.ant-picker-cell-in-range) .ant-picker-cell-inner {
+  background: var(--aibox-color-bg-secondary);
+}
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+  background: var(--aibox-color-bg-main);
+  color: var(--aibox-color-text-white-primary);
+}
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-in-range::before,
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
+.ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before {
+  background: var(--aibox-color-bg-tertiary);
+}
+.ant-picker-dropdown .ant-picker-cell-disabled {
+  color: var(--aibox-color-text-disable);
 }
