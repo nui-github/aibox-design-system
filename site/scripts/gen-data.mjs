@@ -39,6 +39,7 @@ const starts = [
   ['drawer', /^\/\* Drawer\. Source/m],
   ['table', /^\/\* Table\. Source/m],
   ['upload', /^\/\* Upload\. Source/m],
+  ['date-picker', /^\/\* Date picker\. Source/m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);

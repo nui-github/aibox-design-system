@@ -26,6 +26,7 @@ export const routes: Routes = [
   { path: 'drawer', title: 'Drawer · Ai-BOX Design System', loadComponent: () => import('./pages/drawer').then((m) => m.DrawerPage) },
   { path: 'table', title: 'Table · Ai-BOX Design System', loadComponent: () => import('./pages/table').then((m) => m.TablePage) },
   { path: 'upload', title: 'Upload · Ai-BOX Design System', loadComponent: () => import('./pages/upload').then((m) => m.UploadPage) },
+  { path: 'date-picker', title: 'Date picker · Ai-BOX Design System', loadComponent: () => import('./pages/date-picker').then((m) => m.DatePickerPage) },
   { path: 'alert', title: 'Alert · Ai-BOX Design System', loadComponent: () => import('./pages/alert').then((m) => m.AlertPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];

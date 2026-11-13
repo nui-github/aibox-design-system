@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.23.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.23.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.24.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.24.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -178,6 +178,10 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 ### Upload (Figma page Upload `1516:11060`, drop zone `1516:11121`, upload-block `1516:11080`)
 
 `nz-upload`: `nzType="drag"` is the drop zone (`bg/secondary`, 1px dashed `text/secondary`, radius 8, 148px tall, 28px file-arrow-up icon in `bg/main`, 16/26 medium text, 14/24 hint). File rows (`nzListType="text"` / `"picture"`) are 64px tall boxes (padding 14, radius 8, `border/secondary`) with a blue name, 16px file icon and a 32px delete button; `uploading` = dashed border and a spinner (progress bar hidden), `error` = red border/icon/name, picture = 36px thumbnail. Register `DeleteOutline`, `InboxOutline`, `PaperClipOutline`, `FileOutline`, `PictureOutline`, `LoadingOutline` and set `nzShowUploadList` to hide preview/download. Not covered: disabled / reduce-height / compact / reupload / validation-error states, inline error reason, progress bar, picture-card.
+
+### Date picker (Figma page DatePicker `1347:2036`, date-picker `1347:23603`, range `4558:7666`)
+
+`nz-date-picker` / `nz-range-picker`: the field uses the Input box (1px `state/form/default`, radius 4, small padding 4 8 with 14/24, `nzSize="large"` 48px with 16/26, 2px ring when focused, `nzStatus="error"` red, disabled grey). The calendar popup is 280 wide (`bg/primary`, radius 4, raise-modal shadow) with a 1px header line, 14/22 semibold title, 24x24 radius-4 day cells (other-month days `text/icon-default`, today bold `color/main`, selected filled `color/main`, range cells `bg/tertiary`). Use `[nzShowToday]="false"`. ng-zorro 22 needs a date adapter provider (`provideNzNativeDateAdapter()`), ng-zorro 18 does not. Not covered: Buddhist-year title, month/year panels, week/quarter pickers, time, presets. Selected and hover cell fills are inferred.
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.
