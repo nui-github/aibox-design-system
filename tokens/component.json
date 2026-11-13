@@ -79,5 +79,12 @@
       "$value": "#f7f7f7",
       "$description": "Figma popover-submenu section header fill (nodes 1346:846, 1346:869). The design context falls back to #f7f7f7 for a bg-subtle variable that is not in the variable export."
     }
+  },
+  "timepicker": {
+    "menu-radius": {
+      "$type": "dimension",
+      "$value": "6px",
+      "$description": "Figma time-picker menu corner radius (variable i-box/radius/value-6, node 1613:9329), not in the variable export."
+    }
   }
 }
