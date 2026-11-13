@@ -61,4 +61,5 @@ p {
 /* Menu: selected item in design-system blue */
 .side .ant-menu-item { color: var(--aibox-color-text-primary); }
 .side .ant-menu-inline .ant-menu-item-selected { background: var(--aibox-color-bg-tertiary); color: var(--aibox-color-text-main); font-weight: 500; }
-.side .ant-menu-inline .ant-menu-item-selected::after { border-right-color: var(--aibox-color-bg-main); }
+/* The Menu override hides every inline item's ::after (the Figma menu has no side bar); the site's own menu keeps its bar. */
+.side .ant-menu-inline .ant-menu-item-selected::after { display: block; border-right-color: var(--aibox-color-bg-main); }
