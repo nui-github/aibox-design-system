@@ -2149,7 +2149,7 @@ nz-alert.aibox-alert-bar {
      row cell type=badge        <nz-tag> from the Tag override inside the <td>
      row cell type=action       <button nz-button nzType="text" class="aibox-btn-xs aibox-btn-nopad"> (texted xsmall without padding), 20px apart
    Head cell: fill bg/secondary, padding 12 8, 14/24 medium text/primary, no column dividers; sort icon 16px (icon-default, main when sorted),
-   8px after the label. Row cell: bg/primary, padding 8, min height 58, 16/26 regular. A 1px bg/secondary line separates rows (not in Figma).
+   8px after the label. Row cell: bg/primary, padding 8, min height 58, 16/26 regular. A 1px bg/secondary line separates rows and a row fills with --aibox-table-row-hover-bg on hover, as stock ng-zorro (both not in Figma).
    Not covered: required asterisk and info tooltip in the head cell, selection / expand columns, fixed headers, bordered and small sizes. */
 .ant-table-wrapper .ant-table {
   font-family: var(--aibox-font-family-heading-and-body);
@@ -2181,9 +2181,13 @@ nz-alert.aibox-alert-bar {
   line-height: var(--aibox-typography-body-body-lg-regular-line-height);
   letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
 }
-.ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td,
 .ant-table-wrapper .ant-table-tbody > tr > td.ant-table-column-sort {
   background: var(--aibox-color-bg-primary);
+}
+/* row hover as ng-zorro does it (not in Figma): fill the row, keep the 1px line */
+.ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td,
+.ant-table-wrapper .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+  background: var(--aibox-table-row-hover-bg);
 }
 .ant-table-wrapper .ant-table-column-sorters {
   justify-content: flex-start;

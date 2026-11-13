@@ -392,6 +392,7 @@
   --aibox-pagination-item-shadow: 0px 4px 4px 0px #0000000a, 0px -1px 4px 0px #00000005; /** Figma pagination page buttons drop shadow (0 4px 4px rgba(0,0,0,.04), 0 -1px 4px rgba(0,0,0,.02)). Not in the variable export; copied from the design context (node 3451:11080). */
   --aibox-divider-band-color: #f8f8f8; /** Figma divider themes S 10 / M 18 / M 24 band fill. A literal hex in the design context (nodes 1174:450, 4348:19, 1597:1556), not a variable. */
   --aibox-dropdown-section-bg: #f7f7f7; /** Figma popover-submenu section header fill (nodes 1346:846, 1346:869). The design context falls back to #f7f7f7 for a bg-subtle variable that is not in the variable export. */
+  --aibox-table-row-hover-bg: #fafafa; /** ng-zorro's stock table row hover fill (.ant-table-tbody > tr.ant-table-row:hover > td, ng-zorro-antd 22.1.2). Not a Figma value: Figma has no row hover. */
   --aibox-timepicker-menu-radius: 6px; /** Figma time-picker menu corner radius (variable i-box/radius/value-6, node 1613:9329), not in the variable export. */
   --aibox-cascader-menu-shadow: 0px 4px 4px 0px #0000001a, 0px -1px 4px 0px #0000001a; /** Figma Cascader Dropdown drop shadow (0 4px 4px rgba(0,0,0,.1), 0 -1px 4px rgba(0,0,0,.1)), node 4268:12946. Not in the variable export. */
   --aibox-card-menu-shadow: 0px 4px 8px 2px #0000000a; /** Figma Card Menu shadow (wb/shadow/base/header-mobile: 0 4px 8px 2px rgba(0,0,0,.04), node 1295:3294). The style is not in the variable export. */

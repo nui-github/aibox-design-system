@@ -173,7 +173,7 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 ### Table (Figma page Table `1144:1086`, head cell `3631:1869`, row cell `8794:180479`)
 
-`nz-table`: header cell fill `bg/secondary`, padding 12 8, 14/24 medium, 48px tall, no column dividers; the sort icon (16px, 8px after the label) is drawn with CSS: grey up-down when unsorted, a single `text/main` arrow when `nzSortOrder` is ascend (up) or descend (down). Row cells: `bg/primary`, padding 8, min height 58, 16/26 regular, no hover fill. `aibox-btn-nopad` = texted button without side padding (use with `aibox-btn-xs` for the action cell, 20px apart). The 1px row separator is an addition (not in Figma). Not covered: the required asterisk and info tooltip in the head cell, selection/expand columns, fixed headers, bordered/small sizes.
+`nz-table`: header cell fill `bg/secondary`, padding 12 8, 14/24 medium, 48px tall, no column dividers; the sort icon (16px, 8px after the label) is drawn with CSS: grey up-down when unsorted, a single `text/main` arrow when `nzSortOrder` is ascend (up) or descend (down). Row cells: `bg/primary`, padding 8, min height 58, 16/26 regular. Row hover fills with `--aibox-table-row-hover-bg` (#fafafa, ng-zorro's stock hover, not in Figma). `aibox-btn-nopad` = texted button without side padding (use with `aibox-btn-xs` for the action cell, 20px apart). The 1px row separator is an addition (not in Figma). Not covered: the required asterisk and info tooltip in the head cell, selection/expand columns, fixed headers, bordered/small sizes.
 
 ### Upload (Figma page Upload `1516:11060`, drop zone `1516:11121`, upload-block `1516:11080`)
 
