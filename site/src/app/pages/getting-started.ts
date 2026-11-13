@@ -149,6 +149,7 @@ export class GettingStarted {
     ['aibox-alert-bar / -bar-left', 'nz-alert', 'message bar แถบเทา ข้อความกลาง / ชิดซ้าย'],
     ['aibox-modal-compact / aibox-modal-cta-inset', 'nz-modal (nzClassName)', 'padding แบบมือถือ (24 16 20) / ปุ่มท้าย dialog เว้นข้าง 120px (dialog 800px)'],
     ['aibox-empty-lg', 'nz-empty', 'ถาดใหญ่ 128×80 (image big)'],
+    ['aibox-scrollbar', 'element ที่เลื่อนได้ (overflow: auto)', 'scrollbar 4px สี i-BOX (Chromium / Safari; Firefox ได้แบบ thin สีเดียวกัน)'],
     ['aibox-tag-disabled', 'nz-tag nzMode="checkable"', 'หน้าตา disabled (ต้องกันคลิกเอง)'],
   ];
   protected readonly compat: string[][] = [
