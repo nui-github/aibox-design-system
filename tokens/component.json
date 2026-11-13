@@ -72,5 +72,12 @@
       "$value": "#f8f8f8",
       "$description": "Figma divider themes S 10 / M 18 / M 24 band fill. A literal hex in the design context (nodes 1174:450, 4348:19, 1597:1556), not a variable."
     }
+  },
+  "dropdown": {
+    "section-bg": {
+      "$type": "color",
+      "$value": "#f7f7f7",
+      "$description": "Figma popover-submenu section header fill (nodes 1346:846, 1346:869). The design context falls back to #f7f7f7 for a bg-subtle variable that is not in the variable export."
+    }
   }
 }

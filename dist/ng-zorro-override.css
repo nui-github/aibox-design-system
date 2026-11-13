@@ -1,4 +1,4 @@
-/* aibox-design-system v0.18.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.19.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1995,4 +1995,68 @@ nz-alert.aibox-alert-bar {
   font-size: 24px;
   line-height: 1;
   color: inherit;
+}
+
+/* Dropdown menu (popover submenu). Source: Figma "i-BOX Design System" > Popover page (1345:521): popover-submenu 1346:1427
+   (position right / bottom, section yes / no). The plain popover (1346:1149) in the same page is the stock Ant Design one
+   and is not overridden.
+   Mapping (nz-dropdown with a menu):
+     section=no    <ul nz-menu> with <li nz-menu-item> rows
+     section=yes   rows grouped with <li nz-menu-group nzTitle="..."> (grey 12px section headers)
+     position      nzPlacement (bottomLeft / bottom / right ...), with nzArrow for the 16x8 arrow
+     active item   nzSelected (blue text)
+   Panel: bg/primary, radius 8, shadow popover, no padding; rows 14/24 with 32px side padding, first row 16px from the top
+   and last row 16px from the bottom; section headers 12/22 medium, 16px side padding, grey fill, text gray g-3.
+   Not covered: submenus inside the panel (nz-submenu), icons in rows, danger/disabled rows, the plain popover. */
+.ant-dropdown .ant-dropdown-menu {
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--aibox-radius-3);
+  background: var(--aibox-color-bg-primary);
+  box-shadow: var(--aibox-shadow-base-popover);
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-dropdown .ant-dropdown-menu-item,
+.ant-dropdown .ant-dropdown-menu-submenu-title {
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-8);
+  color: var(--aibox-color-button-contained-subsidiary-text-default);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-dropdown .ant-dropdown-menu-item:hover,
+.ant-dropdown .ant-dropdown-menu-item.ant-dropdown-menu-item-active {
+  background: var(--aibox-color-bg-secondary);
+}
+.ant-dropdown .ant-dropdown-menu-item.ant-dropdown-menu-item-selected,
+.ant-dropdown .ant-dropdown-menu-item.ant-dropdown-menu-item-selected:hover {
+  background: transparent;
+  color: var(--aibox-color-main);
+}
+.ant-dropdown .ant-dropdown-menu > .ant-dropdown-menu-item:first-child {
+  padding-top: var(--aibox-spacing-4);
+}
+.ant-dropdown .ant-dropdown-menu > .ant-dropdown-menu-item:last-child {
+  padding-bottom: var(--aibox-spacing-4);
+}
+.ant-dropdown .ant-dropdown-menu-item-group-title {
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-4);
+  background: var(--aibox-dropdown-section-bg);
+  color: var(--aibox-color-button-outline-subsidiary-border-default);
+  font-size: var(--aibox-typography-caption-caption-bold-font-size);
+  font-weight: var(--aibox-typography-caption-caption-bold-font-weight);
+  line-height: var(--aibox-typography-caption-caption-bold-line-height);
+  letter-spacing: var(--aibox-typography-caption-caption-bold-letter-spacing);
+}
+.ant-dropdown .ant-dropdown-menu > .ant-dropdown-menu-item-group:first-child > .ant-dropdown-menu-item-group-title {
+  padding-top: var(--aibox-spacing-4);
+}
+.ant-dropdown .ant-dropdown-menu-item-group-list {
+  margin: 0;
+}
+.ant-dropdown .ant-dropdown-menu > .ant-dropdown-menu-item-group:last-child .ant-dropdown-menu-item:last-child {
+  padding-bottom: var(--aibox-spacing-4);
+}
+.ant-dropdown .ant-dropdown-arrow {
+  --antd-arrow-background-color: var(--aibox-color-bg-primary);
 }
