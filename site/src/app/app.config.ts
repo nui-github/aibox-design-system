@@ -5,6 +5,8 @@ import { provideNzI18n, th_TH } from 'ng-zorro-antd/i18n';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import {
   BookOutline,
+  CaretDownFill,
+  CaretRightFill,
   CheckCircleFill,
   CheckOutline,
   CalendarOutline,
@@ -46,7 +48,7 @@ export const appConfig: ApplicationConfig = {
     provideNzNativeDateAdapter(),
     { provide: NZ_DATE_LOCALE, useValue: 'th-TH' },
     provideNzIcons([
-      BookOutline, CalendarOutline, DoubleLeftOutline, DoubleRightOutline, LeftOutline, RightOutline, CheckCircleFill, CheckOutline, ClockCircleOutline, CloseCircleFill, CloseOutline, CodeOutline, CopyOutline,
+      BookOutline, CaretDownFill, CaretRightFill, CalendarOutline, DoubleLeftOutline, DoubleRightOutline, LeftOutline, RightOutline, CheckCircleFill, CheckOutline, ClockCircleOutline, CloseCircleFill, CloseOutline, CodeOutline, CopyOutline,
       DeleteOutline, DownOutline, ExclamationCircleFill, GithubOutline, HeartFill, InboxOutline, InfoCircleFill, LoadingOutline, FileOutline, MenuOutline, PaperClipOutline, PictureOutline, QuestionCircleFill, QuestionCircleOutline, SearchOutline, SmileOutline,
     ]),
   ],

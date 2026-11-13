@@ -41,6 +41,7 @@ const starts = [
   ['upload', /^\/\* Upload\. Source/m],
   ['date-picker', /^\/\* Date picker\. Source/m],
   ['time-picker', /^\/\* Time picker\. Source/m],
+  ['tree', /^\/\* Tree\. Source/m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);
