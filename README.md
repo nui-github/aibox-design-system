@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.17.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.17.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.18.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.18.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -154,6 +154,10 @@ Opt-in classes on `<nz-tag>`: `aibox-tag-solid` (solid fill, white text), `aibox
 ### Modal / dialog (Figma page Modal `3704:8903`, dialog `1:9994`, dialog-alert `1:9973`)
 
 `nz-modal` / `NzModalService`: bg/primary, radius 8, shadow raise-modal, padding 32, gap 16, centred 16/24 medium title; footer buttons stretch 16px apart at the large size (the non-primary one drawn as contained subsidiary). Set `nzWidth` 800 or 400 and `nzClosable: false`; `aibox-modal-compact` (mobile padding 24 16 20) and `aibox-modal-cta-inset` (120px side inset for the 800px dialog) go in `nzClassName`. `confirm / success / info / warning / error` render as the dialog-alert (padding 32 48, 32px filled status icon, 16/26 secondary text). Needs `NzModalModule`. Not covered: loading status, other dialog-cta layouts, scrollbar, Password Protection overlay.
+
+### Empty (Figma page Empty State `4064:1219`, Empty `917:5774`)
+
+`nz-empty` with `nzNotFoundImage="simple"` (64x40 tray), 8px gap, label 16/26 `text/icon-default`, no outer margin. `aibox-empty-lg` = image big (128x80); pass a template with a 24px icon as `nzNotFoundImage` for the icon variant. Not covered: the Empty Content card (needs the Card override), dark theme.
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.

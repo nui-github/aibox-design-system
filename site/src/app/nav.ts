@@ -23,5 +23,6 @@ export const COMPONENTS: NavItem[] = [
   { path: 'alert', title: 'Alert', figma: '1:10675' },
   { path: 'message', title: 'Message (snackbar)', figma: '1:10863, 6608:120690' },
   { path: 'modal', title: 'Modal (dialog)', figma: '1:9994, 1:9973' },
+  { path: 'empty', title: 'Empty', figma: '917:5774' },
   { path: 'badge', title: 'Badge (notification)', figma: '1175:641' },
 ];

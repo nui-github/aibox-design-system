@@ -20,6 +20,7 @@ export const routes: Routes = [
   { path: 'divider', title: 'Divider · Ai-BOX Design System', loadComponent: () => import('./pages/divider').then((m) => m.DividerPage) },
   { path: 'message', title: 'Message · Ai-BOX Design System', loadComponent: () => import('./pages/message').then((m) => m.MessagePage) },
   { path: 'modal', title: 'Modal · Ai-BOX Design System', loadComponent: () => import('./pages/modal').then((m) => m.ModalPage) },
+  { path: 'empty', title: 'Empty · Ai-BOX Design System', loadComponent: () => import('./pages/empty').then((m) => m.EmptyPage) },
   { path: 'alert', title: 'Alert · Ai-BOX Design System', loadComponent: () => import('./pages/alert').then((m) => m.AlertPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];
