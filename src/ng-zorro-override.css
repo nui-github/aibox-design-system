@@ -2138,3 +2138,90 @@ nz-alert.aibox-alert-bar {
 .ant-drawer-bottom .ant-drawer-content {
   border-radius: var(--aibox-radius-5) var(--aibox-radius-5) 0 0;
 }
+
+/* Table. Source: Figma "i-BOX Design System" > Table page (1144:1086): table head cell 3631:1869 (sort default / sorted / no)
+   and table row cell 8794:180479 (type text / badge / action).
+   Mapping (nz-table):
+     table head cell            <th> (the default ng-zorro header), with [nzSortFn] / [nzColumnKey] for the sort icon
+     sort=no / default / sorted  no sorter / nzSortFn unsorted (grey up-down icon) / nzSortOrder ascend or descend (blue single arrow)
+     row cell type=text         <td> text
+     row cell type=badge        <nz-tag> from the Tag override inside the <td>
+     row cell type=action       <button nz-button nzType="text" class="aibox-btn-xs aibox-btn-nopad"> (texted xsmall without padding), 20px apart
+   Head cell: fill bg/secondary, padding 12 8, 14/24 medium text/primary, no column dividers; sort icon 16px (icon-default, main when sorted),
+   8px after the label. Row cell: bg/primary, padding 8, min height 58, 16/26 regular. A 1px bg/secondary line separates rows (not in Figma).
+   Not covered: required asterisk and info tooltip in the head cell, selection / expand columns, fixed headers, bordered and small sizes. */
+.ant-table-wrapper .ant-table {
+  font-family: var(--aibox-font-family-heading-and-body);
+  color: var(--aibox-color-text-primary);
+}
+.ant-table-wrapper .ant-table-thead > tr > th {
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-2);
+  border-bottom: 0;
+  background: var(--aibox-color-bg-secondary);
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-typography-body-body-bold-font-size);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+  line-height: var(--aibox-typography-body-body-bold-line-height);
+  letter-spacing: var(--aibox-typography-body-body-bold-letter-spacing);
+}
+.ant-table-wrapper .ant-table-thead > tr > th::before {
+  display: none;
+}
+.ant-table-wrapper .ant-table-thead > tr > th.ant-table-column-has-sorters:hover,
+.ant-table-wrapper .ant-table-thead > tr > th.ant-table-column-sort {
+  background: var(--aibox-color-bg-secondary);
+}
+.ant-table-wrapper .ant-table-tbody > tr > td {
+  height: 58px;
+  padding: var(--aibox-spacing-2);
+  border-bottom: 1px solid var(--aibox-color-bg-secondary);
+  background: var(--aibox-color-bg-primary);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td,
+.ant-table-wrapper .ant-table-tbody > tr > td.ant-table-column-sort {
+  background: var(--aibox-color-bg-primary);
+}
+.ant-table-wrapper .ant-table-column-sorters {
+  justify-content: flex-start;
+}
+.ant-table-wrapper .ant-table-column-sorters .ant-table-column-title {
+  flex: none;
+}
+.ant-table-wrapper .ant-table-column-sorter {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: var(--aibox-spacing-2);
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-table-wrapper .ant-table-column-sorters:hover .ant-table-column-sorter {
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-table-wrapper .ant-table-column-sorter-inner > * {
+  display: none;
+}
+.ant-table-wrapper .ant-table-column-sorter-inner::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: var(--_glyph) center / 100% 100% no-repeat;
+  mask: var(--_glyph) center / 100% 100% no-repeat;
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2.6l3.6 4.4H4.4zM8 13.4L4.4 9h7.2z'/%3E%3C/svg%3E");
+}
+.ant-table-wrapper .ant-table-column-sorter-inner:has(.ant-table-column-sorter-up.active)::before {
+  background-color: var(--aibox-color-text-main);
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 4l4.4 5.4H3.6z'/%3E%3C/svg%3E");
+}
+.ant-table-wrapper .ant-table-column-sorter-inner:has(.ant-table-column-sorter-down.active)::before {
+  background-color: var(--aibox-color-text-main);
+  --_glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L3.6 6.6h8.8z'/%3E%3C/svg%3E");
+}
+.ant-btn.aibox-btn-nopad {
+  padding-inline: 0;
+}
+.ant-table-wrapper .ant-table-tbody > tr > td .ant-btn + .ant-btn {
+  margin-inline-start: var(--aibox-spacing-5);
+}
