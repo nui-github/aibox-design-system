@@ -33,6 +33,7 @@ const starts = [
   ['alert', /^\/\* Alert\./m],
   ['message', /^\/\* Message \/ Snackbar\./m],
   ['modal', /^\/\* Modal \/ dialog\./m],
+  ['empty', /^\/\* Empty\. Source/m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);

@@ -1951,3 +1951,47 @@ nz-alert.aibox-alert-bar {
 .ant-modal-confirm .ant-modal-close {
   display: none;
 }
+
+/* Empty. Source: Figma "i-BOX Design System" > Empty State page (4064:1219): Empty (917:5774, variants default / image big / icon).
+   Mapping (nz-empty):
+     variant=default      <nz-empty nzNotFoundImage="simple">   (64x40 tray, 8px gap, label 16/26)
+     variant=image big    same + class "aibox-empty-lg"         (128x80 tray)
+     variant=icon         nzNotFoundImage = a template with a 24px icon (e.g. question-circle)
+     label yes / no       nzNotFoundContent (text) / [nzNotFoundContent]="null"
+   Label is 16/26 regular text/icon-default (the same light grey as the image); no outer margin (ng-zorro adds 32px).
+   Not covered: the default ng-zorro illustration (184x152 tray, use nzNotFoundImage="simple"), the "Empty Content" card
+   (card with icon, text and an optional button; needs the Card override), dark theme. */
+.ant-empty,
+.ant-empty.ant-empty-normal,
+.ant-empty.ant-empty-small {
+  margin: 0;
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-empty .ant-empty-image {
+  height: 40px;
+  margin-bottom: var(--aibox-spacing-2);
+}
+.ant-empty .ant-empty-image:has(> .anticon) {
+  height: 24px;
+}
+.ant-empty .ant-empty-description {
+  margin: 0;
+  color: inherit;
+}
+.ant-empty.aibox-empty-lg .ant-empty-image {
+  height: 80px;
+}
+.ant-empty.aibox-empty-lg .ant-empty-image svg {
+  width: 128px;
+  height: 80px;
+}
+.ant-empty .ant-empty-image .anticon {
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  color: inherit;
+}

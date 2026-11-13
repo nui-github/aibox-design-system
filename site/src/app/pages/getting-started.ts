@@ -148,6 +148,7 @@ export class GettingStarted {
     ['aibox-snackbar-action / -close', 'ปุ่มใน template ของ NzMessageService', 'ปุ่มข้อความ / ปุ่มปิด (xmark 12px) ท้าย snackbar'],
     ['aibox-alert-bar / -bar-left', 'nz-alert', 'message bar แถบเทา ข้อความกลาง / ชิดซ้าย'],
     ['aibox-modal-compact / aibox-modal-cta-inset', 'nz-modal (nzClassName)', 'padding แบบมือถือ (24 16 20) / ปุ่มท้าย dialog เว้นข้าง 120px (dialog 800px)'],
+    ['aibox-empty-lg', 'nz-empty', 'ถาดใหญ่ 128×80 (image big)'],
     ['aibox-tag-disabled', 'nz-tag nzMode="checkable"', 'หน้าตา disabled (ต้องกันคลิกเอง)'],
   ];
   protected readonly compat: string[][] = [
