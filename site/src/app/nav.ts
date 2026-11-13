@@ -26,5 +26,6 @@ export const COMPONENTS: NavItem[] = [
   { path: 'empty', title: 'Empty', figma: '917:5774' },
   { path: 'dropdown', title: 'Dropdown menu', figma: '1346:1358, 5728:10508' },
   { path: 'scrollbar', title: 'Scrollbar', figma: '6903:54, 7024:6514' },
+  { path: 'drawer', title: 'Drawer', figma: '3927:8405, 3745:12936' },
   { path: 'badge', title: 'Badge (notification)', figma: '1175:641' },
 ];

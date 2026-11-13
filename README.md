@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.20.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.20.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.21.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.21.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -166,6 +166,10 @@ Opt-in classes on `<nz-tag>`: `aibox-tag-solid` (solid fill, white text), `aibox
 ### Scrollbar (Figma page Scrollbar `3745:12812`, vertical `6903:54`, horizontal `7024:6514`)
 
 Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondary`) and thumb (`text/tertiary`), radius 4, vertical and horizontal. Chromium/Safari use `::-webkit-scrollbar`; Firefox gets `scrollbar-width: thin` with the same colours. Not an ng-zorro component and not applied automatically to dialogs, dropdowns or selects. Checked on headless Chromium only.
+
+### Drawer (Figma page Drawer / Bottom Sheet `3744:11632`, Drawer Header `3927:8405`)
+
+`nz-drawer`: header 72px (padding 12 24) with a 1px bottom border, title 20/32 medium centred (offset 52px against the 40px close button), the default close button moved to the right with a 28px icon in `button/texted/subsidiary/text`. `nzPlacement="bottom"` gives the Bottom Sheet shape (16px top corners, `section-lg` shadow). Not covered: back and share buttons, the title tooltip/left icon, Drawer-list rows (product content), shadows of left/right/top drawers. Checked on placement right and bottom.
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.
