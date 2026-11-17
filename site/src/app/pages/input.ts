@@ -109,7 +109,7 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
       <nz-input-number [ngModel]="3" nzDisabled style="width: 160px" />
     </app-demo>
 
-    <app-demo title="Assistive text" description="nzExtra = ข้อความช่วยใต้ช่อง · nzErrorTip = ข้อความ error มีไอคอนนำหน้า · class aibox-form-small บน nz-form-item = ตัวอักษร 12/22 (Figma size small)" [code]="assistive" [ts]="imports">
+    <app-demo title="Label and assistive text" description="ขนาดตัวอักษรตามขนาดช่อง: ช่องปกติ (Figma small) = 12/22, ช่อง nzSize=&quot;large&quot; = 14/24 · nzExtra = ข้อความช่วย · nzErrorTip = ข้อความ error มีไอคอนนำหน้า · class aibox-form-small / aibox-form-large บน nz-form-item บังคับขนาดเอง" [code]="assistive" [ts]="imports">
       <form nz-form nzLayout="vertical" style="width: 320px">
         <nz-form-item>
           <nz-form-label>Label</nz-form-label>
@@ -123,10 +123,10 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
             <input nz-input placeholder="Placeholder" />
           </nz-form-control>
         </nz-form-item>
-        <nz-form-item class="aibox-form-small">
-          <nz-form-label>Label</nz-form-label>
+        <nz-form-item>
+          <nz-form-label>Label (large)</nz-form-label>
           <nz-form-control nzValidateStatus="error" nzErrorTip="Assistive text">
-            <input nz-input placeholder="Placeholder" />
+            <input nz-input nzSize="large" placeholder="Placeholder" />
           </nz-form-control>
         </nz-form-item>
       </form>
@@ -185,7 +185,7 @@ export class InputPage {
 <nz-input-number [ngModel]="3" nzStatus="error" />
 <nz-input-number [ngModel]="3" nzDisabled />`;
   protected readonly assistive = `<form nz-form nzLayout="vertical">
-  <nz-form-item>
+  <nz-form-item> <!-- default size: label and text 12/22 -->
     <nz-form-label>Label</nz-form-label>
     <nz-form-control nzExtra="Assistive text"><input nz-input /></nz-form-control>
   </nz-form-item>
@@ -193,8 +193,9 @@ export class InputPage {
     <nz-form-label>Label</nz-form-label>
     <nz-form-control nzValidateStatus="error" nzErrorTip="Assistive text"><input nz-input /></nz-form-control>
   </nz-form-item>
-  <nz-form-item class="aibox-form-small"> <!-- 12/22 text -->
-    ...
+  <nz-form-item> <!-- a large control: label and text 14/24 -->
+    <nz-form-label>Label (large)</nz-form-label>
+    <nz-form-control nzValidateStatus="error" nzErrorTip="Assistive text"><input nz-input nzSize="large" /></nz-form-control>
   </nz-form-item>
 </form>`;
 }
