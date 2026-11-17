@@ -68,6 +68,213 @@
   box-shadow: none;
 }
 
+/* Input options added on top of the textfield above (same Input and Select pages in the docs). From the Figma "i-BOX Design System" > Input page: textarea (node 1:7232),
+   search (1:7587), password box (6581:98500), assistive text (1:7499).
+   Mapping (ng-zorro 18; 22 renders the same classes from nz-input-wrapper / nz-input-password / nz-input-search)
+     textarea  large / small         <textarea nz-input> / with nzSize="large"; box min-height 96 / 80, padding 12 / 8, 16/26 / 14/24, resize vertical
+     total count in assistive text   <nz-textarea-count [nzMaxCharacterCount]> (the count under the box, right aligned)
+     textfield with an icon          <nz-input-group [nzPrefix]> / [nzSuffix]  (the group is drawn like the textfield: border, radius, states)
+     search                          <nz-input-group class="aibox-search" nzPrefixIcon="search" [nzSuffix]="clear"> (register SearchOutline), the inline
+                                     ค้นหา button is a button in the suffix (aibox-btn-xs in the small search, nzSize="small" in the large one);
+                                     box 40 (small) / 48 (nzSize="large")
+     password box                    <nz-input-group nzSize="large" [nzSuffix]="eye"> with an eye icon in the suffix
+     assistive text                  nz-form-control nzExtra; the error line (nzErrorTip) gets the circle-exclamation icon
+     small form text                 class="aibox-form-small" on nz-form-item: label, assistive text and count at 12/22 (Figma size=small)
+   Not covered: total count turning red past the limit, the "forgot password" link row, the dark theme, input-number, addon before / after,
+   compact groups, OTP, nzStatus="warning" (not in Figma). */
+.ant-input.ant-input-borderless,
+.ant-input.ant-input-borderless:hover,
+.ant-input.ant-input-borderless:focus,
+.ant-input.ant-input-borderless.ant-input-focused {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+/* ant sets the textarea line height and padding at element + class specificity, which beats the .ant-input rules above */
+textarea.ant-input {
+  padding: var(--aibox-spacing-2);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  resize: vertical;
+}
+/* The 3-line starting height (80 / 96) only applies without a rows attribute: nzAutosize measures a one-row clone of the textarea,
+   and a CSS min-height on that clone made every autosize textarea two rows of 80px (150px) instead of two lines. */
+textarea.ant-input:not([rows]) {
+  min-height: 80px;
+}
+textarea.ant-input.ant-input-lg:not([rows]) {
+  min-height: 96px;
+}
+textarea.ant-input.ant-input-lg {
+  padding: var(--aibox-spacing-3);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+}
+textarea.ant-input[disabled],
+textarea.ant-input.ant-input-disabled {
+  resize: none;
+}
+.ant-input-textarea-show-count::after {
+  margin-top: var(--aibox-spacing-1);
+  color: var(--aibox-color-text-secondary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+
+/* Input with prefix / suffix: the wrapper is the box, the inner input has no border. Also the box of Search and Password. */
+.ant-input-affix-wrapper {
+  box-sizing: border-box;
+  align-items: center;
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+  border: 1px solid var(--aibox-color-state-form-default);
+  border-radius: var(--aibox-radius-2);
+  background-color: var(--aibox-color-bg-primary);
+  color: var(--aibox-color-text-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+  min-height: var(--aibox-size-control-height-lg);
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+/* the inner input keeps its own 48px min-height from .ant-input-lg otherwise, and the wrapper grows to 63px */
+.ant-input-affix-wrapper > input.ant-input {
+  min-height: 0;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.ant-input-affix-wrapper:hover {
+  border-color: var(--aibox-color-state-form-hover);
+}
+.ant-input-affix-wrapper.ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper:focus {
+  border-color: var(--aibox-color-state-form-active);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-active-outer);
+  outline: 0;
+}
+.ant-input-affix-wrapper.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless),
+.ant-input-affix-wrapper.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless):hover {
+  border-color: var(--aibox-color-state-form-error);
+}
+.ant-input-affix-wrapper.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless):focus {
+  border-color: var(--aibox-color-state-form-error);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-error-outer);
+}
+.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled,
+.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled:hover {
+  border-color: var(--aibox-color-state-form-default);
+  background-color: var(--aibox-color-bg-disable);
+  color: var(--aibox-color-text-disable);
+  box-shadow: none;
+}
+.ant-input-affix-wrapper.ant-input-affix-wrapper-borderless,
+.ant-input-affix-wrapper.ant-input-affix-wrapper-borderless:hover,
+.ant-input-affix-wrapper.ant-input-affix-wrapper-borderless.ant-input-affix-wrapper-focused {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+.ant-input-affix-wrapper .ant-input-prefix {
+  margin-inline-end: var(--aibox-spacing-2);
+  color: var(--aibox-color-text-icon-default);
+}
+.ant-input-affix-wrapper .ant-input-prefix .anticon {
+  font-size: 12px;
+}
+.ant-input-affix-wrapper .ant-input-suffix {
+  margin-inline-start: var(--aibox-spacing-2);
+  color: var(--aibox-color-state-gray-g-6-default);
+  font-size: 16px;
+}
+.ant-input-affix-wrapper .ant-input-suffix .anticon-eye,
+.ant-input-affix-wrapper .ant-input-suffix .anticon-eye-invisible,
+.ant-input-affix-wrapper .ant-input-suffix .anticon-close,
+.ant-input-affix-wrapper .ant-input-suffix .anticon-close-circle {
+  color: var(--aibox-color-state-gray-g-6-default);
+  cursor: pointer;
+}
+
+/* ng-zorro 22 clear button (nzAllowClear): Figma draws a plain 16px x, not Ant's filled circle */
+.ant-input-affix-wrapper .ant-input-clear-icon,
+.ant-input-affix-wrapper .ant-input-clear-icon:hover {
+  display: inline-flex;
+  color: var(--aibox-color-state-gray-g-6-default);
+  font-size: 16px;
+}
+.ant-input-affix-wrapper .ant-input-clear-icon .anticon svg {
+  display: none;
+}
+.ant-input-affix-wrapper .ant-input-clear-icon .anticon::before {
+  content: ' ';
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 3.5l9 9M12.5 3.5l-9 9' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 3.5l9 9M12.5 3.5l-9 9' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+/* Search: the affix wrapper at 40px (48px with nzSize="large") with a 16px prefix icon. The wrapper has no vertical padding, so the
+   32px (nzSize="small") or 24px (aibox-btn-xs) search button in the suffix fits without growing the box. */
+.ant-input-affix-wrapper.aibox-search {
+  min-height: 40px;
+  padding-block: 0;
+}
+.ant-input-affix-wrapper.aibox-search.ant-input-affix-wrapper-lg {
+  min-height: var(--aibox-size-control-height-lg);
+}
+.ant-input-affix-wrapper.aibox-search .ant-input-prefix .anticon {
+  font-size: 16px;
+}
+
+/* Assistive text (nzExtra) and the error line (nzErrorTip) under a field */
+.ant-form-item-extra,
+.ant-form-item-explain {
+  margin-top: var(--aibox-spacing-1);
+  min-height: 0;
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-form-item-extra {
+  color: var(--aibox-color-text-secondary);
+}
+.ant-form-item-explain .ant-form-item-explain-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--aibox-spacing-1);
+  color: var(--aibox-color-text-status-error-100);
+}
+.ant-form-item-explain .ant-form-item-explain-error::before {
+  content: ' ';
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin-top: 6px;
+  background-color: var(--aibox-color-text-status-error-200);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM7.2 4h1.6v5H7.2zM8 10.6a1 1 0 110 2 1 1 0 010-2z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM7.2 4h1.6v5H7.2zM8 10.6a1 1 0 110 2 1 1 0 010-2z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+/* Figma size=small (the default ng-zorro size): label, assistive text and count are 12/22 */
+.aibox-form-small .ant-form-item-label > label,
+.aibox-form-small .ant-form-item-extra,
+.aibox-form-small .ant-form-item-explain,
+.aibox-form-small .ant-input-textarea-show-count::after {
+  font-size: var(--aibox-typography-caption-caption-regular-font-size);
+  line-height: var(--aibox-typography-caption-caption-regular-line-height);
+  letter-spacing: var(--aibox-typography-caption-caption-regular-letter-spacing);
+}
+.aibox-form-small .ant-form-item-explain .ant-form-item-explain-error::before {
+  margin-top: 5px;
+}
+
 /* ---------------------------------------------------------------------------
    Button. Source: Figma "i-BOX Design System" > Button (node 1:3414).
 
@@ -484,7 +691,8 @@ a.ant-btn.aibox-btn-xs {
      dropdown-list / content-list          the dropdown panel and its nz-option items
    IMPORTANT: Figma option rows are 50px high. Set [nzOptionHeightPx]="50" on nz-select, otherwise the
    virtual scroll still assumes 32px rows.
-   Not covered: multiple / tags mode, option groups, label size (a Select's label is a form label),
+   Not covered: option groups, label size (a Select's label is a form label), nzStatus="warning" (not in Figma), tag overflow in nzMaxTagCount beyond
+   the plain "+ N ..." tag, the Tag Selection column / list views and the typing / suggestion panel,
    hover on the arrow icon. The arrow and clear icons keep ng-zorro's glyphs (only size and colour change);
    Figma uses Font Awesome. The check on a selected option is drawn with a mask.
    --------------------------------------------------------------------------- */
@@ -612,6 +820,84 @@ a.ant-btn.aibox-btn-xs {
 }
 .ant-select .ant-select-clear:hover {
   color: var(--aibox-color-text-icon-default);
+}
+
+/* Multiple / tags mode (Figma Tag Selection, node 3959:10071): the box grows with the tags, which wrap with 8px gaps. Padding makes
+   a one-row box exactly the single-select height (12px large, 8px small); the tag is bg/secondary, radius 4, 12/16 medium. */
+.ant-select.ant-select.ant-select-multiple {
+  height: auto;
+  min-height: var(--_h);
+}
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selector {
+  height: auto;
+  min-height: var(--_h);
+  padding: calc((var(--_h) - 24px) / 2) calc(var(--_px) + 28px) calc((var(--_h) - 24px) / 2) var(--_px);
+}
+.ant-select.ant-select-multiple .ant-select-selector,
+.ant-select.ant-select-multiple .ant-select-selection-overflow {
+  gap: var(--aibox-spacing-2);
+}
+/* ant keeps an invisible block (line-height 24 / 32 plus a 2px margin) in the selector (18) or in .ant-select-selection-wrap (22) to hold the
+   baseline: it added 4-12px */
+.ant-select.ant-select-multiple .ant-select-selector::after,
+.ant-select.ant-select-multiple .ant-select-selection-wrap::after {
+  display: none;
+}
+.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-overflow-item {
+  align-self: center;
+  height: 24px;
+  min-height: 0;
+  margin: 0;
+}
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-item {
+  box-sizing: border-box;
+  height: 24px;
+  margin: 0;
+  padding: 0 var(--aibox-spacing-2);
+  border: 0;
+  border-radius: var(--aibox-radius-2);
+  background: var(--aibox-color-bg-secondary);
+  color: var(--aibox-color-text-secondary);
+  font-size: var(--aibox-typography-component-xs-font-size);
+  font-weight: var(--aibox-typography-component-xs-font-weight);
+  line-height: 24px;
+  letter-spacing: var(--aibox-typography-component-xs-letter-spacing);
+  align-items: center;
+}
+.ant-select.ant-select-multiple .ant-select-selection-item-content {
+  margin-inline-end: var(--aibox-spacing-1);
+}
+.ant-select.ant-select-multiple .ant-select-selection-item-remove {
+  display: inline-flex;
+  align-items: center;
+  color: var(--aibox-color-text-secondary);
+  font-size: 12px;
+}
+.ant-select.ant-select-multiple .ant-select-selection-item-remove:hover {
+  color: var(--aibox-color-text-primary);
+}
+.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-search {
+  height: 24px;
+  margin: 0;
+  line-height: 24px;
+}
+.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-search-input {
+  height: 24px;
+  font: inherit;
+  letter-spacing: inherit;
+}
+.ant-select.ant-select-multiple .ant-select-arrow,
+.ant-select.ant-select-multiple .ant-select-clear {
+  top: calc(var(--_h) / 2);
+}
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-placeholder {
+  left: var(--_px);
+  padding-right: 0;
+}
+/* Disabled tags have no Figma state: white tag, disabled text */
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple.ant-select-disabled .ant-select-selection-item {
+  background: var(--aibox-color-bg-primary);
+  color: var(--aibox-color-text-disable);
 }
 
 /* Dropdown panel. ng-zorro sizes the overlay pane to the trigger; with 16px side padding and the check icon a narrow trigger (the

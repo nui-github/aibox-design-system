@@ -15,7 +15,7 @@ import {
   CloseOutline,
   CodeOutline,
   CopyOutline,
-  DeleteOutline,
+  DeleteOutline, EyeInvisibleOutline, EyeOutline,
   DoubleLeftOutline,
   DoubleRightOutline,
   LeftOutline,
@@ -49,7 +49,7 @@ export const appConfig: ApplicationConfig = {
     { provide: NZ_DATE_LOCALE, useValue: 'th-TH' },
     provideNzIcons([
       BookOutline, CaretDownFill, CaretRightFill, CalendarOutline, DoubleLeftOutline, DoubleRightOutline, LeftOutline, RightOutline, CheckCircleFill, CheckOutline, ClockCircleOutline, CloseCircleFill, CloseOutline, CodeOutline, CopyOutline,
-      DeleteOutline, DownOutline, ExclamationCircleFill, GithubOutline, HeartFill, InboxOutline, InfoCircleFill, LoadingOutline, FileOutline, MenuOutline, PaperClipOutline, PictureOutline, QuestionCircleFill, QuestionCircleOutline, SearchOutline, SmileOutline,
+      DeleteOutline, EyeInvisibleOutline, EyeOutline, DownOutline, ExclamationCircleFill, GithubOutline, HeartFill, InboxOutline, InfoCircleFill, LoadingOutline, FileOutline, MenuOutline, PaperClipOutline, PictureOutline, QuestionCircleFill, QuestionCircleOutline, SearchOutline, SmileOutline,
     ]),
   ],
 };
