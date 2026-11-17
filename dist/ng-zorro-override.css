@@ -1,4 +1,4 @@
-/* aibox-design-system v0.35.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.36.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -31,8 +31,27 @@
   letter-spacing: var(--_form-ls);
   color: var(--aibox-color-text-secondary);
 }
+/* Label above the field (nzLayout="vertical", or a label that wraps above): 4px to the box, as in Figma (ng-zorro: 8px)
+   (the box line height follows the label so the 22px label does not sit in a 23px line) */
+.ant-form-vertical .ant-form-item:not(.ant-form-item-horizontal) .ant-form-item-label,
+.ant-form-item-vertical .ant-form-item-label,
+.ant-form-vertical .ant-form-item:not(.ant-form-item-horizontal) .ant-col-24.ant-form-item-label,
+.ant-form-item-vertical .ant-col-24.ant-form-item-label,
+.ant-form-vertical .ant-form-item:not(.ant-form-item-horizontal) .ant-col-xl-24.ant-form-item-label,
+.ant-form-item-vertical .ant-col-xl-24.ant-form-item-label {
+  padding: 0 0 var(--aibox-spacing-1);
+  font-size: var(--_form-fs);
+  line-height: var(--_form-lh);
+}
 .ant-form-item-required::before {
   color: var(--aibox-color-text-status-error-100);
+}
+/* ant draws the asterisk at 14px / line-height 1 in its own font (SimSun), which made a required label 2px taller; repeated classes
+   because ant's own rule (with :not(.ant-form-item-required-mark-optional)) is more specific */
+.ant-form-item.ant-form-item .ant-form-item-label > label.ant-form-item-required.ant-form-item-required::before {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* Input - Figma Size=small (default ng-zorro size): 14/24, padding 4/8, box height 40 */
