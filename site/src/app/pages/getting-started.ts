@@ -154,7 +154,8 @@ export class GettingStarted {
     ['aibox-card-menu', 'nz-card', 'การ์ดทางลัดเมนู: ไอคอน + ข้อความ จัดกลางการ์ด'],
     ['aibox-upload-compact', 'nz-upload (nzType="drag")', 'drop zone ความสูง 100px (ไอคอนกับหัวข้ออยู่แถวเดียวกัน)'],
     ['aibox-search', 'nz-input-wrapper (22) / nz-input-group (18) with a search prefix icon', 'ช่องค้นหา: กล่อง 40px (nzSize="large" = 48px) ไอคอน 16px'],
-    ['aibox-form-small', 'nz-form-item', 'label, assistive text และตัวนับของ textarea เป็น 12/22 (Figma size small)'],
+    ['aibox-form-small', 'nz-form-item', 'บังคับ label, ข้อความช่วย และตัวนับของ textarea เป็น 12/22 (ค่าเริ่มต้นของช่องขนาดปกติอยู่แล้ว)'],
+    ['aibox-form-large', 'nz-form-item', 'บังคับ label, ข้อความช่วย และตัวนับของ textarea เป็น 14/24 (ปกติเป็นเองเมื่อมีช่อง nzSize="large")'],
     ['aibox-option (-icon / -text / -title / -desc)', 'nzOptionRender ของ nz-cascader', 'แถวสองบรรทัด: ไอคอนซ้าย หัวข้อ และคำอธิบาย (สูง 74px)'],
     ['aibox-tag-disabled', 'nz-tag nzMode="checkable"', 'หน้าตา disabled (ต้องกันคลิกเอง)'],
   ];

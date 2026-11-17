@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.34.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.34.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.35.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.35.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the two sections at the end). Versions between and after those (19.x, 21.x) are not tested.
@@ -211,9 +211,9 @@ Input options (Figma Input page: textarea `1:7232`, search `1:7587`, password bo
 - **Prefix / suffix**: the affix wrapper (ng-zorro 18 `nz-input-group [nzPrefix]` / `[nzSuffix]` / `nzPrefixIcon`; 22 `nz-input-wrapper` with `nzInputPrefix`, `nzAllowClear`) is drawn like the textfield (border, radius, hover / focus / error / disabled, large 48px). `nzBorderless` now works on Input.
 - **Search**: add `aibox-search` to the wrapper with a `search` prefix icon: 40px box (`nzSize="large"` 48px, 16px icon). The inline ค้นหา button is a Button in the suffix (`aibox-btn-xs` in the small box, `nzSize="small"` in the large one). Register `SearchOutline`.
 - **Password**: ng-zorro 22 `nz-input-password` / 18 `nz-input-group [nzSuffix]` with an eye icon (register `EyeOutline`, `EyeInvisibleOutline`), 16px, `state/gray/g-6`.
-- **Assistive text**: `nzExtra` (14/24 `text/secondary`) and `nzErrorTip` (`text/status/error-100` with a circle-exclamation icon). Add `aibox-form-small` to `nz-form-item` for the Figma size=small text (12/22) on label, assistive text and count.
+- **Label and assistive text**: the text size follows the field size, as in Figma: 12/22 by default (Figma small), 14/24 when the form item holds a large control (`nzSize="large"` Input / Select / Input number / Date picker; detected with `:has()`). `nzExtra` is `text/secondary`, `nzErrorTip` is `text/status/error-100` with a circle-exclamation icon. `aibox-form-small` / `aibox-form-large` on `nz-form-item` force one size (for a control `:has()` does not recognise). Before v0.35.0 the label and assistive text were always 14/24.
 - **Input number**: `nz-input-number` is drawn like the Input (box 40px, `nzSize="large"` 48px, border `state/form/default`, radius 4, 14/24 / 16/26, hover / focus / error / disabled / `nzBorderless`). Not in Figma: the step buttons keep ng-zorro's layout (22px wide, shown on hover) with the Ai-BOX line and icon colours.
-Not covered (no Figma): input-number prefix / suffix / addon (`nz-input-number-group`), addon before / after, compact groups, OTP, `nzStatus="warning"` (Ant colours), count turning red past the limit, the forgot-password link row. Known: the default label is 14/24 where Figma small is 12/22 (open question for design).
+Not covered (no Figma): input-number prefix / suffix / addon (`nz-input-number-group`), addon before / after, compact groups, OTP, `nzStatus="warning"` (Ant colours), count turning red past the limit, the forgot-password link row.
 
 ## Develop
 ```

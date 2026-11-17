@@ -1,13 +1,34 @@
-/* aibox-design-system v0.34.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.35.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
-/* Form label + assistive text */
+/* Form label + assistive text. The text size follows the field size, as in Figma: the default (Figma small) is caption 12/22, a form item
+   holding a large control (nzSize="large") is body 14/24. Variables on the form item feed the label, the assistive text and the textarea count;
+   the classes aibox-form-small / aibox-form-large force one or the other (for a control :has() does not recognise). */
+.ant-form-item {
+  --_form-fs: var(--aibox-typography-caption-caption-regular-font-size);
+  --_form-lh: var(--aibox-typography-caption-caption-regular-line-height);
+  --_form-ls: var(--aibox-typography-caption-caption-regular-letter-spacing);
+  --_form-icon-top: 5px;
+}
+.ant-form-item:has(.ant-input-lg, .ant-input-affix-wrapper-lg, .ant-input-number-lg, .ant-select-lg, .ant-picker-large),
+.ant-form-item.ant-form-item.aibox-form-large {
+  --_form-fs: var(--aibox-typography-body-body-regular-font-size);
+  --_form-lh: var(--aibox-typography-body-body-regular-line-height);
+  --_form-ls: var(--aibox-typography-body-body-regular-letter-spacing);
+  --_form-icon-top: 6px;
+}
+.ant-form-item.ant-form-item.ant-form-item.aibox-form-small {
+  --_form-fs: var(--aibox-typography-caption-caption-regular-font-size);
+  --_form-lh: var(--aibox-typography-caption-caption-regular-line-height);
+  --_form-ls: var(--aibox-typography-caption-caption-regular-letter-spacing);
+  --_form-icon-top: 5px;
+}
 .ant-form-item-label > label {
   font-family: var(--aibox-font-family-heading-and-body);
-  font-size: var(--aibox-typography-body-body-regular-font-size);
-  line-height: var(--aibox-typography-body-body-regular-line-height);
-  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+  font-size: var(--_form-fs);
+  line-height: var(--_form-lh);
+  letter-spacing: var(--_form-ls);
   color: var(--aibox-color-text-secondary);
 }
 .ant-form-item-required::before {
@@ -81,7 +102,8 @@
                                      box 40 (small) / 48 (nzSize="large")
      password box                    <nz-input-group nzSize="large" [nzSuffix]="eye"> with an eye icon in the suffix
      assistive text                  nz-form-control nzExtra; the error line (nzErrorTip) gets the circle-exclamation icon
-     small form text                 class="aibox-form-small" on nz-form-item: label, assistive text and count at 12/22 (Figma size=small)
+     form text size                  label, assistive text and count follow the field size: 12/22 by default (Figma small), 14/24 when the form item
+                                     holds a large control; aibox-form-small / aibox-form-large on nz-form-item force one
    Not covered: total count turning red past the limit, the "forgot password" link row, the dark theme, input-number, addon before / after,
    compact groups, OTP, nzStatus="warning" (not in Figma). */
 .ant-input.ant-input-borderless,
@@ -122,9 +144,9 @@ textarea.ant-input.ant-input-disabled {
   margin-top: var(--aibox-spacing-1);
   color: var(--aibox-color-text-secondary);
   font-family: var(--aibox-font-family-heading-and-body);
-  font-size: var(--aibox-typography-body-body-regular-font-size);
-  line-height: var(--aibox-typography-body-body-regular-line-height);
-  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+  font-size: var(--_form-fs, var(--aibox-typography-body-body-regular-font-size));
+  line-height: var(--_form-lh, var(--aibox-typography-body-body-regular-line-height));
+  letter-spacing: var(--_form-ls, var(--aibox-typography-body-body-regular-letter-spacing));
 }
 
 /* Input with prefix / suffix: the wrapper is the box, the inner input has no border. Also the box of Search and Password. */
@@ -246,9 +268,9 @@ textarea.ant-input.ant-input-disabled {
   margin-top: var(--aibox-spacing-1);
   min-height: 0;
   font-family: var(--aibox-font-family-heading-and-body);
-  font-size: var(--aibox-typography-body-body-regular-font-size);
-  line-height: var(--aibox-typography-body-body-regular-line-height);
-  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+  font-size: var(--_form-fs);
+  line-height: var(--_form-lh);
+  letter-spacing: var(--_form-ls);
 }
 .ant-form-item-extra {
   color: var(--aibox-color-text-secondary);
@@ -264,24 +286,11 @@ textarea.ant-input.ant-input-disabled {
   flex: none;
   width: 12px;
   height: 12px;
-  margin-top: 6px;
+  margin-top: var(--_form-icon-top);
   background-color: var(--aibox-color-text-status-error-200);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM7.2 4h1.6v5H7.2zM8 10.6a1 1 0 110 2 1 1 0 010-2z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 0a8 8 0 100 16A8 8 0 008 0zM7.2 4h1.6v5H7.2zM8 10.6a1 1 0 110 2 1 1 0 010-2z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
-/* Figma size=small (the default ng-zorro size): label, assistive text and count are 12/22 */
-.aibox-form-small .ant-form-item-label > label,
-.aibox-form-small .ant-form-item-extra,
-.aibox-form-small .ant-form-item-explain,
-.aibox-form-small .ant-input-textarea-show-count::after {
-  font-size: var(--aibox-typography-caption-caption-regular-font-size);
-  line-height: var(--aibox-typography-caption-caption-regular-line-height);
-  letter-spacing: var(--aibox-typography-caption-caption-regular-letter-spacing);
-}
-.aibox-form-small .ant-form-item-explain .ant-form-item-explain-error::before {
-  margin-top: 5px;
-}
-
 /* Input number (nz-input-number). Not in Figma: drawn like the Input above (border, radius, 14/24 / 16/26 text, hover / focus / error /
    disabled / borderless), box height 40 (nzSize="large" 48). The step buttons keep ng-zorro's layout (22px wide, shown on hover) with
    Ai-BOX line and icon colours; their size, hover colour and the 7px arrows are ng-zorro's (no Figma). Not covered: prefix / suffix and
