@@ -26,7 +26,7 @@ const CDN = `https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@${META.d
 
     <section id="install">
       <h2>1. ติดตั้ง</h2>
-      <p class="p">ใส่ลิงก์ของ release ที่ต้องการ <strong>ระบุเวอร์ชันตายตัวเสมอ</strong> (ห้ามใช้ <code>&#64;main</code> หรือ <code>&#64;latest</code> เพราะ cache นานและเปลี่ยนใต้เท้าได้)</p>
+      <p class="p">ใส่ลิงก์ของ release ที่ต้องการ <strong>ระบุเวอร์ชันตายตัวเสมอ</strong> (ห้ามใช้ <code>&#64;main</code> หรือ <code>&#64;latest</code> เพราะ CDN เก็บ cache ไว้นาน และไฟล์ที่ลิงก์ชี้อยู่จะเปลี่ยนตามเวอร์ชันใหม่โดยไม่แจ้ง ทำให้หน้าตาในแอปเปลี่ยนเองโดยไม่รู้ตัว)</p>
       <app-code-block [code]="cdnLinks" lang="xml" label="HTML" maxHeight="none" />
     </section>
 
