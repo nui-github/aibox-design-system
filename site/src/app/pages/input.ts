@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { CssPanel } from '../shared/css-panel';
 import { Demo } from '../shared/demo';
 import { PageHead } from '../shared/page-head';
@@ -11,13 +12,14 @@ const IMPORTS = `import { FormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
-@Component({ imports: [FormsModule, NzFormModule, NzIconModule, NzInputModule], /* ... */ })`;
+@Component({ imports: [FormsModule, NzFormModule, NzIconModule, NzInputModule, NzInputNumberModule], /* ... */ })`;
 
 @Component({
   selector: 'app-input-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, NzFormModule, NzIconModule, NzInputModule, Demo, CssPanel, PageHead],
+  imports: [FormsModule, NzFormModule, NzIconModule, NzInputModule, NzInputNumberModule, Demo, CssPanel, PageHead],
   template: `
     <app-page-head title="Input">
       <ng-container sub>Figma nodes <code>1:7052</code> (textfield), <code>1:7232</code> (textarea), <code>1:7587</code> (search), <code>6581:98500</code> (password), <code>1:7499</code> (assistive text) · <code>nz-input</code> และ form label ขนาดเริ่มต้น = Figma small (กล่องสูง 40px), <code>nzSize="large"</code> = Figma large (48px)</ng-container>
@@ -100,6 +102,13 @@ import { NzInputModule } from 'ng-zorro-antd/input';
       </nz-input-password>
     </app-demo>
 
+    <app-demo title="Input number" description="nz-input-number ใช้กรอบเดียวกับ Input (สูง 40px, nzSize=&quot;large&quot; = 48px, ขอบ มุม สถานะ) · ปุ่มเพิ่ม/ลดเป็นของ ng-zorro (ไม่มีใน Figma)" [code]="number" [ts]="imports">
+      <nz-input-number [(ngModel)]="n1" [nzMin]="0" [nzMax]="99" style="width: 160px" />
+      <nz-input-number [(ngModel)]="n2" nzSize="large" style="width: 160px" />
+      <nz-input-number [ngModel]="3" nzStatus="error" style="width: 160px" />
+      <nz-input-number [ngModel]="3" nzDisabled style="width: 160px" />
+    </app-demo>
+
     <app-demo title="Assistive text" description="nzExtra = ข้อความช่วยใต้ช่อง · nzErrorTip = ข้อความ error มีไอคอนนำหน้า · class aibox-form-small บน nz-form-item = ตัวอักษร 12/22 (Figma size small)" [code]="assistive" [ts]="imports">
       <form nz-form nzLayout="vertical" style="width: 320px">
         <nz-form-item>
@@ -129,6 +138,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 export class InputPage {
   protected name = '';
   protected reason = 'hello';
+  protected n1 = 3;
+  protected n2 = 10;
   protected clearValue = 'Clear me';
   protected searchValue = 'Placeholder';
   protected readonly imports = IMPORTS;
@@ -169,6 +180,10 @@ export class InputPage {
 <nz-input-password>
   <input nz-input nzSize="large" placeholder="Password" />
 </nz-input-password>`;
+  protected readonly number = `<nz-input-number [(ngModel)]="value" [nzMin]="0" [nzMax]="99" />
+<nz-input-number [(ngModel)]="value" nzSize="large" />
+<nz-input-number [ngModel]="3" nzStatus="error" />
+<nz-input-number [ngModel]="3" nzDisabled />`;
   protected readonly assistive = `<form nz-form nzLayout="vertical">
   <nz-form-item>
     <nz-form-label>Label</nz-form-label>

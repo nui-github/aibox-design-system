@@ -1,4 +1,4 @@
-/* aibox-design-system v0.32.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.33.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -280,6 +280,87 @@ textarea.ant-input.ant-input-disabled {
 }
 .aibox-form-small .ant-form-item-explain .ant-form-item-explain-error::before {
   margin-top: 5px;
+}
+
+/* Input number (nz-input-number). Not in Figma: drawn like the Input above (border, radius, 14/24 / 16/26 text, hover / focus / error /
+   disabled / borderless), box height 40 (nzSize="large" 48). The step buttons keep ng-zorro's layout (22px wide, shown on hover) with
+   Ai-BOX line and icon colours; their size, hover colour and the 7px arrows are ng-zorro's (no Figma). Not covered: prefix / suffix and
+   addons (nz-input-number-group), the keyboard-hint "controls" variants. */
+.ant-input-number {
+  box-sizing: border-box;
+  border: 1px solid var(--aibox-color-state-form-default);
+  border-radius: var(--aibox-radius-2);
+  background-color: var(--aibox-color-bg-primary);
+  color: var(--aibox-color-text-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-input-number .ant-input-number-input {
+  height: calc(var(--aibox-size-control-height) - 2px);
+  padding: 0 var(--aibox-spacing-2);
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.ant-input-number.ant-input-number-lg {
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-input-number.ant-input-number-lg .ant-input-number-input {
+  height: calc(var(--aibox-size-control-height-lg) - 2px);
+  padding: 0 var(--aibox-spacing-3);
+}
+.ant-input-number .ant-input-number-input::placeholder {
+  color: var(--aibox-color-text-placeholder);
+}
+.ant-input-number:hover {
+  border-color: var(--aibox-color-state-form-hover);
+}
+.ant-input-number.ant-input-number-focused {
+  border-color: var(--aibox-color-state-form-active);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-active-outer);
+  outline: 0;
+}
+.ant-input-number.ant-input-number-status-error:not(.ant-input-number-disabled):not(.ant-input-number-borderless),
+.ant-input-number.ant-input-number-status-error:not(.ant-input-number-disabled):not(.ant-input-number-borderless):hover {
+  border-color: var(--aibox-color-state-form-error);
+}
+.ant-input-number.ant-input-number-status-error:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number-focused {
+  border-color: var(--aibox-color-state-form-error);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-error-outer);
+}
+.ant-input-number.ant-input-number-disabled,
+.ant-input-number.ant-input-number-disabled:hover {
+  border-color: var(--aibox-color-state-form-default);
+  background-color: var(--aibox-color-bg-disable);
+  color: var(--aibox-color-text-disable);
+  box-shadow: none;
+}
+.ant-input-number.ant-input-number-borderless,
+.ant-input-number.ant-input-number-borderless:hover,
+.ant-input-number.ant-input-number-borderless.ant-input-number-focused {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+.ant-input-number .ant-input-number-handler-wrap {
+  background-color: var(--aibox-color-bg-primary);
+}
+.ant-input-number .ant-input-number-handler {
+  border-inline-start-color: var(--aibox-color-state-form-default);
+  color: var(--aibox-color-state-gray-g-6-default);
+}
+.ant-input-number .ant-input-number-handler-down {
+  border-top-color: var(--aibox-color-state-form-default);
+}
+.ant-input-number .ant-input-number-handler .anticon {
+  color: var(--aibox-color-state-gray-g-6-default);
+}
+.ant-input-number .ant-input-number-handler:hover .anticon {
+  color: var(--aibox-color-text-main);
 }
 
 /* ---------------------------------------------------------------------------
