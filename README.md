@@ -6,11 +6,11 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.33.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.33.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.34.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.34.0/dist/ng-zorro-override.css">
 ```
 
-Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
+Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the two sections at the end). Versions between and after those (19.x, 21.x) are not tested.
 
 ## Docs site
 Live previews, install guide and per-component code/CSS (copyable) live in [`site/`](site) (Angular + ng-zorro-antd, deployed on Vercel). See [site/README.md](site/README.md).
@@ -237,4 +237,7 @@ Token value change = minor/patch; rename or remove a token = major.
 
 
 ## Verified on ng-zorro-antd 18.2.1
-The overrides were rebuilt in a Angular 18.2 + ng-zorro-antd 18.2.1 copy of the docs site and measured in Chromium next to 22.1.2. Message, message bar, modal, empty, scrollbar, drawer, table, tree, card, upload (base, compact, disabled) and the cascader two-line row measure identically; date picker, time picker and cascader differ by 1-8px because the two versions' DOM differs. API differences to know in 18: `NzToolTipModule`, `NzDropDownModule`, `<nz-tabset>` / `nz-tab`, `<span nz-icon>` (no `<nz-icon>`), no `nzNeedConfirm` on the time picker, no `nzArrow` on dropdown (not verifiable), closed `nz-submenu` stays in the DOM at height 0 (fixed in v0.30.0), zone.js + `provideAnimations` + `provideHttpClient` (upload) + `registerLocaleData(th)` (date/time pickers) are needed. Not verified in the real Ai-BOX app.
+The overrides were rebuilt in a Angular 18.2 + ng-zorro-antd 18.2.1 copy of the docs site and measured in Chromium next to 22.1.2. Message, message bar, modal, empty, scrollbar, drawer, table, tree, card, upload (base, compact, disabled) and the cascader two-line row measure identically; date picker, time picker and cascader differ by 1-8px because the two versions' DOM differs. API differences to know in 18: `NzToolTipModule`, `NzDropDownModule`, `<nz-tabset>` / `nz-tab`, `<span nz-icon>` (no `<nz-icon>`), no `nzNeedConfirm` on the time picker, no `nzArrow` on dropdown (not verifiable), closed `nz-submenu` stays in the DOM at height 0 (fixed in v0.30.0), the tab button is a `<button>` (browser button padding and weight made tabs 131.9x50 instead of 121.1x48, fixed in v0.34.0), zone.js + `provideAnimations` + `provideHttpClient` (upload) + `registerLocaleData(th)` (date/time pickers) are needed. Not verified in the real Ai-BOX app.
+
+## Verified on ng-zorro-antd 20.4.4
+The docs site was rebuilt with Angular 20.3 + ng-zorro-antd 20.4.4 and compared with 22.1.2 in Chromium: every demo of the 29 component pages (element sizes, colours, borders, radius, fonts, padding) plus the overlay and state scripts (modal, message, dropdown, date / time picker, cascader, drawer, menu, tabs). The same sizes come out on both, apart from two things found and fixed in v0.34.0 (the tab `<button>` and a 2px margin on the cascader menus that made its panel 4px taller). Differences that are only DOM, not look: closed `nz-submenu` stays in the DOM at height 0 (as in 18), no `ant-*-outlined` / `ant-picker-dropdown-placement-*` classes. API to know in 20: `NzDropDownModule` (not `NzDropdownModule`), no `nzNeedConfirm` on the time picker, no `provideNzNativeDateAdapter` / `NZ_DATE_LOCALE` (use `registerLocaleData(th)` with `provideNzI18n(th_TH)`), `provideAnimationsAsync()` is needed for the menu to collapse, `provideHttpClient()` for upload, and either zone.js or `provideZonelessChangeDetection()`. `nz-input-wrapper` / `nz-input-password` exist in 20.4.4 as in 22. Not checked: hover / focus states of every component, 19.x and 21.x, the real Ai-BOX app.

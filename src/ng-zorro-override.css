@@ -1640,6 +1640,12 @@ a.ant-btn.aibox-btn-xs {
 .ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab .ant-tabs-tab-btn {
   display: inline-flex;
   align-items: center;
+  /* ng-zorro 20 renders the tab as a <button> (18 / 22: a div): drop the browser's button padding, weight and font */
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
   color: inherit;
   text-shadow: none;
 }
@@ -3211,6 +3217,10 @@ nz-alert.aibox-alert-bar {
   border-radius: var(--aibox-radius-2);
   background: var(--aibox-color-bg-primary);
   box-shadow: var(--aibox-cascader-menu-shadow);
+}
+/* ng-zorro 20 gives the menus row a 2px vertical margin, which made the panel 4px taller than its columns */
+.ant-cascader-dropdown .ant-cascader-menus {
+  margin: 0;
 }
 .ant-cascader-dropdown .ant-cascader-menu {
   height: auto;
