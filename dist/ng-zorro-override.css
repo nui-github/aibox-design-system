@@ -1,4 +1,4 @@
-/* aibox-design-system v0.31.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.32.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -14,8 +14,9 @@
   color: var(--aibox-color-text-status-error-100);
 }
 
-/* Input - Figma Size=small (default ng-zorro size): 14/24, padding 4/8 */
+/* Input - Figma Size=small (default ng-zorro size): 14/24, padding 4/8, box height 40 */
 .ant-input {
+  min-height: var(--aibox-size-control-height);
   font-family: var(--aibox-font-family-heading-and-body);
   font-size: var(--aibox-typography-body-body-regular-font-size);
   line-height: var(--aibox-typography-body-body-regular-line-height);
@@ -102,6 +103,10 @@ textarea.ant-input {
 textarea.ant-input:not([rows]) {
   min-height: 80px;
 }
+/* a textarea is not a 40px control: keep ant's own 32px minimum, which nzAutosize's row measuring was tuned on */
+textarea.ant-input[rows] {
+  min-height: 32px;
+}
 textarea.ant-input.ant-input-lg:not([rows]) {
   min-height: 96px;
 }
@@ -126,6 +131,7 @@ textarea.ant-input.ant-input-disabled {
 .ant-input-affix-wrapper {
   box-sizing: border-box;
   align-items: center;
+  min-height: var(--aibox-size-control-height);
   padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
   border: 1px solid var(--aibox-color-state-form-default);
   border-radius: var(--aibox-radius-2);
@@ -224,7 +230,7 @@ textarea.ant-input.ant-input-disabled {
 /* Search: the affix wrapper at 40px (48px with nzSize="large") with a 16px prefix icon. The wrapper has no vertical padding, so the
    32px (nzSize="small") or 24px (aibox-btn-xs) search button in the suffix fits without growing the box. */
 .ant-input-affix-wrapper.aibox-search {
-  min-height: 40px;
+  min-height: var(--aibox-size-control-height);
   padding-block: 0;
 }
 .ant-input-affix-wrapper.aibox-search.ant-input-affix-wrapper-lg {
