@@ -385,6 +385,7 @@
   --aibox-color-global-light-blue-1700: #02304b; /** Light blue color ramp. Info state primitive. */
   --aibox-color-global-light-blue-1800: #012032; /** Light blue color ramp. Info state primitive. */
   --aibox-color-global-light-blue-1900: #011019; /** Light blue color ramp. Info state primitive. */
+  --aibox-size-control-height: 40px; /** Not a Figma variable. Measured from textfield Size=small box height (node 5330:5582: 92px frame = 22 label + 4 + 40 box + 4 + 22 assistive text), also search small (1:7588) and select small. */
   --aibox-size-control-height-lg: 48px; /** Not a Figma variable. Measured from textfield Size=large box height (node 1:7053). */
   --aibox-size-focus-ring: 2px; /** Not a Figma variable. Measured from textfield focused state outer ring (node 1:7069). */
   --aibox-switch-handle-shadow-color: rgba(0, 35, 11, 0.2); /** Figma variable Component/Switch/handleShadow (0 2px 4px). Not in the variable export; copied from the design context. */

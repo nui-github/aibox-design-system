@@ -1,6 +1,10 @@
 {
   "size": {
     "$type": "dimension",
+    "control-height": {
+      "$value": "40px",
+      "$description": "Not a Figma variable. Measured from textfield Size=small box height (node 5330:5582: 92px frame = 22 label + 4 + 40 box + 4 + 22 assistive text), also search small (1:7588) and select small."
+    },
     "control-height-lg": {
       "$value": "48px",
       "$description": "Not a Figma variable. Measured from textfield Size=large box height (node 1:7053)."

@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.31.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.31.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.32.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.32.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -204,7 +204,7 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 `nz-menu` with `nzMode="inline"` (240px): group rows (`nz-submenu` title, padding 16, 14/24 `text/tertiary`, 1px bottom line and right line in `text/white/secondary`), open row (`nzOpen`) in `color/main` medium with a down chevron (closed = right chevron), sub items 208x32 (padding 4 16, radius 4, 8px apart, group bottom padding 24): hover = `component/bg/bg-active` + `color/main` medium, selected (`nzSelected`) = `bg/main` + white medium. ng-zorro sets `padding-inline-start` inline per level, so those two rules use `!important`. Not covered: collapsed menu, row icons, horizontal / popup menus, dark theme, the Sidebar / Header / Menu Product app-shell frames of the same page.
 
 ### Input / form label (Figma node `1:7052`)
-`<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.
+`<input nz-input>` (default size = Figma small, box 40px; `nzSize="large"` = Figma large, 48px), `nz-form-label`. `nzSize="small"` is drawn like the default.
 
 Input options (Figma Input page: textarea `1:7232`, search `1:7587`, password box `6581:98500`, assistive text `1:7499`):
 - **Textarea**: `<textarea nz-input>` starts 80px tall (`nzSize="large"` 96px) with a vertical resize handle, padding 8 / 12, 14/24 / 16/26. Giving `rows` yourself replaces the starting height (and keeps `nzAutosize` working: a CSS min-height on the textarea broke its row measuring). `nz-textarea-count [nzMaxCharacterCount]` shows the count under the box, right aligned.
@@ -212,7 +212,7 @@ Input options (Figma Input page: textarea `1:7232`, search `1:7587`, password bo
 - **Search**: add `aibox-search` to the wrapper with a `search` prefix icon: 40px box (`nzSize="large"` 48px, 16px icon). The inline ค้นหา button is a Button in the suffix (`aibox-btn-xs` in the small box, `nzSize="small"` in the large one). Register `SearchOutline`.
 - **Password**: ng-zorro 22 `nz-input-password` / 18 `nz-input-group [nzSuffix]` with an eye icon (register `EyeOutline`, `EyeInvisibleOutline`), 16px, `state/gray/g-6`.
 - **Assistive text**: `nzExtra` (14/24 `text/secondary`) and `nzErrorTip` (`text/status/error-100` with a circle-exclamation icon). Add `aibox-form-small` to `nz-form-item` for the Figma size=small text (12/22) on label, assistive text and count.
-Not covered (no Figma): `nz-input-number`, addon before / after, compact groups, OTP, `nzStatus="warning"` (Ant colours), count turning red past the limit, the forgot-password link row. Known: the default (small) Input is 34px but the Figma small box is 40px, and the default label is 14/24 where Figma small is 12/22 (open question for design).
+Not covered (no Figma): `nz-input-number`, addon before / after, compact groups, OTP, `nzStatus="warning"` (Ant colours), count turning red past the limit, the forgot-password link row. Known: the default label is 14/24 where Figma small is 12/22 (open question for design).
 
 ## Develop
 ```
