@@ -38,6 +38,19 @@ export class Example {
       </nz-select>
     </app-demo>
 
+    <app-demo title="Multiple and tags" description="nzMode=&quot;multiple&quot; / &quot;tags&quot; (Figma Tag Selection) · กล่องสูงขึ้นตามจำนวนแท็ก แท็กขึ้นบรรทัดใหม่ห่างกัน 8px" [code]="multiple" [ts]="imports">
+      <nz-select [(ngModel)]="m1" nzMode="multiple" nzPlaceHolder="Select" [nzOptionHeightPx]="50" style="width: 360px">
+        @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
+      </nz-select>
+      <nz-select [(ngModel)]="m2" nzMode="multiple" nzSize="large" nzPlaceHolder="Large" [nzOptionHeightPx]="50" style="width: 360px">
+        @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
+      </nz-select>
+      <nz-select [(ngModel)]="m3" nzMode="tags" nzPlaceHolder="Type and press Enter" style="width: 360px"></nz-select>
+      <nz-select [ngModel]="options" nzMode="multiple" nzDisabled style="width: 360px">
+        @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
+      </nz-select>
+    </app-demo>
+
     <app-demo title="States" description="error · disabled" [code]="states" [ts]="imports">
       <nz-select nzStatus="error" nzPlaceHolder="Error" [nzOptionHeightPx]="50" style="width: 240px">
         @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
@@ -53,6 +66,9 @@ export class SelectPage {
   protected a: string | null = null;
   protected b: string | null = null;
   protected c: string | null = null;
+  protected m1: string[] = ['Draft', 'Approved'];
+  protected m2: string[] = ['Draft', 'In progress', 'Approved', 'Rejected'];
+  protected m3: string[] = ['one', 'two'];
   protected readonly options = ['Draft', 'In progress', 'Approved', 'Rejected'];
   protected readonly imports = IMPORTS;
   protected readonly sizes = `<nz-select [(ngModel)]="value" nzPlaceHolder="Select" [nzOptionHeightPx]="50">
@@ -71,6 +87,13 @@ export class SelectPage {
     <nz-option [nzValue]="o" [nzLabel]="o" />
   }
 </nz-select>`;
+  protected readonly multiple = `<nz-select [(ngModel)]="value" nzMode="multiple" nzPlaceHolder="Select" [nzOptionHeightPx]="50">
+  @for (o of options; track o) {
+    <nz-option [nzValue]="o" [nzLabel]="o" />
+  }
+</nz-select>
+
+<nz-select [(ngModel)]="tags" nzMode="tags" nzPlaceHolder="Type and press Enter" />`;
   protected readonly states = `<nz-select nzStatus="error" nzPlaceHolder="Error" [nzOptionHeightPx]="50">
   @for (o of options; track o) {
     <nz-option [nzValue]="o" [nzLabel]="o" />

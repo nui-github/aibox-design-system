@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.30.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.30.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.31.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.31.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2 and the same automated checks pass there.
@@ -64,7 +64,7 @@ Figma has no hover/focus state for these; hover and focus use `color.state.form.
 The Figma boxes are SVG icons, so the shapes were measured from a 1x render (box 14 / 17.5 / 21px, radio 16 / 20 / 24px, border 1.5 / 1.875 / 2.25px); the check mark is an approximation. Confirm with design before relying on pixel-exact output.
 
 ### Select (Figma nodes `1592:6210` select-search, `1:7137` select, `1:7626` content-list)
-Use `nz-select` as usual.
+Use `nz-select` as usual. `nzMode="multiple"` / `"tags"` follow the Figma Tag Selection (`3959:10071`): the box grows with the tags (one row = the single-select height 40 / 48, two rows 72 / 80), tags wrap 8px apart; each tag is 24px, `bg/secondary`, radius 4, 12/16 medium `text/secondary` with a 12px ×. Disabled tags (white, `text/disable`) are not in Figma. Not covered: the Tag Selection column / list views and the typing / suggestion panel.
 
 | Figma | ng-zorro |
 |---|---|
@@ -205,6 +205,14 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 ### Input / form label (Figma node `1:7052`)
 `<input nz-input>` (default size = Figma small, `nzSize="large"` = Figma large), `nz-form-label`.
+
+Input options (Figma Input page: textarea `1:7232`, search `1:7587`, password box `6581:98500`, assistive text `1:7499`):
+- **Textarea**: `<textarea nz-input>` starts 80px tall (`nzSize="large"` 96px) with a vertical resize handle, padding 8 / 12, 14/24 / 16/26. Giving `rows` yourself replaces the starting height (and keeps `nzAutosize` working: a CSS min-height on the textarea broke its row measuring). `nz-textarea-count [nzMaxCharacterCount]` shows the count under the box, right aligned.
+- **Prefix / suffix**: the affix wrapper (ng-zorro 18 `nz-input-group [nzPrefix]` / `[nzSuffix]` / `nzPrefixIcon`; 22 `nz-input-wrapper` with `nzInputPrefix`, `nzAllowClear`) is drawn like the textfield (border, radius, hover / focus / error / disabled, large 48px). `nzBorderless` now works on Input.
+- **Search**: add `aibox-search` to the wrapper with a `search` prefix icon: 40px box (`nzSize="large"` 48px, 16px icon). The inline ค้นหา button is a Button in the suffix (`aibox-btn-xs` in the small box, `nzSize="small"` in the large one). Register `SearchOutline`.
+- **Password**: ng-zorro 22 `nz-input-password` / 18 `nz-input-group [nzSuffix]` with an eye icon (register `EyeOutline`, `EyeInvisibleOutline`), 16px, `state/gray/g-6`.
+- **Assistive text**: `nzExtra` (14/24 `text/secondary`) and `nzErrorTip` (`text/status/error-100` with a circle-exclamation icon). Add `aibox-form-small` to `nz-form-item` for the Figma size=small text (12/22) on label, assistive text and count.
+Not covered (no Figma): `nz-input-number`, addon before / after, compact groups, OTP, `nzStatus="warning"` (Ant colours), count turning red past the limit, the forgot-password link row. Known: the default (small) Input is 34px but the Figma small box is 40px, and the default label is 14/24 where Figma small is 12/22 (open question for design).
 
 ## Develop
 ```
