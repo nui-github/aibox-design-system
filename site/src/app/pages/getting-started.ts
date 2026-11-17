@@ -160,6 +160,7 @@ export class GettingStarted {
   ];
   protected readonly compat: string[][] = [
     ['18.2.x', 'เวอร์ชันที่ Ai-BOX ใช้ และที่ override ถูกพัฒนา/ทดสอบด้วย (automated computed-style tests)'],
+    ['20.4.4', 'ตรวจแล้ว: วัดขนาด สี ขอบ ตัวอักษรของทุก demo เทียบกับ 22 ได้ค่าเท่ากัน (แก้ Tab และ Cascader ใน v0.34.0) · เวอร์ชัน 19.x, 21.x และ 20.x อื่นยังไม่ได้ตรวจ'],
     [META.nzVersion, 'เวอร์ชันล่าสุด ณ ตอนนี้ — เว็บนี้ render ด้วยเวอร์ชันนี้ และ automated tests ชุดเดียวกันผ่าน'],
   ];
 }
