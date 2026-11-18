@@ -17,7 +17,7 @@ const IMPORTS = `import { NzDividerModule } from 'ng-zorro-antd/divider';
       <ng-container sub>Figma node <code>1174:444</code> (divider) · <code>nz-divider</code> เส้น 1px (inline), เส้นประ และแถบหนา S / M / M24 / L</ng-container>
     </app-page-head>
 
-    <app-demo title="Line" description="ค่าเริ่มต้น = inline (1px border/primary) · nzDashed = Dash Secondary" [code]="line" [ts]="imports">
+    <app-demo title="Line" description="ค่าเริ่มต้น = inline (1px component/divider) · nzDashed = Dash Secondary" [code]="line" [ts]="imports">
       <div class="col">
         <p>Content above</p>
         <nz-divider />

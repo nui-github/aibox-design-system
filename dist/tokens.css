@@ -439,7 +439,6 @@
   --aibox-radius-18: 68px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
   --aibox-radius-19: 72px; /** Corner radius scale (+4 increments from 8 onwards). Note: scoped to ALL_SCOPES (unlike other radius tokens which are CORNER_RADIUS only). */
   --aibox-radius-20: 100px; /** Maximum radius — fully rounded / pill shape. Part of corner radius scale. Scoped to corner radius. */
-  --aibox-radius-value-6: 6px;
   --aibox-shadow-base-popover: 0px -1px 8px 0px #00000033, 0px 1px 8px 0px #00000040;
   --aibox-shadow-base-raise-modal: 0px -1px 8px 0px #0000001a, 0px 4px 8px 2px #0000001a;
   --aibox-shadow-base-raise-bg-none-lg: 0px -1px 4px 0px #0000001a, 0px 8px 16px 4px #0000001a;
@@ -467,8 +466,6 @@
   --aibox-spacing-16: 64px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
   --aibox-spacing-17: 68px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
   --aibox-spacing-18: 72px; /** Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap. */
-  --aibox-spacing-value-2: 2px;
-  --aibox-spacing-value-15: 15px;
   --aibox-typography-header-h-over: 600 32px/48px 'IBM Plex Sans Thai'; /** Oversized heading. For special cases requiring text larger and more prominent than standard h1. */
   --aibox-typography-header-h1: 600 28px/44px 'IBM Plex Sans Thai'; /** Primary page heading. For top-level page titles and main section headers. */
   --aibox-typography-header-h2: 600 24px/38px 'IBM Plex Sans Thai'; /** Secondary heading. For section titles and document headers within a page. */

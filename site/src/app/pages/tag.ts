@@ -99,6 +99,14 @@ export class Example {
       </nz-tag>
     </app-demo>
 
+    <app-demo title="Naming: avatar colours" description="aibox-avatar-blue (ค่าเริ่มต้น) / -sea / -gray / -yellow / -red บน aibox-tag-avatar" [code]="avatars" [ts]="imports">
+      <nz-tag nzMode="closeable" class="aibox-tag-naming"><span class="aibox-tag-avatar aibox-avatar-blue"><span nz-icon nzType="user"></span></span>Blue</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-naming"><span class="aibox-tag-avatar aibox-avatar-sea"><span nz-icon nzType="user"></span></span>Sea</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-naming"><span class="aibox-tag-avatar aibox-avatar-gray"><span nz-icon nzType="user"></span></span>Gray</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-naming"><span class="aibox-tag-avatar aibox-avatar-yellow"><span nz-icon nzType="user"></span></span>Yellow</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-naming"><span class="aibox-tag-avatar aibox-avatar-red"><span nz-icon nzType="user"></span></span>Red</nz-tag>
+    </app-demo>
+
     <app-css-panel id="tag" />
 
     <h2 id="chip">Chip / filter</h2>
@@ -187,4 +195,8 @@ export class TagPage {
   protected readonly group = `@for (f of filters; track f) {
   <nz-tag nzMode="checkable" [nzChecked]="selected().includes(f)" (nzCheckedChange)="toggle(f, $event)">{{ f }}</nz-tag>
 }`;
+  protected readonly avatars = `<nz-tag nzMode="closeable" class="aibox-tag-naming">
+  <span class="aibox-tag-avatar aibox-avatar-sea"><span nz-icon nzType="user"></span></span>Sea
+</nz-tag>
+<!-- aibox-avatar-blue | -sea | -gray | -yellow | -red -->`;
 }

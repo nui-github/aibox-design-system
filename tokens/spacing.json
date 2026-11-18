@@ -94,14 +94,6 @@
       "$type": "dimension",
       "$value": "72px",
       "$description": "Linear spacing scale (+4 per step). spacing/N = N × 4. Scoped to auto-layout gap."
-    },
-    "value-2": {
-      "$type": "dimension",
-      "$value": "2px"
-    },
-    "value-15": {
-      "$type": "dimension",
-      "$value": "15px"
     }
   }
 }
