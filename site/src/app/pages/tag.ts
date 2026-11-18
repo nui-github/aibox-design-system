@@ -1,17 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { CssPanel } from '../shared/css-panel';
 import { Demo } from '../shared/demo';
 import { PageHead } from '../shared/page-head';
 
-const IMPORTS = `import { NzTagModule } from 'ng-zorro-antd/tag';
+const IMPORTS = `import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
-@Component({ imports: [NzTagModule], /* ... */ })`;
+@Component({ imports: [NzIconModule, NzTagModule], /* ... */ })`;
 
 @Component({
   selector: 'app-tag-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NzTagModule, Demo, CssPanel, PageHead],
+  imports: [NzIconModule, NzTagModule, Demo, CssPanel, PageHead],
   template: `
     <app-page-head title="Tag (status badge)">
       <ng-container sub>Figma badge node <code>1:10717</code> (page Chip &amp; Tag <code>3579:12023</code>) · map สถานะของ Figma กับ <code>nzColor</code></ng-container>
@@ -43,6 +45,26 @@ const IMPORTS = `import { NzTagModule } from 'ng-zorro-antd/tag';
       <nz-tag class="aibox-tag-square aibox-tag-xs" nzColor="success">Square x-small</nz-tag>
     </app-demo>
 
+    <app-demo title="Closable" description="nzMode=&quot;closeable&quot; (Figma tag/closable) · ขนาดปกติ = Figma small (14px, สูง 32px) · aibox-tag-xs = 2xsmall (12px, สูง 24px) · สีเหมือน badge + aibox-tag-black" [code]="closable" [ts]="imports">
+      <nz-tag nzMode="closeable">Tag</nz-tag>
+      <nz-tag nzMode="closeable" nzColor="processing">Tag</nz-tag>
+      <nz-tag nzMode="closeable" nzColor="success">Tag</nz-tag>
+      <nz-tag nzMode="closeable" nzColor="error">Tag</nz-tag>
+      <nz-tag nzMode="closeable" nzColor="warning">Tag</nz-tag>
+      <nz-tag nzMode="closeable" nzColor="purple">Tag</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-black">Tag</nz-tag>
+    </app-demo>
+
+    <app-demo title="Closable: x-small, square, icon" description="aibox-tag-xs · aibox-tag-square · ไอคอนนำหน้า 12px" [code]="closableMore" [ts]="imports">
+      <nz-tag nzMode="closeable" class="aibox-tag-xs">Tag</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-xs" nzColor="processing">Tag</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-xs aibox-tag-black">Tag</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-square">Square</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-square aibox-tag-xs" nzColor="success">Square</nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-xs"><span nz-icon nzType="heart" nzTheme="fill"></span>Tag</nz-tag>
+      <nz-tag nzMode="closeable" nzColor="error"><span nz-icon nzType="heart" nzTheme="fill"></span>Tag</nz-tag>
+    </app-demo>
+
     <app-css-panel id="tag" />
   `,
 })
@@ -60,4 +82,17 @@ export class TagPage {
   protected readonly square = `<nz-tag class="aibox-tag-square" nzColor="success">Square</nz-tag>
 <nz-tag class="aibox-tag-xs" nzColor="success">X-small</nz-tag>
 <nz-tag class="aibox-tag-square aibox-tag-xs" nzColor="success">Square x-small</nz-tag>`;
+  protected readonly closable = `<nz-tag nzMode="closeable">Tag</nz-tag>
+<nz-tag nzMode="closeable" nzColor="processing">Tag</nz-tag>
+<nz-tag nzMode="closeable" nzColor="success">Tag</nz-tag>
+<nz-tag nzMode="closeable" nzColor="error">Tag</nz-tag>
+<nz-tag nzMode="closeable" nzColor="warning">Tag</nz-tag>
+<nz-tag nzMode="closeable" nzColor="purple">Tag</nz-tag>
+<nz-tag nzMode="closeable" class="aibox-tag-black">Tag</nz-tag>`;
+  protected readonly closableMore = `<nz-tag nzMode="closeable" class="aibox-tag-xs">Tag</nz-tag>
+<nz-tag nzMode="closeable" class="aibox-tag-square">Square</nz-tag>
+<nz-tag nzMode="closeable" class="aibox-tag-xs">
+  <span nz-icon nzType="heart" nzTheme="fill"></span>Tag
+</nz-tag>
+<!-- (nzOnClose)="..." removes the tag; ng-zorro hides it by itself unless you cancel the event -->`;
 }
