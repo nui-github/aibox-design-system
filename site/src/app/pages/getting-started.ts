@@ -136,6 +136,7 @@ export class GettingStarted {
     ['aibox-switch-icons', 'nz-switch', 'ไอคอน ✓ / ✕ ในราง'],
     ['aibox-tag-solid', 'nz-tag', 'พื้นเข้ม ตัวอักษรขาว'],
     ['aibox-tag-square', 'nz-tag', 'มุม 4px (ค่าเริ่มต้นเป็นแคปซูล)'],
+    ['aibox-tag-black', 'nz-tag', 'สีเทาเข้ม ตัวอักษรขาว (Figma tag/closable color=black) ใช้กับ nzMode="closeable" ได้'],
     ['aibox-tag-xs / -md / -lg', 'nz-tag', 'ขนาด 2xsmall / medium / large'],
     ['aibox-badge-sm / aibox-badge-lg', 'nz-badge', 'ขนาด small / large (Medium เป็นค่าเริ่มต้น)'],
     ['aibox-badge-icon', 'nz-badge', 'badge ไอคอนวงกลมสีน้ำเงิน (ใช้กับ [nzCount] เป็น template)'],

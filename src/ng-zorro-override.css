@@ -1239,7 +1239,12 @@ a.ant-btn.aibox-btn-xs {
      class aibox-tag-solid           -> solid variant (status -200 background, white text)
      class aibox-tag-square          -> square variant (radius 4; default is round / pill)
      class aibox-tag-xs              -> Figma 2xsmall (12px text)
-   Not covered: pink/"signer in progress" and "form" types, disabled badge, chip (assist/input/filter), checkable tags. */
+     nzMode="closeable"              -> Figma tag/closable (node 1:10102): same colours (default / processing = blue / success / warning / error / purple)
+                                        plus class aibox-tag-black (dark gray, white text). The tag is Figma size=small (14px, padding 8 12, 32px high);
+                                        with aibox-tag-xs it is size=2xsmall (12px, padding 4 8, 24px high). A leading icon is a 16px box with a 12px
+                                        glyph, like the x. aibox-tag-square (radius 4) works too.
+   Not covered: pink/"signer in progress" and "form" types, disabled badge, chip (assist/input/filter), checkable tags, the "naming" (avatar)
+   closable styles, a hover state on the x (not in Figma). */
 .ant-tag {
   --_bg: var(--aibox-color-bg-secondary);
   --_fg: var(--aibox-color-text-secondary);
@@ -1291,6 +1296,40 @@ a.ant-btn.aibox-btn-xs {
 .ant-tag.aibox-tag-solid a,
 .ant-tag.aibox-tag-solid a:hover {
   color: var(--_fg);
+}
+.ant-tag.aibox-tag-black {
+  --_bg: var(--aibox-color-state-gray-g-1-default);
+  --_fg: var(--aibox-color-text-white-primary);
+}
+/* Closable (nzMode="closeable"): Figma tag/closable. The blue one uses text/main (the status badge uses info-200). */
+.ant-tag-processing:has(> .ant-tag-close-icon) {
+  --_fg: var(--aibox-color-text-main);
+}
+.ant-tag:has(> .ant-tag-close-icon) {
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+}
+.ant-tag.aibox-tag-xs:has(> .ant-tag-close-icon) {
+  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+}
+.ant-tag.ant-tag > .ant-tag-close-icon.ant-tag-close-icon,
+.ant-tag.ant-tag:has(> .ant-tag-close-icon) > .anticon:not(.ant-tag-close-icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin: 0; /* ant adds 7px after a leading icon (span + .anticon): the gap is the tag's 4px */
+  color: inherit;
+  font-size: 12px;
+}
+.ant-tag > .ant-tag-close-icon {
+  cursor: pointer;
+}
+.ant-tag > .ant-tag-close-icon:hover {
+  color: inherit;
+}
+.ant-tag:has(> .ant-tag-close-icon) > .anticon + span {
+  margin-inline-start: 0;
 }
 
 /* Chip / filter. Source: Figma "i-BOX Design System" > Chip & Tag page (3579:12023), chip/filter node 1:10199.
