@@ -140,6 +140,8 @@ export class GettingStarted {
     ['aibox-tag-naming (-sm)', 'nz-tag (มักใช้กับ nzMode="closeable")', 'แท็กชื่อคน: avatar กลมชิดซ้าย (aibox-tag-avatar) 30px หรือ 24px กับ -sm และชื่อที่ครอบด้วย aibox-tag-name ตัดที่ 120px'],
     ['aibox-avatar-blue / -sea / -gray / -yellow / -red', 'aibox-tag-avatar (ใน nz-tag หรือ nz-select)', 'สีของ avatar กลมตาม Figma Avatar (ค่าเริ่มต้นเป็นน้ำเงิน)'],
     ['aibox-select-naming', 'nz-select nzMode="multiple" + [nzCustomTemplate]', 'แท็กชื่อคน (avatar + ชื่อ) ใน Select หลายค่า: สูง 24px ขนาดปกติ, 30px กับ nzSize="large"'],
+    ['aibox-select-list', 'nz-select + aibox-select-naming', 'มุมมองรายการของ Tag Selection: หนึ่งแท็กต่อบรรทัด กว้างเต็มกล่อง ชื่อดันปุ่ม × ไปชิดขวา (ไม่ใส่ = มุมมองคอลัมน์ แท็กเรียงต่อกัน)'],
+    ['aibox-select-scroll', 'nz-select nzMode="multiple"', 'กล่องสูงสุด 456px แล้วเลื่อน (scrollbar 4px ตาม Figma) ปรับความสูงด้วย style="--_select-max-h: 340px"'],
     ['aibox-tag-xs / -md / -lg', 'nz-tag', 'ขนาด 2xsmall / medium / large'],
     ['aibox-badge-sm / aibox-badge-lg', 'nz-badge', 'ขนาด small / large (Medium เป็นค่าเริ่มต้น)'],
     ['aibox-badge-icon', 'nz-badge', 'badge ไอคอนวงกลมสีน้ำเงิน (ใช้กับ [nzCount] เป็น template)'],
