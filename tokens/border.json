@@ -7,45 +7,50 @@
     },
     "1": {
       "$type": "dimension",
-      "$value": "2px",
+      "$value": "1px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "2": {
       "$type": "dimension",
-      "$value": "4px",
+      "$value": "2px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "3": {
       "$type": "dimension",
-      "$value": "8px",
+      "$value": "4px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "4": {
       "$type": "dimension",
-      "$value": "16px",
+      "$value": "8px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "5": {
       "$type": "dimension",
-      "$value": "20px",
+      "$value": "16px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "6": {
       "$type": "dimension",
-      "$value": "28px",
+      "$value": "20px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "7": {
       "$type": "dimension",
-      "$value": "32px",
+      "$value": "28px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "8": {
       "$type": "dimension",
-      "$value": "64px",
+      "$value": "32px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
     },
     "9": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$description": "Border width scale (non-linear). Scoped to stroke weight."
+    },
+    "10": {
       "$type": "dimension",
       "$value": "100px",
       "$description": "Border width scale (non-linear). Scoped to stroke weight."
