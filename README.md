@@ -6,11 +6,11 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.41.1/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.41.1/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.41.2/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.41.2/dist/ng-zorro-override.css">
 ```
 
-Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the sections at the end). 19.3.1 and 21.3.3 were checked for the multiple Select only; other 19.x / 21.x components are not tested.
+Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the sections at the end). 19.3.1 and 21.3.3 were checked too (see the last section). Other patch versions of 19.x, 20.x and 21.x are not tested.
 
 ## Docs site
 Live previews, install guide and per-component code/CSS (copyable) live in [`site/`](site) (Angular + ng-zorro-antd, deployed on Vercel). See [site/README.md](site/README.md).
@@ -246,5 +246,9 @@ The overrides were rebuilt in a Angular 18.2 + ng-zorro-antd 18.2.1 copy of the 
 ## Verified on ng-zorro-antd 20.4.4
 The docs site was rebuilt with Angular 20.3 + ng-zorro-antd 20.4.4 and compared with 22.1.2 in Chromium: every demo of the 29 component pages (element sizes, colours, borders, radius, fonts, padding) plus the overlay and state scripts (modal, message, dropdown, date / time picker, cascader, drawer, menu, tabs). The same sizes come out on both, apart from two things found and fixed in v0.34.0 (the tab `<button>` and a 2px margin on the cascader menus that made its panel 4px taller). Differences that are only DOM, not look: closed `nz-submenu` stays in the DOM at height 0 (as in 18), no `ant-*-outlined` / `ant-picker-dropdown-placement-*` classes. API to know in 20: `NzDropDownModule` (not `NzDropdownModule`), no `nzNeedConfirm` on the time picker, no `provideNzNativeDateAdapter` / `NZ_DATE_LOCALE` (use `registerLocaleData(th)` with `provideNzI18n(th_TH)`), `provideAnimationsAsync()` is needed for the menu to collapse, `provideHttpClient()` for upload, and either zone.js or `provideZonelessChangeDetection()`. `nz-input-wrapper` / `nz-input-password` exist in 20.4.4 as in 22. Not checked: hover / focus states of every component, 19.x and 21.x, the real Ai-BOX app.
 
-## Partly verified on ng-zorro-antd 19.3.1 and 21.3.3
-Only the multiple Select was measured, in Angular 19.2 + ng-zorro-antd 19.3.1 and Angular 21.2 + ng-zorro-antd 21.3.3 copies of the docs site, next to 18.2.1, 20.4.4 and 22.1.2: naming tags (460 x 40 default, 585 x 130 large, tags 24 / 30px, avatar colours) and the column / list / scrolling views (column box 724 x 282, list tags 672 x 30, box capped at 340px) are identical on all five versions. Every other component is not checked on 19 or 21. The docs site itself builds on 21; on 19 it does not (it uses `nz-tabs`, `nz-input-wrapper` and `nz-input-password`, which ng-zorro 19 lacks), so the 19 copy only held the Select page and used `nz-tabset`.
+## Verified on ng-zorro-antd 19.3.1 and 21.3.3
+Both were rebuilt in Angular 19.2 / 21.2 copies of the docs site and compared with 22.1.2 in Chromium (tokens.css and the override of the same release).
+- **21.3.3**: the whole docs site builds; every demo of the 27 component pages and 18 overlay / state scripts (modal, message, dropdown, date / time picker, cascader, drawer, menu, tabs, tooltip, ...) give identical sizes, colours, borders, radius, fonts and padding. Only the API differs: `nzBorderless` no longer works (use `nzVariant`).
+- **19.3.1**: the same checks match, plus the Input / Textarea / Input number / Select audit page (identical to 18.2.1 and 21.3.3), except for ng-zorro defaults that the override does not set: the dropdown menu is 124.9px wide (92.8px on 20 / 21 / 22; same on 18), the pagination size changer is 3px wider (64 vs 61; same on 18), the tooltip arrow box is 22px (16px; same centre; same on 18) and tree rows are 42px apart (see below). The docs site itself does not run on 19 (`nz-tabs`, `nz-input-wrapper`, `nz-input-password` are missing), so the 19 copy used `nz-tabset`, `nz-input-group` and no `nzNeedConfirm`; closed `nz-submenu` stays in the DOM at height 0 as in 18 / 20; `NzDropDownModule` / `NzToolTipModule` (capital D / T).
+- **Tree row spacing**: ng-zorro 21+ adds `margin-bottom: 4px` to tree rows, so rows are 46px apart on 21 and 22 and 42px on 18, 19 and 20. The override sets the 42px row height only; the spacing is left to ng-zorro. (This was missed when 20.4.4 was checked.)
+- The multiple Select (naming tags, column / list / scrolling views) is identical on 18.2.1, 19.3.1, 20.4.4, 21.3.3 and 22.1.2.
