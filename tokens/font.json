@@ -100,17 +100,17 @@
       "regular": {
         "$type": "fontWeight",
         "$value": 400,
-        "$description": "Regular weight (Figma variable i-BOX/font/Font Weight/Regular)."
+        "$description": "Regular weight (400) for body text, captions and input values."
       },
       "medium": {
         "$type": "fontWeight",
         "$value": 500,
-        "$description": "Medium weight (Figma variable i-BOX/font/Font Weight/Medium)."
+        "$description": "Medium weight (500) for titles, labels, buttons and the \"bold\" body styles."
       },
       "semibold": {
         "$type": "fontWeight",
         "$value": 600,
-        "$description": "Default bold weight used for emphasized text, headings, and labels."
+        "$description": "SemiBold weight (600) for headings (header/h-over, h1, h2)."
       }
     }
   }

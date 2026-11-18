@@ -28,11 +28,11 @@ def ref(v, ctx):
         p = p.replace('i-box paltform.global.color.', 'i-box.i-box.color.global.')
         if p != m.group(1): report['alias_remapped_from_missing_collection'].append(m.group(1))
         parts = p.split('.')
-        if parts[:2] == ['i-box', 'i-box']:
+        if parts[:2] in (['i-box', 'i-box'], ['ai-box', 'ai-box']):
             parts = parts[2:]
             if parts[0] == 'font':  # font.font family.x -> font.family.x
                 parts = ['font'] + [re.sub(r'^font ', '', parts[1])] + parts[2:]
-        elif parts[:2] == ['i-box', 'backdrop']:
+        elif parts[:2] in (['i-box', 'backdrop'], ['ai-box', 'backdrop']):
             parts = ['color', 'backdrop']
         return '{' + '.'.join(slug(x) for x in parts) + '}'
     return re.sub(r'\{([^{}]+)\}', fix, v)
@@ -43,6 +43,10 @@ def convert_leaf(n, ctx):
     if t == 'color':
         tok['$type'] = 'color'
         tok['$value'] = ref(v, ctx) if isinstance(v, str) and v.startswith('{') else color(v)
+    elif t == 'dimension' and ctx.get('stringtype') == 'fontWeight':
+        # newer exports type the font weights (400 / 500 / 600) as dimensions: keep them plain numbers
+        tok['$type'] = 'fontWeight'
+        tok['$value'] = v
     elif t == 'dimension':
         tok['$type'] = 'dimension'
         tok['$value'] = ref(v, ctx) if isinstance(v, str) else px(v)
@@ -71,19 +75,21 @@ def collect(n, path, fn):
         if k in ('description', 'extensions') or not isinstance(v, dict): continue
         collect(v, path + [k], fn)
 
-ib = d['i-box']['i-box']
+# the Figma collection was called "i-box" until Nov 2026 and is "ai-box" in newer exports
+root = 'ai-box' if 'ai-box' in d else 'i-box'
+ib = d[root][root]
 # variables: color / spacing / border / radius / font
 for grp in ['color', 'spacing', 'border', 'radius']:
     collect(ib[grp], [grp], lambda p, n: put([slug(x) for x in p], convert_leaf(n, {})))
 def font_leaf(p, n):
     newp = [p[0], re.sub(r'^font ', '', p[1])] + p[2:]
-    ctx = {'stringtype': 'fontFamily' if newp[1] == 'family' else 'fontWeight'}
+    ctx = {'stringtype': 'fontFamily' if newp[1] == 'family' else 'fontWeight'} if newp[1] in ('family', 'weight') else {}
     put([slug(x) for x in newp], convert_leaf(n, ctx))
 collect(ib['font'], ['font'], font_leaf)
 # backdrop alias -> color.backdrop
-bd = d['i-box']['backdrop']
+bd = d[root]['backdrop']
 put(['color', 'backdrop'], convert_leaf(bd, {}))
-report['dropped'].append('i-box.string (placeholder "String value")')
+report['dropped'].append(root + '.string (placeholder "String value")')
 
 # composite text styles: top-level "font" -> typography (drop decomposed duplicate "typography")
 def typo(p, n):
