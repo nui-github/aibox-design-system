@@ -246,7 +246,7 @@
       "subtle": {
         "$type": "color",
         "$value": "{color.global.gray.90}",
-        "$description": "Subtle background for section headers and quiet bands (Figma variable i-BOX/color/bg/subtle)."
+        "$description": "Subtle background, lighter than bg/secondary. Use for section / group header rows (popover-submenu, Bottom Sheet) and the desktop Action Sticky Bar."
       }
     },
     "border": {
@@ -587,7 +587,7 @@
       "divider": {
         "$type": "color",
         "$value": "{color.global.gray.100}",
-        "$description": "Divider and separator colour (Figma variable i-BOX/color/component/divider)."
+        "$description": "Divider line colour (all solid divider themes)"
       }
     },
     "button": {

@@ -7,16 +7,16 @@
   --aibox-blur-base-bg-solid: blur(10px); /** Background blur behind a solid surface (Figma effect style wb/blur/base/bg-solid). */
   --aibox-blur-sm: blur(5px); /** Small blur (Figma effect style wb/blur/sm). */
   --aibox-border-0: 0px; /** Zero border — no stroke. Part of border width scale. Scoped to stroke weight. */
-  --aibox-border-1: 1px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-2: 2px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-3: 4px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-4: 8px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-5: 16px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-6: 20px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-7: 28px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-8: 32px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-9: 64px; /** Border width scale (non-linear). Scoped to stroke weight. */
-  --aibox-border-10: 100px; /** Border width scale (non-linear). Scoped to stroke weight. */
+  --aibox-border-1: 1px; /** Border width 1px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-1). */
+  --aibox-border-2: 2px; /** Border width 2px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-2). */
+  --aibox-border-3: 4px; /** Border width 4px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-3). */
+  --aibox-border-4: 8px; /** Border width 8px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-4). */
+  --aibox-border-5: 16px; /** Border width 16px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-5). */
+  --aibox-border-6: 20px; /** Border width 20px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-6). */
+  --aibox-border-7: 28px; /** Border width 28px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-7). */
+  --aibox-border-8: 32px; /** Border width 32px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-8). */
+  --aibox-border-9: 64px; /** Border width 64px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-9). */
+  --aibox-border-10: 100px; /** Border width 100px. Scale: border/0 = 0, 1 = 1px, 2 = 2px, 3 = 4px, then 8, 16, 20, 28, 32, 64, 100px. Scoped to stroke weight. Code: var(--aibox-border-10). */
   --aibox-color-state-main-ma-2-default: rgba(255, 255, 255, 0); /** Primary interaction state level 2 (ghost), default. Transparent default, light blue tint on hover/press. */
   --aibox-color-state-gray-g-2-default: rgba(255, 255, 255, 0); /** Gray interaction state level 2 (ghost), default. Transparent default, light gray tint on hover/press. */
   --aibox-color-button-texted-standard-bg-default: rgba(255, 255, 255, 0); /** Default background for standard text buttons */
@@ -415,9 +415,9 @@
   --aibox-font-size-additional-sm: 14px; /** Additional size sm — matches Body size, for component-specific use. */
   --aibox-font-size-additional-md: 16px; /** Additional size md — matches Body-lg/Title size, for component-specific use. */
   --aibox-font-size-additional-xl: 24px; /** Additional size xl — matches H2 size, for component-specific use. */
-  --aibox-font-weight-regular: 400; /** Regular weight (Figma variable i-BOX/font/Font Weight/Regular). */
-  --aibox-font-weight-medium: 500; /** Medium weight (Figma variable i-BOX/font/Font Weight/Medium). */
-  --aibox-font-weight-semibold: 600; /** Default bold weight used for emphasized text, headings, and labels. */
+  --aibox-font-weight-regular: 400; /** Regular weight (400) for body text, captions and input values. */
+  --aibox-font-weight-medium: 500; /** Medium weight (500) for titles, labels, buttons and the "bold" body styles. */
+  --aibox-font-weight-semibold: 600; /** SemiBold weight (600) for headings (header/h-over, h1, h2). */
   --aibox-radius-0: 0px; /** Zero radius — sharp corners. Part of corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
   --aibox-radius-1: 2px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
   --aibox-radius-2: 4px; /** Corner radius scale (+4 increments from 8 onwards). Scoped to corner radius. */
@@ -550,7 +550,7 @@
   --aibox-color-bg-opacity-secondary: var(--aibox-color-global-transparent-light-gray-2); /** Semi-transparent light gray overlay */
   --aibox-color-bg-opacity-tertiary: var(--aibox-color-global-transparent-black-9); /** Semi-transparent dark overlay */
   --aibox-color-bg-action-bar-primary: var(--aibox-color-global-blue-100); /** Background color for action bars and toolbars */
-  --aibox-color-bg-subtle: var(--aibox-color-global-gray-90); /** Subtle background for section headers and quiet bands (Figma variable i-BOX/color/bg/subtle). */
+  --aibox-color-bg-subtle: var(--aibox-color-global-gray-90); /** Subtle background, lighter than bg/secondary. Use for section / group header rows (popover-submenu, Bottom Sheet) and the desktop Action Sticky Bar. */
   --aibox-color-border-primary: var(--aibox-color-global-gray-100); /** Primary border color for dividers and containers */
   --aibox-color-border-secondary: var(--aibox-color-global-gray-500); /** Secondary border color for stronger separations */
   --aibox-color-border-disable: var(--aibox-color-global-gray-200); /** Border color for disabled elements */
@@ -607,7 +607,7 @@
   --aibox-color-component-bg-bg-disable: var(--aibox-color-global-gray-100); /** Disabled state background. For inactive or non-interactive elements. */
   --aibox-color-component-text-text-disable: var(--aibox-color-global-gray-500); /** Disabled state text/icon color. For labels and icons in inactive elements. */
   --aibox-color-component-text-text-on-gray: var(--aibox-color-global-gray-1200); /** Text color on gray backgrounds. For readable text over gray surfaces. */
-  --aibox-color-component-divider: var(--aibox-color-global-gray-100); /** Divider and separator colour (Figma variable i-BOX/color/component/divider). */
+  --aibox-color-component-divider: var(--aibox-color-global-gray-100); /** Divider line colour (all solid divider themes) */
   --aibox-color-button-contained-standard-text-default: var(--aibox-color-global-white); /** Default text color for standard contained buttons */
   --aibox-color-button-contained-danger-bg-default: var(--aibox-color-global-red-700); /** Default background for danger contained buttons */
   --aibox-color-button-contained-danger-bg-hover: var(--aibox-color-global-red-900); /** Hover background for danger contained buttons */
