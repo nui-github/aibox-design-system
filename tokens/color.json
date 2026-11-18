@@ -242,6 +242,11 @@
           "$value": "{color.global.blue.100}",
           "$description": "Background color for action bars and toolbars"
         }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.global.gray.90}",
+        "$description": "Subtle background for section headers and quiet bands (Figma variable i-BOX/color/bg/subtle)."
       }
     },
     "border": {
@@ -578,6 +583,11 @@
           "$value": "{color.global.gray.1200}",
           "$description": "Text color on gray backgrounds. For readable text over gray surfaces."
         }
+      },
+      "divider": {
+        "$type": "color",
+        "$value": "{color.global.gray.100}",
+        "$description": "Divider and separator colour (Figma variable i-BOX/color/component/divider)."
       }
     },
     "button": {
@@ -1137,6 +1147,11 @@
         "80": {
           "$type": "color",
           "$value": "#fbfbfd",
+          "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
+        },
+        "90": {
+          "$type": "color",
+          "$value": "#f7f7f7",
           "$description": "Gray color ramp. Neutral primitive for text, borders, and backgrounds."
         },
         "100": {

@@ -114,6 +114,30 @@
             "spread": "2px"
           }
         ]
+      },
+      "header-mobile": {
+        "$type": "shadow",
+        "$value": [
+          {
+            "color": "#0000000a",
+            "offsetX": "0px",
+            "offsetY": "4px",
+            "blur": "8px",
+            "spread": "2px"
+          }
+        ]
+      },
+      "bottom": {
+        "$type": "shadow",
+        "$value": [
+          {
+            "color": "#0000001a",
+            "offsetX": "0px",
+            "offsetY": "-3px",
+            "blur": "8px",
+            "spread": "0px"
+          }
+        ]
       }
     }
   }

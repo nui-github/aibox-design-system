@@ -1,0 +1,21 @@
+{
+  "blur": {
+    "base": {
+      "bg-transparency": {
+        "$type": "other",
+        "$value": "blur(5px)",
+        "$description": "Background blur over a translucent surface (Figma effect style wb/blur/base/bg-transparency)."
+      },
+      "bg-solid": {
+        "$type": "other",
+        "$value": "blur(10px)",
+        "$description": "Background blur behind a solid surface (Figma effect style wb/blur/base/bg-solid)."
+      }
+    },
+    "sm": {
+      "$type": "other",
+      "$value": "blur(5px)",
+      "$description": "Small blur (Figma effect style wb/blur/sm)."
+    }
+  }
+}

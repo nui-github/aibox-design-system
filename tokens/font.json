@@ -97,9 +97,19 @@
       }
     },
     "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$description": "Regular weight (Figma variable i-BOX/font/Font Weight/Regular)."
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500,
+        "$description": "Medium weight (Figma variable i-BOX/font/Font Weight/Medium)."
+      },
       "semibold": {
         "$type": "fontWeight",
-        "$value": "SemiBold",
+        "$value": 600,
         "$description": "Default bold weight used for emphasized text, headings, and labels."
       }
     }
