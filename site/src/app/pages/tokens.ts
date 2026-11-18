@@ -21,6 +21,7 @@ const GROUPS: Group[] = [
   { id: 'radius', title: 'Radius', test: (n) => n.startsWith('--aibox-radius-') },
   { id: 'border', title: 'Border', test: (n) => n.startsWith('--aibox-border-') },
   { id: 'shadow', title: 'Shadow', test: (n) => n.startsWith('--aibox-shadow-') },
+  { id: 'blur', title: 'Blur', test: (n) => n.startsWith('--aibox-blur-') },
   { id: 'type', title: 'Typography', test: (n) => n.startsWith('--aibox-typography-') || n.startsWith('--aibox-font-') },
   { id: 'other', title: 'Other', test: () => true },
 ];
