@@ -72,8 +72,8 @@ const deps = (name, seen) => {
   seen.add(name);
   for (const d of t.value.matchAll(/var\((--aibox-[\w-]+)\)/g)) deps(d[1], seen);
 };
-// Sections that build on another section's rules (chip/filter reuses the tag base) ship that section's CSS first.
-const requires = { 'chip-filter': ['tag'], pagination: ['select'], message: ['alert'], modal: ['button'], table: ['button', 'tag'], 'time-picker': ['button', 'date-picker'], cascader: ['select'] };
+// Sections that build on another section's rules ship that section's CSS first (chip/filter sits on the Tag page, under the tag rules).
+const requires = { pagination: ['select'], message: ['alert'], modal: ['button'], table: ['button', 'tag'], 'time-picker': ['button', 'date-picker'], cascader: ['select'] };
 for (const [id, deps_] of Object.entries(requires)) {
   sections[id].requires = deps_;
   sections[id].css = deps_.map((d) => sections[d].css).join('\n') + '\n' + sections[id].css;

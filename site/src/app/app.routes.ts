@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { inject } from '@angular/core';
+import { Router, Routes } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'getting-started' },
@@ -11,7 +12,8 @@ export const routes: Routes = [
   { path: 'select', title: 'Select · Ai-BOX Design System', loadComponent: () => import('./pages/select').then((m) => m.SelectPage) },
   { path: 'switch', title: 'Switch · Ai-BOX Design System', loadComponent: () => import('./pages/switch').then((m) => m.SwitchPage) },
   { path: 'tag', title: 'Tag · Ai-BOX Design System', loadComponent: () => import('./pages/tag').then((m) => m.TagPage) },
-  { path: 'chip-filter', title: 'Chip (filter) · Ai-BOX Design System', loadComponent: () => import('./pages/chip-filter').then((m) => m.ChipFilterPage) },
+  // the Chip page moved into Tag (#chip); keep the old URL working
+  { path: 'chip-filter', redirectTo: () => inject(Router).parseUrl('/tag#chip') },
   { path: 'badge', title: 'Badge · Ai-BOX Design System', loadComponent: () => import('./pages/badge').then((m) => m.BadgePage) },
   { path: 'pagination', title: 'Pagination · Ai-BOX Design System', loadComponent: () => import('./pages/pagination').then((m) => m.PaginationPage) },
   { path: 'tab', title: 'Tab · Ai-BOX Design System', loadComponent: () => import('./pages/tab').then((m) => m.TabPage) },

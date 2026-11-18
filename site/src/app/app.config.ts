@@ -1,4 +1,5 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { ApplicationConfig, inject, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { NZ_DATE_LOCALE, provideNzNativeDateAdapter } from 'ng-zorro-antd/core/time';
 import { provideNzI18n, th_TH } from 'ng-zorro-antd/i18n';
@@ -42,6 +43,8 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    // anchor links (#chip) should stop below the sticky header
+    provideAppInitializer(() => inject(ViewportScroller).setOffset([0, 80])),
     provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' })),
     // ng-zorro defaults to zh_CN (Chinese labels); the docs are Thai.
     provideNzI18n(th_TH),
