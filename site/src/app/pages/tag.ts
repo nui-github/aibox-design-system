@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { CssPanel } from '../shared/css-panel';
@@ -10,14 +11,28 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 
 @Component({ imports: [NzIconModule, NzTagModule], /* ... */ })`;
 
+const CHIP_IMPORTS = `import { NzTagModule } from 'ng-zorro-antd/tag';
+
+@Component({ imports: [NzTagModule], /* ... */ })
+export class Example {
+  checked = signal(false);
+}`;
+
 @Component({
   selector: 'app-tag-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NzIconModule, NzTagModule, Demo, CssPanel, PageHead],
+  imports: [RouterLink, NzIconModule, NzTagModule, Demo, CssPanel, PageHead],
+  styles: `
+    h2 { margin-top: var(--aibox-spacing-6); scroll-margin-top: 88px; }
+    .note { color: var(--aibox-color-text-secondary); margin-bottom: var(--aibox-spacing-3); }
+  `,
   template: `
-    <app-page-head title="Tag (status badge)">
-      <ng-container sub>Figma badge node <code>1:10717</code> (page Chip &amp; Tag <code>3579:12023</code>) · map สถานะของ Figma กับ <code>nzColor</code></ng-container>
+    <app-page-head title="Tag">
+      <ng-container sub><code>nz-tag</code> · แท็กสถานะ / แท็กมีปุ่ม close / แท็กชื่อคน (Figma badge <code>1:10717</code>, tag/closable <code>1:10102</code>) และ chip ตัวกรอง (<code>nzMode="checkable"</code>, Figma <code>1:10199</code>) · page Chip &amp; Tag <code>3579:12023</code></ng-container>
+      <a routerLink="/tag" fragment="chip">ไปที่ Chip (filter)</a>
     </app-page-head>
+
+    <h2 id="tag-status">Tag / status badge</h2>
 
     <app-demo title="Status (light, pill)" description="draft = ไม่ใส่ nzColor · in progress = processing · rework = purple · reject = orange" [code]="light" [ts]="imports">
       <nz-tag>Draft</nz-tag>
@@ -85,10 +100,42 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     </app-demo>
 
     <app-css-panel id="tag" />
+
+    <h2 id="chip">Chip / filter</h2>
+    <p class="note">Figma node <code>1:10199</code> · <code>nz-tag nzMode="checkable"</code> (selected = <code>nzChecked</code>) · ใช้กฎของ Tag ด้านบนเป็นฐาน</p>
+
+    <app-demo title="States" description="ลองคลิก / hover / กดค้าง · disabled ใช้ class aibox-tag-disabled (กันคลิกเองในโค้ด)" [code]="basic" [ts]="chipImports">
+      <nz-tag nzMode="checkable" [nzChecked]="a()" (nzCheckedChange)="a.set($event)">Filter</nz-tag>
+      <nz-tag nzMode="checkable" [nzChecked]="true">Selected</nz-tag>
+      <nz-tag nzMode="checkable" class="aibox-tag-disabled">Disabled</nz-tag>
+      <nz-tag nzMode="checkable" class="aibox-tag-disabled" [nzChecked]="true">Disabled selected</nz-tag>
+    </app-demo>
+
+    <app-demo title="Sizes" description="default 32 · aibox-tag-xs 24 · aibox-tag-md 42 (16px) · aibox-tag-lg 42 (18px)" [code]="sizes" [ts]="chipImports">
+      <nz-tag nzMode="checkable" class="aibox-tag-xs" [nzChecked]="true">X-small</nz-tag>
+      <nz-tag nzMode="checkable" [nzChecked]="true">Small</nz-tag>
+      <nz-tag nzMode="checkable" class="aibox-tag-md" [nzChecked]="true">Medium</nz-tag>
+      <nz-tag nzMode="checkable" class="aibox-tag-lg" [nzChecked]="true">Large</nz-tag>
+    </app-demo>
+
+    <app-demo title="Filter group" [code]="group" [ts]="chipImports">
+      @for (f of filters; track f) {
+        <nz-tag nzMode="checkable" [nzChecked]="selected().includes(f)" (nzCheckedChange)="toggle(f, $event)">{{ f }}</nz-tag>
+      }
+    </app-demo>
+
+    <app-css-panel id="chip-filter" />
   `,
 })
 export class TagPage {
   protected readonly imports = IMPORTS;
+  protected readonly chipImports = CHIP_IMPORTS;
+  protected readonly a = signal(false);
+  protected readonly filters = ['All', 'Draft', 'In progress', 'Approved'];
+  protected readonly selected = signal<string[]>(['All']);
+  protected toggle(f: string, on: boolean) {
+    this.selected.update((s) => (on ? [...s, f] : s.filter((x) => x !== f)));
+  }
   protected readonly light = `<nz-tag>Draft</nz-tag>
 <nz-tag nzColor="processing">In progress</nz-tag>
 <nz-tag nzColor="success">Success</nz-tag>
@@ -130,4 +177,14 @@ export class TagPage {
   <span class="aibox-tag-avatar">S</span>
   <span class="aibox-tag-name">Somchai Jaidee-Wongsakul Senior Manager</span>
 </nz-tag>`;
+  protected readonly basic = `<nz-tag nzMode="checkable" [nzChecked]="checked()" (nzCheckedChange)="checked.set($event)">Filter</nz-tag>
+<nz-tag nzMode="checkable" [nzChecked]="true">Selected</nz-tag>
+<nz-tag nzMode="checkable" class="aibox-tag-disabled">Disabled</nz-tag>`;
+  protected readonly sizes = `<nz-tag nzMode="checkable" class="aibox-tag-xs" [nzChecked]="true">X-small</nz-tag>
+<nz-tag nzMode="checkable" [nzChecked]="true">Small</nz-tag>
+<nz-tag nzMode="checkable" class="aibox-tag-md" [nzChecked]="true">Medium</nz-tag>
+<nz-tag nzMode="checkable" class="aibox-tag-lg" [nzChecked]="true">Large</nz-tag>`;
+  protected readonly group = `@for (f of filters; track f) {
+  <nz-tag nzMode="checkable" [nzChecked]="selected().includes(f)" (nzCheckedChange)="toggle(f, $event)">{{ f }}</nz-tag>
+}`;
 }

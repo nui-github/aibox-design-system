@@ -16,14 +16,17 @@ const sectionCount = (await readFile('src/ng-zorro-override.css', 'utf8')).match
 const gen = await readFile('site/scripts/gen-data.mjs', 'utf8');
 const ids = [...gen.matchAll(/^\s*\['([a-z-]+)', \//gm)].map(m => m[1]);
 if (ids.length !== sectionCount) errors.push(`site: override has ${sectionCount} "Source: Figma" sections but site/scripts/gen-data.mjs registers ${ids.length}; add the new section to the site (see CLAUDE.md)`);
+// a section may live on another section's page (the Chip rules are shown on the Tag page)
+const hostedBy = { 'chip-filter': 'tag' };
 const routes = await readFile('site/src/app/app.routes.ts', 'utf8');
 const nav = await readFile('site/src/app/nav.ts', 'utf8');
 for (const id of ids) {
-  const page = await readFile(`site/src/app/pages/${id}.ts`, 'utf8').catch(() => null);
-  if (page === null) errors.push(`site: missing page site/src/app/pages/${id}.ts`);
-  else if (!page.includes(`<app-css-panel id="${id}"`)) errors.push(`site: page ${id}.ts must render <app-css-panel id="${id}" />`);
-  if (!routes.includes(`path: '${id}'`)) errors.push(`site: no route for "${id}" in site/src/app/app.routes.ts`);
-  if (!nav.includes(`path: '${id}'`)) errors.push(`site: no menu entry for "${id}" in site/src/app/nav.ts`);
+  const host = hostedBy[id] ?? id;
+  const page = await readFile(`site/src/app/pages/${host}.ts`, 'utf8').catch(() => null);
+  if (page === null) errors.push(`site: missing page site/src/app/pages/${host}.ts`);
+  else if (!page.includes(`<app-css-panel id="${id}"`)) errors.push(`site: page ${host}.ts must render <app-css-panel id="${id}" />`);
+  if (!routes.includes(`path: '${host}'`)) errors.push(`site: no route for "${host}" in site/src/app/app.routes.ts`);
+  if (!nav.includes(`path: '${host}'`)) errors.push(`site: no menu entry for "${host}" in site/src/app/nav.ts`);
 }
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
 console.log(`ok: ${defined.size} tokens, ${used.size} used by override`);

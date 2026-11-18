@@ -13,7 +13,7 @@ One PR does all of this:
 
 `release-notes/vX.Y.Z.md` also feeds the docs site's `/changelog` page (`site/scripts/changelog.mjs`): keep the first line `# vX.Y.Z – Title` and `##` section headings. Line 2 is `วันที่: YYYY-MM-DD`, the day the release PR is opened (Thai time); the page shows it as the release date (a shallow git clone, as on Vercel, has no history to take dates from). The line also appears in the GitHub release body, which is fine; `scripts/release.sh` only uses line 1 as the title.
 
-`npm test` fails if an override section ("Source: Figma" header) has no registered site page, route or menu entry.
+`npm test` fails if an override section ("Source: Figma" header) has no registered site page, route or menu entry. A section may be shown on another section's page (the Chip rules are on the Tag page): list it in `hostedBy` in `scripts/check.mjs`.
 
 ## Two places work on this repo
 - Cloud sessions: Figma -> override -> release, plus the minimal `site/` additions above (new page files, new demos).
