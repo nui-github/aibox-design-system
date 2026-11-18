@@ -104,10 +104,6 @@
       "$type": "dimension",
       "$value": "100px",
       "$description": "Maximum radius — fully rounded / pill shape. Part of corner radius scale. Scoped to corner radius."
-    },
-    "value-6": {
-      "$type": "dimension",
-      "$value": "6px"
     }
   }
 }

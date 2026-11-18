@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.39.1/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.39.1/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.40.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.40.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the two sections at the end). Versions between and after those (19.x, 21.x) are not tested.
@@ -65,6 +65,8 @@ The Figma boxes are SVG icons, so the shapes were measured from a 1x render (box
 
 ### Select (Figma nodes `1592:6210` select-search, `1:7137` select, `1:7626` content-list)
 Use `nz-select` as usual. `nzMode="multiple"` / `"tags"` follow the Figma Tag Selection (`3959:10071`): the box grows with the tags (one row = the single-select height 40 / 48, two rows 72 / 80), tags wrap 8px apart; each tag is 24px, `bg/secondary`, radius 4, 12/16 medium `text/secondary` with a 12px ×. Disabled tags (white, `text/disable`) are not in Figma. Not covered: the Tag Selection column / list views and the typing / suggestion panel.
+
+Naming tags in a multiple Select (Figma Tag Selection "user selecting" / "user selected", node `3962:35682`): add `aibox-select-naming` to the `nz-select` and give it a `[nzCustomTemplate]` that renders the avatar and the name: `<span class="aibox-tag-avatar aibox-avatar-blue"><span nz-icon nzType="user"></span></span><span class="aibox-tag-name">{{ selected.nzLabel }}</span>`. The selected people are the Tag section's naming tags (pill, `bg/secondary`, name 14/24 medium `text/primary`, × `text/primary`, avatar flush left): 24px high in the default size (Figma small, box 40px), 30px with `nzSize="large"` (a three-row box of 585px is 130px high, as in Figma). Avatar colours: `aibox-avatar-blue` (default) / `-sea` / `-gray` / `-yellow` / `-red`. Not covered: the dropdown rows with avatars (the suggestion panel).
 
 | Figma | ng-zorro |
 |---|---|
@@ -143,7 +145,7 @@ Closable tag (Figma tag/closable, node `1:10102`): `<nz-tag nzMode="closeable">`
 
 ### Divider (Figma page `1174:439`, divider node `1174:444`)
 
-`nz-divider`: the default is the 1px "inline" line in `border/primary` (ng-zorro's 24px margin stays), `nzDashed` is the 1px dashed line (`text/white-secondary`). Bands: `aibox-divider-s` (5px, margin 10), `aibox-divider-m` (5px, margin 18), `aibox-divider-m24` (5px, margin 24) and `aibox-divider-l` (10px, `bg/disable`, margin 18). The 5px band colour is the component token `--aibox-divider-band-color` (#f8f8f8, a literal in Figma). Vertical dividers and dividers with text only get the line colour. Bands are horizontal only.
+`nz-divider`: the default is the 1px "inline" line in `component/divider` (#f1f2f3; the vertical divider, the divider with text and the L band use it too) (ng-zorro's 24px margin stays), `nzDashed` is the 1px dashed line (`text/white-secondary`). Bands: `aibox-divider-s` (5px, margin 10), `aibox-divider-m` (5px, margin 18), `aibox-divider-m24` (5px, margin 24) and `aibox-divider-l` (10px, `bg/disable`, margin 18). The 5px band colour is the component token `--aibox-divider-band-color` (#f8f8f8, a literal in Figma). Vertical dividers and dividers with text only get the line colour. Bands are horizontal only.
 
 ### Alert (Figma page Message & Snack Bar `39:12064`, alert-bar `1:10675`)
 

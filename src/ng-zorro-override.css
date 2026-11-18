@@ -807,7 +807,7 @@ a.ant-btn.aibox-btn-xs {
    IMPORTANT: Figma option rows are 50px high. Set [nzOptionHeightPx]="50" on nz-select, otherwise the
    virtual scroll still assumes 32px rows.
    Not covered: option groups, label size (a Select's label is a form label), nzStatus="warning" (not in Figma), tag overflow in nzMaxTagCount beyond
-   the plain "+ N ..." tag, the Tag Selection column / list views and the typing / suggestion panel,
+   the plain "+ N ..." tag, the Tag Selection column / list views and the typing / suggestion panel (the dropdown rows with avatars),
    hover on the arrow icon. The arrow and clear icons keep ng-zorro's glyphs (only size and colour change);
    Figma uses Font Awesome. The check on a selected option is drawn with a mask.
    --------------------------------------------------------------------------- */
@@ -960,13 +960,13 @@ a.ant-btn.aibox-btn-xs {
 }
 .ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-overflow-item {
   align-self: center;
-  height: 24px;
+  height: var(--_tag-h, 24px);
   min-height: 0;
   margin: 0;
 }
 .ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-item {
   box-sizing: border-box;
-  height: 24px;
+  height: var(--_tag-h, 24px);
   margin: 0;
   padding: 0 var(--aibox-spacing-2);
   border: 0;
@@ -992,12 +992,12 @@ a.ant-btn.aibox-btn-xs {
   color: var(--aibox-color-text-primary);
 }
 .ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-search {
-  height: 24px;
+  height: var(--_tag-h, 24px);
   margin: 0;
   line-height: 24px;
 }
 .ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-search-input {
-  height: 24px;
+  height: var(--_tag-h, 24px);
   font: inherit;
   letter-spacing: inherit;
 }
@@ -1013,6 +1013,42 @@ a.ant-btn.aibox-btn-xs {
 .ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple.ant-select-disabled .ant-select-selection-item {
   background: var(--aibox-color-bg-primary);
   color: var(--aibox-color-text-disable);
+}
+
+/* Naming tags in a multiple Select (Figma Tag Selection "user selecting" / "user selected", node 3962:35682): class aibox-select-naming on
+   nz-select with a [nzCustomTemplate] that renders <span class="aibox-tag-avatar aibox-avatar-blue"><span nz-icon nzType="user"></span></span>
+   <span class="aibox-tag-name">name</span>. The tag is the naming tag of the Tag section (pill, bg/secondary, avatar flush left, name 14/24
+   medium text/primary, x text/primary): avatar and tag are 24px high in the default size (Figma small) and 30px with nzSize="large". */
+.ant-select.aibox-select-naming {
+  --_tag-h: 24px;
+  --_tag-px: var(--aibox-spacing-2);
+}
+.ant-select.aibox-select-naming.ant-select-lg {
+  --_tag-h: 30px;
+  --_tag-px: var(--aibox-spacing-3);
+}
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple.aibox-select-naming .ant-select-selection-item {
+  gap: var(--aibox-spacing-2);
+  padding: 0 var(--_tag-px) 0 0;
+  border-radius: var(--aibox-radius-20);
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-typography-body-body-bold-font-size);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+  line-height: var(--aibox-typography-body-body-bold-line-height);
+  letter-spacing: var(--aibox-typography-body-body-bold-letter-spacing);
+}
+.ant-select.aibox-select-naming .ant-select-selection-item-remove {
+  color: var(--aibox-color-text-primary);
+}
+.aibox-select-naming .aibox-tag-avatar {
+  width: var(--_tag-h);
+  height: var(--_tag-h);
+}
+.aibox-select-naming .aibox-tag-name {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Dropdown panel. ng-zorro sizes the overlay pane to the trigger; with 16px side padding and the check icon a narrow trigger (the
@@ -1247,7 +1283,9 @@ a.ant-btn.aibox-btn-xs {
                                         blue-700 user icon), the name 14/24 medium text/primary, the x text/primary, 8px gaps, 12px on the right;
                                         aibox-tag-naming-sm = the "naming round small" frame (24px avatar, 8px on the right). The avatar is
                                         <span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span> (or an initial letter); wrap a
-                                        long name in <span class="aibox-tag-name"> for the 120px ellipsis (the "hug" frame has none).
+                                        long name in <span class="aibox-tag-name"> for the 120px ellipsis (the "hug" frame has none). The avatar
+                                        colour is aibox-avatar-blue (default) / -sea / -gray / -yellow / -red; it is also used by the naming tags
+                                        of a multiple Select (class aibox-select-naming, see the Select section).
    Not covered: pink/"signer in progress" and "form" types, disabled badge, chip (assist/input/filter), checkable tags, naming tags in other
    colours (Figma has the default colour only), a hover state on the x (not in Figma). */
 .ant-tag {
@@ -1348,7 +1386,7 @@ a.ant-btn.aibox-btn-xs {
 .ant-tag.ant-tag.aibox-tag-naming.aibox-tag-naming-sm {
   padding-right: var(--aibox-spacing-2);
 }
-.aibox-tag-naming .aibox-tag-avatar {
+.aibox-tag-avatar {
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -1366,10 +1404,31 @@ a.ant-btn.aibox-btn-xs {
   width: 24px;
   height: 24px;
 }
-.aibox-tag-naming .aibox-tag-avatar .anticon {
+.aibox-tag-avatar .anticon {
   margin: 0;
   color: inherit;
   font-size: 12px;
+}
+/* Avatar colours of Figma Avatar (3962:36464), as used by the people in Tag Selection: background + icon / letter colour */
+.aibox-tag-avatar.aibox-avatar-blue {
+  background: var(--aibox-color-global-blue-200);
+  color: var(--aibox-color-global-blue-700);
+}
+.aibox-tag-avatar.aibox-avatar-sea {
+  background: var(--aibox-color-global-sea-400);
+  color: var(--aibox-color-global-sea-1100);
+}
+.aibox-tag-avatar.aibox-avatar-gray {
+  background: var(--aibox-color-global-gray-300);
+  color: var(--aibox-color-text-tertiary);
+}
+.aibox-tag-avatar.aibox-avatar-yellow {
+  background: var(--aibox-color-global-yellow-500);
+  color: var(--aibox-color-global-yellow-1100);
+}
+.aibox-tag-avatar.aibox-avatar-red {
+  background: var(--aibox-color-global-red-300);
+  color: var(--aibox-color-global-red-600);
 }
 .aibox-tag-naming .aibox-tag-name {
   max-width: 120px;
@@ -1960,20 +2019,21 @@ a.ant-btn.aibox-btn-xs {
 
 /* Divider. Source: Figma "i-BOX Design System" > Divider page (1174:439), divider node 1174:444.
    Mapping (nz-divider):
-     theme=inline            the default nz-divider: 1px line, border/primary
+     theme=inline            the default nz-divider: 1px line, component/divider
      theme=Dash Secondary    [nzDashed]: 1px dashed line, text/white-secondary
      theme=S 10              class "aibox-divider-s": 5px band, 10px above and below
      theme=M 18 / M 24       class "aibox-divider-m" (18px) / "aibox-divider-m24" (24px): 5px band
      theme=L space18         class "aibox-divider-l": 10px band in bg/disable, 18px above and below
-   The band colour is a literal #f8f8f8 in Figma (component token divider.band-color). ng-zorro's own margins stay for the line
+   Every solid theme is component/divider (#f1f2f3): the 1px line, the S / M bands (component token divider.band-color) and the L band.
+   ng-zorro's own margins stay for the line
    (24px, Figma's "inline" has none); the vertical divider and the divider with text only get the line colour. Bands are horizontal only. */
 .ant-divider {
-  border-top-color: var(--aibox-color-border-primary);
+  border-top-color: var(--aibox-color-component-divider);
   font-family: var(--aibox-font-family-heading-and-body);
 }
 .ant-divider-vertical {
   border-top-color: transparent;
-  border-inline-start-color: var(--aibox-color-border-primary);
+  border-inline-start-color: var(--aibox-color-component-divider);
 }
 .ant-divider-dashed,
 .ant-divider-dotted {
@@ -1981,7 +2041,7 @@ a.ant-btn.aibox-btn-xs {
 }
 .ant-divider-horizontal.ant-divider-with-text,
 .ant-divider-horizontal.ant-divider-with-text.ant-divider-dashed {
-  border-top-color: var(--aibox-color-border-primary);
+  border-top-color: var(--aibox-color-component-divider);
   color: var(--aibox-color-text-primary);
 }
 .ant-divider-horizontal.aibox-divider-s,
@@ -2004,7 +2064,7 @@ a.ant-btn.aibox-btn-xs {
 .ant-divider-horizontal.aibox-divider-l {
   height: 10px;
   margin: 18px 0;
-  background: var(--aibox-color-bg-disable);
+  background: var(--aibox-color-component-divider);
 }
 
 /* Alert. Source: Figma "i-BOX Design System" > Message & Snack Bar page (39:12064), alert-bar node 1:10675.
