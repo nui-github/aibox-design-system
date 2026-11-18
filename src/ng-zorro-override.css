@@ -1051,6 +1051,40 @@ a.ant-btn.aibox-btn-xs {
   white-space: nowrap;
 }
 
+/* Tag Selection views (Figma column view 4475:1852, list view 4476:2990; the view-toggle button is the Label row, not part of the select).
+   Column view = the default wrapping layout above. aibox-select-list = list view: one tag per row, full width, name fills the row so the x
+   sits at the right edge and long names are cut with an ellipsis. aibox-select-scroll = the box stops growing at --_select-max-h
+   (default 456px, Figma column view) and scrolls with a 4px bg/secondary track and text/tertiary thumb (Figma scrollbar-Vertical). */
+.ant-select.ant-select.ant-select.aibox-select-list .ant-select-selection-overflow-item:not(.ant-select-selection-overflow-item-suffix) {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple.aibox-select-list .ant-select-selection-item {
+  width: 100%;
+}
+.aibox-select-list .aibox-tag-name {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none;
+}
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple.aibox-select-scroll .ant-select-selector {
+  max-height: var(--_select-max-h, 456px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--aibox-color-text-tertiary) var(--aibox-color-bg-secondary);
+}
+.aibox-select-scroll .ant-select-selector::-webkit-scrollbar {
+  width: 4px;
+}
+.aibox-select-scroll .ant-select-selector::-webkit-scrollbar-track {
+  border-radius: var(--aibox-radius-2);
+  background: var(--aibox-color-bg-secondary);
+}
+.aibox-select-scroll .ant-select-selector::-webkit-scrollbar-thumb {
+  border-radius: var(--aibox-radius-2);
+  background: var(--aibox-color-text-tertiary);
+}
+
 /* Dropdown panel. ng-zorro sizes the overlay pane to the trigger; with 16px side padding and the check icon a narrow trigger (the
    pagination size changer, ~60px) truncated every option, so a select dropdown is never narrower than 112px. */
 .cdk-overlay-pane:has(> .ant-select-dropdown) {

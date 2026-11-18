@@ -66,6 +66,15 @@ export class Example {
       </ng-template>
     </app-demo>
 
+    <app-demo title="Tag Selection views" description="Figma Tag Selection column view / list view · aibox-select-naming ตามเดิม = แบบคอลัมน์ (แท็กเรียงต่อกัน) · เพิ่ม aibox-select-list = แบบรายการ (หนึ่งแท็กต่อบรรทัด) · เพิ่ม aibox-select-scroll = กล่องสูงสุด 456px แล้วเลื่อน (ปรับด้วย --_select-max-h)" [code]="views" [ts]="imports">
+      <nz-select [(ngModel)]="v1" class="aibox-select-naming aibox-select-scroll" nzSize="large" nzMode="multiple" [nzCustomTemplate]="person" [nzOptionHeightPx]="50" style="width: 724px">
+        @for (o of people; track o.value) { <nz-option [nzValue]="o.value" [nzLabel]="o.label" /> }
+      </nz-select>
+      <nz-select [(ngModel)]="v2" class="aibox-select-naming aibox-select-list aibox-select-scroll" nzSize="large" nzMode="multiple" [nzCustomTemplate]="person" [nzOptionHeightPx]="50" style="width: 724px; --_select-max-h: 340px">
+        @for (o of people; track o.value) { <nz-option [nzValue]="o.value" [nzLabel]="o.label" /> }
+      </nz-select>
+    </app-demo>
+
     <app-demo title="States" description="error · disabled" [code]="states" [ts]="imports">
       <nz-select nzStatus="error" nzPlaceHolder="Error" [nzOptionHeightPx]="50" style="width: 240px">
         @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
@@ -88,6 +97,8 @@ export class SelectPage {
     { value: '4', label: 'กุลวดี แซ่เลี้ยว', color: 'yellow' },
     { value: '5', label: 'ขจรศักดิ์ รุ่งเรืองโรจนะ', color: 'red' },
   ];
+  protected v1: string[] = ['1','2','3','4','5','1','2','3','4','5','1','2','3','4','5','1','2','3','4','5'];
+  protected v2: string[] = ['1','2','3','4','5','1','2','3','4','5'];
   protected p1: string[] = ['1', '2'];
   protected p2: string[] = ['1', '2', '3', '4', '5'];
   protected color(v: string) {
@@ -133,6 +144,12 @@ export class SelectPage {
   <span class="aibox-tag-avatar aibox-avatar-{{ color(selected.nzValue) }}"><span nz-icon nzType="user"></span></span>
   <span class="aibox-tag-name">{{ selected.nzLabel }}</span>
 </ng-template>`;
+  protected readonly views = `<!-- column view (default wrapping layout), scrolls after 456px -->
+<nz-select class="aibox-select-naming aibox-select-scroll" nzSize="large" nzMode="multiple" [nzCustomTemplate]="person" />
+
+<!-- list view: one tag per row; --_select-max-h changes where it starts to scroll -->
+<nz-select class="aibox-select-naming aibox-select-list aibox-select-scroll" nzSize="large" nzMode="multiple"
+  [nzCustomTemplate]="person" style="--_select-max-h: 340px" />`;
   protected readonly states = `<nz-select nzStatus="error" nzPlaceHolder="Error" [nzOptionHeightPx]="50">
   @for (o of options; track o) {
     <nz-option [nzValue]="o" [nzLabel]="o" />
