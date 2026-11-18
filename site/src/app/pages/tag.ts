@@ -65,6 +65,25 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
       <nz-tag nzMode="closeable" nzColor="error"><span nz-icon nzType="heart" nzTheme="fill"></span>Tag</nz-tag>
     </app-demo>
 
+    <app-demo title="Naming (avatar)" description="class aibox-tag-naming = แท็กชื่อคน (Figma naming round): avatar กลม 30px ชิดซ้าย ชื่อ 14/24 · aibox-tag-naming-sm = avatar 24px · ครอบชื่อยาวด้วย aibox-tag-name (ตัดด้วย … ที่ 120px)" [code]="naming" [ts]="imports">
+      <nz-tag nzMode="closeable" class="aibox-tag-naming">
+        <span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span>
+        Somchai
+      </nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-naming aibox-tag-naming-sm">
+        <span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span>
+        Somchai
+      </nz-tag>
+      <nz-tag nzMode="closeable" class="aibox-tag-naming">
+        <span class="aibox-tag-avatar">S</span>
+        <span class="aibox-tag-name">Somchai Jaidee-Wongsakul Senior Manager</span>
+      </nz-tag>
+      <nz-tag class="aibox-tag-naming">
+        <span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span>
+        Somchai
+      </nz-tag>
+    </app-demo>
+
     <app-css-panel id="tag" />
   `,
 })
@@ -95,4 +114,20 @@ export class TagPage {
   <span nz-icon nzType="heart" nzTheme="fill"></span>Tag
 </nz-tag>
 <!-- (nzOnClose)="..." removes the tag; ng-zorro hides it by itself unless you cancel the event -->`;
+  protected readonly naming = `<nz-tag nzMode="closeable" class="aibox-tag-naming">
+  <span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span>
+  Somchai
+</nz-tag>
+
+<!-- small avatar (24px) -->
+<nz-tag nzMode="closeable" class="aibox-tag-naming aibox-tag-naming-sm">
+  <span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span>
+  Somchai
+</nz-tag>
+
+<!-- a letter instead of the icon, and a long name cut with an ellipsis at 120px -->
+<nz-tag nzMode="closeable" class="aibox-tag-naming">
+  <span class="aibox-tag-avatar">S</span>
+  <span class="aibox-tag-name">Somchai Jaidee-Wongsakul Senior Manager</span>
+</nz-tag>`;
 }

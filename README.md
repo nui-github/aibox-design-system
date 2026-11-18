@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.37.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.37.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.38.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.38.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the two sections at the end). Versions between and after those (19.x, 21.x) are not tested.
@@ -115,7 +115,7 @@ Colours: on = `text/main` (iOS: `state/form/active`), off = `text/disable` (iOS:
 
 Opt-in classes on `<nz-tag>`: `aibox-tag-solid` (solid fill, white text), `aibox-tag-square` (radius 4; default is pill), `aibox-tag-xs` (Figma 2xsmall, 12px). Not covered yet: pink "signer in progress", "form", disabled badge, chips and checkable tags.
 
-Closable tag (Figma tag/closable, node `1:10102`): `<nz-tag nzMode="closeable">` with the same colours as the badge, plus `aibox-tag-black` (dark gray `state/gray/g-1`, white text). The default size is Figma small (14px, padding 8 12, 32px high); with `aibox-tag-xs` it is 2xsmall (12px, padding 4 8, 24px high); `aibox-tag-square` works too. The × and an optional leading icon (`<span nz-icon>` before the text) are 16px boxes with a 12px glyph. The blue closable tag uses `text/main` where the status badge uses info-200. Handle removal with `(nzOnClose)`. Not covered: the "naming" (avatar) closable styles, a hover state on the × (not in Figma).
+Closable tag (Figma tag/closable, node `1:10102`): `<nz-tag nzMode="closeable">` with the same colours as the badge, plus `aibox-tag-black` (dark gray `state/gray/g-1`, white text). The default size is Figma small (14px, padding 8 12, 32px high); with `aibox-tag-xs` it is 2xsmall (12px, padding 4 8, 24px high); `aibox-tag-square` works too. The × and an optional leading icon (`<span nz-icon>` before the text) are 16px boxes with a 12px glyph. The blue closable tag uses `text/main` where the status badge uses info-200. Handle removal with `(nzOnClose)`. Naming tag (Figma tag/closable style=naming round / small / hug): add `aibox-tag-naming` to a `nz-tag` (usually `nzMode="closeable"`) and put the avatar first: `<span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span>` (or an initial letter). The avatar is a round 30px badge (`global/blue/200`, user icon `global/blue/700`) flush with the left edge, then 8px, the name 14/24 medium `text/primary`, the × in `text/primary`, 12px on the right; the tag is 30px high. `aibox-tag-naming-sm` is the small frame (24px avatar, 8px on the right). Wrap a long name in `<span class="aibox-tag-name">` to cut it with an ellipsis at 120px (the hug frame has no limit). Default colour only (Figma has no other). Not covered: a hover state on the × (not in Figma), a picture avatar (put an `<img>` in `aibox-tag-avatar` yourself).
 
 ### Chip / filter (Figma node `1:10199`)
 

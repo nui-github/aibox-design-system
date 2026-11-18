@@ -1,4 +1,4 @@
-/* aibox-design-system v0.37.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.38.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1244,8 +1244,13 @@ a.ant-btn.aibox-btn-xs {
                                         plus class aibox-tag-black (dark gray, white text). The tag is Figma size=small (14px, padding 8 12, 32px high);
                                         with aibox-tag-xs it is size=2xsmall (12px, padding 4 8, 24px high). A leading icon is a 16px box with a 12px
                                         glyph, like the x. aibox-tag-square (radius 4) works too.
-   Not covered: pink/"signer in progress" and "form" types, disabled badge, chip (assist/input/filter), checkable tags, the "naming" (avatar)
-   closable styles, a hover state on the x (not in Figma). */
+     class aibox-tag-naming          -> Figma tag/closable style=naming round: a person tag with a round avatar flush left (30px, blue-200 with a
+                                        blue-700 user icon), the name 14/24 medium text/primary, the x text/primary, 8px gaps, 12px on the right;
+                                        aibox-tag-naming-sm = the "naming round small" frame (24px avatar, 8px on the right). The avatar is
+                                        <span class="aibox-tag-avatar"><span nz-icon nzType="user"></span></span> (or an initial letter); wrap a
+                                        long name in <span class="aibox-tag-name"> for the 120px ellipsis (the "hug" frame has none).
+   Not covered: pink/"signer in progress" and "form" types, disabled badge, chip (assist/input/filter), checkable tags, naming tags in other
+   colours (Figma has the default colour only), a hover state on the x (not in Figma). */
 .ant-tag {
   --_bg: var(--aibox-color-bg-secondary);
   --_fg: var(--aibox-color-text-secondary);
@@ -1331,6 +1336,47 @@ a.ant-btn.aibox-btn-xs {
 }
 .ant-tag:has(> .ant-tag-close-icon) > .anticon + span {
   margin-inline-start: 0;
+}
+/* Naming tag: avatar + name (+ x) */
+.ant-tag.ant-tag.aibox-tag-naming {
+  --_fg: var(--aibox-color-text-primary);
+  gap: var(--aibox-spacing-2);
+  padding: 0 var(--aibox-spacing-3) 0 0;
+  font-size: var(--aibox-typography-body-body-bold-font-size);
+  line-height: var(--aibox-typography-body-body-bold-line-height);
+  letter-spacing: var(--aibox-typography-body-body-bold-letter-spacing);
+}
+.ant-tag.ant-tag.aibox-tag-naming.aibox-tag-naming-sm {
+  padding-right: var(--aibox-spacing-2);
+}
+.aibox-tag-naming .aibox-tag-avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--aibox-color-global-blue-200);
+  color: var(--aibox-color-global-blue-700);
+  font-size: 12px;
+  line-height: 1;
+}
+.aibox-tag-naming.aibox-tag-naming-sm .aibox-tag-avatar {
+  width: 24px;
+  height: 24px;
+}
+.aibox-tag-naming .aibox-tag-avatar .anticon {
+  margin: 0;
+  color: inherit;
+  font-size: 12px;
+}
+.aibox-tag-naming .aibox-tag-name {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Chip / filter. Source: Figma "i-BOX Design System" > Chip & Tag page (3579:12023), chip/filter node 1:10199.
