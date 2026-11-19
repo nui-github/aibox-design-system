@@ -1,10 +1,15 @@
 .shell { min-height: 100vh; background: var(--aibox-color-bg-primary); }
-.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: var(--aibox-spacing-4); height: 56px; line-height: normal; padding: 0 var(--aibox-spacing-4); background: var(--aibox-color-bg-primary); border-bottom: 1px solid var(--aibox-color-border-primary); }
+.top { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: var(--aibox-spacing-4); height: 56px; line-height: normal; padding: 0 var(--aibox-spacing-4); background: var(--aibox-color-bg-primary); border-bottom: 1px solid var(--aibox-color-border-primary); }
 .brand { display: inline-flex; align-items: center; }
 .brand img { display: block; height: 24px; width: auto; }
 .versions { display: flex; align-items: center; margin-left: var(--aibox-spacing-2); }
 .versions nz-tag { margin-right: var(--aibox-spacing-2); }
-.links { margin-left: auto; display: flex; align-items: center; gap: var(--aibox-spacing-2); }
+.search { flex: 1 1 240px; min-width: 160px; max-width: 320px; margin-left: var(--aibox-spacing-2); }
+.links { margin-left: auto; flex: none; display: flex; align-items: center; gap: var(--aibox-spacing-2); }
+/* Narrow desktop windows: drop the Angular version tag so the search keeps its room. */
+@media (max-width: 1100px) {
+  .versions nz-tag:last-child { display: none; }
+}
 .burger { display: none; }
 .side { background: var(--aibox-color-bg-primary); border-right: 1px solid var(--aibox-color-global-gray-300); position: sticky; top: 56px; height: calc(100vh - 56px); overflow: auto; }
 /* Menu scrollbar: thin thumb with no track, shown only while the pointer is over the menu. */
@@ -28,4 +33,10 @@
   .side:not(.open) { box-shadow: none; }
   .content { padding: var(--aibox-spacing-4); }
   .links a:first-child { display: none; }
+  .top { gap: var(--aibox-spacing-2); }
+  .search { margin-left: 0; min-width: 0; max-width: none; }
+}
+/* Phones: the GitHub button keeps only its icon so the search has room. */
+@media (max-width: 700px) {
+  .gh-text { display: none; }
 }

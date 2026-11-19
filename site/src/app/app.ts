@@ -6,12 +6,13 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { META } from '../generated/meta';
+import { SearchBox } from './shared/search';
 import { COMPONENTS, REPO_URL } from './nav';
 
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, NzLayoutModule, NzMenuModule, NzIconModule, NzButtonModule, NzTagModule],
+  imports: [RouterOutlet, RouterLink, NzLayoutModule, NzMenuModule, NzIconModule, NzButtonModule, NzTagModule, SearchBox],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

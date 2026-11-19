@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -37,6 +38,9 @@ const GROUPS: Group[] = [
 
     <input nz-input class="search" placeholder="Search token name or value" [ngModel]="q()" (ngModelChange)="q.set($event)" />
 
+    @if (!groups().length) {
+      <p class="empty">No tokens match.</p>
+    }
     <nz-tabs>
       @for (g of groups(); track g.id) {
         <nz-tab [nzTitle]="g.title + ' (' + g.items.length + ')'">
@@ -78,6 +82,16 @@ export class Tokens {
   protected readonly q = signal('');
   protected readonly copied = signal('');
   private readonly cache = new Map<string, string>();
+
+  constructor() {
+    // The header search sends "/tokens?q=..." for anything that is not a page or class name.
+    // (DestroyRef instead of rxjs-interop: a new @angular/core entry point makes the Vite dev server re-optimise and load two Angular copies.)
+    const sub = inject(ActivatedRoute).queryParamMap.subscribe((p) => {
+      const q = p.get('q');
+      if (q !== null) this.q.set(q);
+    });
+    inject(DestroyRef).onDestroy(() => sub.unsubscribe());
+  }
 
   protected readonly groups = computed(() => {
     const q = this.q().trim().toLowerCase();
