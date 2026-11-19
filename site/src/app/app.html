@@ -16,19 +16,19 @@
     </div>
   </nz-header>
   <nz-layout>
-    <nz-sider class="side" [class.open]="!collapsed()" nzWidth="248px" [nzTrigger]="null">
+    <nz-sider class="side" [class.open]="!collapsed()" [class.navigating]="pending() !== null" nzWidth="248px" [nzTrigger]="null">
       <ul nz-menu nzMode="inline" (click)="collapsed.set(true)">
         <li nz-menu-group nzTitle="Overview">
           <ul>
-            <li nz-menu-item nzMatchRouter routerLink="/getting-started">Getting started</li>
-            <li nz-menu-item nzMatchRouter routerLink="/tokens">Tokens</li>
-            <li nz-menu-item nzMatchRouter routerLink="/changelog">Changelog</li>
+            <li nz-menu-item nzMatchRouter routerLink="/getting-started" [class.pending]="pending() === '/getting-started'" (click)="go('/getting-started')">Getting started</li>
+            <li nz-menu-item nzMatchRouter routerLink="/tokens" [class.pending]="pending() === '/tokens'" (click)="go('/tokens')">Tokens</li>
+            <li nz-menu-item nzMatchRouter routerLink="/changelog" [class.pending]="pending() === '/changelog'" (click)="go('/changelog')">Changelog</li>
           </ul>
         </li>
         <li nz-menu-group nzTitle="Components">
           <ul>
             @for (c of components; track c.path) {
-              <li nz-menu-item nzMatchRouter [routerLink]="'/' + c.path">{{ c.title }}</li>
+              <li nz-menu-item nzMatchRouter [routerLink]="'/' + c.path" [class.pending]="pending() === '/' + c.path" (click)="go('/' + c.path)">{{ c.title }}</li>
             }
           </ul>
         </li>
