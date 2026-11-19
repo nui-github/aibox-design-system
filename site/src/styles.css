@@ -61,5 +61,10 @@ p {
 /* Menu: selected item in design-system blue */
 .side .ant-menu-item { color: var(--aibox-color-text-primary); }
 .side .ant-menu-inline .ant-menu-item-selected { background: var(--aibox-color-bg-tertiary); color: var(--aibox-color-text-main); font-weight: 500; }
+/* A clicked item looks selected at once (.pending) while the page chunk loads; the previous selection steps back meanwhile. */
+.side .ant-menu-inline .ant-menu-item.pending { background: var(--aibox-color-bg-tertiary); color: var(--aibox-color-text-main); font-weight: 500; }
+.side .ant-menu-inline .ant-menu-item.pending::after { display: block; opacity: 1; transform: scaleY(1); border-right-color: var(--aibox-color-bg-main); }
+.side.navigating .ant-menu-inline .ant-menu-item-selected:not(.pending) { background: transparent; color: var(--aibox-color-text-primary); font-weight: 400; }
+.side.navigating .ant-menu-inline .ant-menu-item-selected:not(.pending)::after { display: none; }
 /* The Menu override hides every inline item's ::after (the Figma menu has no side bar); the site's own menu keeps its bar. */
 .side .ant-menu-inline .ant-menu-item-selected::after { display: block; border-right-color: var(--aibox-color-bg-main); }

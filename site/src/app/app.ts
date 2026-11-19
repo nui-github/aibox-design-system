@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationSkipped, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -22,4 +22,25 @@ export class App {
   protected readonly repoUrl = REPO_URL;
   protected readonly releaseUrl = `${REPO_URL}/releases/tag/v${META.dsVersion}`;
   protected readonly collapsed = signal(true);
+  /**
+   * The menu item that was just clicked. nzMatchRouter only marks an item selected once the navigation ends (after the page's
+   * chunk has loaded), so the clicked item is shown as active straight away and cleared when the navigation finishes.
+   */
+  protected readonly pending = signal<string | null>(null);
+
+  private readonly router = inject(Router);
+
+  /** Called on a menu click. Clicking the page that is already open does not navigate, so there is nothing to wait for. */
+  protected go(path: string) {
+    if (this.router.url.split(/[?#]/)[0] !== path) this.pending.set(path);
+  }
+
+  constructor() {
+    const sub = this.router.events.subscribe((e) => {
+      if (e instanceof NavigationEnd || e instanceof NavigationCancel || e instanceof NavigationError || e instanceof NavigationSkipped) {
+        this.pending.set(null);
+      }
+    });
+    inject(DestroyRef).onDestroy(() => sub.unsubscribe());
+  }
 }

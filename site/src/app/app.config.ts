@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { ApplicationConfig, inject, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { NavigationError, provideRouter, withInMemoryScrolling, withNavigationErrorHandler } from '@angular/router';
+import { NavigationError, PreloadAllModules, provideRouter, withInMemoryScrolling, withNavigationErrorHandler, withPreloading } from '@angular/router';
 import { NZ_DATE_LOCALE, provideNzNativeDateAdapter } from 'ng-zorro-antd/core/time';
 import { provideNzI18n, th_TH } from 'ng-zorro-antd/i18n';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
@@ -68,7 +68,8 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     // anchor links (#chip) should stop below the sticky header
     provideAppInitializer(() => inject(ViewportScroller).setOffset([0, 80])),
-    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }), withNavigationErrorHandler(reloadOnStaleChunk)),
+    // Every page is a lazy chunk; fetch them in the background after the first page so a menu click does not wait for the network.
+    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }), withPreloading(PreloadAllModules), withNavigationErrorHandler(reloadOnStaleChunk)),
     // ng-zorro defaults to zh_CN (Chinese labels); the docs are Thai.
     provideNzI18n(th_TH),
     // ng-zorro 22 needs a date adapter for the date and time pickers (18.x used date-fns built in).
