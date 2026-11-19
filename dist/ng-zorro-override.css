@@ -1,4 +1,4 @@
-/* aibox-design-system v0.41.2 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.42.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -3295,7 +3295,8 @@ nz-alert.aibox-alert-bar {
      checkbox                            nzCheckable (the checkbox box is drawn like the Checkbox override)
      state hovered                       row hover: bg/tertiary over the whole row
      state selected                      the selected node: text in color/main, medium weight
-   Row: padding 8 16 8 8 (height 42), caret 16px box then 8px gap, checkbox 17.5px then 8px gap, title 16/26 text/primary.
+   Row: padding 8 16 8 8 (height 42), caret 16px box then 8px gap, checkbox 17.5px then 8px gap, title 16/26 text/primary. Rows touch
+   (42px apart): ng-zorro-antd 21+ adds margin-bottom 4px to every row (46px apart), 18 - 20 do not, so the margin is reset to 0 for all versions.
    The hover and selected looks come from the Folder-list frames (50px rows); they are applied to the checkbox tree as well.
    Not covered: the search state (highlighted match), draggable / line / block-node trees, the Folder-list pattern. */
 .ant-tree {
@@ -3307,6 +3308,7 @@ nz-alert.aibox-alert-bar {
 }
 .ant-tree .ant-tree-treenode {
   align-items: center;
+  margin: 0;
   padding: var(--aibox-spacing-2) var(--aibox-spacing-4) var(--aibox-spacing-2) var(--aibox-spacing-2);
   background: var(--aibox-color-bg-primary);
 }

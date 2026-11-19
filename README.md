@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.41.2/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.41.2/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.42.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.42.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the sections at the end). 19.3.1 and 21.3.3 were checked too (see the last section). Other patch versions of 19.x, 20.x and 21.x are not tested.
@@ -193,7 +193,7 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 ### Tree (Figma page Tree Select `4230:2618`, tree-selection-list `9718:69790`, base `4267:9343`)
 
-`nz-tree` (also the list in `nz-tree-select`): 42px rows (padding 8 16 8 8), 20px caret box + 8px gap + checkbox (17.5px, drawn like the Checkbox override) + 8px gap + 16/26 title, 24px indent per level (32px for the first, so level 2 starts at 40px). Row hover fills the whole row with `bg/tertiary`; the selected node is `color/main` medium (both taken from the Folder-list frames). Register `CaretDownFill` and `CaretRightFill`. Not covered: the Folder-list pattern, search highlight, draggable / line / block-node trees.
+`nz-tree` (also the list in `nz-tree-select`): 42px rows (padding 8 16 8 8) that touch, 42px apart on every ng-zorro version (21+ adds a 4px row margin, reset to 0), 20px caret box + 8px gap + checkbox (17.5px, drawn like the Checkbox override) + 8px gap + 16/26 title, 24px indent per level (32px for the first, so level 2 starts at 40px). Row hover fills the whole row with `bg/tertiary`; the selected node is `color/main` medium (both taken from the Folder-list frames). Register `CaretDownFill` and `CaretRightFill`. Not covered: the Folder-list pattern, search highlight, draggable / line / block-node trees.
 
 ### Cascader (Figma page Cascader `4268:9357`, dropdown `4268:12892`)
 
@@ -250,5 +250,5 @@ The docs site was rebuilt with Angular 20.3 + ng-zorro-antd 20.4.4 and compared 
 Both were rebuilt in Angular 19.2 / 21.2 copies of the docs site and compared with 22.1.2 in Chromium (tokens.css and the override of the same release).
 - **21.3.3**: the whole docs site builds; every demo of the 27 component pages and 18 overlay / state scripts (modal, message, dropdown, date / time picker, cascader, drawer, menu, tabs, tooltip, ...) give identical sizes, colours, borders, radius, fonts and padding. Only the API differs: `nzBorderless` no longer works (use `nzVariant`).
 - **19.3.1**: the same checks match, plus the Input / Textarea / Input number / Select audit page (identical to 18.2.1 and 21.3.3), except for ng-zorro defaults that the override does not set: the dropdown menu is 124.9px wide (92.8px on 20 / 21 / 22; same on 18), the pagination size changer is 3px wider (64 vs 61; same on 18), the tooltip arrow box is 22px (16px; same centre; same on 18) and tree rows are 42px apart (see below). The docs site itself does not run on 19 (`nz-tabs`, `nz-input-wrapper`, `nz-input-password` are missing), so the 19 copy used `nz-tabset`, `nz-input-group` and no `nzNeedConfirm`; closed `nz-submenu` stays in the DOM at height 0 as in 18 / 20; `NzDropDownModule` / `NzToolTipModule` (capital D / T).
-- **Tree row spacing**: ng-zorro 21+ adds `margin-bottom: 4px` to tree rows, so rows are 46px apart on 21 and 22 and 42px on 18, 19 and 20. The override sets the 42px row height only; the spacing is left to ng-zorro. (This was missed when 20.4.4 was checked.)
+- **Tree row spacing**: ng-zorro 21+ adds `margin-bottom: 4px` to tree rows (46px apart on 21 and 22, 42px on 18, 19 and 20). Since v0.42.0 the override resets the margin, so rows are 42px apart on every version. (This was missed when 20.4.4 was checked.)
 - The multiple Select (naming tags, column / list / scrolling views) is identical on 18.2.1, 19.3.1, 20.4.4, 21.3.3 and 22.1.2.
