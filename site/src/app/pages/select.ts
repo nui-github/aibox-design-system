@@ -23,6 +23,7 @@ export class Example {
     <app-page-head title="Select">
       <ng-container sub>Figma nodes <code>1592:6210</code> (select-search), <code>1:7137</code> (select), <code>1:7626</code> (content-list)</ng-container>
       <p class="note">ใส่ <code>[nzOptionHeightPx]="50"</code> เสมอ เพราะ option แถวละ 50px ใน Figma (ค่าเริ่มต้นของ ng-zorro คือ 32px)</p>
+      <p class="note">ng-zorro 18 / 19: <code>nzMode="multiple"</code> และ <code>"tags"</code> ไม่แสดงลูกศรโดยค่าเริ่มต้น ใส่ <code>[nzShowArrow]="true"</code> (ng-zorro 20 ขึ้นไปแสดงเอง; CSS แก้ให้ไม่ได้)</p>
     </app-page-head>
 
     <app-demo title="Sizes" description="default = Figma small (40px) · nzSize=&quot;large&quot; = 48px" [code]="sizes" [ts]="imports">
@@ -41,13 +42,13 @@ export class Example {
     </app-demo>
 
     <app-demo title="Multiple and tags" description="nzMode=&quot;multiple&quot; / &quot;tags&quot; (Figma Tag Selection) · กล่องสูงขึ้นตามจำนวนแท็ก แท็กขึ้นบรรทัดใหม่ห่างกัน 8px" [code]="multiple" [ts]="imports">
-      <nz-select [(ngModel)]="m1" nzMode="multiple" nzPlaceHolder="Select" [nzOptionHeightPx]="50" style="width: 360px">
+      <nz-select [(ngModel)]="m1" nzMode="multiple" nzPlaceHolder="Select" [nzOptionHeightPx]="50" [nzShowArrow]="true" style="width: 360px">
         @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
       </nz-select>
-      <nz-select [(ngModel)]="m2" nzMode="multiple" nzSize="large" nzPlaceHolder="Large" [nzOptionHeightPx]="50" style="width: 360px">
+      <nz-select [(ngModel)]="m2" nzMode="multiple" nzSize="large" nzPlaceHolder="Large" [nzOptionHeightPx]="50" [nzShowArrow]="true" style="width: 360px">
         @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
       </nz-select>
-      <nz-select [(ngModel)]="m3" nzMode="tags" nzPlaceHolder="Type and press Enter" style="width: 360px"></nz-select>
+      <nz-select [(ngModel)]="m3" nzMode="tags" nzPlaceHolder="Type and press Enter" [nzShowArrow]="true" style="width: 360px"></nz-select>
       <nz-select [ngModel]="options" nzMode="multiple" nzDisabled style="width: 360px">
         @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
       </nz-select>
@@ -125,13 +126,14 @@ export class SelectPage {
     <nz-option [nzValue]="o" [nzLabel]="o" />
   }
 </nz-select>`;
-  protected readonly multiple = `<nz-select [(ngModel)]="value" nzMode="multiple" nzPlaceHolder="Select" [nzOptionHeightPx]="50">
+  protected readonly multiple = `<!-- [nzShowArrow]="true": needed on ng-zorro 18 / 19 (multiple and tags have no arrow by default there); 20+ shows it anyway -->
+<nz-select [(ngModel)]="value" nzMode="multiple" nzPlaceHolder="Select" [nzOptionHeightPx]="50" [nzShowArrow]="true">
   @for (o of options; track o) {
     <nz-option [nzValue]="o" [nzLabel]="o" />
   }
 </nz-select>
 
-<nz-select [(ngModel)]="tags" nzMode="tags" nzPlaceHolder="Type and press Enter" />`;
+<nz-select [(ngModel)]="tags" nzMode="tags" nzPlaceHolder="Type and press Enter" [nzShowArrow]="true" />`;
   protected readonly naming = `<nz-select [(ngModel)]="value" class="aibox-select-naming" nzMode="multiple"
   nzPlaceHolder="Select people" [nzCustomTemplate]="person" [nzOptionHeightPx]="50">
   @for (o of people; track o.value) {
