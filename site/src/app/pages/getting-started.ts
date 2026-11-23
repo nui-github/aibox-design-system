@@ -159,6 +159,8 @@ export class GettingStarted {
     ['aibox-btn-nopad', 'nz-button', 'ไม่มี padding ซ้าย-ขวา (texted "without padding" ที่ใช้ในแถวของตาราง)'],
     ['aibox-card-menu', 'nz-card', 'การ์ดทางลัดเมนู: ไอคอน + ข้อความ จัดกลางการ์ด'],
     ['aibox-upload-compact', 'nz-upload (nzType="drag")', 'drop zone ความสูง 100px (Figma reduce-height): ไอคอนติดหัวข้อในแถวเดียวกัน (ไม่มีช่องว่าง) อยู่กึ่งกลางกล่อง คำอธิบายอยู่ใต้แถวนั้น'],
+    ['aibox-upload-inline', 'nz-upload nzType="drag" + [nzFileList]', 'แถวไฟล์ใต้ drop zone แบบไม่มีกรอบ (Figma state loading / error / completed): ห่างโซน 10px, ไอคอน + ชื่อ 16/26 + ปุ่มลบ 32px, สีฟ้า (แดงเมื่อ error) · ปิดปุ่ม preview ด้วย [nzShowUploadList]="{ showPreviewIcon: false }"'],
+    ['aibox-upload-error-text', 'element ใต้ nz-upload', 'บรรทัดข้อความผิดพลาดของไฟล์ (ไอคอนวงกลมอัศเจรีย์ + ข้อความ 14/24 สีแดง) ng-zorro แสดง file.message เป็น tooltip เท่านั้น จึงวางเอง'],
     ['aibox-search', 'nz-input-wrapper (22) / nz-input-group (18) with a search prefix icon', 'ช่องค้นหา: กล่อง 40px (nzSize="large" = 48px) ไอคอน 16px'],
     ['aibox-form-small', 'nz-form-item', 'บังคับ label, ข้อความช่วย และตัวนับของ textarea เป็น 12/22 (ค่าเริ่มต้นของช่องขนาดปกติอยู่แล้ว)'],
     ['aibox-form-large', 'nz-form-item', 'บังคับ label, ข้อความช่วย และตัวนับของ textarea เป็น 14/24 (ปกติเป็นเองเมื่อมีช่อง nzSize="large")'],

@@ -3228,6 +3228,54 @@ nz-alert.aibox-alert-bar {
   grid-column: 1 / -1;
 }
 
+/* Drop zone with the file under it (Figma Upload page 1516:11120: state=loading 1516:11130, error 1516:11133, completed 1516:11138). Add class
+   aibox-upload-inline to nz-upload nzType="drag" and give it [nzFileList] with status "uploading" / "error" / "done": the file is a plain row
+   (no box) 10px under the zone: a 24px icon box (16px glyph: spinner, file), 8px, the name 16/26 medium (blue, red on error), and the 32px delete
+   button (grey, red on error). Without the class the rows stay the boxed upload-blocks above. ng-zorro also shows a preview button on a done file:
+   pass [nzShowUploadList]="{ showPreviewIcon: false, showRemoveIcon: true, showDownloadIcon: false }" to get the single delete button of Figma. */
+/* ng-zorro makes the zone height: 100%; in a grid / flex parent with a stretched height that counts the file rows too (the zone grew to 190px and
+   the rows overflowed under the next block), so the zone keeps its own height here. */
+.aibox-upload-inline .ant-upload.ant-upload-drag {
+  height: auto;
+}
+.aibox-upload-inline .ant-upload-list {
+  display: block;
+  margin-top: 10px;
+}
+.aibox-upload-inline .ant-upload-list .ant-upload-list-item {
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.aibox-upload-inline .ant-upload-list .ant-upload-text-icon {
+  width: 24px;
+  height: 24px;
+}
+/* The reason for an error. ng-zorro only shows file.message as a tooltip, so put this element under the nz-upload yourself (Figma: the same
+   24px icon box and 8px gap as the file row, so the text lines up with the file name): <div class="aibox-upload-error-text">message</div> */
+.aibox-upload-error-text {
+  display: flex;
+  align-items: center;
+  gap: var(--aibox-spacing-2);
+  min-height: 24px;
+  color: var(--aibox-color-text-status-error-100);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.aibox-upload-error-text::before {
+  content: '';
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-.6 2.6h1.2v3.8h-1.2zm.6 5.1a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-.6 2.6h1.2v3.8h-1.2zm.6 5.1a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
 /* Date picker. Source: Figma "i-BOX Design System" > DatePicker page (1347:2036): date-picker 1347:23603 (sizes large / small; states default,
    expanded, edit, selected, disabled, filled error, empty error) and date-picker-range 4558:7666 (period).
    Mapping (nz-date-picker / nz-range-picker):

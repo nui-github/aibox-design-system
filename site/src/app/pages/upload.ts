@@ -45,6 +45,29 @@ const THUMB = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' w
       </div>
     </app-demo>
 
+    <app-demo title="File status under the zone" description="aibox-upload-inline บน nz-upload nzType=&quot;drag&quot; + [nzFileList] (Figma state loading / error / completed) · แถวไฟล์ไม่มีกรอบ ห่างโซน 10px · ข้อความผิดพลาดวาง .aibox-upload-error-text ใต้ nz-upload เอง (ng-zorro แสดง file.message เป็น tooltip เท่านั้น) · ปิดปุ่ม preview ด้วย nzShowUploadList" [code]="inline" [ts]="imports">
+      <div class="w480 stack">
+        <nz-upload class="aibox-upload-inline" nzType="drag" [nzBeforeUpload]="never" [nzFileList]="inlineUploading" [nzShowUploadList]="listOptions">
+          <p class="ant-upload-drag-icon"><nz-icon nzType="inbox" /></p>
+          <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
+          <p class="ant-upload-hint">รองรับ .pdf, .jpg ,.png จำนวนสูงสุด 20 ไฟล์ และแต่ละไฟล์ต้องไม่เกิน 10MB</p>
+        </nz-upload>
+        <div>
+          <nz-upload class="aibox-upload-inline" nzType="drag" [nzBeforeUpload]="never" [nzFileList]="inlineError" [nzShowUploadList]="listOptions">
+            <p class="ant-upload-drag-icon"><nz-icon nzType="inbox" /></p>
+            <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
+            <p class="ant-upload-hint">รองรับ .pdf, .jpg ,.png จำนวนสูงสุด 20 ไฟล์ และแต่ละไฟล์ต้องไม่เกิน 10MB</p>
+          </nz-upload>
+          <div class="aibox-upload-error-text">{{ errorMessage }}</div>
+        </div>
+        <nz-upload class="aibox-upload-inline" nzType="drag" [nzBeforeUpload]="never" [nzFileList]="inlineDone" [nzShowUploadList]="listOptions">
+          <p class="ant-upload-drag-icon"><nz-icon nzType="inbox" /></p>
+          <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
+          <p class="ant-upload-hint">รองรับ .pdf, .jpg ,.png จำนวนสูงสุด 20 ไฟล์ และแต่ละไฟล์ต้องไม่เกิน 10MB</p>
+        </nz-upload>
+      </div>
+    </app-demo>
+
     <app-demo title="File list" description="สถานะ uploading / error / done · nzListType=&quot;picture&quot; แสดง thumbnail" [code]="list" [ts]="imports">
       <div class="w380">
         <nz-upload nzListType="text" [nzFileList]="textList" [nzBeforeUpload]="never" [nzShowUploadList]="listOptions" />
@@ -65,6 +88,10 @@ export class UploadPage {
     { uid: '2', name: 'filename.jpg', status: 'error', message: 'ขนาดไฟล์ต้องไม่เกิน 10 MB' },
     { uid: '3', name: 'filename.pdf', status: 'done' },
   ];
+  protected readonly inlineUploading: NzUploadFile[] = [{ uid: '5', name: 'filename.png', status: 'uploading', percent: 40 }];
+  protected readonly inlineError: NzUploadFile[] = [{ uid: '6', name: 'filename.png', status: 'error', message: 'ขนาดไฟล์ต้องไม่เกิน 10 MB' }];
+  protected readonly errorMessage = 'ขนาดไฟล์ต้องไม่เกิน 10 MB';
+  protected readonly inlineDone: NzUploadFile[] = [{ uid: '7', name: 'filename.png', status: 'done' }];
   protected readonly pictureList: NzUploadFile[] = [
     { uid: '4', name: 'filename.pdf', status: 'done', thumbUrl: THUMB },
   ];
@@ -73,6 +100,18 @@ export class UploadPage {
   <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
   <p class="ant-upload-hint">รองรับ .pdf, .jpg ,.png จำนวนสูงสุด 20 ไฟล์ และแต่ละไฟล์ต้องไม่เกิน 10MB</p>
 </nz-upload>`;
+  protected readonly inline = `<nz-upload class="aibox-upload-inline" nzType="drag" [nzBeforeUpload]="beforeUpload"
+  [nzFileList]="files" [nzShowUploadList]="{ showPreviewIcon: false, showRemoveIcon: true, showDownloadIcon: false }">
+  <p class="ant-upload-drag-icon"><nz-icon nzType="inbox" /></p>
+  <p class="ant-upload-text">คลิกหรือลากไฟล์มาที่นี่</p>
+  <p class="ant-upload-hint">...</p>
+</nz-upload>
+<!-- files = [{ uid, name, status: 'uploading' | 'error' | 'done', message? }] -->
+
+<!-- the reason for an error: ng-zorro shows file.message only as a tooltip, so add this under the nz-upload -->
+@if (files[0]?.status === 'error') {
+  <div class="aibox-upload-error-text">{{ files[0].message }}</div>
+}`;
   protected readonly states = `<nz-upload class="aibox-upload-compact" nzType="drag" [nzBeforeUpload]="beforeUpload">...</nz-upload>
 <nz-upload nzType="drag" nzDisabled [nzBeforeUpload]="beforeUpload">...</nz-upload>`;
   protected readonly list = `<nz-upload nzListType="text" [nzFileList]="files" [nzBeforeUpload]="beforeUpload" [nzShowUploadList]="{ showPreviewIcon: false, showDownloadIcon: false }" />
