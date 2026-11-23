@@ -2598,6 +2598,12 @@ nz-alert.aibox-alert-bar {
 .ant-dropdown {
   width: auto;
 }
+/* Gap between the trigger and the panel: 4px. ng-zorro-antd 20+ gets it from the overlay offset (and adds ant-dropdown-placement-*
+   to the element); 18 and 19 use a 6px margin on .ant-dropdown instead, so only those versions are given 4px here. */
+.ant-dropdown:not([class*='ant-dropdown-placement-']) {
+  margin-top: var(--aibox-spacing-1);
+  margin-bottom: var(--aibox-spacing-1);
+}
 .ant-dropdown .ant-dropdown-menu {
   padding: 0;
   overflow: hidden;
