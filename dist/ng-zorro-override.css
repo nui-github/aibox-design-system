@@ -1,4 +1,4 @@
-/* aibox-design-system v0.47.5 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.47.6 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -3394,9 +3394,13 @@ nz-alert.aibox-alert-bar {
    The selected-day fill and the hover fill are not in the single-date frames (inferred from the range frames), the range cells use bg/tertiary.
    Not covered: the Buddhist-year title (2537, depends on the date adapter and locale), month / year / decade panels, week and quarter pickers,
    time inside the popup, the today footer, presets. */
+/* Figma date-picker / time-picker: the box is the textfield (small 40px, large 48px) with the text 8px (large 12px) from the edge, as in the Input,
+   and the calendar / clock icon is a 16px glyph in a 20px box that ends 8px (12px) from the edge, so the glyph is 10px (14px) away. The border
+   is part of the 8px (12px), hence the horizontal padding of 7px (11px) and the 2px margin of the icon. */
 .ant-picker {
   box-sizing: border-box;
-  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+  min-height: var(--aibox-size-control-height);
+  padding: var(--aibox-spacing-1) calc(var(--aibox-spacing-2) - 1px);
   border: 1px solid var(--aibox-color-state-form-default);
   border-radius: var(--aibox-radius-2);
   background: var(--aibox-color-bg-primary);
@@ -3407,7 +3411,7 @@ nz-alert.aibox-alert-bar {
 }
 .ant-picker.ant-picker-large {
   min-height: var(--aibox-size-control-height-lg);
-  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+  padding: var(--aibox-spacing-2) calc(var(--aibox-spacing-3) - 1px);
   font-size: var(--aibox-typography-body-body-lg-regular-font-size);
   line-height: var(--aibox-typography-body-body-lg-regular-line-height);
   letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
@@ -3429,6 +3433,7 @@ nz-alert.aibox-alert-bar {
   box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-active-outer);
 }
 .ant-picker .ant-picker-suffix {
+  margin-inline-end: 2px;
   color: var(--aibox-color-text-icon-default);
   font-size: 16px;
 }
