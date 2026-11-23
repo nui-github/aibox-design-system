@@ -6,8 +6,8 @@ Design tokens (from Figma) and ng-zorro-antd CSS overrides for Ai-BOX, served fr
 Load **after** ng-zorro-antd's own styles, and pin an exact version:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.42.0/dist/tokens.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.42.0/dist/ng-zorro-override.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.43.0/dist/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@0.43.0/dist/ng-zorro-override.css">
 ```
 
 Never use `@main` (cached ~12h, can change under you). Developed and tested against ng-zorro-antd 18.2.x (the Ai-BOX version); the docs site renders every component with 22.1.2, and 20.4.4 was checked too (see the sections at the end). 19.3.1 and 21.3.3 were checked too (see the last section). Other patch versions of 19.x, 20.x and 21.x are not tested.
@@ -165,7 +165,7 @@ Closable tag (Figma tag/closable, node `1:10102`): `<nz-tag nzMode="closeable">`
 
 ### Dropdown menu (Figma page Popover `1345:521`, popover-submenu `1346:1358`)
 
-`nz-dropdown` + `nz-menu`: bg/primary panel, radius 8, shadow popover, rows 14/24 with 32px side padding (first row 16px from the top, last 16px from the bottom), `nzSelected` row in `color/main`, `nz-menu-group nzTitle` section headers (12/22 medium, grey fill from `--aibox-dropdown-section-bg`). `nzArrow` gives the 16x8 arrow. The plain popover (`1346:1149`) is stock Ant Design and not overridden. Note: ng-zorro 18 exports `NzDropDownModule`, 22 exports `NzDropdownModule`. Not covered: nested submenus, icons in rows, danger/disabled rows.
+`nz-dropdown` + `nz-menu`: bg/primary panel, radius 8, shadow popover, rows 14/24 with 32px side padding (first row 16px from the top, last 16px from the bottom), `nzSelected` row in `color/main`, `nz-menu-group nzTitle` section headers (12/22 medium, grey fill from `--aibox-dropdown-section-bg`). `nzArrow` gives the 16x8 arrow. The panel is as wide as its longest row on every ng-zorro version (Figma 214 / 265px): ng-zorro 18 and 19 make it as wide as the trigger button, so the override sets `.ant-dropdown { width: auto }`. The gap between the trigger and the panel is still ng-zorro's (6px on 18 / 19, 4px on 20+). The plain popover (`1346:1149`) is stock Ant Design and not overridden. Note: ng-zorro 18 exports `NzDropDownModule`, 22 exports `NzDropdownModule`. Not covered: nested submenus, icons in rows, danger/disabled rows.
 
 ### Scrollbar (Figma page Scrollbar `3745:12812`, vertical `6903:54`, horizontal `7024:6514`)
 
@@ -249,6 +249,6 @@ The docs site was rebuilt with Angular 20.3 + ng-zorro-antd 20.4.4 and compared 
 ## Verified on ng-zorro-antd 19.3.1 and 21.3.3
 Both were rebuilt in Angular 19.2 / 21.2 copies of the docs site and compared with 22.1.2 in Chromium (tokens.css and the override of the same release).
 - **21.3.3**: the whole docs site builds; every demo of the 27 component pages and 18 overlay / state scripts (modal, message, dropdown, date / time picker, cascader, drawer, menu, tabs, tooltip, ...) give identical sizes, colours, borders, radius, fonts and padding. Only the API differs: `nzBorderless` no longer works (use `nzVariant`).
-- **19.3.1**: the same checks match, plus the Input / Textarea / Input number / Select audit page (identical to 18.2.1 and 21.3.3), except for ng-zorro defaults that the override does not set: the dropdown menu is 124.9px wide (92.8px on 20 / 21 / 22; same on 18), the pagination size changer is 3px wider (64 vs 61; same on 18), the tooltip arrow box is 22px (16px; same centre; same on 18) and tree rows are 42px apart (see below). The docs site itself does not run on 19 (`nz-tabs`, `nz-input-wrapper`, `nz-input-password` are missing), so the 19 copy used `nz-tabset`, `nz-input-group` and no `nzNeedConfirm`; closed `nz-submenu` stays in the DOM at height 0 as in 18 / 20; `NzDropDownModule` / `NzToolTipModule` (capital D / T).
+- **19.3.1**: the same checks match, plus the Input / Textarea / Input number / Select audit page (identical to 18.2.1 and 21.3.3), except for ng-zorro defaults that the override does not set: the gap between a dropdown trigger and its panel is 6px (4px on 20 / 21 / 22; same on 18), the pagination size changer is 3px wider (64 vs 61; same on 18), the tooltip arrow box is 22px (16px; same centre; same on 18) and tree rows are 42px apart (see below). The docs site itself does not run on 19 (`nz-tabs`, `nz-input-wrapper`, `nz-input-password` are missing), so the 19 copy used `nz-tabset`, `nz-input-group` and no `nzNeedConfirm`; closed `nz-submenu` stays in the DOM at height 0 as in 18 / 20; `NzDropDownModule` / `NzToolTipModule` (capital D / T).
 - **Tree row spacing**: ng-zorro 21+ adds `margin-bottom: 4px` to tree rows (46px apart on 21 and 22, 42px on 18, 19 and 20). Since v0.42.0 the override resets the margin, so rows are 42px apart on every version. (This was missed when 20.4.4 was checked.)
 - The multiple Select (naming tags, column / list / scrolling views) is identical on 18.2.1, 19.3.1, 20.4.4, 21.3.3 and 22.1.2.
