@@ -1779,6 +1779,11 @@ a.ant-btn.aibox-btn-xs {
   font-size: var(--_fs);
   font-weight: var(--aibox-typography-button-xs-font-weight);
 }
+/* ng-zorro-antd 18 / 19 render the text as a bare " 10 / page " (spaces around it); one space stayed in the width, 3.2px wider than on 20+,
+   which wrap it in a <span>. A flex item drops the spaces; items with a <span> (20+) are left alone. */
+.ant-pagination .ant-pagination-options-size-changer.ant-select .ant-select-selection-item:not(:has(> span)) {
+  display: flex;
+}
 .ant-pagination .ant-pagination-options-size-changer.ant-select .ant-select-arrow {
   right: 0;
   width: 10px;
@@ -1933,7 +1938,7 @@ a.ant-btn.aibox-btn-xs {
      size xsmall (12/22, padding 4 8)                 class "aibox-tooltip-xs"
      Placement (13 variants)                          nzTooltipPlacement; ng-zorro already puts the arrow 16px from the corner like Figma
    ng-zorro's preset colours (nzTooltipColor="red" ...) and custom colours keep working. The arrow shape is ng-zorro's: a 16x8 triangle on
-   22.x (Figma 16x8, 9x5 in the themed frame), a rotated rounded square on 18.x; only its colour is set here. The light tooltip gets the popover
+   20+ (Figma 16x8, 9x5 in the themed frame); on 18 / 19 (a rotated rounded square) it is redrawn the same way, see below. The light tooltip gets the popover
    shadow (Figma shows none, which would hide it on a white page). Not covered: "tooltip-bulletpoint" and "Tooltips Modal" (rich content). */
 .ant-tooltip {
   --_bg: var(--aibox-color-global-grayscale-1500);
@@ -1980,9 +1985,148 @@ a.ant-btn.aibox-btn-xs {
 .ant-tooltip.aibox-tooltip-light .ant-tooltip-inner {
   box-shadow: var(--aibox-shadow-base-popover);
 }
-.ant-tooltip .ant-tooltip-arrow,
+/* The arrow colour follows the tooltip. It is set on the root (inherited by the 20+ arrow), not on .ant-tooltip-arrow, so that ng-zorro's
+   preset rules (.ant-tooltip-red .ant-tooltip-arrow ...) still win for nzTooltipColor presets; 18 / 19 colour the preset on
+   .ant-tooltip-arrow-content::before, whose own variable is set below. */
+.ant-tooltip,
 .ant-tooltip .ant-tooltip-arrow-content {
   --antd-arrow-background-color: var(--_bg);
+}
+/* Arrow on ng-zorro-antd 18 / 19 (a rotated rounded square in a 22px box, 14.3px from the trigger): redrawn like 20+ and Figma, a rounded
+   16x8 triangle in a 16x16 box, 12px from the trigger, 16px from the corner on the top / bottom / left / right (Start / End) placements.
+   Only the shape and position change: the colour still comes from .ant-tooltip-arrow-content::before, so the preset colours keep working.
+   20+ have no .ant-tooltip-arrow-content and are not matched. */
+.ant-tooltip-placement-top:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-topLeft:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-topRight:has(.ant-tooltip-arrow-content) {
+  padding-bottom: var(--aibox-spacing-3);
+}
+.ant-tooltip-placement-bottom:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-bottomLeft:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-bottomRight:has(.ant-tooltip-arrow-content) {
+  padding-top: var(--aibox-spacing-3);
+}
+.ant-tooltip-placement-left:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-leftTop:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-leftBottom:has(.ant-tooltip-arrow-content) {
+  padding-right: var(--aibox-spacing-3);
+}
+.ant-tooltip-placement-right:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-rightTop:has(.ant-tooltip-arrow-content),
+.ant-tooltip-placement-rightBottom:has(.ant-tooltip-arrow-content) {
+  padding-left: var(--aibox-spacing-3);
+}
+.ant-tooltip .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+}
+.ant-tooltip .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content)::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 8.97056275px;
+  height: 8.97056275px;
+  margin: auto;
+  border-radius: 0 0 2px;
+  background: transparent;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  transform: translateY(50%) rotate(-135deg);
+  content: '';
+}
+.ant-tooltip .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) > .ant-tooltip-arrow-content {
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  width: 16px;
+  height: 8px;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+.ant-tooltip .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) > .ant-tooltip-arrow-content::before {
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 8px;
+  background-position: 0 0;
+  clip-path: path('M 0 8 A 4 4 0 0 0 2.82842712474619 6.82842712474619 L 6.585786437626905 3.0710678118654755 A 2 2 0 0 1 9.414213562373096 3.0710678118654755 L 13.17157287525381 6.82842712474619 A 4 4 0 0 0 16 8 Z');
+}
+.ant-tooltip-placement-top .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-topLeft .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-topRight .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: auto;
+  bottom: 0;
+  transform: translateY(100%) rotate(180deg);
+}
+.ant-tooltip-placement-top .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  left: 50%;
+  transform: translateX(-50%) translateY(100%) rotate(180deg);
+}
+.ant-tooltip-placement-topLeft .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  left: 16px;
+}
+.ant-tooltip-placement-topRight .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  right: 16px;
+  left: auto;
+}
+.ant-tooltip-placement-bottom .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-bottomRight .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: 0;
+  bottom: auto;
+  transform: translateY(-100%);
+}
+.ant-tooltip-placement-bottom .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+}
+.ant-tooltip-placement-bottomLeft .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  left: 16px;
+}
+.ant-tooltip-placement-bottomRight .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  right: 16px;
+  left: auto;
+}
+.ant-tooltip-placement-left .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-leftTop .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-leftBottom .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  right: 0;
+  left: auto;
+  transform: translateX(100%) rotate(90deg);
+}
+.ant-tooltip-placement-left .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: 50%;
+  transform: translateY(-50%) translateX(100%) rotate(90deg);
+}
+.ant-tooltip-placement-leftTop .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: 16px;
+}
+.ant-tooltip-placement-leftBottom .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: auto;
+  bottom: 16px;
+}
+.ant-tooltip-placement-right .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-rightTop .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content),
+.ant-tooltip-placement-rightBottom .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  left: 0;
+  right: auto;
+  transform: translateX(-100%) rotate(-90deg);
+}
+.ant-tooltip-placement-right .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: 50%;
+  transform: translateY(-50%) translateX(-100%) rotate(-90deg);
+}
+.ant-tooltip-placement-rightTop .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: 16px;
+}
+.ant-tooltip-placement-rightBottom .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
+  top: auto;
+  bottom: 16px;
 }
 
 /* Breadcrumb. Source: Figma "i-BOX Design System" > Breadcrumb page (1115:14146): breadcrumbs (1:11308) and breadcrumbs_lists (7762:53685).
