@@ -1,20 +1,22 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { CssPanel } from '../shared/css-panel';
 import { Demo } from '../shared/demo';
 import { PageHead } from '../shared/page-head';
 
-const IMPORTS = `import { NzUploadModule, NzUploadFile } from 'ng-zorro-antd/upload';
+const IMPORTS = `import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzUploadModule, NzUploadFile } from 'ng-zorro-antd/upload';
 
-@Component({ imports: [NzUploadModule], /* ... */ })`;
+@Component({ imports: [NzButtonModule, NzUploadModule], /* ... */ })`;
 
 const THUMB = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='72'><rect width='72' height='72' fill='%23a0a3ac'/><circle cx='24' cy='26' r='8' fill='%23f1f2f3'/><path d='M0 72l26-28 14 14 12-10 20 24z' fill='%236b707b'/></svg>";
 
 @Component({
   selector: 'app-upload-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NzIconModule, NzUploadModule, Demo, CssPanel, PageHead],
+  imports: [NzButtonModule, NzIconModule, NzUploadModule, Demo, CssPanel, PageHead],
   template: `
     <app-page-head title="Upload">
       <ng-container sub>Figma nodes <code>1516:11121</code> (drop zone), <code>1516:11080</code> (upload-block, หน้า Upload) · <code>nz-upload</code> แบบ drag และรายการไฟล์ loading / error / uploaded / thumbnail</ng-container>
@@ -68,6 +70,28 @@ const THUMB = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' w
       </div>
     </app-demo>
 
+    <app-demo title="Compact file box" description="aibox-upload-file บน nz-upload ที่ไม่มี drop zone + [nzFileList] (Figma loading compact / completed compact / completed with download / reupload / validation error) · กล่อง 480 x 69px กรอบ 1px (แดงเมื่อ error สูง 72px) · ปุ่มดาวน์โหลดด้วย showDownloadIcon · reupload = nz-upload ตัวที่สองเป็นปุ่ม texted ใน .aibox-upload-file-reupload · validation error with download = ไฟล์ done + aibox-upload-file-invalid" [code]="fileBox" [ts]="imports">
+      <div class="w480 stack">
+        <nz-upload class="aibox-upload-file" [nzBeforeUpload]="never" [nzShowUploadList]="listOptions" [nzFileList]="boxUploading"></nz-upload>
+        <nz-upload class="aibox-upload-file" [nzBeforeUpload]="never" [nzShowUploadList]="listOptions" [nzFileList]="boxDone"></nz-upload>
+        <nz-upload class="aibox-upload-file" [nzBeforeUpload]="never" [nzShowUploadList]="downloadOptions" [nzFileList]="boxDownload"></nz-upload>
+        <div class="aibox-upload-file-reupload">
+          <nz-upload class="aibox-upload-file" [nzBeforeUpload]="never" [nzShowUploadList]="listOptions" [nzFileList]="boxReupload"></nz-upload>
+          <nz-upload [nzBeforeUpload]="never" [nzShowUploadList]="false">
+            <button nz-button nzType="text" nzSize="small" class="aibox-upload-file-action"><nz-icon nzType="upload" />อัปโหลดใหม่</button>
+          </nz-upload>
+        </div>
+        <div>
+          <nz-upload class="aibox-upload-file" [nzBeforeUpload]="never" [nzShowUploadList]="listOptions" [nzFileList]="boxError"></nz-upload>
+          <div class="aibox-upload-error-text">{{ errorMessage }}</div>
+        </div>
+        <div>
+          <nz-upload class="aibox-upload-file aibox-upload-file-invalid" [nzBeforeUpload]="never" [nzShowUploadList]="downloadOptions" [nzFileList]="boxInvalid"></nz-upload>
+          <div class="aibox-upload-error-text">{{ errorMessage }}</div>
+        </div>
+      </div>
+    </app-demo>
+
     <app-demo title="File list" description="สถานะ uploading / error / done · nzListType=&quot;picture&quot; แสดง thumbnail" [code]="list" [ts]="imports">
       <div class="w380">
         <nz-upload nzListType="text" [nzFileList]="textList" [nzBeforeUpload]="never" [nzShowUploadList]="listOptions" />
@@ -91,6 +115,14 @@ export class UploadPage {
   protected readonly inlineUploading: NzUploadFile[] = [{ uid: '5', name: 'filename.png', status: 'uploading', percent: 40 }];
   protected readonly inlineError: NzUploadFile[] = [{ uid: '6', name: 'filename.png', status: 'error', message: 'ขนาดไฟล์ต้องไม่เกิน 10 MB' }];
   protected readonly errorMessage = 'ขนาดไฟล์ต้องไม่เกิน 10 MB';
+  protected readonly boxUploading: NzUploadFile[] = [{ uid: '8', name: 'filename.png', status: 'uploading', percent: 40 }];
+  // one array per nz-upload: ng-zorro stores showDownload / showPreview on the file objects, so sharing them mixes the options
+  protected readonly boxDone: NzUploadFile[] = [{ uid: '9', name: 'filename.png', status: 'done' }];
+  protected readonly boxDownload: NzUploadFile[] = [{ uid: '11', name: 'filename.png', status: 'done' }];
+  protected readonly boxReupload: NzUploadFile[] = [{ uid: '12', name: 'filename.png', status: 'done' }];
+  protected readonly boxInvalid: NzUploadFile[] = [{ uid: '13', name: 'filename.png', status: 'done' }];
+  protected readonly boxError: NzUploadFile[] = [{ uid: '10', name: 'filename.png', status: 'error', message: 'ขนาดไฟล์ต้องไม่เกิน 10 MB' }];
+  protected readonly downloadOptions = { showPreviewIcon: false, showDownloadIcon: true, showRemoveIcon: true };
   protected readonly inlineDone: NzUploadFile[] = [{ uid: '7', name: 'filename.png', status: 'done' }];
   protected readonly pictureList: NzUploadFile[] = [
     { uid: '4', name: 'filename.pdf', status: 'done', thumbUrl: THUMB },
@@ -112,6 +144,24 @@ export class UploadPage {
 @if (files[0]?.status === 'error') {
   <div class="aibox-upload-error-text">{{ files[0].message }}</div>
 }`;
+  protected readonly fileBox = `<!-- no drop zone: the file in a box. files: [{ uid, name, status: 'uploading' | 'done' | 'error' }] -->
+<nz-upload class="aibox-upload-file" [nzFileList]="files" [nzShowUploadList]="{ showPreviewIcon: false, showRemoveIcon: true, showDownloadIcon: true }" />
+
+<!-- reupload: the button is a second nz-upload next to the box (hide the download button) -->
+<div class="aibox-upload-file-reupload">
+  <nz-upload class="aibox-upload-file" [nzFileList]="files" [nzShowUploadList]="{ showPreviewIcon: false, showRemoveIcon: true, showDownloadIcon: false }" />
+  <nz-upload [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload">
+    <button nz-button nzType="text" nzSize="small" class="aibox-upload-file-action"><nz-icon nzType="upload" />อัปโหลดใหม่</button>
+  </nz-upload>
+</div>
+
+<!-- validation error: status "error" (no download) -->
+<nz-upload class="aibox-upload-file" [nzFileList]="[{ uid: '1', name: 'filename.png', status: 'error' }]" />
+<div class="aibox-upload-error-text">ขนาดไฟล์ต้องไม่เกิน 10 MB</div>
+
+<!-- validation error with download: ng-zorro shows download only on "done" files, so use a done file + aibox-upload-file-invalid -->
+<nz-upload class="aibox-upload-file aibox-upload-file-invalid" [nzFileList]="files" [nzShowUploadList]="{ showPreviewIcon: false, showRemoveIcon: true, showDownloadIcon: true }" />
+<div class="aibox-upload-error-text">ขนาดไฟล์ต้องไม่เกิน 10 MB</div>`;
   protected readonly states = `<nz-upload class="aibox-upload-compact" nzType="drag" [nzBeforeUpload]="beforeUpload">...</nz-upload>
 <nz-upload nzType="drag" nzDisabled [nzBeforeUpload]="beforeUpload">...</nz-upload>`;
   protected readonly list = `<nz-upload nzListType="text" [nzFileList]="files" [nzBeforeUpload]="beforeUpload" [nzShowUploadList]="{ showPreviewIcon: false, showDownloadIcon: false }" />

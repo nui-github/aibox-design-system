@@ -1,4 +1,4 @@
-/* aibox-design-system v0.46.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.47.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -3254,6 +3254,11 @@ nz-alert.aibox-alert-bar {
   width: 24px;
   height: 24px;
 }
+/* state=loading: Figma puts the spinner in a 32px box (the name starts at 40px); the file icons of the other states are in a 24px box */
+.aibox-upload-inline .ant-upload-list .ant-upload-list-item-uploading .ant-upload-text-icon {
+  width: 32px;
+  height: 32px;
+}
 /* The reason for an error. ng-zorro only shows file.message as a tooltip, so put this element under the nz-upload yourself (Figma: the same
    24px icon box and 8px gap as the file row, so the text lines up with the file name): <div class="aibox-upload-error-text">message</div> */
 .aibox-upload-error-text {
@@ -3275,6 +3280,83 @@ nz-alert.aibox-alert-bar {
   background-color: currentColor;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-.6 2.6h1.2v3.8h-1.2zm.6 5.1a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-.6 2.6h1.2v3.8h-1.2zm.6 5.1a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+/* Compact file box (Figma Upload states loading compact 3954:4149, completed compact 3889:800, completed with download 8066:6395, reupload 4190:855,
+   validation error 3919:1197 and with download 8070:6712). The drop zone is replaced by the file in a box: add aibox-upload-file to a nz-upload
+   WITHOUT a drop zone and give it [nzFileList] (status "uploading" / "done" / "error"): a 480px wide, 69px high box (72px on error) with a 1px solid
+   border/secondary (text/status/error/100 on error), radius 8 and the file row inside (10px from the edges): file icon in a 24px box (spinner in a
+   32px box), the name 16/26 medium in color/main (red on error), 8px between the items, and the 32px delete button; with
+   [nzShowUploadList]="{ showDownloadIcon: true, ... }" the download button (32px, 16px icon in text/icon/default) sits before the delete button.
+   The error reason goes under the box, 10px away: <div class="aibox-upload-error-text">. */
+/* a nz-upload without a drop zone still renders an empty select element above the list (22px high); it has nothing to click, so it is hidden */
+.aibox-upload-file {
+  display: block;
+}
+.aibox-upload-file > .ant-upload.ant-upload-select {
+  display: none;
+}
+.aibox-upload-file .ant-upload-list .ant-upload-list-item {
+  column-gap: var(--aibox-spacing-2);
+  height: 69px;
+  padding: 0 9px;
+  background: transparent;
+}
+.aibox-upload-file .ant-upload-list .ant-upload-list-item-uploading {
+  border-style: solid;
+  border-color: var(--aibox-color-border-secondary);
+}
+.aibox-upload-file .ant-upload-list .ant-upload-list-item-error {
+  height: 72px;
+  border-color: var(--aibox-color-text-status-error-100);
+}
+.aibox-upload-file .ant-upload-list .ant-upload-text-icon {
+  width: 24px;
+  height: 24px;
+}
+.aibox-upload-file .ant-upload-list .ant-upload-list-item-uploading .ant-upload-text-icon {
+  width: 32px;
+  height: 32px;
+}
+.aibox-upload-file .ant-upload-list .ant-upload-list-item-card-actions {
+  gap: var(--aibox-spacing-2);
+}
+.aibox-upload-file + .aibox-upload-error-text {
+  margin-top: 10px;
+}
+/* validation error with download: ng-zorro shows the download button only on a file with status "done", never on "error", so a file that was
+   uploaded but failed validation is a "done" file with this class (red box, icon, name and buttons like status "error"). */
+.aibox-upload-file-invalid .ant-upload-list .ant-upload-list-item {
+  height: 72px;
+  border-color: var(--aibox-color-text-status-error-100);
+}
+.aibox-upload-file-invalid .ant-upload-list .ant-upload-text-icon,
+.aibox-upload-file-invalid .ant-upload-list .ant-upload-list-item-name,
+.aibox-upload-file-invalid .ant-upload-list .ant-upload-list-item-card-actions-btn.ant-btn {
+  color: var(--aibox-color-text-status-error-100);
+}
+/* state=reupload: the "upload again" button is not part of ng-zorro's file row, so it is a second nz-upload (a texted small button) placed in a
+   wrapper with the file box; it sits 8px before the delete button (hide the download button in this state). */
+.aibox-upload-file-reupload {
+  position: relative;
+}
+.aibox-upload-file-action.ant-btn .anticon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  line-height: 1;
+}
+.aibox-upload-file-reupload > nz-upload:not(.aibox-upload-file) {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+}
+.aibox-upload-file-reupload .aibox-upload-file .ant-upload-list-item-name {
+  margin-right: 130px;
 }
 
 /* Date picker. Source: Figma "i-BOX Design System" > DatePicker page (1347:2036): date-picker 1347:23603 (sizes large / small; states default,
