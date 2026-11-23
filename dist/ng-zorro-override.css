@@ -2011,11 +2011,13 @@ a.ant-btn.aibox-btn-xs {
 .ant-tooltip-placement-leftTop:has(.ant-tooltip-arrow-content),
 .ant-tooltip-placement-leftBottom:has(.ant-tooltip-arrow-content) {
   padding-right: var(--aibox-spacing-3);
+  max-width: calc(250px + var(--aibox-spacing-3));
 }
 .ant-tooltip-placement-right:has(.ant-tooltip-arrow-content),
 .ant-tooltip-placement-rightTop:has(.ant-tooltip-arrow-content),
 .ant-tooltip-placement-rightBottom:has(.ant-tooltip-arrow-content) {
   padding-left: var(--aibox-spacing-3);
+  max-width: calc(250px + var(--aibox-spacing-3));
 }
 .ant-tooltip .ant-tooltip-arrow:has(> .ant-tooltip-arrow-content) {
   z-index: 1;
@@ -3428,6 +3430,13 @@ nz-alert.aibox-alert-bar {
   color: var(--aibox-color-text-disable);
 }
 /* calendar popup */
+/* ng-zorro-antd 18 / 19: the panel keeps a 1px bottom border and a range dropdown has 7.54px padding top and bottom (22 has neither), so the popup was 2px taller and a range popup 16px taller */
+.ant-picker-dropdown .ant-picker-panel {
+  border: 0;
+}
+.ant-picker-dropdown.ant-picker-dropdown-range {
+  padding: 0;
+}
 .ant-picker-dropdown .ant-picker-body {
   padding: var(--aibox-spacing-2) 18px;
 }
