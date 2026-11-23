@@ -4,6 +4,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { CssPanel } from '../shared/css-panel';
 import { Demo } from '../shared/demo';
+import { Note } from '../shared/note';
 import { PageHead } from '../shared/page-head';
 
 const IMPORTS = `import { FormsModule } from '@angular/forms';
@@ -18,12 +19,12 @@ export class Example {
 @Component({
   selector: 'app-select-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, NzIconModule, NzSelectModule, Demo, CssPanel, PageHead],
+  imports: [FormsModule, NzIconModule, NzSelectModule, Demo, CssPanel, Note, PageHead],
   template: `
     <app-page-head title="Select">
       <ng-container sub>Figma nodes <code>1592:6210</code> (select-search), <code>1:7137</code> (select), <code>1:7626</code> (content-list)</ng-container>
       <p class="note">ใส่ <code>[nzOptionHeightPx]="50"</code> เสมอ เพราะ option แถวละ 50px ใน Figma (ค่าเริ่มต้นของ ng-zorro คือ 32px)</p>
-      <p class="note">ng-zorro 18 / 19: <code>nzMode="multiple"</code> และ <code>"tags"</code> ไม่แสดงลูกศรโดยค่าเริ่มต้น ใส่ <code>[nzShowArrow]="true"</code> (ng-zorro 20 ขึ้นไปแสดงเอง; CSS แก้ให้ไม่ได้)</p>
+      <app-note>ng-zorro 18 / 19: <code>nzMode="multiple"</code> และ <code>"tags"</code> ไม่แสดงลูกศรโดยค่าเริ่มต้น ใส่ <code>[nzShowArrow]="true"</code> (ng-zorro 20 ขึ้นไปแสดงเอง; CSS แก้ให้ไม่ได้)</app-note>
     </app-page-head>
 
     <app-demo title="Sizes" description="default = Figma small (40px) · nzSize=&quot;large&quot; = 48px" [code]="sizes" [ts]="imports">
