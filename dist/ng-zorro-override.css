@@ -1,4 +1,4 @@
-/* aibox-design-system v0.47.4 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.47.5 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -54,7 +54,9 @@
   line-height: inherit;
 }
 
-/* Input - Figma Size=small (default ng-zorro size): 14/24, padding 4/8, box height 40 */
+/* Input - Figma Size=small (default ng-zorro size): 14/24, padding 4/8, box height 40
+   Figma measures the text start from the outer edge of the box (the 1px stroke is inside it): 8px (large 12px) from the left and from the
+   right. The 1px border is part of that, so the horizontal padding is 7px (11px). */
 .ant-input {
   min-height: var(--aibox-size-control-height);
   font-family: var(--aibox-font-family-heading-and-body);
@@ -65,7 +67,7 @@
   background-color: var(--aibox-color-bg-primary);
   border: 1px solid var(--aibox-color-state-form-default);
   border-radius: var(--aibox-radius-2);
-  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+  padding: var(--aibox-spacing-1) calc(var(--aibox-spacing-2) - 1px);
 }
 
 /* Input - Figma Size=large (nzSize="large"): 16/26, box height 48, padding 8/12 */
@@ -74,7 +76,7 @@
   line-height: var(--aibox-typography-body-body-lg-regular-line-height);
   letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
   min-height: var(--aibox-size-control-height-lg);
-  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+  padding: var(--aibox-spacing-2) calc(var(--aibox-spacing-3) - 1px);
 }
 
 .ant-input::placeholder {
@@ -135,7 +137,7 @@
 }
 /* ant sets the textarea line height and padding at element + class specificity, which beats the .ant-input rules above */
 textarea.ant-input {
-  padding: var(--aibox-spacing-2);
+  padding: calc(var(--aibox-spacing-2) - 1px);
   line-height: var(--aibox-typography-body-body-regular-line-height);
   resize: vertical;
 }
@@ -152,7 +154,7 @@ textarea.ant-input.ant-input-lg:not([rows]) {
   min-height: 96px;
 }
 textarea.ant-input.ant-input-lg {
-  padding: var(--aibox-spacing-3);
+  padding: calc(var(--aibox-spacing-3) - 1px);
   line-height: var(--aibox-typography-body-body-lg-regular-line-height);
 }
 textarea.ant-input[disabled],
@@ -173,7 +175,7 @@ textarea.ant-input.ant-input-disabled {
   box-sizing: border-box;
   align-items: center;
   min-height: var(--aibox-size-control-height);
-  padding: var(--aibox-spacing-1) var(--aibox-spacing-2);
+  padding: var(--aibox-spacing-1) calc(var(--aibox-spacing-2) - 1px);
   border: 1px solid var(--aibox-color-state-form-default);
   border-radius: var(--aibox-radius-2);
   background-color: var(--aibox-color-bg-primary);
@@ -185,7 +187,7 @@ textarea.ant-input.ant-input-disabled {
 }
 .ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
   min-height: var(--aibox-size-control-height-lg);
-  padding: var(--aibox-spacing-2) var(--aibox-spacing-3);
+  padding: var(--aibox-spacing-2) calc(var(--aibox-spacing-3) - 1px);
   font-size: var(--aibox-typography-body-body-lg-regular-font-size);
   line-height: var(--aibox-typography-body-body-lg-regular-line-height);
   letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
@@ -246,10 +248,10 @@ textarea.ant-input.ant-input-disabled {
   display: flex;
   align-items: center;
 }
-/* Figma Password: the eye is a 16px glyph in a 20px icon box that ends 12px from the box edge, so the glyph is 14px from the edge (10px in
-   the small box); the 1px border plus the 12px (8px) padding put it 13px (9px) away. */
-.ant-input-affix-wrapper .ant-input-suffix:has(.anticon-eye, .anticon-eye-invisible) {
-  margin-inline-end: 1px;
+/* Figma Password and Search: the eye / clear icon is a 16px glyph in a 20px icon box that ends 12px (small: 8px) from the box edge, so the
+   glyph is 14px (10px) from the edge; the border and padding put it 12px (8px) away. */
+.ant-input-affix-wrapper .ant-input-suffix:has(.anticon-eye, .anticon-eye-invisible, .anticon-close, .anticon-close-circle, .ant-input-clear-icon) {
+  margin-inline-end: 2px;
 }
 .ant-input-affix-wrapper .ant-input-suffix .anticon-eye,
 .ant-input-affix-wrapper .ant-input-suffix .anticon-eye-invisible,
@@ -290,6 +292,11 @@ textarea.ant-input.ant-input-disabled {
 }
 .ant-input-affix-wrapper.aibox-search .ant-input-prefix .anticon {
   font-size: 16px;
+}
+/* Figma search: the icon is a 20px box (16px glyph) at 8px (large 12px) and the text starts 8px after the box, at 36px (large 40px) */
+.ant-input-affix-wrapper.aibox-search .ant-input-prefix {
+  margin-inline-start: 2px;
+  margin-inline-end: 10px;
 }
 
 /* Assistive text (nzExtra) and the error line (nzErrorTip) under a field */
@@ -338,7 +345,7 @@ textarea.ant-input.ant-input-disabled {
 }
 .ant-input-number .ant-input-number-input {
   height: calc(var(--aibox-size-control-height) - 2px);
-  padding: 0 var(--aibox-spacing-2);
+  padding: 0 calc(var(--aibox-spacing-2) - 1px);
   font-size: inherit;
   line-height: inherit;
   letter-spacing: inherit;
@@ -350,7 +357,7 @@ textarea.ant-input.ant-input-disabled {
 }
 .ant-input-number.ant-input-number-lg .ant-input-number-input {
   height: calc(var(--aibox-size-control-height-lg) - 2px);
-  padding: 0 var(--aibox-spacing-3);
+  padding: 0 calc(var(--aibox-spacing-3) - 1px);
 }
 .ant-input-number .ant-input-number-input::placeholder {
   color: var(--aibox-color-text-placeholder);
