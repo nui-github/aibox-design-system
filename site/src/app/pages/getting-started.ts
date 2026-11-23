@@ -158,7 +158,7 @@ export class GettingStarted {
     ['aibox-scrollbar', 'element ที่เลื่อนได้ (overflow: auto)', 'scrollbar 4px สี i-BOX (Chromium / Safari; Firefox ได้แบบ thin สีเดียวกัน)'],
     ['aibox-btn-nopad', 'nz-button', 'ไม่มี padding ซ้าย-ขวา (texted "without padding" ที่ใช้ในแถวของตาราง)'],
     ['aibox-card-menu', 'nz-card', 'การ์ดทางลัดเมนู: ไอคอน + ข้อความ จัดกลางการ์ด'],
-    ['aibox-upload-compact', 'nz-upload (nzType="drag")', 'drop zone ความสูง 100px (ไอคอนกับหัวข้ออยู่แถวเดียวกัน)'],
+    ['aibox-upload-compact', 'nz-upload (nzType="drag")', 'drop zone ความสูง 100px (Figma reduce-height): ไอคอนติดหัวข้อในแถวเดียวกัน (ไม่มีช่องว่าง) อยู่กึ่งกลางกล่อง คำอธิบายอยู่ใต้แถวนั้น'],
     ['aibox-search', 'nz-input-wrapper (22) / nz-input-group (18) with a search prefix icon', 'ช่องค้นหา: กล่อง 40px (nzSize="large" = 48px) ไอคอน 16px'],
     ['aibox-form-small', 'nz-form-item', 'บังคับ label, ข้อความช่วย และตัวนับของ textarea เป็น 12/22 (ค่าเริ่มต้นของช่องขนาดปกติอยู่แล้ว)'],
     ['aibox-form-large', 'nz-form-item', 'บังคับ label, ข้อความช่วย และตัวนับของ textarea เป็น 14/24 (ปกติเป็นเองเมื่อมีช่อง nzSize="large")'],

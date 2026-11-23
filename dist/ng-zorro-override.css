@@ -1,4 +1,4 @@
-/* aibox-design-system v0.45.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.45.1 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -3191,7 +3191,10 @@ nz-alert.aibox-alert-bar {
 .ant-upload.ant-upload-drag.ant-upload-disabled p.ant-upload-hint {
   color: var(--aibox-color-text-icon-default);
 }
-/* drop zone, state=reduce-height (class aibox-upload-compact on nz-upload): 100px (98 + the 1px borders), the 20px icon and the title on one row, hint below */
+/* drop zone, state=reduce-height (class aibox-upload-compact on nz-upload; Figma 5497:9444): 100px (98 + the 1px borders), the icon and the title on one
+   row with no gap (the 20px glyph sits in a 32px box, so it is 6px from the text), the hint centred below. The side columns are 1fr so the row stays
+   centred and its columns stay as wide as their content; with auto columns the wide hint spread its extra width over the icon and title columns
+   (the icon ended up ~130px from the title). */
 .aibox-upload-compact .ant-upload.ant-upload-drag .ant-upload-btn {
   display: flex;
   align-items: center;
@@ -3201,14 +3204,18 @@ nz-alert.aibox-alert-bar {
 }
 .aibox-upload-compact .ant-upload.ant-upload-drag .ant-upload-drag-container {
   display: grid;
-  grid-template-columns: auto auto;
-  column-gap: var(--aibox-spacing-2);
-  justify-content: center;
+  grid-template-columns: 1fr auto auto 1fr;
+  column-gap: 0;
   align-items: center;
+  width: 100%;
 }
 .aibox-upload-compact .ant-upload.ant-upload-drag p.ant-upload-drag-icon {
+  grid-column: 2;
   margin: 0;
   padding: 0;
+}
+.aibox-upload-compact .ant-upload.ant-upload-drag p.ant-upload-text {
+  grid-column: 3;
 }
 .aibox-upload-compact .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon.anticon {
   width: 32px;
