@@ -1,4 +1,4 @@
-/* aibox-design-system v0.47.3 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.47.4 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -245,6 +245,11 @@ textarea.ant-input.ant-input-disabled {
 .ant-input-affix-wrapper .ant-input-password-icon {
   display: flex;
   align-items: center;
+}
+/* Figma Password: the eye is a 16px glyph in a 20px icon box that ends 12px from the box edge, so the glyph is 14px from the edge (10px in
+   the small box); the 1px border plus the 12px (8px) padding put it 13px (9px) away. */
+.ant-input-affix-wrapper .ant-input-suffix:has(.anticon-eye, .anticon-eye-invisible) {
+  margin-inline-end: 1px;
 }
 .ant-input-affix-wrapper .ant-input-suffix .anticon-eye,
 .ant-input-affix-wrapper .ant-input-suffix .anticon-eye-invisible,
