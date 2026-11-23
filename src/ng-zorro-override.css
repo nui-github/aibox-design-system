@@ -3726,6 +3726,8 @@ nz-alert.aibox-alert-bar {
 .ant-cascader-dropdown .ant-cascader-menu {
   height: auto;
   max-height: 300px;
+  /* ng-zorro-antd 18 / 19: margin -4px 0 with padding 4px 0; with the padding reset the -4px margin cut 4px off the first and the last row */
+  margin: 0;
   padding: 0;
 }
 .ant-cascader-dropdown .ant-cascader-menu:not(:last-child) {
