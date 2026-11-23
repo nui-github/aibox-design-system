@@ -239,6 +239,12 @@ textarea.ant-input.ant-input-disabled {
   color: var(--aibox-color-state-gray-g-6-default);
   font-size: 16px;
 }
+/* ng-zorro-antd 22 wraps the eye in span.ant-input-password-icon (line-height 26px) and the inline icon sits on the text baseline, 1px above the
+   centre of the box. 18 / 19 (nz-input-group + nzSuffix) have no wrapper and are centred. Figma: the 16px glyph is centred in the large box. */
+.ant-input-affix-wrapper .ant-input-password-icon {
+  display: flex;
+  align-items: center;
+}
 .ant-input-affix-wrapper .ant-input-suffix .anticon-eye,
 .ant-input-affix-wrapper .ant-input-suffix .anticon-eye-invisible,
 .ant-input-affix-wrapper .ant-input-suffix .anticon-close,
