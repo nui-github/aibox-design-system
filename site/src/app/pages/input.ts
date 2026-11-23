@@ -23,6 +23,7 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
   template: `
     <app-page-head title="Input">
       <ng-container sub>Figma nodes <code>1:7052</code> (textfield), <code>1:7232</code> (textarea), <code>1:7587</code> (search), <code>6581:98500</code> (password), <code>1:7499</code> (assistive text) · <code>nz-input</code> และ form label ขนาดเริ่มต้น = Figma small (กล่องสูง 40px), <code>nzSize="large"</code> = Figma large (48px)</ng-container>
+      <p class="note">ng-zorro 18 / 19: ไม่มี <code>nz-input-password</code> และ <code>nzAllowClear</code> ต้องทำไอคอนตาเองด้วย <code>nz-input-group</code> + <code>nzSuffix</code> (override จัดรูปให้เฉพาะไอคอนตา ไม่ได้จัดปุ่มล้างแบบ × ให้ บน 18 / 19) ส่วน demo ในหน้านี้ใช้ <code>nz-input-password</code> และ <code>nz-input-wrapper</code> ของ ng-zorro รุ่นใหม่ (รันบน 19 ไม่ได้)</p>
     </app-page-head>
 
     <app-demo title="Sizes" [code]="sizes" [ts]="imports">
