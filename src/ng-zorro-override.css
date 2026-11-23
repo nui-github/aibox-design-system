@@ -2593,6 +2593,11 @@ nz-alert.aibox-alert-bar {
    Panel: bg/primary, radius 8, shadow popover, no padding; rows 14/24 with 32px side padding, first row 16px from the top
    and last row 16px from the bottom; section headers 12/22 medium, 16px side padding, grey fill, text gray g-3.
    Not covered: submenus inside the panel (nz-submenu), icons in rows, danger/disabled rows, the plain popover. */
+/* The panel hugs its rows (Figma popover-submenu: 214 / 265px, set by the longest row). ng-zorro-antd 18 and 19 give .ant-dropdown
+   width: 100% of the overlay, which is as wide as the trigger button (a 320px button made a 320px menu); 20+ no longer do. */
+.ant-dropdown {
+  width: auto;
+}
 .ant-dropdown .ant-dropdown-menu {
   padding: 0;
   overflow: hidden;
