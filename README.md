@@ -193,7 +193,7 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 ### Tree (Figma page Tree Select `4230:2618`, tree-selection-list `9718:69790`, base `4267:9343`)
 
-`nz-tree` (also the list in `nz-tree-select`): 42px rows (padding 8 16 8 8) that touch, 42px apart on every ng-zorro version (21+ adds a 4px row margin, reset to 0), 20px caret box + 8px gap + checkbox (17.5px, drawn like the Checkbox override) + 8px gap + 16/26 title, 24px indent per level (32px for the first, so level 2 starts at 40px). Row hover fills the whole row with `bg/tertiary`; the selected node is `color/main` medium (both taken from the Folder-list frames). Register `CaretDownFill` and `CaretRightFill`. Not covered: the Folder-list pattern, search highlight, draggable / line / block-node trees.
+`nz-tree` and the list in `nz-tree-select` (the dropdown list uses the same rows since v0.48.0; before it kept ng-zorro's 24 / 28px rows): 42px rows (padding 8 16 8 8) that touch, 42px apart on every ng-zorro version (21+ adds a 4px row margin, reset to 0), 20px caret box + 8px gap + checkbox (a 24px frame holding the 17.5px box, drawn like the Checkbox override) + 8px gap + 16/26 title (text starts at 68px with a checkbox, 36px without), 24px indent per level (32px for the first, so level 2 starts at 40px). Row hover fills the whole row with `bg/tertiary`; the selected node is `color/main` medium (both taken from the Folder-list frames). Register `CaretDownFill` and `CaretRightFill`. Not covered: the Folder-list pattern, search highlight, draggable / line / block-node trees.
 
 ### Cascader (Figma page Cascader `4268:9357`, dropdown `4268:12892`)
 

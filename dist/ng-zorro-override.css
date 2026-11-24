@@ -1,4 +1,4 @@
-/* aibox-design-system v0.47.7 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.48.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -3624,7 +3624,7 @@ nz-alert.aibox-alert-bar {
      checkbox                            nzCheckable (the checkbox box is drawn like the Checkbox override)
      state hovered                       row hover: bg/tertiary over the whole row
      state selected                      the selected node: text in color/main, medium weight
-   Row: padding 8 16 8 8 (height 42), caret 16px box then 8px gap, checkbox 17.5px then 8px gap, title 16/26 text/primary. Rows touch
+   Row: padding 8 16 8 8 (height 42), caret 20px box then 8px gap, checkbox frame 24px (17.5px box centred) then 8px gap, title 16/26 text/primary. Rows touch
    (42px apart): ng-zorro-antd 21+ adds margin-bottom 4px to every row (46px apart), 18 - 20 do not, so the margin is reset to 0 for all versions.
    The hover and selected looks come from the Folder-list frames (50px rows); they are applied to the checkbox tree as well.
    Not covered: the search state (highlighted match), draggable / line / block-node trees, the Folder-list pattern. */
@@ -3635,25 +3635,31 @@ nz-alert.aibox-alert-bar {
   font-size: var(--aibox-typography-body-body-lg-regular-font-size);
   line-height: var(--aibox-typography-body-body-lg-regular-line-height);
 }
-.ant-tree .ant-tree-treenode {
+.ant-tree .ant-tree-treenode,
+.ant-select-tree .ant-select-tree-treenode {
   align-items: center;
   margin: 0;
   padding: var(--aibox-spacing-2) var(--aibox-spacing-4) var(--aibox-spacing-2) var(--aibox-spacing-2);
   background: var(--aibox-color-bg-primary);
 }
-.ant-tree .ant-tree-treenode:hover {
+.ant-tree .ant-tree-treenode:hover,
+.ant-select-tree .ant-select-tree-treenode:hover {
   background: var(--aibox-color-bg-tertiary);
 }
-.ant-tree .ant-tree-indent {
+.ant-tree .ant-tree-indent,
+.ant-select-tree .ant-select-tree-indent {
   align-self: stretch;
 }
-.ant-tree .ant-tree-indent-unit {
+.ant-tree .ant-tree-indent-unit,
+.ant-select-tree .ant-select-tree-indent-unit {
   width: 24px;
 }
-.ant-tree .ant-tree-indent-unit:first-child {
+.ant-tree .ant-tree-indent-unit:first-child,
+.ant-select-tree .ant-select-tree-indent-unit:first-child {
   width: 32px;
 }
-.ant-tree .ant-tree-switcher {
+.ant-tree .ant-tree-switcher,
+.ant-select-tree .ant-select-tree-switcher {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3663,11 +3669,13 @@ nz-alert.aibox-alert-bar {
   margin: 0 var(--aibox-spacing-2) 0 0;
   line-height: 26px;
 }
-.ant-tree .ant-tree-switcher .ant-tree-switcher-icon {
+.ant-tree .ant-tree-switcher .ant-tree-switcher-icon,
+.ant-select-tree .ant-select-tree-switcher .ant-select-tree-switcher-icon {
   color: var(--aibox-color-text-primary);
   font-size: 12px;
 }
-.ant-tree .ant-tree-node-content-wrapper {
+.ant-tree .ant-tree-node-content-wrapper,
+.ant-select-tree .ant-select-tree-node-content-wrapper {
   min-height: 26px;
   padding: 0;
   background: transparent;
@@ -3675,20 +3683,26 @@ nz-alert.aibox-alert-bar {
   line-height: 26px;
 }
 .ant-tree .ant-tree-node-content-wrapper:hover,
-.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+.ant-select-tree .ant-select-tree-node-content-wrapper:hover,
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
+.ant-select-tree .ant-select-tree-node-content-wrapper.ant-select-tree-node-selected {
   background: transparent;
 }
-.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
+.ant-select-tree .ant-select-tree-node-content-wrapper.ant-select-tree-node-selected {
   color: var(--aibox-color-text-main);
   font-weight: var(--aibox-typography-body-body-lg-bold-font-weight);
   letter-spacing: var(--aibox-typography-body-body-lg-bold-letter-spacing);
 }
 /* checkbox: same shape as the Checkbox override (box 17.5, ring 1.875, radius 2.5) */
-.ant-tree .ant-tree-checkbox {
+.ant-tree .ant-tree-checkbox,
+.ant-select-tree .ant-select-tree-checkbox {
   top: 0;
-  margin: 0 var(--aibox-spacing-2) 0 0;
+  /* Figma: a 24px checkbox frame holding the 17.5px box (3.25px inset each side), then 8px to the title */
+  margin: 0 calc(var(--aibox-spacing-2) + 3.25px) 0 3.25px;
 }
-.ant-tree .ant-tree-checkbox .ant-tree-checkbox-inner {
+.ant-tree .ant-tree-checkbox .ant-tree-checkbox-inner,
+.ant-select-tree .ant-select-tree-checkbox .ant-select-tree-checkbox-inner {
   --_ring: var(--aibox-color-text-icon-default);
   box-sizing: border-box;
   width: 17.5px;
@@ -3699,14 +3713,18 @@ nz-alert.aibox-alert-bar {
   box-shadow: inset 0 0 0 1.875px var(--_ring);
 }
 .ant-tree .ant-tree-checkbox:hover .ant-tree-checkbox-inner,
-.ant-tree .ant-tree-checkbox-input:focus + .ant-tree-checkbox-inner {
+.ant-select-tree .ant-select-tree-checkbox:hover .ant-select-tree-checkbox-inner,
+.ant-tree .ant-tree-checkbox-input:focus + .ant-tree-checkbox-inner,
+.ant-select-tree .ant-select-tree-checkbox-input:focus + .ant-select-tree-checkbox-inner {
   --_ring: var(--aibox-color-state-form-hover);
 }
-.ant-tree .ant-tree-checkbox.ant-tree-checkbox-checked .ant-tree-checkbox-inner {
+.ant-tree .ant-tree-checkbox.ant-tree-checkbox-checked .ant-tree-checkbox-inner,
+.ant-select-tree .ant-select-tree-checkbox.ant-select-tree-checkbox-checked .ant-select-tree-checkbox-inner {
   --_ring: var(--aibox-color-state-form-active);
   background-color: var(--aibox-color-state-form-active);
 }
-.ant-tree .ant-tree-checkbox .ant-tree-checkbox-inner::after {
+.ant-tree .ant-tree-checkbox .ant-tree-checkbox-inner::after,
+.ant-select-tree .ant-select-tree-checkbox .ant-select-tree-checkbox-inner::after {
   content: ' ';
   position: absolute;
   top: 0;
@@ -3720,12 +3738,14 @@ nz-alert.aibox-alert-bar {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M27.5 52 42 66 73.5 34.5' fill='none' stroke='black' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M27.5 52 42 66 73.5 34.5' fill='none' stroke='black' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
-.ant-tree .ant-tree-checkbox.ant-tree-checkbox-checked .ant-tree-checkbox-inner::after {
+.ant-tree .ant-tree-checkbox.ant-tree-checkbox-checked .ant-tree-checkbox-inner::after,
+.ant-select-tree .ant-select-tree-checkbox.ant-select-tree-checkbox-checked .ant-select-tree-checkbox-inner::after {
   opacity: 1;
   border: 0;
   transform: none;
 }
-.ant-tree .ant-tree-checkbox.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner::after {
+.ant-tree .ant-tree-checkbox.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner::after,
+.ant-select-tree .ant-select-tree-checkbox.ant-select-tree-checkbox-indeterminate .ant-select-tree-checkbox-inner::after {
   top: 50%;
   left: 50%;
   width: 8px;
