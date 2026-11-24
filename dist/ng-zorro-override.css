@@ -1,4 +1,4 @@
-/* aibox-design-system v0.47.6 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.47.7 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1027,6 +1027,11 @@ a.ant-btn.aibox-btn-xs {
 .ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-placeholder {
   left: var(--_px);
   padding-right: 0;
+}
+/* ng-zorro-antd 20+ wraps the tags and the placeholder in span.ant-select-selection-wrap (position: relative), which already starts after the
+   selector padding, so the placeholder was 8px (large 12px) further right than on 18 / 19 and than the text of a single Select (Figma: 8px / 12px). */
+.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple .ant-select-selection-wrap .ant-select-selection-placeholder {
+  left: 0;
 }
 /* Disabled tags have no Figma state: white tag, disabled text */
 .ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple.ant-select-disabled .ant-select-selection-item {
