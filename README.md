@@ -205,6 +205,10 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 `nz-card`: 1px `border/primary`, radius 8, shadow `section-sm`, body padding 24 16. `aibox-card-menu` on `nz-card` (with an icon and a `.title` inside) is the Card Menu shortcut tile: no border, white, shadow `--aibox-card-menu-shadow`, 164x154, 20px icon in `text/icon-default`, 16/26 medium `text/secondary` title. Head, actions, grid and meta stay ng-zorro's (the Figma Card page has no spec for them). Not covered: the file / E-Form selection cards (product components).
 
+### Collapse (Figma Collapse page `1105:1930`)
+
+`nz-collapse`: Basic (1px border, radius 8), Borderless (`[nzBordered]="false"`) and Ghost (`nzGhost`); head padding 12 16 with a 12px gap, title 14/24 (large 16/26), expanded = title and chevron in `--aibox-color-main`, collapsed = `text/tertiary`; content padding 16. `nzSize="small"` / `"large"` on ng-zorro 20+, the classes `aibox-collapse-small` / `aibox-collapse-large` on 18 / 19 (no `nzSize` there); `nzExpandIconPosition="end"` puts the chevron on the right; a disabled panel (`[nzDisabled]`, or `nzCollapsible="disabled"` which 22 requires) is `bg/disable` with `text/disable`. Not covered: the Sub Navigation list (`1108:6694`), dark theme.
+
 ### Menu (Figma page Navigation `154:2044`, vertical menu `154:3272`)
 
 `nz-menu` with `nzMode="inline"` (240px): group rows (`nz-submenu` title, padding 16, 14/24 `text/tertiary`, 1px bottom line and right line in `text/white/secondary`), open row (`nzOpen`) in `color/main` medium with a down chevron (closed = right chevron), sub items 208x32 (padding 4 16, radius 4, 8px apart, group bottom padding 24): hover = `component/bg/bg-active` + `color/main` medium, selected (`nzSelected`) = `bg/main` + white medium. ng-zorro sets `padding-inline-start` inline per level, so those two rules use `!important`. Not covered: collapsed menu, row icons, horizontal / popup menus, dark theme, the Sidebar / Header / Menu Product app-shell frames of the same page.

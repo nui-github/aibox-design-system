@@ -35,5 +35,6 @@ export const COMPONENTS: NavItem[] = [
   { path: 'cascader', title: 'Cascader', figma: '4268:12892, 4268:13151' },
   { path: 'card', title: 'Card', figma: '4065:7590, 1295:3294' },
   { path: 'menu', title: 'Menu', figma: '154:3272' },
+  { path: 'collapse', title: 'Collapse', figma: '1105:2230, 1105:2251' },
   { path: 'badge', title: 'Badge (notification)', figma: '1175:641' },
 ];
