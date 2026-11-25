@@ -213,6 +213,10 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 `nz-steps`: the horizontal indicator is `nzSize="small" nzLabelPlacement="vertical"` (24px icons, a 3px line 4px from each icon, title 16/26 and description 14/24 centred under the icon, description max 140px) and the vertical indicator is `nzSize="small" nzDirection="vertical"` (icon left, 16px gap, rows 112px apart, 1px line). Without `nzSize` the icon is 32px (Basic Default); `nzProgressDot` gives the 8px dot (10px for the current step). Icons: finish = `bg/tertiary` with a `bg/main` check, process = `bg/main` with a white number, wait = `bg/disable`, error = status error with a white cross (title and description turn red too). The line is `bg/main` after a finished step and `bg/secondary` otherwise. Not covered: hovered state, the progress ring (`nzPercentage`), navigation type, dark theme.
 
+### Spin (Figma Spin page `7075:39`)
+
+`nz-spin`: standalone `<nz-spin nzSimple nzTip="Loading">` (spinner 14 / 20 / 32px for `nzSize` small / default / large, tip 14/22, padding 16, gap 8, centred: boxes 76 / 82 / 94px high) and `nz-spin` around content (ng-zorro's overlay, recoloured). The Figma Spin page is stock Ant Design (colour `#1677ff`, font SF Pro Text, not themed): the sizes are kept, the spinner and tip use `--aibox-color-main` and the Ai-BOX font. Not covered: `nzIndicator`, dark theme.
+
 ### Menu (Figma page Navigation `154:2044`, vertical menu `154:3272`)
 
 `nz-menu` with `nzMode="inline"` (240px): group rows (`nz-submenu` title, padding 16, 14/24 `text/tertiary`, 1px bottom line and right line in `text/white/secondary`), open row (`nzOpen`) in `color/main` medium with a down chevron (closed = right chevron), sub items 208x32 (padding 4 16, radius 4, 8px apart, group bottom padding 24): hover = `component/bg/bg-active` + `color/main` medium, selected (`nzSelected`) = `bg/main` + white medium. ng-zorro sets `padding-inline-start` inline per level, so those two rules use `!important`. Not covered: collapsed menu, row icons, horizontal / popup menus, dark theme, the Sidebar / Header / Menu Product app-shell frames of the same page.
