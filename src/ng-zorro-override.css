@@ -4163,3 +4163,189 @@ nz-alert.aibox-alert-bar {
   color: var(--aibox-color-text-disable);
   cursor: not-allowed;
 }
+
+/* Steps. Source: Figma "i-BOX Design System" > Steps page (1504:2619): steps-indicator-horizontal 1504:4345 and steps-indicator-vertical 8528:8912
+   (active = no / step1 to step5 / all done / step2 error / step3 error), Steps Item / Dot Horizontal 1504:3960, Dot Vertical 8526:7539, Progress Icon
+   1505:813 (Basic Default 32 / Basic Small 24 / Dot 8, process 10) and Tail 1505:575 (horizontal / vertical, style default 1px / bold 3px, active / wait).
+   Mapping (nz-steps):
+     steps-indicator-horizontal   <nz-steps nzSize="small" nzLabelPlacement="vertical"> (24px icon, a line on each side, title and description centred under it)
+     steps-indicator-vertical     <nz-steps nzSize="small" nzDirection="vertical"> (icon left, 16px gap, rows 112px apart, 1px line)
+     Progress Icon Basic Default  nz-steps without nzSize (32px); Basic Small = nzSize="small"; Dot = nzProgressDot
+     status finish / process / wait / error   nz-step status (error with nzStatus="error")
+   Icon: finish = bg/tertiary with a 12px check in bg/main, process = bg/main with a white 14/24 number, wait = bg/disable with a text/secondary number, error = status
+   error with a white cross. Title 16/26 text/primary (wait: text/tertiary, error: status error), description 14/24 text/tertiary, max 140px, gap 2px under the title.
+   Line: 4px away from each icon, bg/main after a finished step and bg/secondary after the others (3px for the horizontal indicator, 1px for the vertical one).
+   Not covered: the hovered state, the progress ring (nzPercentage), the navigation type, the clickable (nzStatus on hover) variants, the error-line colour
+   split in the Figma error indicator (one colour per line is used), and dark theme. The line colours come from the Figma variables, not from the SVG itself. */
+.ant-steps {
+  --_icon: 32px;
+  font-family: var(--aibox-font-family-heading-and-body);
+}
+.ant-steps.ant-steps-small {
+  --_icon: 24px;
+}
+.ant-steps:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--_icon);
+  height: var(--_icon);
+  margin: 0;
+  border: 0;
+  border-radius: var(--aibox-radius-9);
+  background: var(--aibox-color-bg-disable);
+  color: var(--aibox-color-text-secondary);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-steps:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon {
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.ant-steps:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon .anticon {
+  display: inline-flex;
+  font-size: var(--aibox-spacing-3);
+}
+.ant-steps > .ant-steps-item.ant-steps-item-finish:not(.ant-steps-item-error) > .ant-steps-item-container > .ant-steps-item-icon {
+  background: var(--aibox-color-bg-tertiary);
+  color: var(--aibox-color-bg-main);
+}
+.ant-steps > .ant-steps-item.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
+  background: var(--aibox-color-bg-main);
+  color: var(--aibox-color-text-white-primary);
+}
+.ant-steps > .ant-steps-item.ant-steps-item-error > .ant-steps-item-container > .ant-steps-item-icon {
+  background: var(--aibox-color-text-status-error-100);
+  color: var(--aibox-color-bg-primary);
+}
+.ant-steps > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  padding: 0;
+  color: var(--aibox-color-text-tertiary);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  font-weight: var(--aibox-typography-body-body-lg-regular-font-weight);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-steps > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+  display: none;
+}
+.ant-steps > .ant-steps-item:is(.ant-steps-item-finish, .ant-steps-item-process) > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  color: var(--aibox-color-text-primary);
+}
+.ant-steps > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-description {
+  margin-top: var(--aibox-spacing-0);
+  color: var(--aibox-color-text-tertiary);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
+}
+.ant-steps > .ant-steps-item.ant-steps-item-error > .ant-steps-item-container > .ant-steps-item-content > :is(.ant-steps-item-title, .ant-steps-item-description) {
+  color: var(--aibox-color-text-status-error-100);
+}
+.ant-steps.ant-steps-horizontal.ant-steps-label-horizontal:not(.ant-steps-label-vertical, .ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-icon {
+  margin-inline-end: var(--aibox-spacing-2);
+}
+/* the line: bg/main after a finished step, bg/secondary after the others (the two Figma layouts below draw it on the tail itself, the
+   other layouts keep ng-zorro's own ::after line) */
+.ant-steps > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background: var(--aibox-color-bg-secondary);
+}
+.ant-steps > .ant-steps-item.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background: var(--aibox-color-bg-main);
+}
+.ant-steps:is(.ant-steps-vertical, .ant-steps-label-vertical):not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail {
+  background: var(--aibox-color-bg-secondary);
+}
+.ant-steps:is(.ant-steps-vertical, .ant-steps-label-vertical):not(.ant-steps-dot) > .ant-steps-item.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail {
+  background: var(--aibox-color-bg-main);
+}
+.ant-steps:is(.ant-steps-vertical, .ant-steps-label-vertical):not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail::after {
+  display: none;
+}
+.ant-steps > .ant-steps-item:last-child > .ant-steps-item-container > .ant-steps-item-tail {
+  display: none;
+}
+/* horizontal indicator: label under the icon, a 3px line 4px from each icon */
+.ant-steps.ant-steps-horizontal.ant-steps-label-vertical:not(.ant-steps-dot) > .ant-steps-item {
+  flex: 1;
+  padding: 0;
+  overflow: visible;
+}
+.ant-steps.ant-steps-horizontal.ant-steps-label-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--aibox-spacing-2);
+  position: static;
+}
+.ant-steps.ant-steps-horizontal.ant-steps-label-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+.ant-steps.ant-steps-horizontal.ant-steps-label-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-description {
+  max-width: 140px;
+}
+.ant-steps.ant-steps-horizontal.ant-steps-label-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail {
+  top: calc(var(--_icon) / 2 - 1.5px);
+  right: calc(var(--_icon) / 2 + var(--aibox-spacing-1) - 50%);
+  left: calc(50% + var(--_icon) / 2 + var(--aibox-spacing-1));
+  width: auto;
+  height: 3px;
+  margin: 0;
+  padding: 0;
+}
+/* vertical indicator: icon left, text 16px away, rows 112px apart, 1px line */
+.ant-steps.ant-steps-vertical:not(.ant-steps-dot) > .ant-steps-item {
+  overflow: visible;
+}
+.ant-steps.ant-steps-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container {
+  display: flex;
+  align-items: center;
+  gap: var(--aibox-spacing-4);
+  min-height: 112px;
+  position: static;
+}
+.ant-steps.ant-steps-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-content {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+}
+.ant-steps.ant-steps-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail {
+  top: calc(50% + var(--_icon) / 2 + var(--aibox-spacing-1));
+  bottom: calc(var(--_icon) / 2 + var(--aibox-spacing-1) - 50%);
+  left: calc(var(--_icon) / 2 - 0.5px);
+  width: 1px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+/* dot type: 8px dot (10px for the current step) */
+.ant-steps.ant-steps-dot .ant-steps-icon-dot {
+  width: var(--aibox-spacing-2);
+  height: var(--aibox-spacing-2);
+  border-radius: var(--aibox-radius-9);
+  background: var(--aibox-color-text-disable);
+}
+.ant-steps.ant-steps-dot .ant-steps-item-finish .ant-steps-icon-dot {
+  background: var(--aibox-color-bg-main);
+}
+.ant-steps.ant-steps-dot .ant-steps-item-process .ant-steps-icon-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--aibox-color-bg-main);
+}
+.ant-steps.ant-steps-dot .ant-steps-item-error .ant-steps-icon-dot {
+  background: var(--aibox-color-text-status-error-100);
+}
