@@ -35,12 +35,30 @@ const IMPORTS = `import { NzMenuModule } from 'ng-zorro-antd/menu';
       </ul>
     </app-demo>
 
+    <app-demo title="แถวบนสุด (รายการเดี่ยว)" description="nz-menu-item ที่ระดับบนสุด · แถวสูง 56px ชิดกัน (เส้นล่าง 1px อยู่ข้างใน) ไม่มีช่องว่างระหว่างแถว" [code]="itemsCode" [ts]="imports">
+      <ul nz-menu nzMode="inline" class="menu">
+        <li nz-menu-item>Default</li>
+        <li nz-menu-item>Default</li>
+        <li nz-submenu nzTitle="Menu Expand" nzOpen>
+          <ul>
+            <li nz-menu-item>Default</li>
+            <li nz-menu-item nzSelected>FTP Log</li>
+          </ul>
+        </li>
+      </ul>
+    </app-demo>
+
     <app-css-panel id="menu" />
   `,
   styles: `.menu { width: 240px; }`,
 })
 export class MenuPage {
   protected readonly imports = IMPORTS;
+  protected readonly itemsCode = `<ul nz-menu nzMode="inline">
+  <li nz-menu-item>Default</li>
+  <li nz-menu-item>Default</li>
+  <li nz-submenu nzTitle="Menu Expand" nzOpen>...</li>
+</ul>`;
   protected readonly code = `<ul nz-menu nzMode="inline">
   <li nz-submenu nzTitle="Menu Expand" nzOpen>
     <ul>
