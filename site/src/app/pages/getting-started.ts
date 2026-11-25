@@ -167,6 +167,7 @@ export class GettingStarted {
     ['aibox-empty-lg', 'nz-empty', 'ถาดใหญ่ 128×80 (image big)'],
     ['aibox-scrollbar', 'element ที่เลื่อนได้ (overflow: auto)', 'scrollbar 4px สี i-BOX (Chromium / Safari; Firefox ได้แบบ thin สีเดียวกัน)'],
     ['aibox-btn-nopad', 'nz-button', 'ไม่มี padding ซ้าย-ขวา (texted "without padding" ที่ใช้ในแถวของตาราง)'],
+    ['aibox-collapse-small / -large', 'nz-collapse', 'ขนาด small / large สำหรับ ng-zorro 18 / 19 ที่ไม่มี nzSize (20+ ใช้ nzSize ได้เลย)'],
     ['aibox-card-menu', 'nz-card', 'การ์ดทางลัดเมนู: ไอคอน + ข้อความ จัดกลางการ์ด'],
     ['aibox-upload-compact', 'nz-upload (nzType="drag")', 'drop zone ความสูง 100px (Figma reduce-height): ไอคอนติดหัวข้อในแถวเดียวกัน (ไม่มีช่องว่าง) อยู่กึ่งกลางกล่อง คำอธิบายอยู่ใต้แถวนั้น'],
     ['aibox-upload-inline', 'nz-upload nzType="drag" + [nzFileList]', 'แถวไฟล์ใต้ drop zone แบบไม่มีกรอบ (Figma state loading / error / completed): ห่างโซน 10px, ไอคอน + ชื่อ 16/26 + ปุ่มลบ 32px, สีฟ้า (แดงเมื่อ error) · ปิดปุ่ม preview ด้วย [nzShowUploadList]="{ showPreviewIcon: false }"'],
