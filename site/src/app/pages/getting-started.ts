@@ -28,6 +28,10 @@ const CDN = `https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@${META.d
       <h2>1. ติดตั้ง</h2>
       <p class="p">ใส่ลิงก์ของ release ที่ต้องการ <strong>ระบุเวอร์ชันตายตัวเสมอ</strong> (ห้ามใช้ <code>&#64;main</code> หรือ <code>&#64;latest</code> เพราะ CDN เก็บ cache ไว้นาน และไฟล์ที่ลิงก์ชี้อยู่จะเปลี่ยนตามเวอร์ชันใหม่โดยไม่แจ้ง ทำให้หน้าตาในแอปเปลี่ยนเองโดยไม่รู้ตัว)</p>
       <app-code-block [code]="cdnLinks" lang="xml" label="HTML" maxHeight="none" />
+      <div class="open-links">
+        <a nz-button [href]="tokensUrl" target="_blank" rel="noopener"><span nz-icon nzType="file"></span>เปิด tokens.css</a>
+        <a nz-button [href]="overrideUrl" target="_blank" rel="noopener"><span nz-icon nzType="file"></span>เปิด ng-zorro-override.css</a>
+      </div>
     </section>
 
     <section id="order">
@@ -98,6 +102,7 @@ const CDN = `https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@${META.d
     .p { margin-bottom: var(--aibox-spacing-3); max-width: 760px; }
     /* Wide tables (long class names) scroll inside their own box on narrow screens instead of widening the page. */
     nz-table { display: block; overflow-x: auto; }
+    .open-links { display: flex; flex-wrap: wrap; gap: var(--aibox-spacing-2); margin-top: var(--aibox-spacing-3); }
     .list { padding-left: var(--aibox-spacing-5); display: grid; gap: var(--aibox-spacing-1); }
     .fg { color: var(--aibox-color-text-secondary); font-size: var(--aibox-font-size-additional-xs); margin-left: var(--aibox-spacing-2); }
   `,
@@ -105,6 +110,8 @@ const CDN = `https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@${META.d
 export class GettingStarted {
   protected readonly repo = REPO_URL;
   protected readonly components = COMPONENTS;
+  protected readonly tokensUrl = `${CDN}/tokens.css`;
+  protected readonly overrideUrl = `${CDN}/ng-zorro-override.css`;
   protected readonly cdnLinks = `<link rel="stylesheet" href="${CDN}/tokens.css">
 <link rel="stylesheet" href="${CDN}/ng-zorro-override.css">`;
   protected readonly indexHtml = `<body>
