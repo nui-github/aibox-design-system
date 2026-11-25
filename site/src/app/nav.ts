@@ -6,6 +6,7 @@ export interface NavItem {
 }
 
 export const REPO_URL = 'https://github.com/nui-github/aibox-design-system';
+export const DOC_URL = 'https://aibox-design-system-doc.vercel.app/';
 
 export const COMPONENTS: NavItem[] = [
   { path: 'button', title: 'Button', figma: '1:3414' },

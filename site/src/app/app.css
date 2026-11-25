@@ -32,11 +32,10 @@
   /* The off-canvas drawer's shadow would otherwise bleed in along the left edge while it is closed. */
   .side:not(.open) { box-shadow: none; }
   .content { padding: var(--aibox-spacing-4); }
-  .links a:first-child { display: none; }
   .top { gap: var(--aibox-spacing-2); }
   .search { margin-left: 0; min-width: 0; max-width: none; }
 }
-/* Phones: the GitHub button keeps only its icon so the search has room. */
+/* Phones: the Design System Document button keeps only its icon so the search has room. */
 @media (max-width: 700px) {
-  .gh-text { display: none; }
+  .doc-text { display: none; }
 }

@@ -7,7 +7,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { META } from '../generated/meta';
 import { SearchBox } from './shared/search';
-import { COMPONENTS, REPO_URL } from './nav';
+import { COMPONENTS, DOC_URL } from './nav';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +19,7 @@ import { COMPONENTS, REPO_URL } from './nav';
 export class App {
   protected readonly meta = META;
   protected readonly components = COMPONENTS;
-  protected readonly repoUrl = REPO_URL;
-  protected readonly releaseUrl = `${REPO_URL}/releases/tag/v${META.dsVersion}`;
+  protected readonly docUrl = DOC_URL;
   protected readonly collapsed = signal(true);
   /**
    * The menu item that was just clicked. nzMatchRouter only marks an item selected once the navigation ends (after the page's
