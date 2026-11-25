@@ -203,7 +203,7 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 ### Card (Figma Empty State page Card / Advanced `4065:7590`, Card page Card Menu `1295:3294`)
 
-`nz-card`: 1px `border/primary`, radius 8, shadow `section-sm`, body padding 24 16. `aibox-card-menu` on `nz-card` (with an icon and a `.title` inside) is the Card Menu shortcut tile: no border, white, shadow `--aibox-card-menu-shadow`, 164x154, 20px icon in `text/icon-default`, 16/26 medium `text/secondary` title. Head, actions, grid and meta stay ng-zorro's (the Figma Card page has no spec for them). Not covered: the file / E-Form selection cards (product components).
+`nz-card`: 1px `border/primary`, radius 8, shadow `section-sm`, body padding 24 16 measured from the outer edge (Figma strokes sit inside, so the CSS padding is 23 15 next to the 1px border). `aibox-card-menu` on `nz-card` (with an icon and a `.title` inside) is the Card Menu shortcut tile: no border, white, shadow `--aibox-card-menu-shadow`, 164x154, 20px icon in `text/icon-default`, 16/26 medium `text/secondary` title. Head, actions, grid and meta stay ng-zorro's (the Figma Card page has no spec for them). Not covered: the file / E-Form selection cards (product components).
 
 ### Collapse (Figma Collapse page `1105:1930`)
 
