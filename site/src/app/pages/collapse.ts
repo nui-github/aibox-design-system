@@ -62,7 +62,7 @@ const IMPORTS = `import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 
     <app-css-panel id="collapse" />
   `,
-  styles: `.wide { width: 548px; max-width: 100%; } .stack { display: flex; flex-direction: column; gap: 16px; } p { margin: 0; }`,
+  styles: `.wide { width: 548px; max-width: 100%; } .stack { display: flex; flex-direction: column; gap: 16px; min-width: 0; max-width: 100%; } p { margin: 0; }`,
 })
 export class CollapsePage {
   protected readonly imports = IMPORTS;
