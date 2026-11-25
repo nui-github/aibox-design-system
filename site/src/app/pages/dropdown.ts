@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { CssPanel } from '../shared/css-panel';
 import { Demo } from '../shared/demo';
@@ -14,7 +15,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 @Component({
   selector: 'app-dropdown-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NzButtonModule, NzDropdownModule, NzMenuModule, Demo, CssPanel, PageHead],
+  imports: [NzButtonModule, NzDropdownModule, NzIconModule, NzMenuModule, Demo, CssPanel, PageHead],
   template: `
     <app-page-head title="Dropdown menu">
       <ng-container sub>Figma nodes <code>1346:1358</code>, <code>5728:10508</code> (popover-submenu, หน้า Popover) · <code>nz-dropdown</code> + <code>nz-menu</code> · popover ธรรมดา (<code>1346:1149</code>) เป็น Ant Design มาตรฐาน ไม่ได้ override</ng-container>
@@ -52,6 +53,17 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
       </nz-dropdown-menu>
     </app-demo>
 
+    <app-demo title="Actions menu" description="class aibox-dropdown-actions บน ul nz-menu · เมนูของการกระทำ (Figma Navigation > Dropdown Menu): แถวสูง 50px, hover พื้น bg/secondary, ไอคอน 20px นำหน้า, nzDisabled = ตัวอักษรเทา · ไม่มีหัวข้อ / ลูกศร" [code]="actions" [ts]="imports">
+      <button nz-button nz-dropdown nzTrigger="click" [nzDropdownMenu]="actionsMenu">Actions</button>
+      <nz-dropdown-menu #actionsMenu="nzDropdownMenu">
+        <ul nz-menu class="aibox-dropdown-actions">
+          <li nz-menu-item><span nz-icon nzType="copy"></span>คัดลอก</li>
+          <li nz-menu-item><span nz-icon nzType="download"></span>ดาวน์โหลด</li>
+          <li nz-menu-item nzDisabled><span nz-icon nzType="delete"></span>ลบ</li>
+        </ul>
+      </nz-dropdown-menu>
+    </app-demo>
+
     <app-css-panel id="dropdown" />
   `,
 })
@@ -62,6 +74,12 @@ export class DropdownPage {
   <ul nz-menu>
     <li nz-menu-item nzSelected>Title</li>
     <li nz-menu-item>Title</li>
+  </ul>
+</nz-dropdown-menu>`;
+  protected readonly actions = `<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu class="aibox-dropdown-actions">
+    <li nz-menu-item><span nz-icon nzType="copy"></span>คัดลอก</li>
+    <li nz-menu-item nzDisabled><span nz-icon nzType="delete"></span>ลบ</li>
   </ul>
 </nz-dropdown-menu>`;
   protected readonly sections = `<nz-dropdown-menu #menu="nzDropdownMenu">

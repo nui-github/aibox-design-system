@@ -2761,7 +2761,8 @@ nz-alert.aibox-alert-bar {
      active item   nzSelected (blue text)
    Panel: bg/primary, radius 8, shadow popover, no padding; rows 14/24 with 32px side padding, first row 16px from the top
    and last row 16px from the bottom; section headers 12/22 medium, 16px side padding, grey fill, text gray g-3.
-   Not covered: submenus inside the panel (nz-submenu), icons in rows, danger/disabled rows, the plain popover. */
+   Not covered: submenus inside the panel (nz-submenu), icons in rows, danger/disabled rows, the plain popover (icons and disabled rows: see the
+   actions look below, class aibox-dropdown-actions). */
 /* The panel hugs its rows (Figma popover-submenu: 214 / 265px, set by the longest row). ng-zorro-antd 18 and 19 give .ant-dropdown
    width: 100% of the overlay, which is as wide as the trigger button (a 320px button made a 320px menu); 20+ no longer do. */
 .ant-dropdown {
@@ -2824,6 +2825,53 @@ nz-alert.aibox-alert-bar {
 }
 .ant-dropdown .ant-dropdown-arrow {
   --antd-arrow-background-color: var(--aibox-color-bg-primary);
+}
+
+/* Dropdown menu of actions (opt-in class aibox-dropdown-actions on the <ul nz-menu>). From the Figma "i-BOX Design System" > Navigation page
+   (154:2044) > Dropdown Menu: dropdown-menu 10519:1909 and menu-item 10519:1908 (state default / hovered / disabled, optional leading icon).
+   Figma describes it as "dropdown menu for actions, opened from a button such as เพิ่มเติม (Ant Dropdown)" and tells to use the select
+   content-list for choosing a value. It is a different design from the popover-submenu above (Popover page), which stays the default look.
+   Panel: bg/primary, radius 4, the raise-modal shadow, 16px top and bottom padding, no side padding; rows 50px (padding 12 16, gap 8,
+   body-lg 16/26 text/primary), hovered = bg/secondary, disabled = text/disable, optional 20px icon box (16px glyph, text/icon-default).
+   Not covered: submenus (nz-submenu), section headers in this look (the grey headers of the popover look still apply), danger rows. */
+.ant-dropdown .ant-dropdown-menu.aibox-dropdown-actions {
+  padding: var(--aibox-spacing-4) 0;
+  border-radius: var(--aibox-radius-2);
+  box-shadow: var(--aibox-shadow-base-raise-modal);
+}
+.ant-dropdown .ant-dropdown-menu.aibox-dropdown-actions.aibox-dropdown-actions > .ant-dropdown-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--aibox-spacing-2);
+  box-sizing: border-box;
+  min-height: 50px;
+  padding: var(--aibox-spacing-3) var(--aibox-spacing-4);
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+  line-height: var(--aibox-typography-body-body-lg-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-lg-regular-letter-spacing);
+}
+.ant-dropdown .ant-dropdown-menu.aibox-dropdown-actions.aibox-dropdown-actions > .ant-dropdown-menu-item.ant-dropdown-menu-item-disabled,
+.ant-dropdown .ant-dropdown-menu.aibox-dropdown-actions.aibox-dropdown-actions > .ant-dropdown-menu-item.ant-dropdown-menu-item-disabled:hover {
+  background: transparent;
+  color: var(--aibox-color-text-disable);
+  cursor: not-allowed;
+}
+.ant-dropdown .ant-dropdown-menu.aibox-dropdown-actions .ant-menu-title-content {
+  display: flex;
+  align-items: center;
+  gap: var(--aibox-spacing-2);
+}
+.ant-dropdown .ant-dropdown-menu.aibox-dropdown-actions .ant-menu-title-content > .anticon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  min-width: 20px;
+  width: 20px;
+  margin: 0;
+  color: var(--aibox-color-text-icon-default);
+  font-size: 16px;
 }
 
 /* Scrollbar. Source: Figma "i-BOX Design System" > Scrollbar page (3745:12812): scrollbar-Vertical 6903:54 (scroll start / mid / end)
