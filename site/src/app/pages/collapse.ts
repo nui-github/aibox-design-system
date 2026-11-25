@@ -17,21 +17,21 @@ const IMPORTS = `import { NzCollapseModule } from 'ng-zorro-antd/collapse';
       <ng-container sub>Figma หน้า Collapse (<code>1105:1930</code>) · <code>nz-collapse</code> · Sub Navigation (<code>1108:6694</code>) ไม่ได้ override</ng-container>
     </app-page-head>
 
-    <app-demo title="Basic" description="กรอบ 1px มุม 8px · หัวข้อ padding 12×16 ช่องว่าง 12 · เปิด = ตัวหนังสือและลูกศรสีหลัก, ปิด = text/tertiary · เนื้อหา padding 16" [code]="basic" [ts]="imports">
+    <app-demo title="Basic" description="ไม่มีกรอบ มีเส้น 1px ใต้หัวข้อ · หัวข้อ padding 12×16 ช่องว่าง 12 สูง 48px · เปิด = ตัวหนังสือและลูกศรสีหลัก, ปิด = text/tertiary · เนื้อหาเริ่มห่างขอบ 32px (Collapse Content List) สูง 40px" [code]="basic" [ts]="imports">
       <nz-collapse class="wide">
         <nz-collapse-panel nzHeader="This is panel header" [nzActive]="true"><p>OCR Service</p></nz-collapse-panel>
         <nz-collapse-panel nzHeader="This is panel header"><p>OCR Service</p></nz-collapse-panel>
       </nz-collapse>
     </app-demo>
 
-    <app-demo title="Borderless" description="[nzBordered]=&quot;false&quot; · ไม่มีกรอบ แต่ละแถวคั่นด้วยเส้น 1px" [code]="borderless" [ts]="imports">
+    <app-demo title="Borderless" description="[nzBordered]=&quot;false&quot; · ไม่มีเส้นใต้หัวข้อ เนื้อหา padding 16 และปิดท้ายด้วยเส้น 1px ตอนเปิด" [code]="borderless" [ts]="imports">
       <nz-collapse class="wide" [nzBordered]="false">
         <nz-collapse-panel nzHeader="This is panel header" [nzActive]="true"><p>OCR Service</p></nz-collapse-panel>
         <nz-collapse-panel nzHeader="This is panel header"><p>OCR Service</p></nz-collapse-panel>
       </nz-collapse>
     </app-demo>
 
-    <app-demo title="Ghost" description="nzGhost · ไม่มีกรอบและพื้น หัวข้อ padding ซ้าย 12" [code]="ghost" [ts]="imports">
+    <app-demo title="Ghost" description="nzGhost · ไม่มีเส้นและพื้น หัวข้อ padding ซ้าย 12" [code]="ghost" [ts]="imports">
       <nz-collapse class="wide" nzGhost>
         <nz-collapse-panel nzHeader="This is panel header" [nzActive]="true"><p>OCR Service</p></nz-collapse-panel>
         <nz-collapse-panel nzHeader="This is panel header"><p>OCR Service</p></nz-collapse-panel>

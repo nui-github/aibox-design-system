@@ -207,7 +207,7 @@ Opt-in class `aibox-scrollbar` on any scrolling element: 4px track (`bg/secondar
 
 ### Collapse (Figma Collapse page `1105:1930`)
 
-`nz-collapse`: Basic (1px border, radius 8), Borderless (`[nzBordered]="false"`) and Ghost (`nzGhost`); head padding 12 16 with a 12px gap, title 14/24 (large 16/26), expanded = title and chevron in `--aibox-color-main`, collapsed = `text/tertiary`; content padding 16. `nzSize="small"` / `"large"` on ng-zorro 20+, the classes `aibox-collapse-small` / `aibox-collapse-large` on 18 / 19 (no `nzSize` there); `nzExpandIconPosition="end"` puts the chevron on the right; a disabled panel (`[nzDisabled]`, or `nzCollapsible="disabled"` which 22 requires) is `bg/disable` with `text/disable`. Not covered: the Sub Navigation list (`1108:6694`), dark theme.
+`nz-collapse`: Basic (no frame: a 1px line under the 48px head, content list text 32px from the edge, 40px high), Borderless (`[nzBordered]="false"`: no line under the head, content padding 16, a 1px line closes the open body) and Ghost (`nzGhost`: no lines, head padding-left 12); head padding 12 16 with a 12px gap, title 14/24 (large 16/26 in 58px, small 40px), expanded = title and chevron in `--aibox-color-main`, collapsed = `text/tertiary`. `nzSize="small"` / `"large"` on ng-zorro 20+, the classes `aibox-collapse-small` / `aibox-collapse-large` on 18 / 19 (no `nzSize` there); `nzExpandIconPosition="end"` puts the chevron on the right; a disabled panel (`[nzDisabled]`, or `nzCollapsible="disabled"` which 22 requires) is `bg/disable` with `text/disable` (Ghost: only the text). Not covered: the Sub Navigation list (`1108:6694`), dark theme.
 
 ### Steps (Figma Steps page `1504:2619`)
 
