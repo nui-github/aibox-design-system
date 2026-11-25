@@ -1,4 +1,4 @@
-/* aibox-design-system v0.53.1 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.53.2 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -4018,14 +4018,21 @@ nz-alert.aibox-alert-bar {
 .ant-menu-inline .ant-menu-submenu-open > .ant-menu-submenu-title > .ant-menu-submenu-arrow::after {
   transform: rotate(45deg) translateX(-2.5px);
 }
+/* Figma strokes sit inside the 56px row, so the item with its own 1px line has 15px under the text; ng-zorro's 8px margin between top-level
+   items is not in Figma (the rows touch) */
+.ant-menu-inline > .ant-menu-item.ant-menu-item {
+  margin: 0;
+  padding-bottom: calc(var(--aibox-spacing-4) - 1px);
+}
 .ant-menu-inline .ant-menu-sub.ant-menu-inline {
   padding: 0 var(--aibox-spacing-4);
   border: 0;
   background: transparent;
 }
-/* the 24px under the items only while the group is open: ng-zorro 18 keeps a closed submenu in the DOM at height 0 (22 hides it) */
+/* the 24px under the items (23 + the group's own 1px line, which Figma draws inside the 192px) only while the group is open: ng-zorro 18 keeps
+   a closed submenu in the DOM at height 0 (22 hides it) */
 .ant-menu-inline .ant-menu-submenu-open > .ant-menu-sub.ant-menu-inline {
-  padding-bottom: var(--aibox-spacing-6);
+  padding-bottom: calc(var(--aibox-spacing-6) - 1px);
 }
 .ant-menu-inline .ant-menu-sub .ant-menu-item {
   height: 32px;
