@@ -35,6 +35,7 @@ export const routes: Routes = [
   { path: 'card', title: 'Card · Ai-BOX Design System', loadComponent: () => import('./pages/card').then((m) => m.CardPage) },
   { path: 'menu', title: 'Menu · Ai-BOX Design System', loadComponent: () => import('./pages/menu').then((m) => m.MenuPage) },
   { path: 'collapse', title: 'Collapse · Ai-BOX Design System', loadComponent: () => import('./pages/collapse').then((m) => m.CollapsePage) },
+  { path: 'steps', title: 'Steps · Ai-BOX Design System', loadComponent: () => import('./pages/steps').then((m) => m.StepsPage) },
   { path: 'alert', title: 'Alert · Ai-BOX Design System', loadComponent: () => import('./pages/alert').then((m) => m.AlertPage) },
   { path: '**', redirectTo: 'getting-started' },
 ];

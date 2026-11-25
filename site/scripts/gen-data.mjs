@@ -46,6 +46,7 @@ const starts = [
   ['card', /^\/\* Card\. Source/m],
   ['menu', /^\/\* Menu\. Source/m],
   ['collapse', /^\/\* Collapse\. Source/m],
+  ['steps', /^\/\* Steps\. Source/m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);
