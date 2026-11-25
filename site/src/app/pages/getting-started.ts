@@ -142,6 +142,7 @@ export class GettingStarted {
     ['aibox-select-naming', 'nz-select nzMode="multiple" + [nzCustomTemplate]', 'แท็กชื่อคน (avatar + ชื่อ) ใน Select หลายค่า: สูง 24px ขนาดปกติ, 30px กับ nzSize="large"'],
     ['aibox-select-list', 'nz-select + aibox-select-naming', 'มุมมองรายการของ Tag Selection: หนึ่งแท็กต่อบรรทัด กว้างเต็มกล่อง ชื่อดันปุ่ม × ไปชิดขวา (ไม่ใส่ = มุมมองคอลัมน์ แท็กเรียงต่อกัน)'],
     ['aibox-select-scroll', 'nz-select nzMode="multiple"', 'กล่องสูงสุด 456px แล้วเลื่อน (scrollbar 4px ตาม Figma) ปรับความสูงด้วย style="--_select-max-h: 340px"'],
+    ['aibox-dropdown-actions', 'nz-menu ใน nz-dropdown', 'เมนูของการกระทำ (Figma Navigation > Dropdown Menu): แถวสูง 50px, hover พื้น bg/secondary, ไอคอน 20px นำหน้า, disabled สีเทา; ไม่ใส่ = หน้าตา popover submenu เดิม'],
     ['aibox-tag-xs / -md / -lg', 'nz-tag', 'ขนาด 2xsmall / medium / large'],
     ['aibox-badge-sm / aibox-badge-lg', 'nz-badge', 'ขนาด small / large (Medium เป็นค่าเริ่มต้น)'],
     ['aibox-badge-icon', 'nz-badge', 'badge ไอคอนวงกลมสีน้ำเงิน (ใช้กับ [nzCount] เป็น template)'],
