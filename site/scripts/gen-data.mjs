@@ -48,6 +48,7 @@ const starts = [
   ['collapse', /^\/\* Collapse\. Source/m],
   ['steps', /^\/\* Steps\. Source/m],
   ['spin', /^\/\* Spin\. Source/m],
+  ['progress', /^\/\* Progress\. Source/m],
 ];
 const idx = starts.map(([id, re]) => {
   const m = re.exec(overrideCss);

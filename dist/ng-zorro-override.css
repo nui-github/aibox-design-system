@@ -1,4 +1,4 @@
-/* aibox-design-system v0.52.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.53.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -4384,4 +4384,93 @@ nz-spin:not(.ant-spin-nested-loading) > div > .ant-spin {
 nz-spin:not(.ant-spin-nested-loading) > div > .ant-spin .ant-spin-text {
   padding: 0;
   white-space: nowrap;
+}
+
+/* Progress. Source: Figma "i-BOX Design System" > Progress page (7630:68366): Progress-Line 7630:68392 (Status Normal, values 5 to 95%) / Status-Success 7630:68581 /
+   Status-Exception 7630:68573 / Bare 7630:68586, Progress-Line-Mini 7630:68450, Progress-Circle 7630:68548 (Normal / Success / Exception, 120px) and
+   Progress-Circle-Mini 7630:68555 (80px), Progress-Step 7630:68522 / 7630:68508 (Default / Small), Progress-Scrubber 7630:68611 / 7630:68608 / 7630:68602 (Basic 8 /
+   Small 6 / Multiple).
+   Mapping (nz-progress):
+     Progress-Line         <nz-progress [nzPercent]> (bar 8px, radius 100, gap 8 to the 14/22 value; ng-zorro's own sizes)
+     Status Success / Exception   nzStatus (or 100%) (the value turns into a 16px check-circle / close-circle)
+     Progress-Line-Mini    nzSize="small" (bar 6px, value 12/20)
+     Progress-Line/Bare    [nzShowInfo]="false"
+     Progress-Circle       nzType="circle" [nzWidth]="120" (24px value); Circle-Mini [nzWidth]="80"
+     Progress-Step         [nzSteps]="3" + nzStrokeColor="var(--aibox-color-main)" (items 14 x 8, gap 2, value 14 text/secondary; ng-zorro paints the finished
+                           items only through nzStrokeColor, there is no class to style, so pass it)
+     Progress-Scrubber Multiple   [nzSuccessPercent] (success segment over the bar)
+   The Progress page is stock Ant Design, not themed: bar #1890ff, track #f5f5f5 (Neutral/3), success #52c41a, exception #f5222d, warning #ffa940, value text rgba(0,0,0,.85)
+   in Roboto. Only the Mini line uses --aibox-color-main. The sizes and spacing are kept; the colours are the Ai-BOX ones: bar --aibox-color-main, track bg/secondary,
+   success bg/status/success-200, exception text/status/error-100, text text/primary (steps value text/secondary), and the Ai-BOX font.
+   Not covered: gradient bars (nzStrokeColor), the dashboard type, the indeterminate loop, dark theme. */
+.ant-progress {
+  color: var(--aibox-color-text-primary);
+  font-family: var(--aibox-font-family-heading-and-body);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: 22px;
+}
+.ant-progress.ant-progress-line .ant-progress-inner {
+  background-color: var(--aibox-color-bg-secondary);
+}
+.ant-progress .ant-progress-bg {
+  background-color: var(--aibox-color-main);
+}
+.ant-progress .ant-progress-success-bg {
+  background-color: var(--aibox-color-bg-status-success-200);
+}
+.ant-progress.ant-progress-status-success .ant-progress-bg {
+  background-color: var(--aibox-color-bg-status-success-200);
+}
+.ant-progress.ant-progress-status-exception .ant-progress-bg {
+  background-color: var(--aibox-color-text-status-error-100);
+}
+.ant-progress .ant-progress-text {
+  color: var(--aibox-color-text-primary);
+}
+.ant-progress.ant-progress-status-success .ant-progress-text {
+  color: var(--aibox-color-bg-status-success-200);
+}
+.ant-progress.ant-progress-status-exception .ant-progress-text {
+  color: var(--aibox-color-text-status-error-100);
+}
+.ant-progress.ant-progress-line .ant-progress-text {
+  line-height: 22px;
+}
+.ant-progress.ant-progress-line .ant-progress-text .anticon {
+  font-size: var(--aibox-spacing-4);
+}
+.ant-progress.ant-progress-small .ant-progress-text,
+.ant-progress.ant-progress-line.ant-progress-small .ant-progress-text {
+  font-size: 12px;
+  line-height: 20px;
+}
+/* steps */
+.ant-progress.ant-progress-steps:not(.ant-progress-status-success, .ant-progress-status-exception) .ant-progress-text {
+  color: var(--aibox-color-text-secondary);
+}
+.ant-progress.ant-progress-steps .ant-progress-steps-item {
+  background-color: var(--aibox-color-bg-secondary);
+}
+/* circle */
+.ant-progress.ant-progress-circle .ant-progress-circle-trail {
+  stroke: var(--aibox-color-bg-secondary);
+}
+.ant-progress.ant-progress-circle .ant-progress-circle-path {
+  stroke: var(--aibox-color-main);
+}
+.ant-progress.ant-progress-circle.ant-progress-status-success .ant-progress-circle-path {
+  stroke: var(--aibox-color-bg-status-success-200);
+}
+.ant-progress.ant-progress-circle.ant-progress-status-exception .ant-progress-circle-path {
+  stroke: var(--aibox-color-text-status-error-100);
+}
+.ant-progress.ant-progress-circle .ant-progress-text {
+  color: var(--aibox-color-text-primary);
+  line-height: 1;
+}
+.ant-progress.ant-progress-circle.ant-progress-status-success .ant-progress-text {
+  color: var(--aibox-color-bg-status-success-200);
+}
+.ant-progress.ant-progress-circle.ant-progress-status-exception .ant-progress-text {
+  color: var(--aibox-color-text-status-error-100);
 }
