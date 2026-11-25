@@ -96,6 +96,8 @@ const CDN = `https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@${META.d
     section { margin-top: var(--aibox-spacing-8); }
     section h2 { margin-bottom: var(--aibox-spacing-3); }
     .p { margin-bottom: var(--aibox-spacing-3); max-width: 760px; }
+    /* Wide tables (long class names) scroll inside their own box on narrow screens instead of widening the page. */
+    nz-table { display: block; overflow-x: auto; }
     .list { padding-left: var(--aibox-spacing-5); display: grid; gap: var(--aibox-spacing-1); }
     .fg { color: var(--aibox-color-text-secondary); font-size: var(--aibox-font-size-additional-xs); margin-left: var(--aibox-spacing-2); }
   `,
