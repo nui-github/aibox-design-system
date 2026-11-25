@@ -3963,6 +3963,8 @@ nz-alert.aibox-alert-bar {
      submenu item hover                  fill component/bg/bg-active, color/main medium
      submenu item active                 nzSelected: fill color/bg/main, white medium text
    Rows: padding 16, 1px bottom line and the menu's 1px right line in text/white/secondary, 14/24 text/tertiary. Group bottom padding 24.
+   A single top-level nz-menu-item (no group) has no Figma spec: it uses the group items' hover (component/bg/bg-active, color/main medium) and selected
+   (color/bg/main, white medium) look on the whole 56px row.
    Not covered: collapsed (icon-only) menu, icons in rows, horizontal / vertical popup menus, the dark theme, danger and disabled items. */
 .ant-menu.ant-menu-inline {
   border-inline-end: 1px solid var(--aibox-color-text-white-secondary);
@@ -4052,6 +4054,19 @@ nz-alert.aibox-alert-bar {
 }
 .ant-menu-inline .ant-menu-sub .ant-menu-item.ant-menu-item-selected,
 .ant-menu-inline .ant-menu-sub .ant-menu-item.ant-menu-item-selected:hover {
+  background: var(--aibox-color-bg-main);
+  color: var(--aibox-color-text-white-primary);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+}
+/* a single top-level item (not in a group) takes the same hover / selected look as the items of a group; Figma has no spec for it, the row
+   keeps its 56px height and fills edge to edge */
+.ant-menu-inline > .ant-menu-item.ant-menu-item:hover {
+  background: var(--aibox-color-component-bg-bg-active);
+  color: var(--aibox-color-main);
+  font-weight: var(--aibox-typography-body-body-bold-font-weight);
+}
+.ant-menu-inline > .ant-menu-item.ant-menu-item.ant-menu-item-selected,
+.ant-menu-inline > .ant-menu-item.ant-menu-item.ant-menu-item-selected:hover {
   background: var(--aibox-color-bg-main);
   color: var(--aibox-color-text-white-primary);
   font-weight: var(--aibox-typography-body-body-bold-font-weight);
