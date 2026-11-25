@@ -31,7 +31,7 @@ hljs.registerLanguage('typescript', typescript);
     .cb { border: 1px solid var(--aibox-color-border-primary); border-radius: var(--aibox-radius-2); background: var(--aibox-color-bg-primary); overflow: hidden; }
     .cb-bar { display: flex; align-items: center; justify-content: space-between; padding: var(--aibox-spacing-1) var(--aibox-spacing-2) var(--aibox-spacing-1) var(--aibox-spacing-3); background: var(--aibox-color-bg-secondary); border-bottom: 1px solid var(--aibox-color-border-primary); }
     .cb-label { font-size: var(--aibox-font-size-additional-xs); color: var(--aibox-color-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; }
-    pre { margin: 0; padding: var(--aibox-spacing-3); overflow: auto; font-family: var(--doc-mono); font-size: 13px; line-height: 20px; tab-size: 2; }
+    pre { margin: 0; padding: var(--aibox-spacing-3); overflow: auto; font-family: var(--doc-mono); font-size: 13px; line-height: 20px; tab-size: 2; white-space: pre-wrap; overflow-wrap: anywhere; }
     :host ::ng-deep .hljs-tag, :host ::ng-deep .hljs-selector-tag, :host ::ng-deep .hljs-keyword { color: var(--aibox-color-text-status-info-100); }
     :host ::ng-deep .hljs-name, :host ::ng-deep .hljs-selector-class, :host ::ng-deep .hljs-selector-id, :host ::ng-deep .hljs-title { color: var(--aibox-color-text-status-rework-100); }
     :host ::ng-deep .hljs-attr, :host ::ng-deep .hljs-attribute, :host ::ng-deep .hljs-property { color: var(--aibox-color-text-status-success-100); }
