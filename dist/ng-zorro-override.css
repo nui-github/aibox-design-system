@@ -1,4 +1,4 @@
-/* aibox-design-system v0.53.5 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.53.6 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -50,6 +50,7 @@
   display: none;
 }
 .ant-form-item.ant-form-item .ant-form-item-label > label.ant-form-item-required.ant-form-item-required::after {
+  display: inline;
   content: "*";
   top: 0;
   margin: 0 0 0 var(--aibox-spacing-1);
@@ -57,6 +58,10 @@
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+.ant-form-vertical .ant-form-item.ant-form-item:not(.ant-form-item-horizontal) .ant-form-item-label > label.ant-form-item-required.ant-form-item-required::after,
+.ant-form.ant-form:not(.ant-form-inline) .ant-form-item.ant-form-item:not(.ant-form-item-horizontal) .ant-form-item-label > label.ant-form-item-required.ant-form-item-required::after {
+  display: inline;
 }
 .ant-form-item.ant-form-item .ant-form-item-label > label.ant-form-item-required.ant-form-item-required.ant-form-item-required-mark-optional::after {
   content: none;
