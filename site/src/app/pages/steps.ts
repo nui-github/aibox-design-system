@@ -27,7 +27,7 @@ const IMPORTS = `import { NzStepsModule } from 'ng-zorro-antd/steps';
       </div>
     </app-demo>
 
-    <app-demo title="Error" description="nzStatus=&quot;error&quot; · ไอคอนแดงกากบาทขาว หัวข้อและคำอธิบายสีแดง" [code]="error" [ts]="imports">
+    <app-demo title="Error" description="nzStatus=&quot;error&quot; · ไอคอนแดงกากบาทขาว หัวข้อและคำอธิบายสีแดง · เส้นก่อนขั้น error ครึ่งแรกสีหลัก ครึ่งหลังเทา" [code]="error" [ts]="imports">
       <div class="box">
         <nz-steps nzSize="small" nzLabelPlacement="vertical" [nzCurrent]="1">
           <nz-step nzTitle="Finished" nzDescription="This is a description."></nz-step>
