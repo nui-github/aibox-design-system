@@ -19,7 +19,7 @@ import { NzTooltipModule } from 'ng-zorro-antd/tooltip';
       <ng-container sub>Figma nodes <code>1145:1157</code> (tooltip, ทุก placement), <code>1145:1219</code> (tooltip-themed) · <code>nz-tooltip</code> พื้นเข้ม / ขาว / ฟ้า และขนาดเล็ก</ng-container>
     </app-page-head>
 
-    <app-demo title="Default" description="วางเมาส์บนปุ่ม · ข้อความยาวจะตัดบรรทัดเอง" [code]="basic" [ts]="imports">
+    <app-demo title="Default" description="วางเมาส์บนปุ่ม · ข้อความยาวจะตัดบรรทัดเอง · ชื่อมุมใน Figma กลับกับ Ant: Figma &quot;top left&quot; (ลูกศรอยู่ด้านขวา) = nzTooltipPlacement=&quot;topRight&quot; ส่วน &quot;top right&quot; = &quot;topLeft&quot; · ลูกศรห่างมุม 16px ตรงกัน" [code]="basic" [ts]="imports">
       <button nz-button nz-tooltip nzTooltipTitle="Tooltips">Hover me</button>
       <button nz-button nz-tooltip nzTooltipTitle="Distinctively monetize cost effective networks for cross-media bandwidth" nzTooltipPlacement="right">Long text</button>
     </app-demo>
