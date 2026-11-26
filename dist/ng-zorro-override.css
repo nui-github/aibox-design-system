@@ -1,4 +1,4 @@
-/* aibox-design-system v0.53.9 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.54.0 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1172,6 +1172,10 @@ a.ant-btn.aibox-btn-xs {
 /* Small list (Figma dropdown size=small 1:7791): rows 40, padding 8/16, 14/24. The overlay does not know the field's size, so add the class
    through [nzDropdownClassName]="'aibox-select-dropdown--small'" on the nz-select. ng-zorro 18-22 all put that class on the
    .cdk-overlay-pane (the parent of .ant-select-dropdown), so the selector is not tied to .ant-select-dropdown. */
+.aibox-select-dropdown--small .ant-select-item .aibox-option-desc.aibox-option-desc {
+  font-size: var(--aibox-font-size-additional-xs);
+  line-height: 22px;
+}
 .aibox-select-dropdown--small .ant-select-item.ant-select-item {
   padding: var(--aibox-spacing-2) var(--aibox-spacing-4);
   font-size: var(--aibox-typography-body-body-regular-font-size);
@@ -3593,6 +3597,14 @@ nz-alert.aibox-alert-bar {
 .ant-picker-dropdown .ant-picker-body {
   padding: var(--aibox-spacing-2) 18px;
 }
+/* ng-zorro fixes the day table at 252px (table width and th width 36), 8px wider than the 244px inside the 18px padding, so every column was 36 instead
+   of Figma's 34.86 and the last column ran into the right padding */
+.ant-picker-dropdown .ant-picker-date-panel .ant-picker-content {
+  width: 100%;
+}
+.ant-picker-dropdown .ant-picker-date-panel .ant-picker-content th {
+  width: auto; /* ng-zorro: th { width: 36px } also forces 7 x 36 = 252 */
+}
 .ant-picker-dropdown .ant-picker-panel-container {
   border-radius: var(--aibox-radius-2);
   background: var(--aibox-color-bg-primary);
@@ -3727,6 +3739,23 @@ nz-alert.aibox-alert-bar {
   border-top: 0;
   border-bottom: 0;
 }
+/* calendar footer (Figma date-picker-range Footer 4558:7930, shown with nzRenderExtraFooter): 1px rgba(0,0,0,.06) line, padding 4 24, a 32px row of
+   14/16 text/primary; the time picker keeps its own 12px footer above */
+.ant-picker-dropdown:not(:has(.ant-picker-time-panel)) .ant-picker-footer {
+  padding: var(--aibox-spacing-1) 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.ant-picker-dropdown:not(:has(.ant-picker-time-panel)) .ant-picker-footer .ant-picker-footer-extra {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0;
+  border-bottom: 0;
+  color: var(--aibox-color-text-primary);
+  font-size: var(--aibox-font-size-additional-sm);
+  font-weight: var(--aibox-font-weight-medium);
+  line-height: 16px;
+}
 .ant-picker-dropdown .ant-picker-footer .ant-picker-ranges {
   display: flex;
   justify-content: center;
@@ -3808,7 +3837,7 @@ nz-alert.aibox-alert-bar {
 .ant-tree .ant-tree-switcher .ant-tree-switcher-icon,
 .ant-select-tree .ant-select-tree-switcher .ant-select-tree-switcher-icon {
   color: var(--aibox-color-text-primary);
-  font-size: 12px;
+  font-size: 16px; /* Figma caret-right / caret-down: 16px glyph in the 20px box */
 }
 .ant-tree .ant-tree-node-content-wrapper,
 .ant-select-tree .ant-select-tree-node-content-wrapper {
@@ -3956,14 +3985,15 @@ nz-alert.aibox-alert-bar {
   color: var(--aibox-color-text-icon-default);
 }
 
-/* two-line rows (Figma content-list: leading icon, title, description): build the option with nzOptionRender and these classes */
-.ant-cascader-dropdown .ant-cascader-menu-item .aibox-option {
+/* two-line rows (Figma content-list: leading icon, title, description): build the option with nzOptionRender (Cascader) or nzCustomContent (Select)
+   and these classes. Select rows come out 74px (large list) and 62px with aibox-select-dropdown--small (title 14/24, description 12/22). */
+:is(.ant-cascader-dropdown .ant-cascader-menu-item, .ant-select-dropdown .ant-select-item) .aibox-option {
   display: flex;
   align-items: flex-start;
   gap: var(--aibox-spacing-2);
   min-width: 0;
 }
-.ant-cascader-dropdown .ant-cascader-menu-item .aibox-option-icon {
+:is(.ant-cascader-dropdown .ant-cascader-menu-item, .ant-select-dropdown .ant-select-item) .aibox-option-icon {
   flex: none;
   width: 20px;
   height: 26px;
@@ -3973,17 +4003,17 @@ nz-alert.aibox-alert-bar {
   color: var(--aibox-color-text-icon-default);
   font-size: 16px;
 }
-.ant-cascader-dropdown .ant-cascader-menu-item .aibox-option-text {
+:is(.ant-cascader-dropdown .ant-cascader-menu-item, .ant-select-dropdown .ant-select-item) .aibox-option-text {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
-.ant-cascader-dropdown .ant-cascader-menu-item .aibox-option-title {
+:is(.ant-cascader-dropdown .ant-cascader-menu-item, .ant-select-dropdown .ant-select-item) .aibox-option-title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.ant-cascader-dropdown .ant-cascader-menu-item .aibox-option-desc {
+:is(.ant-cascader-dropdown .ant-cascader-menu-item, .ant-select-dropdown .ant-select-item) .aibox-option-desc {
   overflow: hidden;
   color: var(--aibox-color-text-tertiary);
   font-size: var(--aibox-typography-body-body-regular-font-size);

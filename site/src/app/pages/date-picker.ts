@@ -34,6 +34,13 @@ const IMPORTS = `import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
       </div>
     </app-demo>
 
+    <app-demo title="Range picker with footer" description="[nzRenderExtraFooter] = แถบท้ายปฏิทิน (Figma date-picker-range Footer): เส้นบน 1px · padding 4 24 · แถวสูง 32 · ข้อความ 14/16 medium" [code]="footer" [ts]="imports">
+      <div class="col">
+        <nz-range-picker nzSize="large" [nzShowToday]="false" [nzRenderExtraFooter]="foot" />
+        <ng-template #foot>*เลือกได้สูงสุด 30 วัน</ng-template>
+      </div>
+    </app-demo>
+
     <app-css-panel id="date-picker" />
   `,
   styles: `.col { display: grid; gap: var(--aibox-spacing-4); width: 360px; max-width: 100%; }`,
@@ -46,4 +53,6 @@ export class DatePickerPage {
 <nz-date-picker nzSize="large" nzStatus="error" nzPlaceHolder="Placeholder" />
 <nz-date-picker nzSize="large" nzDisabled nzPlaceHolder="Placeholder" />`;
   protected readonly range = `<nz-range-picker nzSize="large" />`;
+  protected readonly footer = `<nz-range-picker nzSize="large" [nzShowToday]="false" [nzRenderExtraFooter]="foot" />
+<ng-template #foot>*เลือกได้สูงสุด 30 วัน</ng-template>`;
 }
