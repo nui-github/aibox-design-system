@@ -54,7 +54,7 @@ export class Example {
       <nz-tag class="aibox-tag-solid" nzColor="orange">Reject</nz-tag>
     </app-demo>
 
-    <app-demo title="Square and X-small" description="aibox-tag-square (radius 4) · aibox-tag-xs (12px)" [code]="square" [ts]="imports">
+    <app-demo title="Square and X-small" description="aibox-tag-square (radius 4) · aibox-tag-xs (12px) · aibox-tag-round = แคปซูล (ค่าเริ่มต้น เขียนให้ชัดได้)" [code]="square" [ts]="imports">
       <nz-tag class="aibox-tag-square" nzColor="success">Square</nz-tag>
       <nz-tag class="aibox-tag-xs" nzColor="success">X-small</nz-tag>
       <nz-tag class="aibox-tag-square aibox-tag-xs" nzColor="success">Square x-small</nz-tag>

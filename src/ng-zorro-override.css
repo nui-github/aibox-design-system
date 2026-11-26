@@ -1390,7 +1390,7 @@ a.ant-btn.aibox-btn-xs {
      nzColor="purple"                -> badge "rework"
      nzColor="orange"                -> badge "reject"
      class aibox-tag-solid           -> solid variant (status -200 background, white text)
-     class aibox-tag-square          -> square variant (radius 4; default is round / pill)
+     class aibox-tag-square          -> square variant (radius 4; default is round / pill; aibox-tag-round spells the default out)
      class aibox-tag-xs              -> Figma 2xsmall (12px text)
      nzMode="closeable"              -> Figma tag/closable (node 1:10102): same colours (default / processing = blue / success / warning / error / purple)
                                         plus class aibox-tag-black (dark gray, white text). The tag is Figma size=small (14px, padding 8 12, 32px high);
@@ -1427,6 +1427,9 @@ a.ant-btn.aibox-btn-xs {
 .ant-tag a,
 .ant-tag a:hover {
   color: var(--_fg);
+}
+.ant-tag.aibox-tag-round {
+  border-radius: var(--aibox-radius-20); /* the default; spelled out so markup can say what it means (toey makes square the default) */
 }
 .ant-tag.aibox-tag-square {
   border-radius: var(--aibox-radius-2);
@@ -2905,6 +2908,7 @@ nz-alert.aibox-alert-bar {
    body-lg 16/26 text/primary), hovered = bg/secondary, disabled = text/disable, optional 20px icon box (16px glyph, text/icon-default).
    Not covered: submenus (nz-submenu), section headers in this look (the grey headers of the popover look still apply), danger rows. */
 .ant-dropdown .ant-dropdown-menu.aibox-dropdown-actions {
+  min-width: 216px; /* Figma dropdown-menu is 216 wide (fixed); a longer label still widens it */
   padding: var(--aibox-spacing-4) 0;
   border-radius: var(--aibox-radius-2);
   box-shadow: var(--aibox-shadow-base-raise-modal);
@@ -3621,9 +3625,20 @@ nz-alert.aibox-alert-bar {
   color: var(--aibox-color-text-primary);
 }
 .ant-picker-dropdown .ant-picker-header-view {
+  display: flex;
+  justify-content: center;
+  gap: var(--aibox-spacing-2);
   font-size: var(--aibox-typography-body-body-regular-font-size);
   font-weight: 600;
   line-height: 22px;
+}
+/* month before year ("พฤศจิกายน 2026", Figma date-picker panel 1347:23604); ng-zorro puts the year first. The full month name is the app's locale
+   (DatePicker.lang.monthFormat = 'MMMM'), see Getting started */
+.ant-picker-dropdown .ant-picker-header-view .ant-picker-header-month-btn {
+  order: -1;
+}
+.ant-picker-dropdown .ant-picker-header-view button {
+  margin: 0;
 }
 .ant-picker-dropdown .ant-picker-content th {
   color: var(--aibox-color-text-primary);

@@ -53,7 +53,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
       </nz-dropdown-menu>
     </app-demo>
 
-    <app-demo title="Actions menu" description="class aibox-dropdown-actions บน ul nz-menu · เมนูของการกระทำ (Figma Navigation > Dropdown Menu): แถวสูง 50px, hover พื้น bg/secondary, ไอคอน 20px นำหน้า, nzDisabled = ตัวอักษรเทา · ไม่มีหัวข้อ / ลูกศร" [code]="actions" [ts]="imports">
+    <app-demo title="Actions menu" description="class aibox-dropdown-actions บน ul nz-menu · เมนูของการกระทำ (Figma Navigation > Dropdown Menu): กว้างอย่างน้อย 216px แถวสูง 50px, hover พื้น bg/secondary, ไอคอน 20px นำหน้า, nzDisabled = ตัวอักษรเทา · ไม่มีหัวข้อ / ลูกศร" [code]="actions" [ts]="imports">
       <button nz-button nz-dropdown nzTrigger="click" [nzDropdownMenu]="actionsMenu">Actions</button>
       <nz-dropdown-menu #actionsMenu="nzDropdownMenu">
         <ul nz-menu class="aibox-dropdown-actions">
