@@ -1,4 +1,4 @@
-/* aibox-design-system v0.53.8 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.53.9 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1170,8 +1170,9 @@ a.ant-btn.aibox-btn-xs {
   font-size: var(--aibox-typography-body-body-lg-regular-font-size);
 }
 /* Small list (Figma dropdown size=small 1:7791): rows 40, padding 8/16, 14/24. The overlay does not know the field's size, so add the class
-   through [nzDropdownClassName]="'aibox-select-dropdown--small'" on the nz-select. */
-.ant-select-dropdown.aibox-select-dropdown--small .ant-select-item.ant-select-item {
+   through [nzDropdownClassName]="'aibox-select-dropdown--small'" on the nz-select. ng-zorro 18-22 all put that class on the
+   .cdk-overlay-pane (the parent of .ant-select-dropdown), so the selector is not tied to .ant-select-dropdown. */
+.aibox-select-dropdown--small .ant-select-item.ant-select-item {
   padding: var(--aibox-spacing-2) var(--aibox-spacing-4);
   font-size: var(--aibox-typography-body-body-regular-font-size);
   line-height: var(--aibox-typography-body-body-regular-line-height);
