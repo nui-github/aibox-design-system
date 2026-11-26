@@ -21,7 +21,7 @@ type Status = 'success' | 'info' | 'warning' | 'error';
   imports: [NzAlertModule, NzButtonModule, NzIconModule, Demo, CssPanel, PageHead],
   template: `
     <app-page-head title="Message (snackbar)">
-      <ng-container sub>Figma nodes <code>1:10863</code> (snackbar) และ <code>6608:120690</code> (message bar, หน้า Message &amp; Snack Bar) · snackbar = <code>NzMessageService</code> · message bar = <code>nz-alert</code> + <code>aibox-alert-bar</code></ng-container>
+      <ng-container sub>Figma nodes <code>1:10863</code> (snackbar) และ <code>6608:120690</code> (message bar, หน้า Message &amp; Snack Bar) · snackbar = <code>NzMessageService</code> (Figma ย้าย snackbar ไป Archived แล้ว: งานใหม่ให้ใช้ alert-bar แบบลอยกลางด้านบน ห่างขอบบน 24 ซ้อนกันห่าง 8 ส่วน <code>aibox-snackbar-*</code> ยังใช้ได้ แต่ถือว่าเลิกใช้) · message bar = <code>nz-alert</code> + <code>aibox-alert-bar</code></ng-container>
     </app-page-head>
 
     <app-demo title="Snackbar" description="NzMessageService.success / info / warning / error · กดปุ่มเพื่อเรียก (อยู่นอก demo จึงไม่อยู่ใน Relevant CSS ของกล่องนี้)" [code]="snackbar" [ts]="imports">
