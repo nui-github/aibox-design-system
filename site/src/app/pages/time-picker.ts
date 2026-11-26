@@ -18,7 +18,7 @@ const IMPORTS = `import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
       <ng-container sub>Figma nodes <code>1612:3566</code> (time-picker-desktop), <code>1613:9223</code> (menu cell, หน้า TimePicker) · <code>nz-time-picker</code> · ช่องใช้สไตล์เดียวกับ Date picker</ng-container>
     </app-page-head>
 
-    <app-demo title="Sizes and states" description="nzFormat=&quot;HH:mm&quot; · nzNeedConfirm = ปุ่มท้ายแผง (Figma เขียน &quot;เลือก&quot; แต่ข้อความมาจาก locale เป็น &quot;ตกลง&quot;: ตั้ง provideNzConfig({ timePicker: { nzOkText: 'เลือก' } }) ถ้าต้องการ) · แผง 125 × 290 · nzStatus / nzDisabled · กดช่องเพื่อเปิดแผง" [code]="code" [ts]="imports">
+    <app-demo title="Sizes and states" description="nzFormat=&quot;HH:mm&quot; · nzNeedConfirm = ปุ่มท้ายแผง (Figma เขียน &quot;เลือก&quot; แต่ข้อความมาจาก locale เป็น &quot;ตกลง&quot;: ตั้ง provideNzConfig({ timePicker: { nzOkText: 'เลือก' } }) ถ้าต้องการ) · แผง 125 × 290 (Figma มีแบบมือถือที่แผงกว้างเท่าช่อง แต่ override ไม่รองรับ แผงกว้าง 125px ทุกขนาดจอ) · nzStatus / nzDisabled · กดช่องเพื่อเปิดแผง" [code]="code" [ts]="imports">
       <div class="col">
         <nz-time-picker nzFormat="HH:mm" nzPlaceHolder="Placeholder" [nzNeedConfirm]="true" />
         <nz-time-picker nzFormat="HH:mm" nzSize="large" nzPlaceHolder="Placeholder" [nzNeedConfirm]="true" />

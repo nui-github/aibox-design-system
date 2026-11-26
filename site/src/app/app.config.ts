@@ -71,7 +71,8 @@ export const appConfig: ApplicationConfig = {
     // Every page is a lazy chunk; fetch them in the background after the first page so a menu click does not wait for the network.
     provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }), withPreloading(PreloadAllModules), withNavigationErrorHandler(reloadOnStaleChunk)),
     // ng-zorro defaults to zh_CN (Chinese labels); the docs are Thai.
-    provideNzI18n(th_TH),
+    // monthFormat 'MMMM' = full month name in the calendar header ("พฤศจิกายน 2026", as in Figma); th_TH alone gives the short "พ.ย."
+    provideNzI18n({ ...th_TH, DatePicker: { ...th_TH.DatePicker, lang: { ...th_TH.DatePicker.lang, monthFormat: 'MMMM' } } }),
     // ng-zorro 22 needs a date adapter for the date and time pickers (18.x used date-fns built in).
     provideNzNativeDateAdapter(),
     { provide: NZ_DATE_LOCALE, useValue: 'th-TH' },

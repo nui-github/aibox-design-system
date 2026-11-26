@@ -60,6 +60,11 @@ const CDN = `https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@${META.d
         ใช้ <strong>class เสริม</strong> ที่ขึ้นต้นด้วย <code>aibox-</code> ดูตัวอย่างและโค้ดของแต่ละ component ในเมนูด้านซ้าย
       </p>
       <app-code-block [code]="usage" lang="xml" label="Angular template" maxHeight="none" />
+      <p class="p">
+        หัวปฏิทินภาษาไทยใน Figma เขียน "พฤศจิกายน 2026" (เดือนเต็มก่อนปี) override สลับลำดับให้ แต่ชื่อเดือนเต็มมาจาก locale ของแอป
+        ตั้ง <code>monthFormat: 'MMMM'</code> ตามโค้ดด้านล่าง (ไม่ตั้ง = "พ.ย." ตามค่าเริ่มต้นของ ng-zorro)
+      </p>
+      <app-code-block [code]="locale" lang="typescript" label="app.config.ts" maxHeight="none" />
       <p class="p">token ทุกตัวใช้ได้ในสไตล์ของโปรเจ็คเอง: <code>color: var(--aibox-color-text-main)</code> — ดูรายการทั้งหมดที่ <a routerLink="/tokens">Tokens</a></p>
     </section>
 
@@ -130,6 +135,12 @@ export class GettingStarted {
   protected readonly font = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">`;
+  protected readonly locale = `import { provideNzI18n, th_TH } from 'ng-zorro-antd/i18n';
+
+provideNzI18n({
+  ...th_TH,
+  DatePicker: { ...th_TH.DatePicker, lang: { ...th_TH.DatePicker.lang, monthFormat: 'MMMM' } },
+});`;
   protected readonly usage = `<button nz-button nzType="primary">Save</button>
 <button nz-button class="aibox-btn-subsidiary">Cancel</button>
 <nz-switch class="aibox-switch-ios" [(ngModel)]="enabled" />
@@ -145,6 +156,7 @@ export class GettingStarted {
     ['aibox-switch-icons', 'nz-switch', 'ไอคอน ✓ / ✕ ในราง'],
     ['aibox-tag-solid', 'nz-tag', 'พื้นเข้ม ตัวอักษรขาว'],
     ['aibox-tag-square', 'nz-tag', 'มุม 4px (ค่าเริ่มต้นเป็นแคปซูล)'],
+    ['aibox-tag-round', 'nz-tag', 'แคปซูล (= ค่าเริ่มต้น) เขียนให้ชัดใน markup; Figma ตั้ง square เป็นค่าเริ่มต้น แต่ใน override ยังเป็นแคปซูลเพื่อไม่ให้หน้าตาของแอปเดิมเปลี่ยน'],
     ['aibox-tag-black', 'nz-tag', 'สีเทาเข้ม ตัวอักษรขาว (Figma tag/closable color=black) ใช้กับ nzMode="closeable" ได้'],
     ['aibox-tag-naming (-sm)', 'nz-tag (มักใช้กับ nzMode="closeable")', 'แท็กชื่อคน: avatar กลมชิดซ้าย (aibox-tag-avatar) 30px หรือ 24px กับ -sm และชื่อที่ครอบด้วย aibox-tag-name ตัดที่ 120px'],
     ['aibox-avatar-blue / -sea / -gray / -yellow / -red', 'aibox-tag-avatar (ใน nz-tag หรือ nz-select)', 'สีของ avatar กลมตาม Figma Avatar (ค่าเริ่มต้นเป็นน้ำเงิน)'],
@@ -152,7 +164,7 @@ export class GettingStarted {
     ['aibox-select-naming', 'nz-select nzMode="multiple" + [nzCustomTemplate]', 'แท็กชื่อคน (avatar + ชื่อ) ใน Select หลายค่า: สูง 24px ขนาดปกติ, 30px กับ nzSize="large"'],
     ['aibox-select-list', 'nz-select + aibox-select-naming', 'มุมมองรายการของ Tag Selection: หนึ่งแท็กต่อบรรทัด กว้างเต็มกล่อง ชื่อดันปุ่ม × ไปชิดขวา (ไม่ใส่ = มุมมองคอลัมน์ แท็กเรียงต่อกัน)'],
     ['aibox-select-scroll', 'nz-select nzMode="multiple"', 'กล่องสูงสุด 420px แล้วเลื่อน (scrollbar 4px ตาม Figma) ปรับความสูงด้วย style="--_select-max-h: 340px"'],
-    ['aibox-dropdown-actions', 'nz-menu ใน nz-dropdown', 'เมนูของการกระทำ (Figma Navigation > Dropdown Menu): แถวสูง 50px, hover พื้น bg/secondary, ไอคอน 20px นำหน้า, disabled สีเทา; ไม่ใส่ = หน้าตา popover submenu เดิม'],
+    ['aibox-dropdown-actions', 'nz-menu ใน nz-dropdown', 'เมนูของการกระทำ (Figma Navigation > Dropdown Menu): กว้างอย่างน้อย 216px, แถวสูง 50px, hover พื้น bg/secondary, ไอคอน 20px นำหน้า, disabled สีเทา; ไม่ใส่ = หน้าตา popover submenu เดิม'],
     ['aibox-tag-xs / -md / -lg', 'nz-tag', 'ขนาด 2xsmall / medium / large'],
     ['aibox-badge-sm / aibox-badge-lg', 'nz-badge', 'ขนาด small / large (Medium เป็นค่าเริ่มต้น)'],
     ['aibox-badge-icon', 'nz-badge', 'badge ไอคอนวงกลมสีน้ำเงิน (ใช้กับ [nzCount] เป็น template)'],
