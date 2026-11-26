@@ -87,15 +87,15 @@
   "table": {
     "row-hover-bg": {
       "$type": "color",
-      "$value": "#fafafa",
-      "$description": "ng-zorro's stock table row hover fill (.ant-table-tbody > tr.ant-table-row:hover > td, ng-zorro-antd 22.1.2). Not a Figma value: Figma has no row hover."
+      "$value": "{color.bg.subtlest}",
+      "$description": "Table row hover fill: Figma table row cell hovered (8794:180479) uses variable i-BOX/color/bg/subtlest (#fbfbfd). Kept as a component alias; before v0.53.7 it was ng-zorro's #fafafa."
     }
   },
   "timepicker": {
     "menu-radius": {
       "$type": "dimension",
-      "$value": "6px",
-      "$description": "Figma time-picker menu corner radius (variable i-box/radius/value-6, node 1613:9329), not in the variable export."
+      "$value": "{radius.2}",
+      "$description": "Time-picker menu corner radius: node 1613:9329 uses variable aibox/radius/2 (4px). Before v0.53.7 this was 6px, a misread."
     }
   },
   "cascader": {

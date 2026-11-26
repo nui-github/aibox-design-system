@@ -396,8 +396,6 @@
   --aibox-switch-handle-shadow-color: rgba(0, 35, 11, 0.2); /** Figma variable Component/Switch/handleShadow (0 2px 4px). Not in the variable export; copied from the design context. */
   --aibox-switch-ios-knob-shadow: 0px 0px 0px 0px #0000000a, 0px 3px 8px 0px #00000026, 0px 3px 1px 0px #0000000f; /** Figma switch (node 1:5516) Knob: 0 0 0 0 .04, 0 3px 8px .15, 0 3px 1px .06 (alpha rounded to 8-bit). */
   --aibox-pagination-item-shadow: 0px 4px 4px 0px #0000000a, 0px -1px 4px 0px #00000005; /** Figma pagination page buttons drop shadow (0 4px 4px rgba(0,0,0,.04), 0 -1px 4px rgba(0,0,0,.02)). Not in the variable export; copied from the design context (node 3451:11080). */
-  --aibox-table-row-hover-bg: #fafafa; /** ng-zorro's stock table row hover fill (.ant-table-tbody > tr.ant-table-row:hover > td, ng-zorro-antd 22.1.2). Not a Figma value: Figma has no row hover. */
-  --aibox-timepicker-menu-radius: 6px; /** Figma time-picker menu corner radius (variable i-box/radius/value-6, node 1613:9329), not in the variable export. */
   --aibox-cascader-menu-shadow: 0px 4px 4px 0px #0000001a, 0px -1px 4px 0px #0000001a; /** Figma Cascader Dropdown drop shadow (0 4px 4px rgba(0,0,0,.1), 0 -1px 4px rgba(0,0,0,.1)), node 4268:12946. Not in the variable export. */
   --aibox-font-family-heading-and-body: 'IBM Plex Sans Thai'; /** Primary typeface for all headings and body text throughout the system. */
   --aibox-font-size-header-h-over: 32px; /** Oversized heading — for special cases requiring text larger than H1. */
@@ -528,6 +526,7 @@
   --aibox-color-bg-secondary: var(--aibox-color-global-gray-100); /** Page body background color, used behind white containers to create depth */
   --aibox-color-bg-tertiary: var(--aibox-color-global-blue-100); /** Tertiary background color for highlighted sections */
   --aibox-color-bg-quaternary: var(--aibox-color-global-gray-300); /** Quaternary background color for subtle separations */
+  --aibox-color-bg-subtlest: var(--aibox-color-global-gray-80); /** Subtlest background color, a barely-there tint used for table row hover */
   --aibox-color-bg-disable: var(--aibox-color-global-gray-100); /** Background color for disabled elements */
   --aibox-color-bg-main: var(--aibox-color-global-blue-900); /** Brand-colored background for primary actions and highlights */
   --aibox-color-bg-status-default: var(--aibox-color-global-gray-500); /** Default UI status background for neutral or inactive states */
@@ -632,6 +631,7 @@
   --aibox-color-button-contained-white-subsidiary-text-default: var(--aibox-color-global-gray-1200); /** Default text color for subsidiary contained-white buttons */
   --aibox-color-button-contained-white-subsidiary-text-hover: var(--aibox-color-global-gray-1000); /** Hover text color for subsidiary contained-white buttons */
   --aibox-color-backdrop: var(--aibox-color-global-transparent-black-6); /** Overlay backdrop color — used for modal/dialog background dimming. */
+  --aibox-timepicker-menu-radius: var(--aibox-radius-2); /** Time-picker menu corner radius: node 1613:9329 uses variable aibox/radius/2 (4px). Before v0.53.7 this was 6px, a misread. */
   --aibox-card-menu-shadow: var(--aibox-shadow-base-header-mobile); /** Figma card Menu shadow (0 4px 8px 2px #0000000a): effect style wb/shadow/base/header-mobile. */
   --aibox-color-button-base-bg-disable: var(--aibox-color-component-bg-bg-disable); /** Disabled button background color, shared across all variants */
   --aibox-color-button-base-text-disable: var(--aibox-color-component-text-text-disable); /** Disabled button text color, shared across all variants */
@@ -669,6 +669,7 @@
   --aibox-color-button-component-icon-press: var(--aibox-color-state-gray-g-5-press); /** Pressed color for button icons */
   --aibox-divider-band-color: var(--aibox-color-component-divider); /** Figma divider themes S 10 / M 18 / M 24 band fill: variable i-BOX/color/component/divider (#f1f2f3). It was a literal #f8f8f8 before v0.39.0. */
   --aibox-dropdown-section-bg: var(--aibox-color-bg-subtle); /** Figma popover-submenu section header fill (nodes 1346:846, 1346:869): variable i-BOX/color/bg/subtle. */
+  --aibox-table-row-hover-bg: var(--aibox-color-bg-subtlest); /** Table row hover fill: Figma table row cell hovered (8794:180479) uses variable i-BOX/color/bg/subtlest (#fbfbfd). Kept as a component alias; before v0.53.7 it was ng-zorro's #fafafa. */
 }
 
 /* typography properties */
