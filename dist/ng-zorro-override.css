@@ -1,4 +1,4 @@
-/* aibox-design-system v0.53.7 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.53.8 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -1111,7 +1111,7 @@ a.ant-btn.aibox-btn-xs {
 /* Tag Selection views (Figma column view 4475:1852, list view 4476:2990; the view-toggle button is the Label row, not part of the select).
    Column view = the default wrapping layout above. aibox-select-list = list view: one tag per row, full width, name fills the row so the x
    sits at the right edge and long names are cut with an ellipsis. aibox-select-scroll = the box stops growing at --_select-max-h
-   (default 456px, Figma column view) and scrolls with a 4px bg/secondary track and text/tertiary thumb (Figma scrollbar-Vertical). */
+   (default 420px: the Figma column view is a 456 block = 32 label + 4 + 420 box) and scrolls with a 4px bg/secondary track and text/tertiary thumb (Figma scrollbar-Vertical). */
 .ant-select.ant-select.ant-select.aibox-select-list .ant-select-selection-overflow-item:not(.ant-select-selection-overflow-item-suffix) {
   flex: 0 0 100%;
   max-width: 100%;
@@ -1125,7 +1125,7 @@ a.ant-btn.aibox-btn-xs {
   max-width: none;
 }
 .ant-select.ant-select.ant-select.ant-select.ant-select.ant-select.ant-select-multiple.aibox-select-scroll .ant-select-selector {
-  max-height: var(--_select-max-h, 456px);
+  max-height: var(--_select-max-h, 420px);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--aibox-color-text-tertiary) var(--aibox-color-bg-secondary);
@@ -1168,6 +1168,14 @@ a.ant-btn.aibox-btn-xs {
   box-shadow: var(--aibox-shadow-base-raise-modal);
   font-family: var(--aibox-font-family-heading-and-body);
   font-size: var(--aibox-typography-body-body-lg-regular-font-size);
+}
+/* Small list (Figma dropdown size=small 1:7791): rows 40, padding 8/16, 14/24. The overlay does not know the field's size, so add the class
+   through [nzDropdownClassName]="'aibox-select-dropdown--small'" on the nz-select. */
+.ant-select-dropdown.aibox-select-dropdown--small .ant-select-item.ant-select-item {
+  padding: var(--aibox-spacing-2) var(--aibox-spacing-4);
+  font-size: var(--aibox-typography-body-body-regular-font-size);
+  line-height: var(--aibox-typography-body-body-regular-line-height);
+  letter-spacing: var(--aibox-typography-body-body-regular-letter-spacing);
 }
 .ant-select-dropdown .ant-select-item {
   min-height: 0;
@@ -1585,6 +1593,19 @@ a.ant-btn.aibox-btn-xs {
   font-size: var(--aibox-typography-title-title-lg-font-size);
   line-height: var(--aibox-typography-title-title-lg-line-height);
   letter-spacing: var(--aibox-typography-title-title-lg-letter-spacing);
+}
+/* leading icon (Figma tag/checkable 1:10199): a 16x16 box on every size, 12px glyph; on a selected chip it takes the chip's white text colour,
+   selected + disabled uses text/icon-default */
+.ant-tag.ant-tag-checkable > .anticon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+}
+.ant-tag.ant-tag-checkable.ant-tag-checkable-checked.aibox-tag-disabled > .anticon {
+  color: var(--aibox-color-text-icon-default);
 }
 /* ant sets colour / background directly on checkable hover, active and checked; re-apply our state variables with equal or higher specificity. */
 .ant-tag.ant-tag-checkable,
@@ -3643,10 +3664,11 @@ nz-alert.aibox-alert-bar {
      state=expand / edit                  the popup with hour and minute columns (nzFormat="HH:mm")
      menu cell default / hover / selected   the cells of the columns
      footer button "เลือก"                nzNeedConfirm (drawn as outlined standard, small)
-   Popup: 125 wide, bg/primary, radius 4, shadow raise-modal, 10px top padding; columns 224 tall with a 1px divider after each; cells 28x28
+   Popup: 125 x 290 (10 top + 224 columns + 56 footer, no line above the button), bg/primary, radius 4, shadow raise-modal; columns 62.5 (incl. a 1px divider rgba(0,0,0,.06), Figma component colorsplit) x 224; cells 28x28
    radius 4, 14/24 (selected: fill color/main, white medium text; hover: bg/tertiary). Footer padding 12.
    The "now" link is hidden (not in Figma). Not covered: seconds / 12-hour columns, the mobile variants (time-picker-mobile 1630:2916), nzUse12Hours. */
-.ant-picker-dropdown .ant-picker-time-panel {
+/* ng-zorro 22 sets padding-top: 4px with a placement class, which beat the 10px; repeat the class to win */
+.ant-picker-dropdown .ant-picker-time-panel.ant-picker-time-panel.ant-picker-time-panel {
   padding-top: 10px;
 }
 .ant-picker-dropdown:has(.ant-picker-time-panel) .ant-picker-panel-container {
@@ -3654,11 +3676,11 @@ nz-alert.aibox-alert-bar {
   overflow: hidden;
 }
 .ant-picker-dropdown .ant-picker-time-panel-column {
-  width: 61.5px;
+  width: 62.5px;
   margin: 0;
   padding: 0 var(--aibox-spacing-1);
   border-inline-start: 0;
-  border-inline-end: 1px solid var(--aibox-color-border-primary);
+  border-inline-end: 1px solid rgba(0, 0, 0, 0.06);
 }
 .ant-picker-dropdown .ant-picker-time-panel-column:not(:first-child) {
   border-inline-start: 0;
@@ -3702,6 +3724,7 @@ nz-alert.aibox-alert-bar {
 .ant-picker-dropdown .ant-picker-footer {
   padding: 12px var(--aibox-spacing-3);
   border-top: 0;
+  border-bottom: 0;
 }
 .ant-picker-dropdown .ant-picker-footer .ant-picker-ranges {
   display: flex;
@@ -3712,8 +3735,10 @@ nz-alert.aibox-alert-bar {
   display: none;
 }
 .ant-picker-dropdown .ant-picker-ok {
+  display: flex;
   flex: 1;
   margin: 0;
+  line-height: 0; /* ng-zorro's 34px line box made the footer 58px instead of 56 */
 }
 .ant-picker-dropdown .ant-picker-ok .ant-btn.ant-btn-primary {
   --_bg: transparent;

@@ -36,6 +36,12 @@ export class Example {
       </nz-select>
     </app-demo>
 
+    <app-demo title="Small list" description="รายการใน popup ของ Select ขนาด small (แถวสูง 40 · 14/24): ใส่ [nzDropdownClassName]=&quot;'aibox-select-dropdown--small'&quot; เพราะ overlay ไม่รู้ขนาดของช่อง · popup ห่างจากช่อง 2px" [code]="smallList" [ts]="imports">
+      <nz-select [(ngModel)]="a" nzPlaceHolder="Select" nzDropdownClassName="aibox-select-dropdown--small" [nzOptionHeightPx]="40" style="width: 240px">
+        @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
+      </nz-select>
+    </app-demo>
+
     <app-demo title="Search and clear" description="nzShowSearch (ไอคอน search แทนลูกศรตอนเปิด) · nzAllowClear" [code]="search" [ts]="imports">
       <nz-select [(ngModel)]="c" nzShowSearch nzAllowClear nzPlaceHolder="Search" [nzOptionHeightPx]="50" style="width: 240px">
         @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
@@ -68,7 +74,7 @@ export class Example {
       </ng-template>
     </app-demo>
 
-    <app-demo title="Tag Selection views" description="Figma Tag Selection column view / list view · aibox-select-naming ตามเดิม = แบบคอลัมน์ (แท็กเรียงต่อกัน) · เพิ่ม aibox-select-list = แบบรายการ (หนึ่งแท็กต่อบรรทัด) · เพิ่ม aibox-select-scroll = กล่องสูงสุด 456px แล้วเลื่อน (ปรับด้วย --_select-max-h)" [code]="views" [ts]="imports">
+    <app-demo title="Tag Selection views" description="Figma Tag Selection column view / list view · aibox-select-naming ตามเดิม = แบบคอลัมน์ (แท็กเรียงต่อกัน) · เพิ่ม aibox-select-list = แบบรายการ (หนึ่งแท็กต่อบรรทัด) · เพิ่ม aibox-select-scroll = กล่องสูงสุด 420px แล้วเลื่อน (ปรับด้วย --_select-max-h)" [code]="views" [ts]="imports">
       <nz-select [(ngModel)]="v1" class="aibox-select-naming aibox-select-scroll" nzSize="large" nzMode="multiple" [nzCustomTemplate]="person" [nzOptionHeightPx]="50" style="width: 724px">
         @for (o of people; track o.value) { <nz-option [nzValue]="o.value" [nzLabel]="o.label" /> }
       </nz-select>
@@ -111,6 +117,9 @@ export class SelectPage {
   protected m3: string[] = ['one', 'two'];
   protected readonly options = ['Draft', 'In progress', 'Approved', 'Rejected'];
   protected readonly imports = IMPORTS;
+  protected readonly smallList = `<nz-select [(ngModel)]="value" nzPlaceHolder="Select" nzDropdownClassName="aibox-select-dropdown--small" [nzOptionHeightPx]="40">
+  <nz-option nzValue="a" nzLabel="Option A" />
+</nz-select>`;
   protected readonly sizes = `<nz-select [(ngModel)]="value" nzPlaceHolder="Select" [nzOptionHeightPx]="50">
   @for (o of options; track o) {
     <nz-option [nzValue]="o" [nzLabel]="o" />
