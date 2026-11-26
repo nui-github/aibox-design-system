@@ -42,6 +42,19 @@ export class Example {
       </nz-select>
     </app-demo>
 
+    <app-demo title="Rows with description" description="nz-option nzCustomContent + aibox-option / -icon / -text / -title / -desc (ชุดเดียวกับ Cascader) · แถวสูง 74px · ใส่ aibox-select-dropdown--small ได้ 62px (หัวข้อ 14/24 คำอธิบาย 12/22)" [code]="described" [ts]="imports">
+      <nz-select [(ngModel)]="a" nzPlaceHolder="Select" [nzOptionHeightPx]="74" style="width: 280px">
+        @for (o of options; track o) {
+          <nz-option [nzValue]="o" [nzLabel]="o" nzCustomContent>
+            <span class="aibox-option">
+              <span class="aibox-option-icon"><nz-icon nzType="smile" nzTheme="outline" /></span>
+              <span class="aibox-option-text"><span class="aibox-option-title">{{ o }}</span><span class="aibox-option-desc">Description of {{ o }}</span></span>
+            </span>
+          </nz-option>
+        }
+      </nz-select>
+    </app-demo>
+
     <app-demo title="Search and clear" description="nzShowSearch (ไอคอน search แทนลูกศรตอนเปิด) · nzAllowClear" [code]="search" [ts]="imports">
       <nz-select [(ngModel)]="c" nzShowSearch nzAllowClear nzPlaceHolder="Search" [nzOptionHeightPx]="50" style="width: 240px">
         @for (o of options; track o) { <nz-option [nzValue]="o" [nzLabel]="o" /> }
@@ -119,6 +132,17 @@ export class SelectPage {
   protected readonly imports = IMPORTS;
   protected readonly smallList = `<nz-select [(ngModel)]="value" nzPlaceHolder="Select" nzDropdownClassName="aibox-select-dropdown--small" [nzOptionHeightPx]="40">
   <nz-option nzValue="a" nzLabel="Option A" />
+</nz-select>`;
+  protected readonly described = `<nz-select [(ngModel)]="value" nzPlaceHolder="Select" [nzOptionHeightPx]="74">
+  <nz-option nzValue="a" nzLabel="Draft" nzCustomContent>
+    <span class="aibox-option">
+      <span class="aibox-option-icon"><nz-icon nzType="smile" nzTheme="outline" /></span>
+      <span class="aibox-option-text">
+        <span class="aibox-option-title">Draft</span>
+        <span class="aibox-option-desc">Not yet submitted</span>
+      </span>
+    </span>
+  </nz-option>
 </nz-select>`;
   protected readonly sizes = `<nz-select [(ngModel)]="value" nzPlaceHolder="Select" [nzOptionHeightPx]="50">
   @for (o of options; track o) {
