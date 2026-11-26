@@ -1,4 +1,4 @@
-/* aibox-design-system v0.55.0 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.55.1 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -136,13 +136,24 @@
   outline: 0;
 }
 
-/* Disabled */
+/* Disabled. Figma textfield state=disabled (1:7121 / 1:7129): a value is text/secondary, the placeholder, the icons, the label and the
+   assistive text are text/disable */
 .ant-input[disabled],
 .ant-input-disabled {
-  color: var(--aibox-color-text-disable);
+  color: var(--aibox-color-text-secondary);
   background-color: var(--aibox-color-bg-disable);
   border-color: var(--aibox-color-state-form-default);
   box-shadow: none;
+}
+
+.ant-input[disabled]::placeholder,
+.ant-input-disabled::placeholder {
+  color: var(--aibox-color-text-disable);
+}
+/* label and assistive text of a field whose control is disabled (Figma Label state=disabled, assistive text) */
+.ant-form-item:has(.ant-input[disabled], .ant-input-disabled, .ant-input-affix-wrapper-disabled, .ant-input-number-disabled, .ant-select-disabled, .ant-picker-disabled) .ant-form-item-label > label,
+.ant-form-item:has(.ant-input[disabled], .ant-input-disabled, .ant-input-affix-wrapper-disabled, .ant-input-number-disabled, .ant-select-disabled, .ant-picker-disabled) .ant-form-item-extra {
+  color: var(--aibox-color-text-disable);
 }
 
 /* Input options added on top of the textfield above (same Input and Select pages in the docs). From the Figma "i-BOX Design System" > Input page: textarea (node 1:7232),
@@ -253,7 +264,7 @@ textarea.ant-input.ant-input-disabled {
 .ant-input-affix-wrapper.ant-input-affix-wrapper-disabled:hover {
   border-color: var(--aibox-color-state-form-default);
   background-color: var(--aibox-color-bg-disable);
-  color: var(--aibox-color-text-disable);
+  color: var(--aibox-color-text-secondary);
   box-shadow: none;
 }
 .ant-input-affix-wrapper.ant-input-affix-wrapper-borderless,
@@ -415,7 +426,7 @@ textarea.ant-input.ant-input-disabled {
 .ant-input-number.ant-input-number-disabled:hover {
   border-color: var(--aibox-color-state-form-default);
   background-color: var(--aibox-color-bg-disable);
-  color: var(--aibox-color-text-disable);
+  color: var(--aibox-color-text-secondary);
   box-shadow: none;
 }
 .ant-input-number.ant-input-number-borderless,
@@ -3581,8 +3592,14 @@ nz-alert.aibox-alert-bar {
   border-color: var(--aibox-color-state-form-default);
   background: var(--aibox-color-bg-disable);
 }
-.ant-picker.ant-picker-disabled .ant-picker-input > input,
 .ant-picker.ant-picker-disabled .ant-picker-suffix {
+  color: var(--aibox-color-text-disable);
+}
+/* the value of a disabled picker is text/secondary like the Input (team decision, Figma has no filled variant), the placeholder text/disable */
+.ant-picker.ant-picker-disabled .ant-picker-input > input {
+  color: var(--aibox-color-text-secondary);
+}
+.ant-picker.ant-picker-disabled .ant-picker-input > input::placeholder {
   color: var(--aibox-color-text-disable);
 }
 /* calendar popup */
