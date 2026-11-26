@@ -1,4 +1,4 @@
-/* aibox-design-system v0.53.4 - requires tokens.css; load after ng-zorro-antd styles */
+/* aibox-design-system v0.53.5 - requires tokens.css; load after ng-zorro-antd styles */
 /* Targets ng-zorro-antd 18.x. Source: Figma "i-BOX Design System" > textfield (node 1:7052).
    Same specificity as ant; wins by load order (load after ng-zorro styles). */
 
@@ -43,8 +43,23 @@
   font-size: var(--_form-fs);
   line-height: var(--_form-lh);
 }
-.ant-form-item-required::before {
+/* Figma Label (7124:95946): the required asterisk comes after the label text, 4px away, in text/status/error-100 at the label's size
+   (14/24, or 12/22 for aibox-form-small). ant draws it before the label with ::before and uses ::after for the colon, so the asterisk replaces
+   the colon of a required label (Figma has no colon). Ant's selector is more specific than a plain one, hence the repeated classes. */
+.ant-form-item.ant-form-item .ant-form-item-label > label.ant-form-item-required.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  display: none;
+}
+.ant-form-item.ant-form-item .ant-form-item-label > label.ant-form-item-required.ant-form-item-required::after {
+  content: "*";
+  top: 0;
+  margin: 0 0 0 var(--aibox-spacing-1);
   color: var(--aibox-color-text-status-error-100);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.ant-form-item.ant-form-item .ant-form-item-label > label.ant-form-item-required.ant-form-item-required.ant-form-item-required-mark-optional::after {
+  content: none;
 }
 /* ant draws the asterisk at 14px / line-height 1 in its own font (SimSun), which made a required label 2px taller; repeated classes
    because ant's own rule (with :not(.ant-form-item-required-mark-optional)) is more specific */
@@ -101,6 +116,19 @@
 .ant-input-status-error:not(.ant-input-disabled):focus {
   border-color: var(--aibox-color-state-form-error);
   box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-error-outer);
+}
+
+/* ng-zorro's own error rule (.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input) is more specific than the one
+   above and kept Ant's red #ff4d4f / #ff7875 on the box and its ring; same selector shape so the Ai-BOX error colour wins */
+.ant-input.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless),
+.ant-input.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless):hover {
+  border-color: var(--aibox-color-state-form-error);
+}
+.ant-input.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless):focus,
+.ant-input.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input-focused {
+  border-color: var(--aibox-color-state-form-error);
+  box-shadow: 0 0 0 var(--aibox-size-focus-ring) var(--aibox-color-state-form-error-outer);
+  outline: 0;
 }
 
 /* Disabled */
@@ -1825,13 +1853,13 @@ a.ant-btn.aibox-btn-xs {
    Mapping (nz-tabs):
      tab / Tab Button (raised tab)    nzType="card"
      Outline Tab (4px rail + bar)     nzType="line" (default)
-     Size Large / Medium / Small      nzSize="large" / (default) / "small"  (card 48 / 40 / 32px, line 56 / 40 / 40px)
+     Size Large / Medium / Small      nzSize="large" / (default) / "small"  (card and line 48 / 40 / 32px)
      state Active / Default           the active tab / the others; Disabled = [nzDisabled] on nz-tab
      icon (dot, 12px)                 <span class="aibox-tab-icon"></span> in the tab title; error / success icons:
                                       class "aibox-tab-icon aibox-tab-icon-error" / "aibox-tab-icon-success"
      tabs that share the width        class "aibox-tabs-fill" on nz-tabs (Figma Outline Tab rows)
-   Hover is not in Figma: the default tab turns primary on hover. Line-style Small (40px, 14/16 text, 12px padding) is inferred from
-   the Outline Tab frame heights, not read from a node. Not covered: vertical / bottom placement, closable / editable tabs, tab bar extra content. */
+   Hover is not in Figma: the default tab turns primary on hover. The Outline Tab frames (5342:5164) are 48 / 40 / 32px high like the card tabs
+   (padding 12 / 8 / 8, v0.53.5 corrects the 56 / 40 / 40 read earlier). Card tabs are 4px apart (Figma row gap), line tabs touch. Not covered: vertical / bottom placement, closable / editable tabs, tab bar extra content. */
 .ant-tabs {
   --_px: var(--aibox-spacing-5);
   --_py: var(--aibox-spacing-2);
@@ -1843,23 +1871,17 @@ a.ant-btn.aibox-btn-xs {
 }
 .ant-tabs.ant-tabs-large {
   --_px: var(--aibox-spacing-8);
-  --_py: var(--aibox-spacing-4);
+  --_py: var(--aibox-spacing-3);
   --_fs: var(--aibox-typography-button-lg-font-size);
   --_lh: var(--aibox-typography-button-lg-line-height);
   --_ls: var(--aibox-typography-button-lg-letter-spacing);
 }
 .ant-tabs.ant-tabs-small {
   --_px: var(--aibox-spacing-4);
-  --_py: var(--aibox-spacing-3);
+  --_py: var(--aibox-spacing-2);
   --_fs: var(--aibox-typography-button-sm-font-size);
   --_lh: var(--aibox-typography-button-sm-line-height);
   --_ls: var(--aibox-typography-button-sm-letter-spacing);
-}
-.ant-tabs.ant-tabs-card.ant-tabs-large {
-  --_py: var(--aibox-spacing-3);
-}
-.ant-tabs.ant-tabs-card.ant-tabs-small {
-  --_py: var(--aibox-spacing-2);
 }
 .ant-tabs.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab {
   --_bg: transparent;
@@ -1912,6 +1934,9 @@ a.ant-btn.aibox-btn-xs {
   border: 1px solid var(--aibox-color-border-disable);
   border-radius: var(--aibox-radius-2) var(--aibox-radius-2) 0 0;
   background: var(--_bg);
+}
+.ant-tabs.ant-tabs-card.ant-tabs-card:is(.ant-tabs-top, .ant-tabs-bottom) > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab {
+  margin-inline-start: var(--aibox-spacing-1);
 }
 .ant-tabs.ant-tabs-card.ant-tabs.ant-tabs .ant-tabs-nav .ant-tabs-tab.ant-tabs-tab-active {
   --_bg: var(--aibox-color-button-contained-standard-text-default);
@@ -3607,6 +3632,13 @@ nz-alert.aibox-alert-bar {
 }
 .ant-picker-dropdown .ant-picker-time-panel-column:not(:first-child) {
   border-inline-start: 0;
+}/* ng-zorro keeps the columns at overflow-y: hidden and only turns scrolling on with :hover, which a touch screen never has, so a swipe
+   scrolled the page instead of the column; touch devices get the scrolling column and the page stays put */
+@media (hover: none) {
+  .ant-picker-dropdown .ant-picker-time-panel-column {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
 }
 .ant-picker-dropdown .ant-picker-time-panel-cell {
   margin: 0;
@@ -4059,6 +4091,11 @@ nz-alert.aibox-alert-bar {
   color: var(--aibox-color-text-white-primary);
   font-weight: var(--aibox-typography-body-body-bold-font-weight);
 }
+/* a closed group is 56px in Figma including its 1px line; the line sits on the group (outside the title), so the title gives it back 1px (an open
+   group keeps the 56px title and ends with the line after its items, 192px in total) */
+.ant-menu-inline > .ant-menu-submenu:not(.ant-menu-submenu-open) > .ant-menu-submenu-title {
+  padding-bottom: calc(var(--aibox-spacing-4) - 1px);
+}
 /* a single top-level item (not in a group) takes the same hover / selected look as the items of a group; Figma has no spec for it, the row
    keeps its 56px height and fills edge to edge */
 .ant-menu-inline > .ant-menu-item.ant-menu-item:hover {
@@ -4198,8 +4235,8 @@ nz-alert.aibox-alert-bar {
    Icon: finish = bg/tertiary with a 12px check in bg/main, process = bg/main with a white 14/24 number, wait = bg/disable with a text/secondary number, error = status
    error with a white cross. Title 16/26 text/primary (wait: text/tertiary, error: status error), description 14/24 text/tertiary, max 140px, gap 2px under the title.
    Line: 4px away from each icon, bg/main after a finished step and bg/secondary after the others (3px for the horizontal indicator, 1px for the vertical one).
-   Not covered: the hovered state, the progress ring (nzPercentage), the navigation type, the clickable (nzStatus on hover) variants, the error-line colour
-   split in the Figma error indicator (one colour per line is used), and dark theme. The line colours come from the Figma variables, not from the SVG itself. */
+   The line before an error step is half bg/main, half bg/secondary (Figma active=step2 error); every other line has one colour.
+   Not covered: the hovered state, the progress ring (nzPercentage), the navigation type, the clickable (nzStatus on hover) variants, and dark theme. */
 .ant-steps {
   --_icon: 32px;
   font-family: var(--aibox-font-family-heading-and-body);
@@ -4353,6 +4390,19 @@ nz-alert.aibox-alert-bar {
   height: auto;
   margin: 0;
   padding: 0;
+}
+/* the text block sits centred on the icon (Figma: title at y=30, description at y=58 in a 112px row): ng-zorro's 12px padding under the vertical
+   description moved it 6px up and nothing separated it from the title; Figma has 2px */
+.ant-steps.ant-steps-vertical:not(.ant-steps-dot) > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-description {
+  margin-top: 2px;
+  padding: 0;
+}
+/* the line before an error step: the first half stays bg/main, the second half is bg/secondary like a waiting line (Figma active=step2 error) */
+.ant-steps.ant-steps-horizontal.ant-steps-label-vertical:not(.ant-steps-dot) > .ant-steps-item.ant-steps-item-finish:has(+ .ant-steps-item-error) > .ant-steps-item-container > .ant-steps-item-tail {
+  background: linear-gradient(to right, var(--aibox-color-bg-main) 50%, var(--aibox-color-bg-secondary) 50%);
+}
+.ant-steps.ant-steps-vertical:not(.ant-steps-dot) > .ant-steps-item.ant-steps-item-finish:has(+ .ant-steps-item-error) > .ant-steps-item-container > .ant-steps-item-tail {
+  background: linear-gradient(to bottom, var(--aibox-color-bg-main) 50%, var(--aibox-color-bg-secondary) 50%);
 }
 /* dot type: 8px dot (10px for the current step) */
 .ant-steps.ant-steps-dot .ant-steps-icon-dot {
