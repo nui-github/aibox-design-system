@@ -142,6 +142,11 @@
         "$value": "{color.global.gray.300}",
         "$description": "Quaternary background color for subtle separations"
       },
+      "subtlest": {
+        "$type": "color",
+        "$value": "{color.global.gray.80}",
+        "$description": "Subtlest background color, a barely-there tint used for table row hover"
+      },
       "disable": {
         "$type": "color",
         "$value": "{color.global.gray.100}",
