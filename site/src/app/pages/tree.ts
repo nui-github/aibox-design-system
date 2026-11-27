@@ -19,7 +19,7 @@ import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
       <ng-container sub>Figma nodes <code>9718:69790</code> (tree-selection-list), <code>4267:9343</code> (_base_tree-content-list, หน้า Tree Select) · <code>nz-tree</code> (ใช้ใน <code>nz-tree-select</code> ด้วย) แบบมี checkbox · รายการ Folder list (ไอคอนโฟลเดอร์ + chevron) เป็นรูปแบบเฉพาะของ product ไม่ได้ override</ng-container>
     </app-page-head>
 
-    <app-demo title="Checkable tree" description="nzCheckable · ลูกศร + checkbox + ชื่อ 16/26 · แถวสูง 42px · hover พื้น bg/tertiary" [code]="code" [ts]="imports">
+    <app-demo title="Checkable tree" description="nzCheckable · ลูกศร + checkbox + ชื่อ 16/26 · แถวสูง 42px · hover พื้น bg/tertiary · hover และ selected ของ Tree แบบ checkbox ยืมมาจากเฟรม Folder-list (tree-selection-list ใน Figma ไม่มี state นี้) ยังไม่ได้รับการยืนยันจาก designer" [code]="code" [ts]="imports">
       <div class="tree">
         <nz-tree [nzData]="nodes" nzCheckable nzExpandAll (nzClick)="noop($event)" />
       </div>
