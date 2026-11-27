@@ -64,7 +64,7 @@ const IMPORTS = `import { NzStepsModule } from 'ng-zorro-antd/steps';
 
     <app-css-panel id="steps" />
   `,
-  styles: `.box { width: 720px; max-width: 100%; min-width: 0; } .narrow { width: 320px; } .stack { display: flex; flex-direction: column; gap: 32px; }`,
+  styles: `.box { width: 720px; max-width: 100%; min-width: 0; } nz-steps { overflow-x: auto; } .narrow { width: 320px; } .stack { display: flex; flex-direction: column; gap: 32px; }`,
 })
 export class StepsPage {
   protected readonly imports = IMPORTS;
