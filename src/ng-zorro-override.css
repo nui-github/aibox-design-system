@@ -3134,6 +3134,24 @@ nz-alert.aibox-alert-bar {
   width: 52px;
   min-width: 52px;
 }
+/* Figma checkbox cells (10893:1099 and the row cell): padding 12/16 (head) and 8/16 (row) around a 20px frame; the selection wrapper's inline-flex line box made
+   the head taller than 48 */
+.ant-table-wrapper .ant-table-thead > tr > th.ant-table-selection-column,
+.ant-table-wrapper .ant-table-tbody > tr > td.ant-table-selection-column {
+  padding-inline: var(--aibox-spacing-4);
+}
+.ant-table-wrapper .ant-table-selection-column .ant-table-selection {
+  display: flex; /* ng-zorro: inline-flex, whose baseline gap added ~5px to the head row (52.8 instead of 48) */
+}
+.ant-table-wrapper .ant-table-selection-column .ant-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 24px;
+  margin: 0;
+  line-height: 24px;
+}
 
 /* Upload. Source: Figma "i-BOX Design System" > Upload page (1516:11060): drop zone 1516:11121 (state default) and upload-block 1516:11080
    (state loading / error / uploaded / thumbnail uploaded).
