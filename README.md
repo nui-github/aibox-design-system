@@ -42,7 +42,7 @@ Use ng-zorro `nz-button` as usual; the override restyles it to match Figma.
 Not covered yet: `contained-white`, `without padding`, dark mode, loading, round/circle. Sizes follow the Figma names, so the default ng-zorro button is **40px (Figma medium)**, not ng-zorro's usual 32px.
 
 ### Checkbox and Radio (Figma nodes `1:5323`, `1:5408`)
-Use `nz-checkbox` / `nz-radio` as usual.
+Use `nz-checkbox` / `nz-radio` as usual. Each control is a Figma frame of 20 / 24 / 28px (`aibox-sm` / default / `aibox-lg`) with the drawn box centred in it (checkbox 14 / 17.5 / 21px, radio 16 / 20 / 24px), the label 8px after the frame and centred with it; the invisible input fills the frame, so the click area is the frame (before v0.56.0 it was only the drawn box). Tables draw their own 20px frame and the Tree its own 24px frame.
 
 | Figma | ng-zorro |
 |---|---|

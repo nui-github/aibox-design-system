@@ -674,6 +674,7 @@ a.ant-btn.aibox-btn-xs {
   --_dash: 7.5px;
   --_dash-t: 1.875px;
   --_dot: 7.5px;
+  --_frame: 24px;
   --_line: var(--aibox-color-text-icon-default);
   --_line-h: var(--aibox-color-state-form-hover);
   --_fill: var(--aibox-color-bg-primary);
@@ -690,6 +691,7 @@ a.ant-btn.aibox-btn-xs {
   --_dash: 6px;
   --_dash-t: 1.5px;
   --_dot: 6px;
+  --_frame: 20px;
 }
 .ant-checkbox-wrapper.aibox-lg,
 .ant-radio-wrapper.aibox-lg {
@@ -701,6 +703,7 @@ a.ant-btn.aibox-btn-xs {
   --_dash: 9px;
   --_dash-t: 2.25px;
   --_dot: 9px;
+  --_frame: 28px;
 }
 .ant-checkbox-wrapper.aibox-error,
 .ant-radio-wrapper.aibox-error {
@@ -725,6 +728,24 @@ a.ant-btn.aibox-btn-xs {
 .ant-checkbox-wrapper .ant-checkbox-checked::after,
 .ant-radio-wrapper .ant-radio-checked::after {
   display: none;
+}
+
+/* The Figma checkbox / radio is a 20 / 24 / 28px frame (small / medium / large) holding the drawn box centred in it (the label follows the frame, 8px
+   away); ng-zorro's box is only as big as the drawing, so the click area was 14-21px. The invisible input fills the frame. Tree and Table draw
+   their own checkbox frames below. */
+.ant-checkbox-wrapper .ant-checkbox,
+.ant-radio-wrapper .ant-radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_frame);
+  height: var(--_frame);
+  top: 0;
+}
+
+.ant-checkbox-wrapper,
+.ant-radio-wrapper {
+  align-items: center;
 }
 
 /* ---- Checkbox ---- */
@@ -3144,6 +3165,7 @@ nz-alert.aibox-alert-bar {
   display: flex; /* ng-zorro: inline-flex, whose baseline gap added ~5px to the head row (52.8 instead of 48) */
 }
 .ant-table-wrapper .ant-table-selection-column .ant-checkbox-wrapper {
+  --_frame: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
