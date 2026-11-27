@@ -4579,6 +4579,29 @@ nz-alert.aibox-alert-bar {
 .ant-steps.ant-steps-dot .ant-steps-item-error .ant-steps-icon-dot {
   background: var(--aibox-color-text-status-error-100);
 }
+/* Dot layout (horizontal). Not in Figma, so these follow the look ng-zorro gives them, with two fixes. (1) The dot is centred over the text: ng-zorro
+   puts it 67px into a 140px content box (centre 71, text centre 70) and nudges the first dot 2px more, so the dots sat 1 to 3px right of the text.
+   (2) The 140px content box made the row at least 3 x 140 = 420px wide, so on a phone it was cut or had to scroll; the content width now follows the
+   screen (about a third of it, 80px at the narrowest, 140px from ~500px up), the dot and the line start follow it. Longer rows (4+ steps) still
+   scroll or need the app to wrap them. */
+.ant-steps.ant-steps-dot.ant-steps-horizontal {
+  --_cw: clamp(80px, calc((100vw - 80px) / 3), 140px);
+}
+.ant-steps.ant-steps-dot.ant-steps-horizontal .ant-steps-item-content {
+  width: var(--_cw);
+}
+.ant-steps.ant-steps-dot.ant-steps-horizontal .ant-steps-item-icon {
+  margin-inline-start: calc((var(--_cw) - 8px) / 2);
+}
+.ant-steps.ant-steps-dot.ant-steps-horizontal .ant-steps-item-process .ant-steps-item-icon {
+  margin-inline-start: calc((var(--_cw) - 10px) / 2);
+}
+.ant-steps.ant-steps-dot.ant-steps-horizontal .ant-steps-item:first-child .ant-steps-icon-dot {
+  inset-inline-start: 0;
+}
+.ant-steps.ant-steps-dot.ant-steps-horizontal .ant-steps-item-tail {
+  margin-inline-start: calc(var(--_cw) / 2);
+}
 
 /* Spin. Source: Figma "i-BOX Design System" > Spin page (7075:39): Spin 7075:49 (Size Small 7075:50 / Default 7075:53 / Large 7075:56, spinner + tip).
    Mapping (nz-spin):
