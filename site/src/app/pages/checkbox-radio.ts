@@ -18,7 +18,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
   imports: [FormsModule, NzCheckboxModule, NzRadioModule, Demo, CssPanel, PageHead],
   template: `
     <app-page-head title="Checkbox & Radio">
-      <ng-container sub>Figma nodes <code>1:5323</code> (checkbox), <code>1:5408</code> (radio) · ขนาดวัดจาก render 1x ของ Figma</ng-container>
+      <ng-container sub>Figma nodes <code>1:5323</code> (checkbox), <code>1:5408</code> (radio) · กรอบ 20 / 24 / 28px (aibox-sm / ปกติ / aibox-lg) กล่องอยู่กลางกรอบ ข้อความห่างกรอบ 8px และอยู่กึ่งกลางแนวตั้ง · ขนาดกล่องวัดจาก render 1x ของ Figma</ng-container>
     </app-page-head>
 
     <app-demo title="Checkbox" description="unselected · selected · indeterminate · multiple (class aibox-multiple) · disabled" [code]="cb" [ts]="imports">
