@@ -47,7 +47,7 @@ const IMPORTS = `import { NzStepsModule } from 'ng-zorro-antd/steps';
       </div>
     </app-demo>
 
-    <app-demo title="Size และ Dot" description="ไม่ใส่ nzSize = ไอคอน 32px (Basic Default) · nzProgressDot = จุด 8px (ขั้นปัจจุบัน 10px) · แบบจุดไม่มีใน Figma (master ไม่มี layout ของแถวแบบจุด) เป็นการอนุมานของ override รอ designer ออกแบบ" [code]="size" [ts]="imports">
+    <app-demo title="Size และ Dot" description="ไม่ใส่ nzSize = ไอคอน 32px (Basic Default) · nzProgressDot = จุด 8px (ขั้นปัจจุบัน 10px) · แบบจุดไม่มีใน Figma (master ไม่มี layout ของแถวแบบจุด) เป็นการอนุมานของ override รอ designer ออกแบบ · แถวแนวนอนจัดจุดให้อยู่กลางข้อความ และความกว้างของแต่ละขั้นย่อตามจอ (สูงสุด 140px) ลอง resize หน้าต่างหรือเปิดบนมือถือ" [code]="size" [ts]="imports">
       <div class="box stack">
         <nz-steps nzLabelPlacement="vertical" [nzCurrent]="1">
           <nz-step nzTitle="Finished" nzDescription="This is a description."></nz-step>
