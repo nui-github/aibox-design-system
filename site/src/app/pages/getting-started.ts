@@ -65,6 +65,12 @@ const CDN = `https://cdn.jsdelivr.net/gh/nui-github/aibox-design-system@${META.d
         ตั้ง <code>monthFormat: 'MMMM'</code> ตามโค้ดด้านล่าง (ไม่ตั้ง = "พ.ย." ตามค่าเริ่มต้นของ ng-zorro)
       </p>
       <app-code-block [code]="locale" lang="typescript" label="app.config.ts" maxHeight="none" />
+      <p class="p">
+        ปฏิทินภาษาไทยยังต้องมี locale ของวันที่ด้วย: ng-zorro 18–21 ใช้ <code>registerLocaleData(th)</code> ส่วน ng-zorro 22 ใช้
+        <code>NZ_DATE_LOCALE</code> (จาก <code>ng-zorro-antd/core/time</code>) ซึ่งต้องอยู่ <strong>หลัง</strong> <code>provideNzNativeDateAdapter()</code>
+        เพราะ adapter มีค่าเริ่มต้นของมันเอง ถ้าใส่ก่อน ค่าจะถูกทับและหัวปฏิทินเป็นภาษาอังกฤษ ("November 2026")
+      </p>
+      <app-code-block [code]="localeOrder" lang="typescript" label="ng-zorro 22: ลำดับ providers" maxHeight="none" />
       <p class="p">token ทุกตัวใช้ได้ในสไตล์ของโปรเจ็คเอง: <code>color: var(--aibox-color-text-main)</code> — ดูรายการทั้งหมดที่ <a routerLink="/tokens">Tokens</a></p>
     </section>
 
@@ -141,6 +147,15 @@ provideNzI18n({
   ...th_TH,
   DatePicker: { ...th_TH.DatePicker, lang: { ...th_TH.DatePicker.lang, monthFormat: 'MMMM' } },
 });`;
+  protected readonly localeOrder = `import { NZ_DATE_LOCALE, provideNzNativeDateAdapter } from 'ng-zorro-antd/core/time';
+
+providers: [
+  provideNzNativeDateAdapter(),                      // first
+  { provide: NZ_DATE_LOCALE, useValue: 'th-TH' },    // after the adapter, otherwise it is overridden
+]
+
+// ng-zorro 18-21 instead: registerLocaleData(th) with
+// import th from '@angular/common/locales/th'; import { registerLocaleData } from '@angular/common';`;
   protected readonly usage = `<button nz-button nzType="primary">Save</button>
 <button nz-button class="aibox-btn-subsidiary">Cancel</button>
 <nz-switch class="aibox-switch-ios" [(ngModel)]="enabled" />
